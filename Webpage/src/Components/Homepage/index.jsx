@@ -1,11 +1,13 @@
 import './style.css'
-
-export default function Home(){
+import Home from "./home.jsx"
+import Card from './card.jsx'
+import Block from './block.jsx'
+export default function Homepage(){
     return(
         <>
-    <div className="home-bg-white">
-            Home
-    </div>
+ <Home/>
+ <Block/>
+ <Card/>
         </>
     )
 }
