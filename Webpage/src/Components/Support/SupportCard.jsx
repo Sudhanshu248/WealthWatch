@@ -5,14 +5,15 @@ export default function SupportCard() {
         <>
             <h1 className="text-center text-4xl font-semibold pl-16 mt-8 text-shadow-md">Tips and Answer</h1>
 
+{/* Flips Card */}
             <div className="text-center flex flex-row flex-wrap align-item-center justify-center-safe px-8 mt-12 mb-12 gap-16">
 
-
+    {/* Flip card 1 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
                         <div className="flip-card-front flex flex-col py-8 px-2">
-                            <img src="/image/ai.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="" />
+                            <img src="/image/ai.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="AI_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Budget Recommendation </h1>
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">AI</h1>
@@ -25,11 +26,13 @@ export default function SupportCard() {
                     </div>
 
                 </div>
+
+                   {/* Flip card 2 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
                         <div className="flip-card-front flex flex-col py-8 px-2">
-                            <img src="/image/statistics.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="" />
+                            <img src="/image/statistics.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="static_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Track Cash Flow</h1>
 
@@ -41,11 +44,12 @@ export default function SupportCard() {
                     </div>
 
                 </div>
+                   {/* Flip card 3 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
                         <div className="flip-card-front flex flex-col py-8 px-2">
-                            <img src="/image/pie-chart.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="" />
+                            <img src="/image/pie-chart.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="pie_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Expense Categorization</h1>
 
@@ -57,11 +61,12 @@ export default function SupportCard() {
                     </div>
 
                 </div>
+                   {/* Flip card 4 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
                         <div className="flip-card-front flex flex-col py-8 px-2">
-                            <img src="/image/notification.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="" />
+                            <img src="/image/notification.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="notification_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Reminder & Alert</h1>
 
@@ -73,11 +78,12 @@ export default function SupportCard() {
                     </div>
 
                 </div>
+                   {/* Flip card 5 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
                         <div className="flip-card-front flex flex-col py-8 px-2">
-                            <img src="/image/shield.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="" />
+                            <img src="/image/shield.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="security_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Privacy & Security</h1>
 
@@ -90,11 +96,13 @@ export default function SupportCard() {
                     </div>
 
                 </div>
+
+                   {/* Flip card 6 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
                         <div className="flip-card-front flex flex-col py-8 px-2">
-                            <img src="/image/savings-plan.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="" />
+                            <img src="/image/savings-plan.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="saving_plan_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Savings Plans</h1>
 

@@ -14,8 +14,9 @@ export default function Navbar() {
 
                 <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between h-full ">
                   
+                  {/*Page_LOGO  */}
                     <div className=" w-1/4 ">
-                  <img src="/logo.png" className="" alt="" />
+                  <img src="/logo.png" alt="logo_image" />
                     </div>
 
                     <div className="col-2 flex  align-middle items-center justify-center gap-6">

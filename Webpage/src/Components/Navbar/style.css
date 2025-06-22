@@ -1,9 +1,8 @@
 @import "tailwindcss";
-/* 023e8a - button  , a2d2ff-navbar , 38a3a5 -hover */
 
 @media screen and (max-width: 768px) {
     #nav-about ,#nav-support{
-        display: none;
+        display: none;  /*Navbar context hide*/
     }
 }
 
