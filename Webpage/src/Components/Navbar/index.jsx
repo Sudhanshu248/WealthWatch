@@ -10,7 +10,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav id="navbar" className="sticky top-0  h-[100px] max-w-full shadow-md z-50 align-middle" style={{ backgroundColor: "#a2d2ff" , maxWidth:"100vw"}}>
+            <nav id="navbar" className="sticky top-0  h-[100px] max-w-full shadow-md z-50 align-middle" style={{ backgroundColor: "#a2d2ff" }}>
 
                 <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between h-full ">
                   
