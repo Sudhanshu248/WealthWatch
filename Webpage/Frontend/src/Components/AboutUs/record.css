@@ -1,0 +1,37 @@
+.counters{
+    padding: 3em 0;
+    color: #fff;
+    display: flex;
+    margin: 3rem  11rem 2rem 15rem;
+    justify-content: space-between;
+}
+
+.counter-image{
+    width: 30%;
+    border-radius: 10px;
+}
+
+.counter{
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    border: 2px solid #fff;  
+    background: #4193ff;
+    border-radius: 25px;
+}
+
+.counter h1{
+    font-size: 3em;
+}
+
+.counter:not(:last-child)::before{
+    content: '';
+    background: #fff;
+    position: absolute;
+    width: 2px;
+    height: 3em;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -1em;
+}
