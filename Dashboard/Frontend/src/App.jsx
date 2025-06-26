@@ -9,6 +9,8 @@ import CashflowPage from './Components/cashflow/index.jsx'
 import GoalsPage from './Components/goals/index.jsx'
 import ProfilePage from './Components/profile/index.jsx'
 
+import IndividualData from './Components/history/individual_Data.jsx'
+ 
 
 function App() {
 
@@ -24,11 +26,14 @@ function App() {
         
           <Route path='/blogs' element={<BlogPage />} />
           <Route path='/profile' element={<ProfilePage />} />
+
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/' element={<Dashboard />} />
           <Route path='/history' element={<HistoryPage />} />
+          <Route path='/history/:urlId' element={<IndividualData />} />
           <Route path='/goals' element={<GoalsPage />} />
           <Route path='/cashflow' element={<CashflowPage />} />
+          <Route path='/cashflow/:urlId' element={<CashflowPage />} />
 
 
         </Routes>

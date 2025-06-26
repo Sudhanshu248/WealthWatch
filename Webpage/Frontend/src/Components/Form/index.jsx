@@ -9,6 +9,10 @@ export default function Form() {
         navigate("/");
     }
 
+    const handleDashboard = ()=>{
+      window.location.href = 'http://localhost:5174/dashboard';
+    }
+
     return(
         <> <div className="page">
 
@@ -42,7 +46,7 @@ export default function Form() {
                         <div className="w-full text-center items-center h-[20%]">
                             <button className="m-4 w-[70%] px-5 py-2 font-bold font-sm text-white hover:scale-105 cursor-pointer"
                                 style={{ backgroundColor: "#2D5359", borderRadius: "45px"  }}
-                            > 
+                            onClick={handleDashboard} > 
                                 Go to Dashboard 
                                 &nbsp; &nbsp;
                                 <i className="fa-solid fa-arrow-right" style={{color: "#fff"}}></i> &nbsp; 
