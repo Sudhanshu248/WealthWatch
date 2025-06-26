@@ -23,7 +23,6 @@ function App() {
         <Routes>
         
           <Route path='/blogs' element={<BlogPage />} />
-
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/' element={<Dashboard />} />
           <Route path='/history' element={<HistoryPage />} />
