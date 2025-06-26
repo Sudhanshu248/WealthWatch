@@ -23,11 +23,11 @@ export default function Navbar() {
 
                <div  className="col-2 flex  align-middle items-center justify-center gap-6">
                         <div className="h-[30px] w-[30px] rounded-full ">
-                            <img className="rounded-full " src="/image/record1.png" alt="" />
+                            <img className="rounded-full " src="/image/profile.png" alt="" />
                         </div>
 
                         <div>
-UserName
+                            <a href="/profile">username</a>
                         </div>
                     </div>
              
