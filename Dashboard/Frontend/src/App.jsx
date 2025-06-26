@@ -7,6 +7,7 @@ import Sidebar from './Components/sidebar/sidebar.jsx'
 import HistoryPage from './Components/history/index.jsx'
 import CashflowPage from './Components/cashflow/index.jsx'
 import GoalsPage from './Components/goals/index.jsx'
+import ProfilePage from './Components/profile/index.jsx'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Routes>
         
           <Route path='/blogs' element={<BlogPage />} />
+          <Route path='/profile' element={<ProfilePage />} />
           <Route path='/dashboard' element={<Dashboard />} />
           <Route path='/' element={<Dashboard />} />
           <Route path='/history' element={<HistoryPage />} />
