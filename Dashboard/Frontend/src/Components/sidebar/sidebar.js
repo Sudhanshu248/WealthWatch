@@ -6,7 +6,7 @@
         },
         {
             name: "cashflow",
-            href: "/cashflow"
+            href:`/cashflow`
         },
         {
             name: "goals",

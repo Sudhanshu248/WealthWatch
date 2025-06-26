@@ -30,6 +30,7 @@ function App() {
           <Route path='/history/:urlId' element={<IndividualData />} />
           <Route path='/goals' element={<GoalsPage />} />
           <Route path='/cashflow' element={<CashflowPage />} />
+          <Route path='/cashflow/:urlId' element={<CashflowPage />} />
 
 
         </Routes>

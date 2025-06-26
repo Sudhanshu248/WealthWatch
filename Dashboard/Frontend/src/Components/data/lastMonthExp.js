@@ -1,69 +1,48 @@
+export const lastMonthExpence = {
+  totalBudget: {
+    value: 1500,
+  },
 
-export const lastMonthExp = {
-    totalBudget: {
-        value: 1200,
+  expence: [
+    {
+      category: "food",
+      items: {
+        daal: { value: 55 },
+        samosa: { value: 35 },
+        coldDrink: { value: 45 },
+        milk: { value: 25 },
+        biscuit: { value: 60 }
+      }
     },
-
-    expence: {
-        food: {
-            daal: {
-                value: 60
-            },
-
-            samosa: {
-                value: 45
-            },
-            coldDrink: {
-                value: 35
-            },
-            milk: {
-                value: 40
-            },
-            biscuit: {
-                value: 55
-            },
-        },
-
-        transport: {
-            petrol: {
-                value: 110
-            },
-            bus: {
-                value: 35
-            },
-            auto: {
-                value: 25
-            },
-        },
-
-        personalExp: {
-            clothes: {
-                value: 120
-            },
-            grooming: {
-                value: 60
-            },
-        },
-
-        housing: {
-            rent: {
-                value: 220
-            },
-            electricity: {
-                value: 70
-            },
-            water: {
-                value: 25
-            },
-        },
-
-        saving: {
-            bank: {
-                value: 130
-            },
-            cash: {
-                value: 80
-            },
-        },
+    {
+      category: "transport",
+      items: {
+        petrol: { value: 80 },
+        bus: { value: 40 },
+        auto: { value: 25 }
+      }
+    },
+    {
+      category: "personalExp",
+      items: {
+        clothes: { value: 90 },
+        grooming: { value: 65 }
+      }
+    },
+    {
+      category: "housing",
+      items: {
+        rent: { value: 140 },
+        electricity: { value: 75 },
+        water: { value: 25 }
+      }
+    },
+    {
+      category: "saving",
+      items: {
+        bank: { value: 80 },
+        cash: { value: 90 }
+      }
     }
+  ]
 };

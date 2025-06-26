@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { CurrExpence } from "../data/CurrExp.js";
-import { TotalExpence, FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../data/CalExpence.js";
+
+import { TotalExpence, FoodExpence } from "../data/CalExpence.js";
+import AddDailyRecord from "./AddDailyRecord.jsx";
+import MonthlyChart from "./MonthlyChart.jsx";
 
 export default function Dashboard({ }) {
 
-    const [Category, setCategory] = useState("");
-    const [PaymentWay, setPaymentWay] = useState("");
+
     const [isDismissed, setIsDismissed] = useState(false);
 
-    const { TotalBudget, Foodpercentage } = FoodExpence();
-    const { TransportPercentage } = TransportExpence();
-    const { Personal_percentage } = PersonalExpence();
-    const { Housing_percentage } = HousingExpence();
-    const { Saving_percentage } = SavingExpence();
+    const { TotalBudget } = FoodExpence();
     const { TotalExpence_percentage, RemaningBalance } = TotalExpence();
 
 
@@ -95,73 +92,9 @@ export default function Dashboard({ }) {
 
                             </div>
 
+                            {/* Add daily record Box */}
+                            <AddDailyRecord />
 
-
-                            {/* Add Daily  Record box */}
-                            <div className="bg-white w-full h-[50%] rounded-2xl  px-12 py-4">
-
-                                <div className=" flex flex-col   h-fit w-full  my-2">
-
-                                    {/* Heading */}
-                                    <div className="w-full">
-                                        <h1 className="text-[1.1rem] text-start text-shadow-sm font-medium text-start ">Add Daily Record</h1>
-                                    </div>
-
-                                    {/* block 1 */}
-                                    <div className="flex flex-row justify-between my-2">
-
-                                        <input type="text" placeholder="Product name" className="w-[40%] h-[30px] bg-gray-200 rounded-md p-2" />
-
-                                        <select
-                                            id="category"
-                                            name="category"
-                                            value={Category}
-                                            onChange={(e) => setCategory(e.target.value)}
-                                            className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[30px]"
-                                            style={{ border: "none", outline: "none" }}
-                                        >
-                                            <option value="" disabled>Category</option>
-                                            <option value="food">Food</option>
-                                            <option value="transport">Transport</option>
-                                            <option value="personal">Personal</option>
-                                            <option value="housing">Housing</option>
-                                        </select>
-
-
-                                    </div>
-
-
-                                    {/* block 2 */}
-                                    <div className="flex flex-row justify-between my-2">
-
-                                        <input type="number" min={0} placeholder="price" className="w-[40%] h-[30px] bg-gray-200 rounded-md p-2" />
-
-                                        <input type="date" placeholder="Date" className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-2" />
-
-
-                                    </div>
-
-                                    {/* block 3 */}
-                                    <div className="flex flex-row justify-between my-2">
-                                        <select
-                                            id="payment_method"
-                                            name="payment_method"
-                                            value={PaymentWay}
-                                            onChange={(e) => setCategory(e.target.value)}
-                                            className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[30px]"
-                                            style={{ border: "none", outline: "none" }}
-                                        >
-                                            <option value="" disabled>Payment Method</option>
-                                            <option value="food">Food</option>
-                                            <option value="transport">Transport</option>
-                                            <option value="personal">Personal</option>
-                                            <option value="housing">Housing</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-
-                            </div>
 
 
                         </div>
@@ -169,77 +102,8 @@ export default function Dashboard({ }) {
 
                         {/* Monthly expence Chart box */}
 
-                        <div className="h-[400px] grow  flex flex-col gap-2  py-2 px-2 " >
-                            <div className="bg-white text-center h-full w-full rounded-2xl py-4 px-6">
-                                <div>
-                                    <h1 className="text-xl">Monthly Expence</h1>
-                                </div>
+                        <MonthlyChart />
 
-                                <div className="">
-
-                                </div>
-
-                                <div className=" text-start font-medium">
-                                    <ul>
-                                        <li className="flex flex-row justify-between ">
-                                            <div className="flex flex-row items-center gap-3 ">
-                                                <div className="rounded-full h-[12px] w-[12px] bg-yellow-600"></div>
-                                                <h1>Housing</h1>
-                                            </div>
-
-                                            <div>
-                                                {Housing_percentage.toFixed(0)}%
-                                            </div>
-
-                                        </li>
-                                        <li className="flex flex-row items-center gap-3 justify-between">
-                                            <div className="flex flex-row items-center gap-3 ">
-                                                <div className="rounded-full h-[12px] w-[12px] bg-green-900"></div>
-                                                <h1>Food</h1>
-                                            </div>
-
-                                            <div>
-                                                {Foodpercentage.toFixed(0)}%
-                                            </div>
-                                        </li>
-                                        <li className="flex flex-row justify-between items-center gap-3 ">
-                                            <div className="flex flex-row items-center gap-3 ">
-
-                                                <div className="rounded-full h-[12px] w-[12px] bg-green-900"></div>
-                                                <h1>Transport</h1>
-                                            </div>
-                                            <div>
-                                                {TransportPercentage.toFixed(0)}%
-                                            </div>
-                                        </li>
-                                        <li className="flex flex-row justify-between items-center gap-3 ">
-                                            <div className="flex flex-row items-center gap-3 ">
-
-                                                <div className="rounded-full h-[12px] w-[12px] bg-cyan-500"></div>
-                                                <h1>Personal Expence</h1>
-                                            </div>
-                                            <div>
-                                                {Personal_percentage.toFixed(0)}%
-                                            </div>
-
-                                        </li>
-                                        <li className="flex flex-row  justify-between items-center gap-3 ">
-                                            <div className="flex flex-row items-center gap-3 ">
-
-                                                <div className="rounded-full h-[12px] w-[12px] bg-sky-900"></div>
-                                                <h1>Saving</h1>
-                                            </div>
-                                            <div>
-
-                                                {Saving_percentage.toFixed(0)}%
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
                     </div>
 
                     {/* Anomaly Detection */}
