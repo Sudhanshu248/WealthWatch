@@ -1,48 +1,48 @@
 import { useEffect, useState } from "react";
 import { CurrExpence } from "../data/CurrExp.js";
-import {TotalExpence, FoodExpence, TransportExpence  , HousingExpence , SavingExpence , PersonalExpence} from "./CalExpence.js";
+import { TotalExpence, FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../data/CalExpence.js";
 
-export default function Dashboard({}) {
+export default function Dashboard({ }) {
 
-const [Category , setCategory] = useState("");
-const [PaymentWay , setPaymentWay] = useState("");
-const [isDismissed, setIsDismissed] = useState(false);
+    const [Category, setCategory] = useState("");
+    const [PaymentWay, setPaymentWay] = useState("");
+    const [isDismissed, setIsDismissed] = useState(false);
 
-const { TotalBudget, Foodpercentage} = FoodExpence();
-const {  TransportPercentage} = TransportExpence();
-const {  Personal_percentage} = PersonalExpence();
-const {  Housing_percentage} = HousingExpence();
-const {  Saving_percentage} = SavingExpence();
-const {TotalExpence_percentage , RemaningBalance} = TotalExpence();
-    
-  
+    const { TotalBudget, Foodpercentage } = FoodExpence();
+    const { TransportPercentage } = TransportExpence();
+    const { Personal_percentage } = PersonalExpence();
+    const { Housing_percentage } = HousingExpence();
+    const { Saving_percentage } = SavingExpence();
+    const { TotalExpence_percentage, RemaningBalance } = TotalExpence();
 
-  useEffect(() => {
-    const dismissedTime = localStorage.getItem('anomalyDismissedAt');
 
-    if (dismissedTime) {
-      const now = new Date().getTime();
-      const elapsed = now - parseInt(dismissedTime, 10);
 
-      // 24 hours = 86,400,000 ms
-      if (elapsed > 86400000) {
-        setIsDismissed(false);
-        localStorage.removeItem('anomalyDismissedAt');
-      } else {
+    useEffect(() => {
+        const dismissedTime = localStorage.getItem('anomalyDismissedAt');
+
+        if (dismissedTime) {
+            const now = new Date().getTime();
+            const elapsed = now - parseInt(dismissedTime, 10);
+
+            // 24 hours = 86,400,000 ms
+            if (elapsed > 86400000) {
+                setIsDismissed(false);
+                localStorage.removeItem('anomalyDismissedAt');
+            } else {
+                setIsDismissed(true);
+            }
+        }
+    }, []);
+
+    const handleDismiss = () => {
         setIsDismissed(true);
-      }
-    }
-  }, []);
+        localStorage.setItem('anomalyDismissedAt', new Date().getTime().toString());
+    };
 
-  const handleDismiss = () => {
-    setIsDismissed(true);
-    localStorage.setItem('anomalyDismissedAt', new Date().getTime().toString());
-  };
 
-  
 
-// Balance Bar
-const ProgressBar = () => {  
+    // Balance Bar
+    const ProgressBar = () => {
         return (
 
             <div
@@ -53,7 +53,7 @@ const ProgressBar = () => {
     };
 
 
-  
+
 
     return (
         <>
@@ -115,7 +115,7 @@ const ProgressBar = () => {
                                         <select
                                             id="category"
                                             name="category"
-                                              value={Category}
+                                            value={Category}
                                             onChange={(e) => setCategory(e.target.value)}
                                             className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[30px]"
                                             style={{ border: "none", outline: "none" }}
@@ -143,7 +143,7 @@ const ProgressBar = () => {
 
                                     {/* block 3 */}
                                     <div className="flex flex-row justify-between my-2">
-                                      <select
+                                        <select
                                             id="payment_method"
                                             name="payment_method"
                                             value={PaymentWay}
@@ -242,43 +242,43 @@ const ProgressBar = () => {
                         </div>
                     </div>
 
-{/* Anomaly Detection */}
+                    {/* Anomaly Detection */}
                     <div className="flex flex-col bg-white w-full h-fit rounded-2xl mt-4 px-12 py-4 ">
 
-                   {/* Heading */}
+                        {/* Heading */}
                         <div className="w-full">
                             <h1 className="text-[1.1rem] text-start text-shadow-sm font-medium text-start ">Anomaly Detected</h1>
                         </div>
 
-                    {/* Paragraph */}
+                        {/* Paragraph */}
                         <div className="text-start w-full">
                             <p className="text-gray-600">Our system analyzes your past spending habits to identify significant deviations. We will alert you to expenses
                                 that are higher than your average or appear to be unusual, ensuring you stay informed about your financial
                                 activity.</p>
                         </div>
 
-                    {/* Detector */}
-                       { RemaningBalance > 750  ?  
-                     <div  className={`flex flex-row justify-between items-center border w-full h-fit rounded-2xl mt-4 py-2 px-4 ${isDismissed ==true ? 'hidden' : 'text-red-500' }`}>
+                        {/* Detector */}
+                        {RemaningBalance > 750 ?
+                            <div className={`flex flex-row justify-between items-center border w-full h-fit rounded-2xl mt-4 py-2 px-4 ${isDismissed == true ? 'hidden' : 'text-red-500'}`}>
 
-                            <div className="flex flex-row gap-4 items-center ">
-                                <div className="text-center rounded-full h-[30px] w-[30px] bg-red-700 text-white font-bold text-xl">!</div>
-                                <h1 className="text-red-700 font-medium"> Higher than usual restaurant spending.</h1>
-                            </div>
+                                <div className="flex flex-row gap-4 items-center ">
+                                    <div className="text-center rounded-full h-[30px] w-[30px] bg-red-700 text-white font-bold text-xl">!</div>
+                                    <h1 className="text-red-700 font-medium"> Higher than usual restaurant spending.</h1>
+                                </div>
 
-                            <div >
-                                <button onClick={handleDismiss} className="bg-[#2D5359] text-white py-2 px-4 rounded-2xl">Dismiss</button>
-                            </div>
+                                <div >
+                                    <button onClick={handleDismiss} className="bg-[#2D5359] text-white py-2 px-4 rounded-2xl">Dismiss</button>
+                                </div>
 
 
-                        </div> : <div></div>   
-                    }
-                       
+                            </div> : <div></div>
+                        }
+
 
                     </div>
 
 
-{/* Building AI  */}
+                    {/* Building AI  */}
 
                     <div className="flex flex-col gap-5 bg-white w-full h-fit rounded-2xl mt-4 px-12 py-4 ">
 
@@ -297,11 +297,11 @@ const ProgressBar = () => {
                         {/* Paragraph */}
                         <div className="flex flex-row justify-between gap-2 items-center text-start w-full">
                             <p className="text-gray-600">Reduce your Travel expenses to save money.</p>
-                           <a href="/blogs" className="text-blue-700">Learn More</a>
+                            <a href="/blogs" className="text-blue-700">Learn More</a>
                         </div>
 
-            
-                       
+
+
 
                     </div>
 
