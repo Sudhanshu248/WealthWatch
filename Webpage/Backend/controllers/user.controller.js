@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const User = require("../models/user.models.js");
 
 dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET; 
 
 const signup = async (req, res) => {
     try {
