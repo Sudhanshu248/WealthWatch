@@ -1,6 +1,6 @@
  export const Article = [
     {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
+      url: "https://empeople.com/learn/empeople-insights/why-financial-literacy-is-important-for-everyone/",
       title: "Practice Management Software – A Guide for Modern Accountants"
     },
     {
@@ -29,29 +29,29 @@
 
   export const post = [
     {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-      title: "Practice Management Software – A Guide for Modern Accountants"
+      image: "/image/post1.png",
+      url: "https://empeople.com/learn/empeople-insights/why-financial-literacy-is-important-for-everyone/",
+      title: "Why Financial Literacy is Important for Everyone"
     },
     {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-      title: "Practice Management Software – A Guide for Modern Accountants"
+      image: "/image/post2.png",
+      url: "https://blogs.uofi.uillinois.edu/view/7550/176801781",
+      title: "The Power of Financial Education: A Key to Success for College Students"
     },
     {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-      title: "Practice Management Software – A Guide for Modern Accountants"
+      image: "/image/post3.png",
+      url: "https://www.investopedia.com/terms/f/financial-literacy.asp",
+      title: "What is Financial Literacy: What is it and Why it is important to Teens"
     },
     {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-      title: "Practice Management Software – A Guide for Modern Accountants"
+      image: "/image/post4.png",
+      url: "https://www.investopedia.com/articles/investing/022516/saving-vs-investing-understanding-key-differences.asp",
+      title: "Saving vs. Investing: What Teens Should Know"
     },
     {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-      title: "Practice Management Software – A Guide for Modern Accountants"
-    },
-
-    {
-      url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-      title: "Practice Management Software – A Guide for Modern Accountants"
+      image: "/image/post5.png",
+      url: "https://www.investopedia.com/financial-edge/1109/6-reasons-why-you-need-a-budget.aspx",
+      title: "How to Budget Money: Your Step-by-Step Guide"
     }
 
   ]
@@ -59,22 +59,90 @@
 
  export  const ytData = [
     {
-      videoId: "https://www.youtube.com/embed/XH_4rj-j0sU",
-      title: "6-Month PLAN to Take Charge Of Your FINANCES! | Ankur Warikoo Hindi"
+      videoId: "https://www.youtube.com/embed/0iRbD5rM5qc",
+      title: "Financial Literacy | Learn the basics of finance and budgeting"
     },
     {
-      videoId: "https://www.youtube.com/embed/XOWlHWgT2SQ",
-      title: "Escaping the Middle Class Trap: The 3 Paths of Money | Ankur Warikoo Hindi"
+      videoId: "https://www.youtube.com/embed/cYGiipJOiLg",
+      title: "Financial Literacy — Making a Budget | Learn how to create a budget"
     },
     {
-      videoId: "https://www.youtube.com/embed/QMgKbk9LSjI",
-      title: "I've read 613 business books - these 16 will make you RICH"
+      videoId: "https://www.youtube.com/embed/WTwSL4DDJAU",
+      title: "Financial Literacy - Banks and Credit Unions"
     },
-
-
     {
-      videoId: "https://www.youtube.com/embed/hBtxSzKhM44",
-      title: "After I Read 40 Books on Money - Here's What Will Make You Rich"
+      videoId: "https://www.youtube.com/embed/q5JWp47z4bY",
+      title: "Financial Education | The 4 Rules Of Being Financially Literate"
     }
   ];
 
+
+
+  export const CurrExpence = {
+    totalBudget: {
+        value: 1000,
+    },
+
+    expence: {
+        food: {
+            daal: {
+                value: 50
+            },
+
+            samosa: {
+                value: 40
+            },
+            coldDrink: {
+                value: 30
+            },
+            milk: {
+                value: 30
+            },
+            biscuit: {
+                value: 50
+            },
+        },
+
+        transport: {
+            petrol: {
+                value: 100
+            },
+            bus: {
+                value: 30
+            },
+            auto: {
+                value: 20
+            },
+        },
+
+        personalExp: {
+            clothes: {
+                value: 100
+            },
+            grooming: {
+                value: 50
+            },
+        },
+
+        housing: {
+            rent: {
+                value: 200
+            },
+            electricity: {
+                value: 60
+            },
+            water: {
+                value: 20
+            },
+        },
+
+        saving: {
+            bank: {
+                value: 100
+            },
+            cash: {
+                value: 70
+            },
+        },
+    },
+};

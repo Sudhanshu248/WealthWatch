@@ -20,3 +20,8 @@
 .custom-swiper .swiper-button-prev::after {
   font-size: 14px;
 }
+
+.swiper-pagination-bullet-active {
+    opacity: var(--swiper-pagination-bullet-opacity, 1);
+    background: #2D5359;
+}

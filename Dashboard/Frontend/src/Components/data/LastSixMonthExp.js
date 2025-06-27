@@ -1,187 +1,278 @@
-export const lastSixMonthsExp = {
-    lastMonth: {
-        totalBudget: { value: 1200 },
-        expence: {
-            food: {
-                daal: { value: 60 },
-                samosa: { value: 45 },
-                coldDrink: { value: 35 },
-                milk: { value: 40 },
-                biscuit: { value: 55 },
-            },
-            transport: {
-                petrol: { value: 110 },
-                bus: { value: 35 },
-                auto: { value: 25 },
-            },
-            personalExp: {
-                clothes: { value: 120 },
-                grooming: { value: 60 },
-            },
-            housing: {
-                rent: { value: 220 },
-                electricity: { value: 70 },
-                water: { value: 25 },
-            },
-            saving: {
-                bank: { value: 130 },
-                cash: { value: 80 },
-            },
-        },
-    },
-
-    secondLastMonth: {
-        totalBudget: { value: 1100 },
-        expence: {
-            food: {
-                daal: { value: 55 },
-                samosa: { value: 40 },
-                coldDrink: { value: 30 },
-                milk: { value: 35 },
-                biscuit: { value: 50 },
-            },
-            transport: {
-                petrol: { value: 100 },
-                bus: { value: 30 },
-                auto: { value: 20 },
-            },
-            personalExp: {
-                clothes: { value: 110 },
-                grooming: { value: 55 },
-            },
-            housing: {
-                rent: { value: 210 },
-                electricity: { value: 65 },
-                water: { value: 22 },
-            },
-            saving: {
-                bank: { value: 120 },
-                cash: { value: 75 },
-            },
-        },
-    },
-
-    thirdLastMonth: {
-        totalBudget: { value: 1050 },
-        expence: {
-            food: {
-                daal: { value: 50 },
-                samosa: { value: 42 },
-                coldDrink: { value: 32 },
-                milk: { value: 38 },
-                biscuit: { value: 52 },
-            },
-            transport: {
-                petrol: { value: 105 },
-                bus: { value: 32 },
-                auto: { value: 22 },
-            },
-            personalExp: {
-                clothes: { value: 115 },
-                grooming: { value: 58 },
-            },
-            housing: {
-                rent: { value: 215 },
-                electricity: { value: 68 },
-                water: { value: 24 },
-            },
-            saving: {
-                bank: { value: 125 },
-                cash: { value: 78 },
-            },
-        },
-    },
-
-    fourthLastMonth: {
-        totalBudget: { value: 1150 },
-        expence: {
-            food: {
-                daal: { value: 58 },
-                samosa: { value: 43 },
-                coldDrink: { value: 34 },
-                milk: { value: 39 },
-                biscuit: { value: 54 },
-            },
-            transport: {
-                petrol: { value: 108 },
-                bus: { value: 33 },
-                auto: { value: 24 },
-            },
-            personalExp: {
-                clothes: { value: 118 },
-                grooming: { value: 59 },
-            },
-            housing: {
-                rent: { value: 218 },
-                electricity: { value: 69 },
-                water: { value: 23 },
-            },
-            saving: {
-                bank: { value: 128 },
-                cash: { value: 79 },
-            },
-        },
-    },
-
-    fifthLastMonth: {
-        totalBudget: { value: 1120 },
-        expence: {
-            food: {
-                daal: { value: 53 },
-                samosa: { value: 41 },
-                coldDrink: { value: 31 },
-                milk: { value: 36 },
-                biscuit: { value: 51 },
-            },
-            transport: {
-                petrol: { value: 103 },
-                bus: { value: 31 },
-                auto: { value: 21 },
-            },
-            personalExp: {
-                clothes: { value: 112 },
-                grooming: { value: 54 },
-            },
-            housing: {
-                rent: { value: 213 },
-                electricity: { value: 66 },
-                water: { value: 21 },
-            },
-            saving: {
-                bank: { value: 122 },
-                cash: { value: 74 },
-            },
-        },
-    },
-
-    sixthLastMonth: {
-        totalBudget: { value: 1080 },
-        expence: {
-            food: {
-                daal: { value: 52 },
-                samosa: { value: 39 },
-                coldDrink: { value: 29 },
-                milk: { value: 34 },
-                biscuit: { value: 48 },
-            },
-            transport: {
-                petrol: { value: 99 },
-                bus: { value: 29 },
-                auto: { value: 19 },
-            },
-            personalExp: {
-                clothes: { value: 108 },
-                grooming: { value: 50 },
-            },
-            housing: {
-                rent: { value: 208 },
-                electricity: { value: 63 },
-                water: { value: 20 },
-            },
-            saving: {
-                bank: { value: 118 },
-                cash: { value: 72 },
-            },
-        },
-    }
-};
+export const sixMonthExpense = [
+  {
+    month: "January",
+    totalBudget: { value: 1500 },
+    expence: [
+      {
+        category: "food",
+        items: {
+          daal: { value: 60 },
+          samosa: { value: 30 },
+          coldDrink: { value: 50 },
+          milk: { value: 30 },
+          biscuit: { value: 70 }
+        }
+      },
+      {
+        category: "transport",
+        items: {
+          petrol: { value: 100 },
+          bus: { value: 35 },
+          auto: { value: 20 }
+        }
+      },
+      {
+        category: "personalExp",
+        items: {
+          clothes: { value: 80 },
+          grooming: { value: 50 }
+        }
+      },
+      {
+        category: "housing",
+        items: {
+          rent: { value: 140 },
+          electricity: { value: 65 },
+          water: { value: 20 }
+        }
+      },
+      {
+        category: "saving",
+        items: {
+          bank: { value: 100 },
+          cash: { value: 70 }
+        }
+      }
+    ]
+  },
+  {
+    month: "February",
+    totalBudget: { value: 1600 },
+    expence: [
+      {
+        category: "food",
+        items: {
+          daal: { value: 50 },
+          samosa: { value: 40 },
+          coldDrink: { value: 55 },
+          milk: { value: 28 },
+          biscuit: { value: 65 }
+        }
+      },
+      {
+        category: "transport",
+        items: {
+          petrol: { value: 90 },
+          bus: { value: 45 },
+          auto: { value: 30 }
+        }
+      },
+      {
+        category: "personalExp",
+        items: {
+          clothes: { value: 95 },
+          grooming: { value: 70 }
+        }
+      },
+      {
+        category: "housing",
+        items: {
+          rent: { value: 140 },
+          electricity: { value: 70 },
+          water: { value: 25 }
+        }
+      },
+      {
+        category: "saving",
+        items: {
+          bank: { value: 90 },
+          cash: { value: 100 }
+        }
+      }
+    ]
+  },
+  {
+    month: "March",
+    totalBudget: { value: 1550 },
+    expence: [
+      {
+        category: "food",
+        items: {
+          daal: { value: 58 },
+          samosa: { value: 38 },
+          coldDrink: { value: 52 },
+          milk: { value: 27 },
+          biscuit: { value: 68 }
+        }
+      },
+      {
+        category: "transport",
+        items: {
+          petrol: { value: 85 },
+          bus: { value: 50 },
+          auto: { value: 28 }
+        }
+      },
+      {
+        category: "personalExp",
+        items: {
+          clothes: { value: 100 },
+          grooming: { value: 60 }
+        }
+      },
+      {
+        category: "housing",
+        items: {
+          rent: { value: 140 },
+          electricity: { value: 80 },
+          water: { value: 22 }
+        }
+      },
+      {
+        category: "saving",
+        items: {
+          bank: { value: 95 },
+          cash: { value: 80 }
+        }
+      }
+    ]
+  },
+  {
+    month: "April",
+    totalBudget: { value: 1620 },
+    expence: [
+      {
+        category: "food",
+        items: {
+          daal: { value: 62 },
+          samosa: { value: 42 },
+          coldDrink: { value: 53 },
+          milk: { value: 26 },
+          biscuit: { value: 72 }
+        }
+      },
+      {
+        category: "transport",
+        items: {
+          petrol: { value: 92 },
+          bus: { value: 42 },
+          auto: { value: 35 }
+        }
+      },
+      {
+        category: "personalExp",
+        items: {
+          clothes: { value: 85 },
+          grooming: { value: 75 }
+        }
+      },
+      {
+        category: "housing",
+        items: {
+          rent: { value: 140 },
+          electricity: { value: 70 },
+          water: { value: 25 }
+        }
+      },
+      {
+        category: "saving",
+        items: {
+          bank: { value: 90 },
+          cash: { value: 85 }
+        }
+      }
+    ]
+  },
+  {
+    month: "May",
+    totalBudget: { value: 1580 },
+    expence: [
+      {
+        category: "food",
+        items: {
+          daal: { value: 55 },
+          samosa: { value: 35 },
+          coldDrink: { value: 50 },
+          milk: { value: 29 },
+          biscuit: { value: 60 }
+        }
+      },
+      {
+        category: "transport",
+        items: {
+          petrol: { value: 88 },
+          bus: { value: 38 },
+          auto: { value: 25 }
+        }
+      },
+      {
+        category: "personalExp",
+        items: {
+          clothes: { value: 92 },
+          grooming: { value: 68 }
+        }
+      },
+      {
+        category: "housing",
+        items: {
+          rent: { value: 140 },
+          electricity: { value: 75 },
+          water: { value: 23 }
+        }
+      },
+      {
+        category: "saving",
+        items: {
+          bank: { value: 85 },
+          cash: { value: 95 }
+        }
+      }
+    ]
+  },
+  {
+    month: "June",
+    totalBudget: { value: 1650 },
+    expence: [
+      {
+        category: "food",
+        items: {
+          daal: { value: 60 },
+          samosa: { value: 37 },
+          coldDrink: { value: 48 },
+          milk: { value: 31 },
+          biscuit: { value: 66 }
+        }
+      },
+      {
+        category: "transport",
+        items: {
+          petrol: { value: 95 },
+          bus: { value: 36 },
+          auto: { value: 28 }
+        }
+      },
+      {
+        category: "personalExp",
+        items: {
+          clothes: { value: 90 },
+          grooming: { value: 72 }
+        }
+      },
+      {
+        category: "housing",
+        items: {
+          rent: { value: 140 },
+          electricity: { value: 78 },
+          water: { value: 26 }
+        }
+      },
+      {
+        category: "saving",
+        items: {
+          bank: { value: 88 },
+          cash: { value: 92 }
+        }
+      }
+    ]
+  }
+];

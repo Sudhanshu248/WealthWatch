@@ -45,7 +45,7 @@ export default function Login() {
 
         if (response.data && response.data.token) {
             localStorage.setItem('token', response.data.token);
-            
+             window.location.href = 'http://localhost:5174/dashboard';
             // navigate('/aboutus');
         } else {
             setError("Invalid credentials. Please try again.");

@@ -20,8 +20,6 @@ export const FoodExpence = (CurrExp) => {
         percentage: item.value / foodExpence * 100
     }))
 
-
-
     const Foodpercentage = TotalBudget > 0 ? (foodExpence / TotalBudget) * 100 : 0;
 
     return {
