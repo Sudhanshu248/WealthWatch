@@ -7,41 +7,41 @@ export const lastMonthExpence = {
     {
       category: "food",
       items: {
-        daal: { value: 55 },
-        samosa: { value: 35 },
-        coldDrink: { value: 45 },
-        milk: { value: 25 },
-        biscuit: { value: 60 }
+        daal: { value: 55, date: "2025-05-03", payMethod: "cash" },
+        samosa: { value: 35, date: "2025-05-05", payMethod: "upi" },
+        coldDrink: { value: 45, date: "2025-05-05", payMethod: "upi" },
+        milk: { value: 25, date: "2025-05-07", payMethod: "card" },
+        biscuit: { value: 60, date: "2025-05-08", payMethod: "cash" }
       }
     },
     {
       category: "transport",
       items: {
-        petrol: { value: 80 },
-        bus: { value: 40 },
-        auto: { value: 25 }
+        petrol: { value: 80, date: "2025-05-10", payMethod: "card" },
+        bus: { value: 40, date: "2025-05-11", payMethod: "cash" },
+        auto: { value: 25, date: "2025-05-12", payMethod: "cash" }
       }
     },
     {
       category: "personalExp",
       items: {
-        clothes: { value: 90 },
-        grooming: { value: 65 }
+        clothes: { value: 90, date: "2025-05-14", payMethod: "card" },
+        grooming: { value: 65, date: "2025-05-15", payMethod: "upi" }
       }
     },
     {
       category: "housing",
       items: {
-        rent: { value: 140 },
-        electricity: { value: 75 },
-        water: { value: 25 }
+        rent: { value: 140, date: "2025-05-01", payMethod: "bank transfer" },
+        electricity: { value: 75, date: "2025-05-18", payMethod: "upi" },
+        water: { value: 25, date: "2025-05-19", payMethod: "upi" }
       }
     },
     {
       category: "saving",
       items: {
-        bank: { value: 80 },
-        cash: { value: 90 }
+        bank: { value: 80, date: "2025-05-20", payMethod: "bank transfer" },
+        cash: { value: 90, date: "2025-05-22", payMethod: "cash" }
       }
     }
   ]

@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const FormSchema = new mongoose.Schema({
     profilePicture: {
@@ -26,4 +26,4 @@ const FormSchema = new mongoose.Schema({
 
 const Form = mongoose.model("Form", FormSchema);
 
-module.exports = Profile;
+export default Form;
