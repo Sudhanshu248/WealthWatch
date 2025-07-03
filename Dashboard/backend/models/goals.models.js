@@ -1,7 +1,11 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const GoalsSchema = new mongoose.Schema({
+    userId:{
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
     food: {
         type: Number,
     },
@@ -21,4 +25,4 @@ const GoalsSchema = new mongoose.Schema({
 
 const Goals = mongoose.model("Goals", GoalsSchema);
 
-module.exports = Goals;
+export default Goals;

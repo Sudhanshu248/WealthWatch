@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
 const User = require("../models/user.models.js");
+
 
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET; 
@@ -52,6 +52,7 @@ const login = async (req, res) => {
         const response = await User.findOne({
             email:email
         })
+
         if(!response){
             res.status(401).send({
                 Message:"Your email is not correct"
@@ -75,6 +76,7 @@ const login = async (req, res) => {
                 Message:"Incorrect Password"
             })
         }
+
 
     } catch (error) {
         return res.status(500).json({ message: error.message });

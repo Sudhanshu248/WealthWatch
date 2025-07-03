@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
 
 const itemSchema = new mongoose.Schema({
   name: {
@@ -35,6 +35,10 @@ const categorySchema = new mongoose.Schema({
 });
 
 const inputDataSchema = new mongoose.Schema({
+  userId:{
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   totalBudget: {
     type: Number,
     required: true
@@ -46,7 +50,5 @@ const inputDataSchema = new mongoose.Schema({
 });
 
 
-
-const InputData = mongoose.model('InputData', inputDataSchema);
-
-module.exports = InputData;
+ const InputData = mongoose.model('InputData', inputDataSchema);
+export default InputData;

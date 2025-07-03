@@ -1,6 +1,7 @@
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
 
+
 export default function Form() {
 
     const navigate = useNavigate();
@@ -10,7 +11,7 @@ export default function Form() {
     }
 
     const handleDashboard = ()=>{
-      window.location.href = 'http://localhost:5174/dashboard';
+      window.location.href = 'http://localhost:5173/dashboard';
     }
 
     return(
