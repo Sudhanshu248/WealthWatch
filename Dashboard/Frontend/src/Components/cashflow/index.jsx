@@ -30,7 +30,7 @@ export default function CashflowPage() {
 
                     {/* Heading */}
                     <div>
-                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-6">Cashflow</h1>
+                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start  mb-6 mt-3">Cashflow</h1>
                     </div>
 
 

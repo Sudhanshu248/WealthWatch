@@ -61,10 +61,10 @@ export default function AddDailyRecord() {
                             style={{ border: "none", outline: "none" }}
                         >
                             <option value="" disabled>Payment Method</option>
-                            <option value="food">Food</option>
-                            <option value="transport">Transport</option>
-                            <option value="personal">Personal</option>
-                            <option value="housing">Housing</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Card">CARD</option>
+                           
                         </select>
                     </div>
                 </div>
