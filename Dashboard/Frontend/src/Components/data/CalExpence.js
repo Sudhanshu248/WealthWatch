@@ -13,6 +13,7 @@ export const FoodExpence = (CurrExp) => {
         return sum + categoryTotal;
     }, 0);
 
+
     // Formula for foodlistiing
     const Foodlist = Object.entries(FoodExpenceObj?.items || {}).map(([key, item]) => ({
         name: key,
