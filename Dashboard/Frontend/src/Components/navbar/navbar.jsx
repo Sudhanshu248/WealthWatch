@@ -2,6 +2,7 @@ import "./style.css"
 import { useNavigate } from 'react-router-dom';
 
 import { useState } from "react";
+import Calendar from "./calendar";
 
 export default function Navbar() {
 
@@ -19,7 +20,10 @@ export default function Navbar() {
                     <div className=" w-1/4 ">
                         <img src="/image/logo.png" alt="logo_image" />
                     </div>
-
+                <div className="m-10 mt-120 bg-white p-5 rounded-2xl">
+                    
+                    <Calendar/>
+                </div>
 
                <div  className="col-2 flex  align-middle items-center justify-center gap-6">
                         <div className="h-[30px] w-[30px] rounded-full ">

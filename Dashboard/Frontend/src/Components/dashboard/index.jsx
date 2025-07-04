@@ -65,7 +65,7 @@ export default function Dashboard({ }) {
 
 
                         {/* Balance and Add Daily Expence Boxes */}
-                        <div className=" w-[840px] h-[400px] flex flex-col justify-between   py-2">
+                        <div className=" w-[70%] h-[400px] flex flex-col justify-between gap-5  py-2">
 
 
                             {/* Balance update box */}
@@ -94,9 +94,6 @@ export default function Dashboard({ }) {
 
                             {/* Add daily record Box */}
                             <AddDailyRecord />
-
-
-
                         </div>
 
 
