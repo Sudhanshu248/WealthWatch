@@ -30,19 +30,19 @@ export default function CashflowPage() {
 
                     {/* Heading */}
                     <div>
-                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-6">Cashflow</h1>
+                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2  mt-6 mb-2.5">Cashflow</h1>
                     </div>
 
 
                     {/* Button for changing data list */}
-                    <div className="text-start flex flex-row gap-4 bg-white w-full h-fit  rounded-2xl px-8 py-3">
+                    <div className="text-start flex flex-row gap-4 bg-white w-full h-fit  rounded-2xl px-8 py-4">
                         {MonthData.map((item) => (
 
                             <Link
                                 key={item.name}
                                 to={item.href}
                                 onClick={handleClick}
-                                className={`rounded-full px-2 py-1 border ${location.pathname === item.href ? "bg-gray-300" : ""}`}
+                                className={`rounded-full px-5 py-1 border ${location.pathname === item.href ? "bg-gray-300" : ""}`}
                             >
                                 {item.name}
                             </Link>
