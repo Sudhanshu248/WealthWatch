@@ -1,8 +1,8 @@
 import express from "express";
-import goals from "../controllers/goals.controller.js";
+import { goals, getGoals } from "../controllers/goals.controller.js";
 const router = express.Router();
 
-router.route("/goals").post(goals);
-
+// Correct route: only '/goals', since '/list' is handled in index.js
+router.route('/goals').post(goals).get(getGoals);
 
 export default router;

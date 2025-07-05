@@ -1,7 +1,7 @@
 import {TotalExpence, FoodExpence, TransportExpence  , HousingExpence , SavingExpence , PersonalExpence} from "../data/CalExpence.js";
-
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";  
+import { useState, useEffect } from "react";
 export default function IndividualData(){
 
 
@@ -19,6 +19,10 @@ const handleclick = ()=>{
 
 const value = location.pathname.replace("/history/" , "");
 
+
+// useEffect(()=>{
+//     axios.get(`http://localhost:3001/api/individual/${value}`);
+// })
 
     return(
         <>

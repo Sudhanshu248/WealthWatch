@@ -33,7 +33,7 @@ export default function CashflowPage() {
 
                         <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2  mt-6 mb-2.5">Cashflow</h1>
 
-                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start  mb-6 mt-3">Cashflow</h1>
+                        {/* <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start  mb-6 mt-3">Cashflow</h1> */}
 
                     </div>
 

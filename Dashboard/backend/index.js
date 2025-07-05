@@ -2,7 +2,6 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-import bodyParser from "body-parser";
 import goalRouter from "./route/goal.routes.js";
 
 
@@ -12,11 +11,16 @@ dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 app.use(cors({
     origin: ['http://localhost:5173'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Mount the goalRouter at /list, so all routes in goalRouter are prefixed with /list
+app.use('/list', goalRouter);
+
 
 const dblink = process.env.DB_CONNECT;
 const connectDB = async () =>{
@@ -32,10 +36,6 @@ const connectDB = async () =>{
 }
 
 
-app.use("/list" , goalRouter);
-app.use("/" , (req ,res)=>{
-    res.send("server is working");
-});
 app.use((err,req ,res  ,next )=>{
     console.error(err);
     res.status(500).json({

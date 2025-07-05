@@ -7,7 +7,11 @@ import Calendar from "./calendar";
 export default function Navbar() {
 
     const navigate = useNavigate();
+const [toggle , settoogle] = useState(false);
 
+  const Toggle = () => {
+  setIsToggled(prev => !prev);
+};
   
 
     return (
@@ -22,7 +26,7 @@ export default function Navbar() {
                     </div>
                 <div className="m-10 mt-120 bg-white p-5 rounded-2xl">
                     
-                    <Calendar/>
+                    {toggle ? <Calendar/> : ""}
                 </div>
 
                <div  className="col-2 flex  align-middle items-center justify-center gap-6">

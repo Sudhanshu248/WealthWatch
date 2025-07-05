@@ -1,4 +1,4 @@
-import { CurrExpence } from "../../Frontend/src/Components/data/CurrExp.js";
+import { sixMonthExpense } from "../../Frontend/src/Components/data/LastSixMonthExp.js";
 import InputData from "../models/inputData.models.js";
 import mongoose from "mongoose";
 
@@ -20,30 +20,32 @@ async function main() {
 
 const getMonthlyData = async () => {
   try {
-   
     await InputData.deleteMany({});
 
-    const transformedExpence = CurrExpence.expence.map((categoryObj) => ({
-      category: categoryObj.category,
-      items: Object.entries(categoryObj.items).map(([name, item]) => ({
-        name,
-        value: item.value,
-        date: item.date ? new Date(item.date) : null,
-        paymentMethod: item.payMethod || '',
-      })),
-    }));
+    for (const monthData of sixMonthExpense) {
+      const transformedExpence = monthData.expence.map((categoryObj) => ({
+        category: categoryObj.category,
+        items: Object.entries(categoryObj.items).map(([name, item]) => ({
+          name,
+          value: item.value,
+          date: item.date ? new Date(item.date) : null,
+          paymentMethod: item.payMethod || '',
+        })),
+      }));
 
-    const monthlyData = new InputData({
-      userId : "685bb07b89dd82abe19889a4",
-      totalBudget: CurrExpence.totalBudget.value,
-      expence: transformedExpence,
-    });
+      const monthlyData = new InputData({
+        userId: "685bb07b89dd82abe19889a4",
+        month: monthData.month,
+        totalBudget: monthData.totalBudget.value,
+        expence: transformedExpence,
+      });
 
-    await monthlyData.save();
+      await monthlyData.save();
+    }
   } catch (error) {
-
     throw error;
   }
 };
+
 
 main();
