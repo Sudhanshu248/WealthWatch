@@ -5,9 +5,9 @@ import Navbar from './Components/Navbar/index.jsx'
 import Footer from './Components/Footer/index.jsx'
 import AboutUs from './Components/AboutUs/index.jsx'
 import Support from './Components/Support/index.jsx'
-import Signup from './Components/SignUp/index.jsx'
-import Login from './Components/Login/index.jsx'
-import Form from './Components/Form/index.jsx'
+import Signup from "../../../Dashboard/Frontend/src/Components/SignUp/index.jsx"
+import Login from '../../../Dashboard/Frontend/src/Components/Login/index.jsx'
+import Form from '../../../Dashboard/Frontend/src/Components/Form/index.jsx'
 
 function AppRoutes() {
   const location = useLocation();

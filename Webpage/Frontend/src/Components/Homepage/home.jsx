@@ -19,7 +19,7 @@ export default function Home(){
 </div>
   
   <div className="flex align-middle  justify-center items-center mt-16"> 
-    <button id="home-btn"  className=" text-center p-3 font-bold text-[20px] text-white rounded-full bg-[#023e8a] hover:scale-105 cursor-pointer" style={{width:"310px"}} onClick={handleClick}>Get Started &nbsp; &nbsp; <i class="fa-solid fa-arrow-right"></i></button>
+    <button id="home-btn"  className=" text-center p-3 font-bold text-[20px] text-white rounded-full bg-[#023e8a] hover:scale-105 cursor-pointer" style={{width:"310px"}} onClick={handleClick}>Get Started &nbsp; &nbsp; <i className="fa-solid fa-arrow-right"></i></button>
 
   </div>
 </>

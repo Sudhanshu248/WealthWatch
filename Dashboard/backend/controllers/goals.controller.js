@@ -1,5 +1,5 @@
 import Goals from '../models/goals.models.js';
-import User from '../../../Webpage/Backend/models/user.models.js';
+import User from '../models/user.models.js';
 
 const goals = async (req, res) => {
     try {
@@ -10,11 +10,16 @@ const goals = async (req, res) => {
         }
         console.log(`Received goal:  ${name} - ₹${value}`);
 
+        // const userId = await User.findOne({
+        //     _id
+        // });
+
         const userId = "685bb07b89dd82abe19889a4";
+        
         const update = { $set: { [name]: value } };
 
         const newGoal = await Goals.findOneAndUpdate(
-            { userId: userId },
+            { userId:  userId},
             update,
             { new: true }
         );

@@ -1,96 +1,13 @@
 import { useState , useEffect} from "react";
 import { goals } from "./goals.js";
 import axios from "axios";
+import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 
 export default function GoalsPage() {
-
-    return (
-        <>
-            {/* Main Container */}
-            <div className='flex '>
-
-                {/* Goals Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[86.9vh] w-[60vw]  grow">
-
-                    <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 mt-6 mb-1.5">Goals</h1>
-
-                    <p className="ml-16 ">Set your monthly goals for different categories.</p>
-
-                    <section className="mt-7" >
-                        <div className="bg-white p-4 px-8 mx-auto mb-5 rounded-2xl flex justify-between" style={{width: "90%"}}>
-                            <div className="left">
-                                <p className="text-2xl pt-1 font-medium">Transportation</p>
-                            </div>
-
-                            <div className="right">
-                                <span>&#8377;</span>
-                                <input type="number" placeholder="Enter Price" className="pl-5 py-2 w-35 rounded-2xl ml-2" style={{backgroundColor: "rgba(0, 0, 0, 0.1)"}} />
-                                <button className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer" style={{backgroundColor: "rgba(45, 83, 89, 1)"}}>Save</button>
-                            </div>
-                        </div>
-
-
-                        <div className="bg-white p-4 px-8 mx-auto mb-5 rounded-2xl flex justify-between" style={{width: "90%"}}>
-                            <div className="left">
-                                <p className="text-2xl pt-1  font-medium">Housing</p>
-                            </div>
-
-                            <div className="right">
-                                <span>&#8377;</span>
-                                <input type="number" placeholder="Enter Price" className="pl-5 py-2 w-35 rounded-2xl ml-2" style={{backgroundColor: "rgba(0, 0, 0, 0.1)"}} />
-                                <button className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer" style={{backgroundColor: "rgba(45, 83, 89, 1)"}}>Save</button>
-                            </div>
-                        </div>
-
-
-                        <div className="bg-white p-4 px-8 mx-auto mb-5 rounded-2xl flex justify-between" style={{width: "90%"}}>
-                            <div className="left">
-                                <p className="text-2xl pt-1  font-medium">Food</p>
-                            </div>
-
-                            <div className="right">
-                                <span>&#8377;</span>
-                                <input type="number" placeholder="Enter Price" className="pl-5 py-2 w-35 rounded-2xl ml-2" style={{backgroundColor: "rgba(0, 0, 0, 0.1)"}} />
-                                <button className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer" style={{backgroundColor: "rgba(45, 83, 89, 1)"}}>Save</button>
-                            </div>
-                        </div>
-
-
-                        <div className="bg-white p-4 px-8 mx-auto mb-5 rounded-2xl flex justify-between" style={{width: "90%"}}>
-                            <div className="left">
-                                <p className="text-2xl pt-1  font-medium">Personal Expenses</p>
-                            </div>
-
-                            <div className="right">
-                                <span>&#8377;</span>
-                                <input type="number" placeholder="Enter Price" className="pl-5 py-2 w-35 rounded-2xl ml-2" style={{backgroundColor: "rgba(0, 0, 0, 0.1)"}} />
-                                <button className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer" style={{backgroundColor: "rgba(45, 83, 89, 1)"}}>Save</button>
-                            </div>
-                        </div>
-
-                        <div className="bg-white p-4 px-8 mx-auto mb-5 rounded-2xl flex justify-between" style={{width: "90%"}}>
-                            <div className="left">
-                                <p className="text-2xl pt-1 font-medium">Debt, Saving & Investment</p>
-                            </div>
-
-                            <div className="right">
-                                <span>&#8377;</span>
-                                <input type="number" placeholder="Enter Price" className="pl-5 py-2 w-35 rounded-2xl ml-2" style={{backgroundColor: "rgba(0, 0, 0, 0.1)"}} />
-                                <button className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer" style={{backgroundColor: "rgba(45, 83, 89, 1)"}}>Save</button>
-                            </div>
-                        </div>
-                    </section>
-
-                </div>
-            </div>
-        </>
-    )
-}
-=======
-  const [GoalValue, setGoalValue] = useState({});
-  const [savedGoals, setSavedGoals] = useState({});
-
+    
+  const [GoalValue, setGoalValue] = useState({}); //State Variables for updation 
+  const [savedGoals, setSavedGoals] = useState({}); //State Variables check whether goals are saved or not
 
   useEffect(() => {
     const storedGoals = localStorage.getItem("savedGoals");
@@ -115,8 +32,11 @@ export default function GoalsPage() {
   
   const handleSave = async(name) => {
     const value = parseFloat(GoalValue[name]);
-    
-    if (isNaN(value)) return;
+
+    if (isNaN(value)) {
+      alert("Please enter a valid number");
+      return;
+    };
     
     const totalValue = Object.entries(GoalValue).reduce((sum, [key, value]) => {
       const parsedValue = parseFloat(value);
@@ -129,7 +49,7 @@ export default function GoalsPage() {
     }
     
     try {
-      const respond = await axios.post( "http://localhost:8080/list/goals",
+      const respond = await axios.post( `${BASE_URL}/goals`,
         { 
           name, 
           value 
@@ -138,7 +58,7 @@ export default function GoalsPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          timeout: 15000,
+          timeout: 1000,
         }
       );
       
@@ -182,57 +102,56 @@ export default function GoalsPage() {
     <div className="flex">
       <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh] w-[60vw] grow">
         <h1 className="text-3xl text-emerald-900 font-bold ml-16 mt-6 mb-1.5">Goals</h1>
-        <p className="ml-16">Set your monthly goals for different categories.</p>
+        <p className="ml-16">Set your goals for different categories.</p>
 
         <section className="mt-7">
         {goals.map((item) => (
-  <div
-    key={item.name}
-    id={item.name}
-    className="flex flex-row bg-white p-4 px-8 mx-auto mb-5 rounded-2xl justify-between"
-    style={{ width: "90%" }}
-  >
-    <p className="text-2xl pt-1 font-medium">{item.name}</p>
-    <div className="flex items-center mt-2">
-      <span>&#8377;</span>
-      {savedGoals[item.name] ? (
-        <div className="ml-2">{GoalValue[item.name] ?? "N/A"}</div>
-      ) : (
-        <input
-          type="number"
-          placeholder="Enter Price"
-          className="pl-5 py-2 w-35 rounded-2xl ml-2"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
-          value={GoalValue[item.name] ?? ""}
-          onChange={(e) => handleInput(item.name, e.target.value)}
-        />
-      )}
+          <div
+            key={item.name}
+            id={item.name}
+            className="flex flex-row bg-white p-4 px-8 mx-auto mb-5 rounded-2xl justify-between"
+            style={{ width: "90%" }}
+          >
+            <p className="text-2xl pt-1 font-medium">{item.name}</p>
+            <div className="flex items-center mt-2">
+              <span>&#8377;</span>
+              {savedGoals[item.name] ? (
+                <div className="ml-2">{GoalValue[item.name] ?? "N/A"}</div>
+              ) : (
+                <input
+                  type="number"
+                  placeholder="Enter Price"
+                  className="pl-5 py-2 w-35 rounded-2xl ml-2"
+                  style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
+                  value={GoalValue[item.name] ?? ""}
+                  onChange={(e) => handleInput(item.name, e.target.value)}
+                />
+              )}
 
-      {!savedGoals[item.name] && (
-        <button
-          className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer"
-          style={{ backgroundColor: "rgba(45, 83, 89, 1)" }}
-          onClick={() => handleSave(item.name)}
-        >
-          Save
-        </button>
-      )}
+              {!savedGoals[item.name] && (
+                <button
+                  className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer"
+                  style={{ backgroundColor: "rgba(45, 83, 89, 1)" }}
+                  onClick={() => handleSave(item.name)}
+                >
+                  Save
+                </button>
+              )}
 
-      {savedGoals[item.name] && (
-        <button
-          className="ml-3 cursor-pointer"
-          onClick={() => handleDelete(item.name)}
-        >
-          <i className="fa-solid fa-trash text-[#2D5359]"></i>
-        </button>
-      )}
-    </div>
-  </div>
-))}
+              {savedGoals[item.name] && (
+                <button
+                  className="ml-3 cursor-pointer"
+                  onClick={() => handleDelete(item.name)}
+                >
+                  <i className="fa-solid fa-trash text-[#2D5359]"></i>
+                </button>
+              )}
+            </div>
+          </div>
+        ))}
 
         </section>
       </div>
     </div>
   );
 }
-
