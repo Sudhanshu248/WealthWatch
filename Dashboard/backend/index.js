@@ -38,13 +38,12 @@ const connectDB = async () =>{
     }
 }
 
+
 app.use('/', userRoutes);
 app.use('/input', InputRoutes);
-app.use('/', formRouter); 
+app.use('/', formRouter);
 
-app.use("/" , (req ,res)=>{
-    res.send("8080 server is working");
-});
+
 
 app.use((err, req , res  , next )=>{
     console.error(err);

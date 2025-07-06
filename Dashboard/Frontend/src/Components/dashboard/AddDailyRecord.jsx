@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../../../../backend/axiosConfig";
+import { BASE_url } from "../../axios.config";
 
 export default function AddDailyRecord() {
     const [Category, setCategory] = useState("");
@@ -14,7 +14,7 @@ export default function AddDailyRecord() {
             const token = localStorage.getItem("token");
             console.log("Token:", token);
           
-            const response = await axios.post(`${BASE_URL}/input/dailyrecord`,
+            const response = await axios.post(`http://localhost:8080/input/dailyrecord`,
                 {
                     category: Category,
                     paymentMethod: PaymentWay,
