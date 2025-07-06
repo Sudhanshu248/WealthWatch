@@ -19,6 +19,7 @@ export const getGoals = async (req, res) => {
         return res.status(500).json({ message: error});
     }
 };
+
 export const goals = async (req, res) => {
     try {
 

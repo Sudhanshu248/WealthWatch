@@ -7,32 +7,8 @@ export default function GoalsPage() {
     
   const [GoalValue, setGoalValue] = useState({});
   const [savedGoals, setSavedGoals] = useState({});
-  const [goals, setGoals] = useState([]); // Should be an array for mapping
+  const [goals, setGoals] = useState([]);
 
- useEffect(() => {
-  const fetchGoals = async () => {
-    try {
-      const response = await axios.get("http://localhost:8080/list/goals");
-      console.log("Fetched goals:", response.data);
-      // If response.data is an object, convert to array for mapping
-      if (response.data && typeof response.data === 'object' && !Array.isArray(response.data)) {
-        // Remove _id and userId fields, keep only goal fields
-        const { _id, userId, __v, ...goalFields } = response.data;
-        const goalsArr = Object.entries(goalFields).map(([name, value]) => ({ name, value }));
-        setGoals(goalsArr);
-      } else if (Array.isArray(response.data)) {
-        setGoals(response.data);
-      } else {
-        setGoals([]);
-      }
-    } catch (error) {
-      console.error("Error fetching goals:", error.message);
-      setGoals([]);
-    }
-  };
-
-  fetchGoals();
-}, []);
 
 console.log("Goals:", goals);
   
