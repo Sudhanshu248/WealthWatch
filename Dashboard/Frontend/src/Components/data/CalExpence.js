@@ -1,60 +1,51 @@
-import { CurrExpence } from "./CurrExp";
+import { fetchData } from "./InputData.js";
 
-export const FoodExpence = (CurrExp) => {
+export const FoodExpence = async () => {
 
-    const TotalBudget = Number(CurrExpence.totalBudget?.value) || 0;
-
-    // Formula for calculating food expense
-    const FoodExpenceObj = CurrExpence.expence?.[0] || {};
-
-    const foodExpence = Object.values(FoodExpenceObj).reduce((sum, category) => {
-        const itemValues = Object.values(category).map(item => Number(item?.value) || 0);
-        const categoryTotal = itemValues.reduce((catSum, val) => catSum + val, 0);
-        return sum + categoryTotal;
+    const inputData = await fetchData();
+    const TotalBudget = inputData.TotalBudget || 0;
+    
+    const FoodExpenceObj = inputData.expence?.[0]?.items || {};
+    const foodExpence = Object.values(FoodExpenceObj).reduce((sum, value) => {
+        return sum + (Number(value?.value) || 0);
     }, 0);
 
-
     // Formula for foodlistiing
-    const Foodlist = Object.entries(FoodExpenceObj?.items || {}).map(([key, item]) => ({
-        name: key,
+    const Foodlist = Object.entries(FoodExpenceObj).map(([key, item]) => ({
+        name: item.name,
         value: item.value,
-        percentage: item.value / foodExpence * 100
-    }))
+        percentage: foodExpence > 0 ? (item.value / foodExpence) * 100 : 0
+    }));
 
     const Foodpercentage = TotalBudget > 0 ? (foodExpence / TotalBudget) * 100 : 0;
 
     return {
+
         Foodlist,
         foodExpence,
         TotalBudget,
-        foodExpence,
         Foodpercentage
     };
 }
 
+export const TransportExpence = async () => {
 
-export const TransportExpence = (CurrExp) => {
-    const TotalBudget = Number(CurrExpence.totalBudget?.value) || 0;
-    const TransportExpenceObj = CurrExpence.expence?.[1] || {};
+    const inputData = await fetchData();
+    const TotalBudget = inputData.TotalBudget || 0;
+    const TransportExpenceObj = inputData.expence?.[1]?.items || {};
 
-
-    // Formula for calculating transport expense
-    const transportExpence = Object.values(TransportExpenceObj).reduce((sum, category) => {
-        const itemValues = Object.values(category).map(item => Number(item?.value) || 0);
-        const categoryTotal = itemValues.reduce((catSum, val) => catSum + val, 0);
-        return sum + categoryTotal;
+    const transportExpence = Object.values(TransportExpenceObj).reduce((sum, value) => {
+        return sum + (Number(value?.value) || 0);
     }, 0);
 
     // Formula for Transport listing 
-    const TransportListing = Object.entries(TransportExpenceObj?.items || {}).map(([key, item]) => ({
-        name: key,
+    const TransportListing = Object.entries(TransportExpenceObj).map(([key, item]) => ({
+        name: item.name,
         value: item.value,
-        percentage: item.value / transportExpence * 100
+        percentage: transportExpence > 0 ? (item.value / transportExpence) * 100 : 0
     }))
 
-
     const TransportPercentage = TotalBudget > 0 ? (transportExpence / TotalBudget) * 100 : 0;
-
     return {
         TransportListing,
         transportExpence,
@@ -62,56 +53,49 @@ export const TransportExpence = (CurrExp) => {
     };
 }
 
+export const PersonalExpence = async () => {
 
 
-export const PersonalExpence = (CurrExp) => {
+    const inputData = await fetchData();
+    const TotalBudget = inputData.TotalBudget || 0;
+    const PersonalExpenceObj = inputData.expence?.[2]?.items || {};
 
-    const TotalBudget = Number(CurrExpence.totalBudget?.value) || 0;
-    const PersonalExpenceObj = CurrExpence.expence?.[2] || {};
 
-    const personalExpence = Object.values(PersonalExpenceObj).reduce((sum, category) => {
-        const itemValues = Object.values(category).map(item => Number(item?.value) || 0);
-        const categoryTotal = itemValues.reduce((catSum, val) => catSum + val, 0);
-        return sum + categoryTotal;
+    const personalExpence = Object.values(PersonalExpenceObj).reduce((sum, value) => {
+        return sum + (Number(value?.value) || 0);
     }, 0);
-
     // Formula for personal listing
-    const PersonalListing = Object.entries(PersonalExpenceObj?.items || {}).map(([key, item]) => ({
-        name: key,
+    const PersonalListing = Object.entries(PersonalExpenceObj).map(([key, item]) => ({
+        name: item.name,
         value: item.value,
-        percentage: item.value / personalExpence * 100
+        percentage: personalExpence > 0 ? (item.value / personalExpence) * 100 : 0
     }))
 
     const Personal_percentage = TotalBudget > 0 ? (personalExpence / TotalBudget) * 100 : 0;
-
     return {
         PersonalListing,
         Personal_percentage,
         personalExpence
     }
-
 }
 
+export const HousingExpence = async () => {
 
+    const inputData = await fetchData();
+    const TotalBudget = inputData.TotalBudget || 0;
+    const HousingExpenceObj = inputData.expence?.[3]?.items || {};
 
-export const HousingExpence = (CurrExp) => {
-    const TotalBudget = Number(CurrExpence.totalBudget?.value) || 0;
-    const HousingExpenceObj = CurrExpence.expence?.[3] || {};
-
-    const housingExpence = Object.values(HousingExpenceObj).reduce((sum, category) => {
-        const itemValues = Object.values(category).map(item => Number(item?.value) || 0);
-        const categoryTotal = itemValues.reduce((catSum, val) => catSum + val, 0);
-        return sum + categoryTotal;
+    const housingExpence = Object.values(HousingExpenceObj).reduce((sum, value) => {
+        return sum + (Number(value?.value) || 0);
     }, 0);
 
-    const HousingListing = Object.entries(HousingExpenceObj?.items || {}).map(([key, item]) => ({
-        name: key,
+    // Formula for housing listing
+    const HousingListing = Object.entries(HousingExpenceObj).map(([key, item]) => ({
+        name: item.name,
         value: item.value,
-        percentage: item.value / housingExpence * 100
+        percentage: housingExpence > 0 ? (item.value / housingExpence) * 100 : 0
     }))
-
     const Housing_percentage = TotalBudget > 0 ? (housingExpence / TotalBudget) * 100 : 0;
-
     return {
         HousingListing,
         Housing_percentage,
@@ -119,51 +103,45 @@ export const HousingExpence = (CurrExp) => {
     }
 }
 
+export const SavingExpence = async () => {
 
-export const SavingExpence = (CurrExp) => {
+    const inputData = await fetchData();
+    const TotalBudget = inputData.TotalBudget || 0;
+    const SavingExpenceObj = inputData.expence?.[4]?.items || {};
 
-    const TotalBudget = Number(CurrExpence.totalBudget?.value) || 0;
-    const SavingExpenceObj = CurrExpence.expence?.[4] || {};
-
-    const savingExpence = Object.values(SavingExpenceObj).reduce((sum, category) => {
-        const itemValues = Object.values(category).map(item => Number(item?.value) || 0);
-        const categoryTotal = itemValues.reduce((catSum, val) => catSum + val, 0);
-        return sum + categoryTotal;
+    const savingExpence = Object.values(SavingExpenceObj).reduce((sum, value) => {
+        return sum + (Number(value?.value) || 0);
     }, 0);
 
     // Saving listing
-    const SavingLisitng = Object.entries(SavingExpenceObj?.items || {}).map(([key, item]) => ({
-        name: key,
+    const SavingListing = Object.entries(SavingExpenceObj).map(([key, item]) => ({
+        name: item.name,
         value: item.value,
-        percentage: item.value / savingExpence * 100
-    }))
+        percentage: savingExpence > 0 ? (item.value / savingExpence) * 100 : 0
+    }));
 
     const Saving_percentage = TotalBudget > 0 ? (savingExpence / TotalBudget) * 100 : 0;
 
     return {
-        SavingLisitng,
+        SavingListing,
         Saving_percentage,
         savingExpence
     }
-
 }
 
-
-
-export const TotalExpence = (CurrExp) => {
-    const TotalBudget = Number(CurrExpence.totalBudget?.value) || 0;
-    const Expence = CurrExpence.expence;
-    const RemaningBalance = Expence.reduce((sum, category) => {
-        const values = Object.values(category.items).map(obj => obj.value);
+export const TotalExpence = async () => {
+    const inputData = await fetchData();
+    const TotalBudget = inputData.TotalBudget || 0;
+    const Expences = inputData?.expence? inputData.expence : [];
+    
+    const Spended = Expences.reduce((sum, category) => {
+        const values = Object.values(category.items || {}).map(obj => obj.value);
         const categoryTotal = values.reduce((catSum, val) => catSum + val, 0);
         return sum + categoryTotal;
     }, 0);
-
-
-
-    const TotalExpence_percentage = (RemaningBalance / TotalBudget) * 100;
-
-    return { TotalExpence_percentage, RemaningBalance }
+ 
+    const TotalExpence_percentage = TotalBudget > 0 ? (Spended / TotalBudget) * 100 : 0;
+    return { TotalBudget, TotalExpence_percentage, Spended }
 }
 
 

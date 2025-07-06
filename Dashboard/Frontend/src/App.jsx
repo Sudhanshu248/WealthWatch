@@ -13,52 +13,52 @@ import Login from './Components/Login/index.jsx'
 import Form from './Components/Form/index.jsx'
 import IndividualData from './Components/history/individual_Data.jsx'
 
+
+
 function AppRoutes() {
   const location = useLocation();
-
   const hideLayout = ['/login', '/signup', '/form'];
   const shouldHideLayout = hideLayout.includes(location.pathname.toLowerCase());
 
   return (
     <>
-      {!shouldHideLayout &&
-        <>
-          <Navbar /> 
-          <div className='fixed  left-0 h-[100%] px-2 bg-[#B8D7DE8C] rounded-md mt-4   w-[16vw]'/>
-        </>
-       }
+      {!shouldHideLayout && <Navbar />}
+      {!shouldHideLayout && <div className='fixed  left-0 h-[100%] px-2 bg-[#B8D7DE8C] rounded-md mt-4   w-[16vw]'>
+        <Sidebar />
+      </div>}
+
 
       <Routes>
-        
-          <Route path='/blogs' element={<BlogPage />} />
-          <Route path='/profile' element={<ProfilePage />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/' element={<Dashboard />} />
-          <Route path='/login' element={<Login/>} />
-          <Route path='/signup' element={<Signup/>} />
-          <Route path='/form' element={<Form />} />
-          <Route path='/history' element={<HistoryPage />} />
-          <Route path='/history/:urlId' element={<IndividualData />} />
-          <Route path='/goals' element={<GoalsPage />} />
-          <Route path='/cashflow' element={<CashflowPage />} />
-          <Route path='/cashflow/:urlId' element={<CashflowPage />} />
 
-        </Routes>
+        <Route path='/' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/blogs' element={<BlogPage />} />
+        <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/form' element={<Form />} />
+        <Route path='/history' element={<HistoryPage />} />
+        <Route path='/history/:urlId' element={<IndividualData />} />
+        <Route path='/goals' element={<GoalsPage />} />
+        <Route path='/cashflow' element={<CashflowPage />} />
+        <Route path='/cashflow/:urlId' element={<CashflowPage />} />
 
-      {!shouldHideLayout && <Sidebar />}
-    </>
-  );
-}
 
-function App() {
+      </Routes>
 
-  return (
-    <>
-      <BrowserRouter>
-        <AppRoutes/>
-      </BrowserRouter>
     </>
   )
 }
 
-export default App
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </>
+  );
+}
+
+export default App;
+

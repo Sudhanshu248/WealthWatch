@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
 import goalsRoutes from "./routes/goals.routes.js"; 
+import InputRoutes from "../backend/routes/Input.routes.js";
 
 const app = express();
 dotenv.config();
@@ -38,10 +39,9 @@ const connectDB = async () =>{
 app.use('/', userRoutes); 
 app.use('/', formRouter); 
 app.use('/', goalsRoutes); 
+app.use('/input', InputRoutes);
 
-app.use("/" , (req ,res)=>{
-    res.send("8080 server is working");
-});
+
 
 app.use((err, req , res  , next )=>{
     console.error(err);
