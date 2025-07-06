@@ -18,7 +18,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: ['http://localhost:5173', `http://localhost:5174`],
+    origin: ['http://localhost:5173','http://localhost:5174'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -39,9 +39,8 @@ const connectDB = async () =>{
     }
 }
 
-app.use('/', userRoutes); 
-app.use(formRouter); 
-
+app.use('/', userRoutes);
+app.use('/', formRouter); 
 
 app.use("/" , (req ,res)=>{
     res.send("8080 server is working");

@@ -9,9 +9,8 @@ export default function GoalsPage() {
   const [GoalValue, setGoalValue] = useState({}); //State Variables for updation 
   const [savedGoals, setSavedGoals] = useState({}); //State Variables check whether goals are saved or not
 
-
-
-console.log("Goals:", goals);
+  
+  console.log("Goals:", goals);
   
   useEffect(() => {
     const storedGoals = localStorage.getItem("savedGoals");
@@ -36,7 +35,7 @@ console.log("Goals:", goals);
   
   const handleSave = async(name) => {
     const value = parseFloat(GoalValue[name]);
-
+    
     if (isNaN(value)) {
       alert("Please enter a valid number");
       return;
@@ -68,10 +67,10 @@ console.log("Goals:", goals);
       
       if (respond.data) {
         console.log("Frontend response", respond.data);
-    }
+      }
 
       const updatedSaved = { ...savedGoals, [name]: true };
-
+      
       setSavedGoals(updatedSaved);
       localStorage.setItem("goalValues", JSON.stringify(GoalValue));
       localStorage.setItem("savedGoals", JSON.stringify(updatedSaved)); 
@@ -97,11 +96,11 @@ console.log("Goals:", goals);
       return updated;
     });
     console.log(`Delete goal value for ${name}! `);
-
+    
   };
-
   
-
+  
+  
   return (
     <div className="flex">
       <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh] w-[60vw] grow">
@@ -159,4 +158,6 @@ console.log("Goals:", goals);
       </div>
     </div>
   );
-};
+
+    };
+
