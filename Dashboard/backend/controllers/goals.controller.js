@@ -2,67 +2,62 @@ import mongoose from "mongoose";
 import Goals from '../models/goals.models.js';
 import User from '../models/user.models.js';
 
+// GET goals for a user
 export const getGoals = async (req, res) => {
-    try {
-        // Convert string to ObjectId
-        const userId = mongoose.Types.ObjectId("685bb07b89dd82abe19889a4");
-        const goalsData = await Goals.findOne({ userId: userId });
-        console.log("Fetched goals:", goalsData);
+  try {
+    const token = req.headers.authorization;
+    if (!token) return res.status(401).json({ message: "No token provided" });
 
-        if (!goalsData) {
-            return res.status(404).json({ message: "No goals found for this user" });
-        }
+    const user = await User.findOne({ token });
+    if (!user) return res.status(401).json({ message: "Invalid token" });
 
-        return res.status(200).json(goalsData);
-    } catch (error) {
-        console.error("Error in getGoals:", error);
-        return res.status(500).json({ message: error});
+    const goalsData = await Goals.findOne({ userId: user._id });
+    if (!goalsData) {
+      return res.status(404).json({ message: "No goals found for this user" });
     }
+
+    return res.status(200).json(goalsData);
+  } catch (error) {
+    console.error("Error in getGoals:", error);
+    return res.status(500).json({ message: error.message });
+  }
 };
+
+// POST or UPDATE a goal
 export const goals = async (req, res) => {
-    try {
+  try {
+    const { name, value } = req.body;
+    const token = req.headers.authorization;
 
-        if (!req.body || typeof req.body !== 'object') {
-            console.log("Invalid req.body:", req.body);
-            return res.status(400).json({ message: "Invalid request body format." });
-        }
+    if (!token) return res.status(401).json({ message: "No token provided" });
 
-        const { name, value } = req.body;
-         console.log("Received request body:", req.body);
-        if (!name || value === undefined || value === null) {
-            return res.status(400).json({ message: "Missing name or value" });
-        }
-        console.log(`Received goal:  ${name} - ₹${value}`);
+    const user = await User.findOne({ token });
+    if (!user) return res.status(401).json({ message: "Invalid token" });
 
-        // const userId = await User.findOne({
-        //     _id
-        // });
-
-        // const userId = "685bb07b89dd82abe19889a4";
-        
-        // Convert string to ObjectId
-        const userId = mongoose.Types.ObjectId("685bb07b89dd82abe19889a4");
-        const update = { $set: { [name]: value } };
-
-        const newGoal = await Goals.findOneAndUpdate(
-            { userId:  userId},
-            update,
-            { new: true }
-        );
-
-        if (!newGoal) {
-            // If not found, create a new document for this user
-            const createdGoal = await Goals.create({ userId, [name]: value });
-            return res.status(201).json(createdGoal);
-        }
-
-        return res.status(200).json(newGoal);
-
+    if (!name || value === undefined || value === null) {
+      return res.status(400).json({ message: "Missing name or value" });
     }
-    catch (error) {
-        return res.status(500).json({ message: error.message });
+
+    const update = { $set: { [name.toLowerCase()]: value } };
+
+    let existingGoal = await Goals.findOneAndUpdate(
+      { userId: user._id },
+      update,
+      { new: true }
+    );
+
+    if (!existingGoal) {
+      // Create new goal document for this user
+      const createdGoal = await Goals.create({
+        userId: user._id,
+        [name.toLowerCase()]: value,
+      });
+      return res.status(201).json(createdGoal);
     }
+
+    return res.status(200).json(existingGoal);
+  } catch (error) {
+    console.error("Error in goals controller:", error);
+    return res.status(500).json({ message: error.message });
+  }
 };
-
-
-
