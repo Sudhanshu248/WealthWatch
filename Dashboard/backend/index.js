@@ -5,7 +5,8 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
-
+import user from "./models/user.models.js";
+import InputRoutes from "./routes/Input.routes.js";
 
 
 const app = express();
@@ -40,6 +41,7 @@ const connectDB = async () =>{
 }
 
 app.use('/', userRoutes); 
+app.use('/input', InputRoutes);
 app.use(formRouter); 
 
 

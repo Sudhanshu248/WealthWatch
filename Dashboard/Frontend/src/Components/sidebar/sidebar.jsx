@@ -29,7 +29,7 @@ export default function Sidebar() {
                         key={item.name}
                         to={item.href}
                         onClick={() => setActive(item.name)}
-                        className={`block w-[150px] h-fit rounded-full m-auto ${Active === item.name && location.pathname === item.href
+                        className={`block w-[150px] h-fit rounded-full m-auto ${Active === item.name && item.href === location.pathname 
                                 ? "bg-white text-[#2D5359] font-bold py-2 w-[140px]"
                                 : "font-normal"
                             }`}

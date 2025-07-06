@@ -2,7 +2,7 @@
   export  const navItem = [
         {
             name: "dashboard",
-            href: "/dashboard"
+            href:"/dashboard"
         },
         {
             name: "cashflow",

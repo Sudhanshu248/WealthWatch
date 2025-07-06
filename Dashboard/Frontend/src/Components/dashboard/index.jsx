@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-import { TotalExpence, FoodExpence } from "../data/CalExpence.js";
+import { TotalExpence } from "../data/CalExpence.js";
 import AddDailyRecord from "./AddDailyRecord.jsx";
 import MonthlyChart from "./MonthlyChart.jsx";
 
@@ -8,12 +7,25 @@ export default function Dashboard({ }) {
 
 
     const [isDismissed, setIsDismissed] = useState(false);
+    const [budget, setBudget] = useState(0);
+    const [Spended, setSpended] = useState(0);
+    const [totalExpence, setTotalExpence] = useState(0);
+     
 
-    const { TotalBudget } = FoodExpence();
-    const { TotalExpence_percentage, RemaningBalance } = TotalExpence();
+  useEffect(() => {
+    const loadData = async () => {
+      const Budget = await TotalExpence();
+      console.log("Fetched Budget:", Budget);
+      setBudget(Budget?.TotalBudget || 0);
+      console.log("Fetched Budget:", budget);
 
 
+    };
 
+    loadData();
+  }, []);
+
+    
     useEffect(() => {
         const dismissedTime = localStorage.getItem('anomalyDismissedAt');
 
@@ -44,7 +56,7 @@ export default function Dashboard({ }) {
 
             <div
                 className=" h-full bg-emerald-900 rounded-full"
-                style={{ width: `${TotalExpence_percentage}%` }}
+                style={{ width: `20%` }}
             ></div>
         );
     };
@@ -80,8 +92,8 @@ export default function Dashboard({ }) {
 
                                 <div className=" flex flex-row  justify-between h-fit w-full ">
 
-                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;{RemaningBalance} </h1>
-                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;{TotalBudget - RemaningBalance}/{TotalBudget}</h1>
+                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;</h1>
+                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;</h1>
 
                                 </div>
 
@@ -119,7 +131,7 @@ export default function Dashboard({ }) {
                         </div>
 
                         {/* Detector */}
-                        {RemaningBalance > 750 ?
+                        { isDismissed ?
                             <div className={`flex flex-row justify-between items-center border w-full h-fit rounded-2xl mt-4 py-2 px-4 ${isDismissed == true ? 'hidden' : 'text-red-500'}`}>
 
                                 <div className="flex flex-row gap-4 items-center ">

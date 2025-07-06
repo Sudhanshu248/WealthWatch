@@ -6,21 +6,35 @@ import PieChart from "../cashflow/pieChart";
 export default function MonthlyChart() {
     const [monthData, setMonthData] = useState([]);
 
-    const { Foodpercentage } = FoodExpence();
-    const { TransportPercentage } = TransportExpence();
-    const { Personal_percentage } = PersonalExpence();
-    const { Housing_percentage } = HousingExpence();
-    const { Saving_percentage } = SavingExpence();
+    const backgroundColors = [
+  'rgb(59, 192, 95)',
+  'rgb(66, 133, 244)',
+  'rgb(116, 180, 228)',
+  'rgb(251, 188, 5)',
+  'rgb(11, 209, 235)',
+];
 
-        //     useEffect(() => {
-        //     axios.get("http://localhost:8080/allHoldings").then((res) => {
-//       // console.log(res.data);
-//       setAllHoldings(res.data);
-//     });
-//   }, []);
+
+     useEffect(() => {
+        const loadData = async () => {
+            const food = await FoodExpence();
+            const transport = await TransportExpence();
+            const personal = await PersonalExpence();
+            const saving = await SavingExpence();
+            const housing = await HousingExpence();
+
+            setMonthData([
+                { name: 'Food', value: food.foodExpence, percentage: food.Foodpercentage },
+                { name: 'Transport', value: transport.transportExpence, percentage: transport.TransportPercentage },
+                { name: 'Personal', value: personal.personalExpence, percentage: personal.Personal_percentage },
+                { name: 'Housing', value: housing.housingExpence, percentage: housing.Housing_percentage },
+                { name: 'Saving', value: saving.savingExpence, percentage: saving.Saving_percentage }
+            ]);
+        };
+        loadData();
+    }, []);
 
     const labels =  ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-//   const labels = allHoldings.map((subArray) => subArray["name"]);
 
 
     const data = {
@@ -46,6 +60,7 @@ export default function MonthlyChart() {
 
             <div className="h-[500px] grow  flex flex-col gap-2  py-2 px-2 w-[30%]" >
                 <div className="bg-white text-center h-full w-full rounded-2xl py-4 px-6">
+
                     <div>
                         <h1 className="text-xl mb-3">Monthly Expence</h1>
                     </div>
@@ -57,64 +72,25 @@ export default function MonthlyChart() {
                     <div className=" text-start font-medium mt-4">
 
                         <ul>
-                            <li className="flex flex-row justify-between ">
-                                <div className="flex flex-row items-center gap-3 ">
-                                    <div className="rounded-full h-[12px] w-[12px] bg-yellow-600"></div>
-                                    <h1>Housing</h1>
-                                </div>
-
-                                <div>
-                                    {Housing_percentage.toFixed(0)}%
-                                </div>
-
-                            </li>
-                            <li className="flex flex-row items-center gap-3 justify-between">
-                                <div className="flex flex-row items-center gap-3 ">
-                                    <div className="rounded-full h-[12px] w-[12px] bg-green-900"></div>
-                                    <h1>Food</h1>
-                                </div>
-
-                                <div>
-                                    {Foodpercentage.toFixed(0)}%
-                                </div>
-                            </li>
-                            <li className="flex flex-row justify-between items-center gap-3 ">
-                                <div className="flex flex-row items-center gap-3 ">
-
-                                    <div className="rounded-full h-[12px] w-[12px] bg-green-900"></div>
-                                    <h1>Transport</h1>
-                                </div>
-                                <div>
-                                    {TransportPercentage.toFixed(0)}%
-                                </div>
-                            </li>
-                            <li className="flex flex-row justify-between items-center gap-3 ">
-                                <div className="flex flex-row items-center gap-3 ">
-
-                                    <div className="rounded-full h-[12px] w-[12px] bg-cyan-500"></div>
-                                    <h1>Personal Expence</h1>
-                                </div>
-                                <div>
-                                    {Personal_percentage.toFixed(0)}%
-                                </div>
-
-                            </li>
-                            <li className="flex flex-row  justify-between items-center gap-3 ">
-                                <div className="flex flex-row items-center gap-3 ">
-
-                                    <div className="rounded-full h-[12px] w-[12px] bg-sky-900"></div>
-                                    <h1>Saving</h1>
-                                </div>
-                                <div>
-
-                                    {Saving_percentage.toFixed(0)}%
-                                </div>
-                            </li>
+                            {monthData.map((item, index) => (
+                                <li key={index} className="flex flex-row items-center gap-3 justify-between">
+                                    <div className="flex flex-row items-center gap-3">
+                                        <div
+                                            className="rounded-full h-[12px] w-[12px]"
+                                            style={{ backgroundColor: backgroundColors[index] }}
+                                        ></div>
+                                        <h1>{item.name}</h1>
+                                    </div>
+                                    <div>{item.percentage.toFixed(1)}%</div>
+                                </li>
+                            ))}
 
                         </ul>
-                    </div>
-                </div>
 
+
+                    </div>
+
+                </div>
             </div>
         </>
     )

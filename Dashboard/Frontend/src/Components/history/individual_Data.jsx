@@ -1,30 +1,55 @@
-import {TotalExpence, FoodExpence, TransportExpence  , HousingExpence , SavingExpence , PersonalExpence} from "../data/CalExpence.js";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";  
+import {  FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../data/CalExpence.js";
 import { useState, useEffect } from "react";
-export default function IndividualData(){
+import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { useState, useEffect } from "react";
+// import { BASE_url } from "../../axios.config.js"; // Adjust the import path as necessary
+export default function IndividualData() {
+    const navigate = useNavigate();
+
+    
+      
+    const [Foodlist, setFoodlist] = useState([]);
+    const [TransportListing, setTransportListing] = useState([]);
+    const [PersonalListing, setPersonalListing] = useState([]);
+    const [SavingListing, setSavingListing] = useState([]);
+    const [HousingListing, setHousingListing] = useState([]);
 
 
-const { Foodlist} = FoodExpence();
-const { TransportListing} = TransportExpence();
-const { PersonalListing} = PersonalExpence();
-const { SavingLisitng} = SavingExpence();
-const { HousingListing} = HousingExpence();
 
-const navigate = useNavigate();
+    useEffect(() => {
+        const loadData = async () => {
+            const food = await FoodExpence();
+            const transport = await TransportExpence();
+            const personal = await PersonalExpence();
+            const saving = await SavingExpence();
+            const housing = await HousingExpence();
 
-const handleclick = ()=>{
-    navigate('/history/')
-}
+            setFoodlist(food?.Foodlist || []);
+            setTransportListing(transport?.TransportListing || []);
+            setPersonalListing(personal?.PersonalListing || []);
+            setSavingListing(saving?.SavingListing || []);
+            setHousingListing(housing?.HousingListing || []);
+        };
 
-const value = location.pathname.replace("/history/" , "");
+        loadData();
+    }, []);
 
 
-// useEffect(()=>{
-//     axios.get(`http://localhost:3001/api/individual/${value}`);
-// })
+    
 
-    return(
+    const handleclick = () => {
+        navigate('/history/')
+    }
+
+    const value = location.pathname.replace("/history/", "");
+
+
+    // useEffect(()=>{
+    //     axios.get(`http://localhost:3001/api/individual/${value}`);
+    // })
+
+    return (
         <>
             {/* Main Container */}
             <div className='flex flex-row '>
@@ -45,90 +70,90 @@ const value = location.pathname.replace("/history/" , "");
                         </div>
 
 
-            
+
 
                         {
-                            location.pathname == "/history/Food" && Foodlist.map((item , index) => (                           
-                             <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 hover:cursor-pointer">
-                                <div className="flex flex-row gap-2">
+                            location.pathname == "/history/Food" && (Foodlist || []).map((item, index) => (
+                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
+                                    <div className="flex flex-row gap-2">
 
-                                    <button className="text-xl font-medium hover:cursor-pointer" value=''>{item.name}</button>
-                                    <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                    </div>
+                                    <div>
+
+                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                    </div>
                                 </div>
-                                <div>
 
-                                    <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                </div>
-                            </div>
-
-                        ))
+                            ))
                         }
                         {
-                            location.pathname == "/history/Transport" && TransportListing.map((item , index) => (                           
-                             <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 hover:cursor-pointer">
-                                <div className="flex flex-row gap-2">
+                            location.pathname == "/history/Transport" && (TransportListing || []).map((item, index) => (
+                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
+                                    <div className="flex flex-row gap-2">
 
-                                    <button className="text-xl font-medium hover:cursor-pointer" value=''>{item.name}</button>
-                                    <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                    </div>
+                                    <div>
+
+                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                    </div>
                                 </div>
-                                <div>
 
-                                    <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                </div>
-                            </div>
-
-                        ))
+                            ))
                         }
                         {
-                            location.pathname == "/history/Housing" && HousingListing.map((item , index) => (                           
-                             <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 hover:cursor-pointer">
-                                <div className="flex flex-row gap-2">
+                            location.pathname == "/history/Housing" && (HousingListing || []).map((item, index) => (
+                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
+                                    <div className="flex flex-row gap-2">
 
-                                    <button className="text-xl font-medium hover:cursor-pointer" value=''>{item.name}</button>
-                                    <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                    </div>
+                                    <div>
+
+                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                    </div>
                                 </div>
-                                <div>
 
-                                    <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                </div>
-                            </div>
-
-                        ))
+                            ))
                         }
                         {
-                            location.pathname == "/history/Saving" && SavingLisitng.map((item , index) => (                           
-                             <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 hover:cursor-pointer">
-                                <div className="flex flex-row gap-2">
+                            location.pathname == "/history/Saving" && (SavingListing || []).map((item, index) => (
+                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
+                                    <div className="flex flex-row gap-2">
 
-                                    <button className="text-xl font-medium hover:cursor-pointer" value=''>{item.name}</button>
-                                    <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                    </div>
+                                    <div>
+
+                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                    </div>
                                 </div>
-                                <div>
 
-                                    <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                </div>
-                            </div>
-
-                        ))
+                            ))
                         }
                         {
-                            location.pathname == "/history/PersonalExpence" && PersonalListing.map((item , index) => (                           
-                             <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 hover:cursor-pointer">
-                                <div className="flex flex-row gap-2">
+                            location.pathname == "/history/PersonalExpence" && (PersonalListing || []).map((item, index) => (
+                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
+                                    <div className="flex flex-row gap-2">
 
-                                    <button className="text-xl font-medium hover:cursor-pointer" value=''>{item.name}</button>
-                                    <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                    </div>
+                                    <div>
+
+                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                    </div>
                                 </div>
-                                <div>
 
-                                    <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                </div>
-                            </div>
-
-                        ))
+                            ))
                         }
 
-                       
+
 
 
                     </div>
