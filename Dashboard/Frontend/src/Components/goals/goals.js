@@ -1,22 +1,22 @@
  export  const goals = [
         {
-            name: "food",
+            name: "Food",
           
         },
         {
-            name: "transportation",
+            name: "Transportation",
          
         },
         {
-            name: "housing",
+            name: "Housing",
             
         },
         {
-            name: "personal",
+            name: "Personal",
             
         },
         {
-            name: "saving",
+            name: "Saving",
           
         },
     ];

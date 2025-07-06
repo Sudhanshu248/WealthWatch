@@ -2,6 +2,7 @@ import "./style.css";
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from "../../../../backend/axiosConfig";
 
 export default function Signup() {
 
@@ -28,11 +29,11 @@ export default function Signup() {
             setError("");
 
             console.log("Sending signup request:", {username, email, password });
-
-            const response = await axios.post("http://localhost:3002/signup", {
-            username: username,
-            email: email,
-            password: password,
+// src={`${BASE_URL}/uploads/${user?.userId?.profilePicture}`} 
+            const response = await axios.post(`${BASE_URL}/signup`, {
+                username: username,
+                email: email,
+                password: password,
             }, {
                 headers: {
                 'Content-Type': 'application/json'
@@ -44,7 +45,7 @@ export default function Signup() {
 
             if (response.data && response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                navigate('/form');
+                navigate(`${BASE_URL}/form`);
             }
 
         } catch (error) {

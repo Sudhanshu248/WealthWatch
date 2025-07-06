@@ -44,7 +44,7 @@ export default function Footer(){
 
                             <section className="text-center mb-5 p-5">
                                 <a href="https://t.me/aashu_025" target="_blank" className="text-white me-4">
-                                    <i class="fa-brands fa-telegram fa-lg" style={{color: "#fff"}}></i>
+                                    <i className="fa-brands fa-telegram fa-lg" style={{color: "#fff"}}></i>
                                 </a>
                                 <a href="mailto:sainisudhanshu389@gmail.com " target="_blank" className="text-white me-4">
                                     <i className="fa-regular fa-envelope" style={{color: "#fff"}}></i>

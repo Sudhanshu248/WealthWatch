@@ -2,6 +2,7 @@ import "./style.css";
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from "../../../../backend/axiosConfig";
 
 export default function Login() {
 
@@ -31,7 +32,7 @@ export default function Login() {
         setLoading(true);
         setError("");
 
-        const response = await axios.post("http://localhost:3002/login", { 
+        const response = await axios.post(`${BASE_URL}/login`, { 
             email: email.trim(),
             password: password.trim(),
         }, {
@@ -45,8 +46,7 @@ export default function Login() {
 
         if (response.data && response.data.token) {
             localStorage.setItem('token', response.data.token);
-             window.location.href = 'http://localhost:5174/dashboard';
-            // navigate('/aboutus');
+            navigate(`${BASE_URL}/dashboard`);
         } else {
             setError("Invalid credentials. Please try again.");
         }

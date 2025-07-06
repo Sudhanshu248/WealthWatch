@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
+import { BASE_URL } from "../../../../backend/axiosConfig";
 
 export default function Form() {
 
@@ -10,8 +12,37 @@ export default function Form() {
         navigate("/");
     }
 
-    const handleDashboard = ()=>{
-      window.location.href = 'http://localhost:5173/dashboard';
+    // const handleDashboard = ()=>{
+    //   window.location.href = 'http://localhost:5173/dashboard';
+    // }
+
+    const [name, setName] = useState("");
+    const [profession, setProfession] = useState("");
+    const [income, setIncome] = useState("");
+
+    const handleDashboard = async () => {
+        try{
+            const respond = await axios.post( `${BASE_URL}/form`,
+                { 
+                    name: name,
+                    profession: profession,
+                    income: income
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    timeout: 5000,
+                }
+            );
+            
+            if (respond.data) {
+                console.log("Form response", respond.data);
+                navigate(`${BASE_URL}/dashboard`);
+            }
+        }catch(error){
+            console.error("Form error: ", error);
+        }
     }
 
     return(
@@ -29,17 +60,20 @@ export default function Form() {
                         <div className="form">                                            
 
                             <div className="input flex p-3  rounded-xl my-7">
-                                <input type="text" id="name" placeholder="Enter your name" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}/>
+                                <input type="text" id="name" placeholder="Enter your name" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}
+                                onChange={(e) => setName(e.target.value)} />
                             </div>
 
                             <div className="input flex p-3  rounded-xl my-7">
 
-                                <input type="text" id="profession" placeholder="Enter your profession" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}/>
+                                <input type="text" id="profession" placeholder="Enter your profession" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}
+                                onChange={(e) => setProfession(e.target.value)} />
                             </div>
 
                             <div className="input flex p-3  rounded-xl my-7">
 
-                                <input type="number" id="income" placeholder="Enter your income" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}/>
+                                <input type="number" id="income" placeholder="Enter your income" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}
+                                onChange={(e) => setIncome(e.target.value)} />
                             </div>
 
                         </div>
