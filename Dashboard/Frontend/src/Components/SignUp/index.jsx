@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../../../backend/axiosConfig";
+import { WEBPAGE_URL } from "../../../../backend/axiosConfig";
 
 export default function Signup() {
 
     const navigate = useNavigate();
 
     const handleclick = () => {
-        navigate("/");
+        window.location.href = `${WEBPAGE_URL}`;
     }
 
     const handleAction = () => {
@@ -45,7 +46,9 @@ export default function Signup() {
 
             if (response.data && response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                navigate(`${BASE_URL}/form`);
+                localStorage.setItem("userEmail", email); // Save email locally
+                navigate("/form"); // Go to form page
+
             }
 
         } catch (error) {

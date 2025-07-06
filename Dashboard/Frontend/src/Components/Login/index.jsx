@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../../../backend/axiosConfig";
+import { WEBPAGE_URL } from "../../../../backend/axiosConfig";
 
 export default function Login() {
 
     const navigate = useNavigate();
 
     const handleclick = () => {
-        navigate("/");
+        window.location.href = `${WEBPAGE_URL}`;
     }
 
     const handleAction = () => {
@@ -46,7 +47,7 @@ export default function Login() {
 
         if (response.data && response.data.token) {
             localStorage.setItem('token', response.data.token);
-            navigate(`${BASE_URL}/dashboard`);
+            navigate(`/dashboard`);
         } else {
             setError("Invalid credentials. Please try again.");
         }

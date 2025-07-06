@@ -12,6 +12,8 @@ const forms = async (req, res) => {
             return  res.status(404).json({message: "User not found"});
         }
         
+
+        
         if(!name || !profession || !income){
             return res.status(400).json({message: "Please fill all fields."});
         }
