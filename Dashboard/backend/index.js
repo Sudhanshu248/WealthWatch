@@ -5,6 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
+import goalsRoutes from "./routes/goals.routes.js"; 
 import InputRoutes from "../backend/routes/Input.routes.js";
 
 const app = express();
@@ -22,9 +23,6 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-
-
-
 const dblink = process.env.DB_CONNECT;
 const connectDB = async () =>{
     try{
@@ -38,10 +36,10 @@ const connectDB = async () =>{
     }
 }
 
-
-app.use('/', userRoutes);
+app.use('/', userRoutes); 
+app.use('/', formRouter); 
+app.use('/', goalsRoutes); 
 app.use('/input', InputRoutes);
-app.use('/', formRouter);
 
 
 
