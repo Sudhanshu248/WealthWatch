@@ -1,13 +1,11 @@
-import { CurrExpence } from "./CurrExp";
-import { fetchData } from "./InputData";
-
+import { fetchData } from "./InputData.js";
 
 export const FoodExpence = async () => {
 
     const inputData = await fetchData();
     const TotalBudget = inputData.TotalBudget || 0;
-    const FoodExpenceObj = inputData.expence[0].items || {};
-
+    
+    const FoodExpenceObj = inputData.expence?.[0]?.items || {};
     const foodExpence = Object.values(FoodExpenceObj).reduce((sum, value) => {
         return sum + (Number(value?.value) || 0);
     }, 0);
@@ -34,7 +32,7 @@ export const TransportExpence = async () => {
 
     const inputData = await fetchData();
     const TotalBudget = inputData.TotalBudget || 0;
-    const TransportExpenceObj = inputData.expence[0].items || {};
+    const TransportExpenceObj = inputData.expence?.[1]?.items || {};
 
     const transportExpence = Object.values(TransportExpenceObj).reduce((sum, value) => {
         return sum + (Number(value?.value) || 0);
@@ -60,7 +58,7 @@ export const PersonalExpence = async () => {
 
     const inputData = await fetchData();
     const TotalBudget = inputData.TotalBudget || 0;
-    const PersonalExpenceObj = inputData.expence[2].items || {};
+    const PersonalExpenceObj = inputData.expence?.[2]?.items || {};
 
 
     const personalExpence = Object.values(PersonalExpenceObj).reduce((sum, value) => {
@@ -85,7 +83,7 @@ export const HousingExpence = async () => {
 
     const inputData = await fetchData();
     const TotalBudget = inputData.TotalBudget || 0;
-    const HousingExpenceObj = inputData.expence[3].items || {};
+    const HousingExpenceObj = inputData.expence?.[3]?.items || {};
 
     const housingExpence = Object.values(HousingExpenceObj).reduce((sum, value) => {
         return sum + (Number(value?.value) || 0);
@@ -109,7 +107,7 @@ export const SavingExpence = async () => {
 
     const inputData = await fetchData();
     const TotalBudget = inputData.TotalBudget || 0;
-    const SavingExpenceObj = inputData.expence[4].items || {};
+    const SavingExpenceObj = inputData.expence?.[4]?.items || {};
 
     const savingExpence = Object.values(SavingExpenceObj).reduce((sum, value) => {
         return sum + (Number(value?.value) || 0);
@@ -132,20 +130,17 @@ export const SavingExpence = async () => {
 }
 
 export const TotalExpence = async () => {
-
     const inputData = await fetchData();
     const TotalBudget = inputData.TotalBudget || 0;
-    const Expences = inputData?.expence || {};
-    
+    const Expences = inputData?.expence? inputData.expence : [];
     
     const Spended = Expences.reduce((sum, category) => {
         const values = Object.values(category.items || {}).map(obj => obj.value);
         const categoryTotal = values.reduce((catSum, val) => catSum + val, 0);
         return sum + categoryTotal;
     }, 0);
-    console.log("Total Budget:", Balance);
-
-    const TotalExpence_percentage = TotalBudget > 0 ? (Balance / TotalBudget) * 100 : 0;
+ 
+    const TotalExpence_percentage = TotalBudget > 0 ? (Spended / TotalBudget) * 100 : 0;
     return { TotalBudget, TotalExpence_percentage, Spended }
 }
 

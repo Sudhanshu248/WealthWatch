@@ -1,12 +1,14 @@
 import "./style.css"
 import { useNavigate } from 'react-router-dom';
+import { DASHBOARD_URL } from "../../../../../Dashboard/backend/axiosConfig";
+
 export default function Navbar() {
 
     const navigate = useNavigate();
 
     const handleclick = () => {
-        window.location.href = "http://localhost:5173/signup";
-    }
+        window.location.href = `${DASHBOARD_URL}/signup`;
+    };
 
     const handleAction = () =>{
         navigate("/")

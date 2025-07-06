@@ -5,9 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
-import user from "./models/user.models.js";
-import InputRoutes from "./routes/Input.routes.js";
-
+import InputRoutes from "../backend/routes/Input.routes.js";
 
 const app = express();
 dotenv.config();
@@ -19,7 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(cors({
-    origin: ['http://localhost:5173', `http://localhost:5174`],
+    origin: ['http://localhost:5173','http://localhost:5174'],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -40,10 +38,9 @@ const connectDB = async () =>{
     }
 }
 
-app.use('/', userRoutes); 
+app.use('/', userRoutes);
 app.use('/input', InputRoutes);
-app.use(formRouter); 
-
+app.use('/', formRouter); 
 
 app.use("/" , (req ,res)=>{
     res.send("8080 server is working");

@@ -7,11 +7,7 @@ import Calendar from "./calendar";
 export default function Navbar() {
 
     const navigate = useNavigate();
-    const [toggle, settoogle] = useState(false);
 
-    const Toggle = () => {
-        setIsToggled(prev => !prev);
-    };
 
       const [show, setShow] = useState(false);
 

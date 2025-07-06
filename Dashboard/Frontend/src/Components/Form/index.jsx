@@ -9,7 +9,7 @@ export default function Form() {
     const navigate = useNavigate();
 
     const handleclick = () => {
-        navigate("/");
+        navigate("/signup");
     }
 
     // const handleDashboard = ()=>{
@@ -19,14 +19,23 @@ export default function Form() {
     const [name, setName] = useState("");
     const [profession, setProfession] = useState("");
     const [income, setIncome] = useState("");
+    const [error, setError] = useState("");
 
     const handleDashboard = async () => {
         try{
+            const email = localStorage.getItem("userEmail");
+            console.log(`${BASE_URL}/form`);
+console.log("Payload:", { name, profession, income, email });
+if (!email) {
+            setError("User not found. Please sign up again.");
+            return;
+        }
             const respond = await axios.post( `${BASE_URL}/form`,
-                { 
-                    name: name,
-                    profession: profession,
-                    income: income
+                {
+                    name,
+                    profession,
+                    income,
+                    email
                 },
                 {
                     headers: {
@@ -38,10 +47,11 @@ export default function Form() {
             
             if (respond.data) {
                 console.log("Form response", respond.data);
-                navigate(`${BASE_URL}/dashboard`);
+                navigate(`/dashboard`);
             }
         }catch(error){
             console.error("Form error: ", error);
+            setError("Please fill all the details correctly.");
         }
     }
 
@@ -56,23 +66,24 @@ export default function Form() {
 
             <div className="box m-120">
                         <button className="text-center m-4 w-50 p-3 px-0 font-bold font-lg rounded-md" style={{ border: "3px solid #2D5359" }}> User Details</button>
+                        {error && <div className="text-red-600 font-mediud">{error}</div>}
 
                         <div className="form">                                            
 
                             <div className="input flex p-3  rounded-xl my-7">
-                                <input type="text" id="name" placeholder="Enter your name" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}
+                                <input type="text" id="name" placeholder="Enter your name" className='p-20' 
                                 onChange={(e) => setName(e.target.value)} />
                             </div>
 
                             <div className="input flex p-3  rounded-xl my-7">
 
-                                <input type="text" id="profession" placeholder="Enter your profession" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}
+                                <input type="text" id="profession" placeholder="Enter your profession" className='p-20' 
                                 onChange={(e) => setProfession(e.target.value)} />
                             </div>
 
                             <div className="input flex p-3  rounded-xl my-7">
 
-                                <input type="number" id="income" placeholder="Enter your income" className='p-20' style={{border: "1px solid rbga(0, 0, 0, 0.1)"}}
+                                <input type="number" id="income" placeholder="Enter your income" className='p-20' 
                                 onChange={(e) => setIncome(e.target.value)} />
                             </div>
 

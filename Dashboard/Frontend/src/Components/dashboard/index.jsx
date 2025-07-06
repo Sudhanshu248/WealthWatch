@@ -7,25 +7,28 @@ export default function Dashboard({ }) {
 
 
     const [isDismissed, setIsDismissed] = useState(false);
-    const [budget, setBudget] = useState(0);
+    const [Balance, setBalance] = useState(0);
     const [Spended, setSpended] = useState(0);
     const [totalExpence, setTotalExpence] = useState(0);
-     
-
-  useEffect(() => {
-    const loadData = async () => {
-      const Budget = await TotalExpence();
-      console.log("Fetched Budget:", Budget);
-      setBudget(Budget?.TotalBudget || 0);
-      console.log("Fetched Budget:", budget);
+    const [percentage, setPercentage] = useState(0);
 
 
-    };
+    useEffect(() => {
+        const loadData = async () => {
+            const budget = await TotalExpence();
+            
+            setTotalExpence(budget.TotalBudget);
+            setSpended(budget.Spended);
+            setPercentage(budget.TotalExpence_percentage);
+            setBalance(budget.TotalBudget - budget.Spended);
 
-    loadData();
-  }, []);
+        };
 
-    
+        loadData();
+    }, []);
+
+
+
     useEffect(() => {
         const dismissedTime = localStorage.getItem('anomalyDismissedAt');
 
@@ -48,20 +51,16 @@ export default function Dashboard({ }) {
         localStorage.setItem('anomalyDismissedAt', new Date().getTime().toString());
     };
 
-
-
     // Balance Bar
     const ProgressBar = () => {
         return (
 
             <div
                 className=" h-full bg-emerald-900 rounded-full"
-                style={{ width: `20%` }}
+                style={{ width: `${percentage}%` }}
             ></div>
         );
     };
-
-
 
 
     return (
@@ -92,8 +91,8 @@ export default function Dashboard({ }) {
 
                                 <div className=" flex flex-row  justify-between h-fit w-full ">
 
-                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;</h1>
-                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;</h1>
+                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;{Balance}</h1>
+                                    <h1 className="text-[1rem] text-start  font-medium text-start ">&#8377;{Spended}/{totalExpence}</h1>
 
                                 </div>
 
@@ -106,6 +105,7 @@ export default function Dashboard({ }) {
 
                             {/* Add daily record Box */}
                             <AddDailyRecord />
+                            
                         </div>
 
 
@@ -131,7 +131,7 @@ export default function Dashboard({ }) {
                         </div>
 
                         {/* Detector */}
-                        { isDismissed ?
+                        {isDismissed ?
                             <div className={`flex flex-row justify-between items-center border w-full h-fit rounded-2xl mt-4 py-2 px-4 ${isDismissed == true ? 'hidden' : 'text-red-500'}`}>
 
                                 <div className="flex flex-row gap-4 items-center ">

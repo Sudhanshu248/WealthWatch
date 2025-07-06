@@ -1,6 +1,5 @@
 import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalExpence";
 import { useState, useEffect } from "react";
-// import { holdings } from "../data/data";
 import PieChart from "../cashflow/pieChart";
 
 export default function MonthlyChart() {

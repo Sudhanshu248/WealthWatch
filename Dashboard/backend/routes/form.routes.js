@@ -3,6 +3,6 @@ import forms from "../controllers/form.controller.js";
 
 const router = express.Router();
 
-router.route("/form").post(forms);
+router.post('/form', forms); 
 
 export default router;

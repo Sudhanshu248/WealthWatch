@@ -1,8 +1,7 @@
 import express from 'express';
-import { getInputData } from '../controllers/Input.controller.js';
+import { getInputData ,SavedinputData } from '../controllers/Input.controller.js';
 const router = express.Router();
 
-// GET all input data
+router.post('/dailyrecord' ,SavedinputData);
 router.get('/alldata' , getInputData);
-
 export default router;

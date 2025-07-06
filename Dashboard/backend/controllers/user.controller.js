@@ -28,7 +28,7 @@ const signup = async (req, res) => {
             email,
             password: hashedPassword
         });
-
+ 
         const token = jwt.sign({ id: newUser._id}, JWT_SECRET);
         newUser.token = token;
         
