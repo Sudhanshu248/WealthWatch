@@ -159,4 +159,3 @@ console.log("Goals:", goals);
       </div>
     </div>
   );
-}
