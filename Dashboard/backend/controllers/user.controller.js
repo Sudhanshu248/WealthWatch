@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import User from '../models/user.models.js';
 
+
 dotenv.config();
 const JWT_SECRET = process.env.JWT_SECRET; 
 
@@ -83,3 +84,4 @@ const login = async (req, res) => {
 };
 
 export { signup, login };
+
