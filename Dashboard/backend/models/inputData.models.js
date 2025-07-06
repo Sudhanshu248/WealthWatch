@@ -4,22 +4,20 @@ import { Schema } from "mongoose";
 const itemSchema = new mongoose.Schema({
   name: {
     type: String,
-    default: '',
     required: true
   },
-  value: {
+  price: {
     type: Number,
-    default: '',
     required: true
   },
   date: {
     type: Date,
-    default: null 
-
+    required: true
   },
   paymentMethod: {
     type: String,
-    default: ''
+    required: true
+
   }
 });
 
@@ -30,7 +28,6 @@ const categorySchema = new mongoose.Schema({
   },
   items:{
     type :[itemSchema],
-    default:[]
   } 
 });
 
@@ -45,7 +42,6 @@ const inputDataSchema = new mongoose.Schema({
   },
   expence:{
     type: [categorySchema], 
-    default:[]
   }
 });
 

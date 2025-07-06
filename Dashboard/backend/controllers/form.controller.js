@@ -3,7 +3,7 @@ import User from "../models/user.models.js";
 
 const forms = async (req, res) => {
     const {name, profession, income, email} = req.body;
-    
+     
     try{
         const user = await User.findOne({ email });
         console.log("Received:", { name, profession, income }); 
@@ -12,14 +12,13 @@ const forms = async (req, res) => {
             return  res.status(404).json({message: "User not found"});
         }
         
-
-        
         if(!name || !profession || !income){
             return res.status(400).json({message: "Please fill all fields."});
         }
         console.log(`Name: ${name}, Profession: ${profession}, Income: ${income}`);
 
         const newForm = new Form({
+            userId: user._id,
             name,
             profession,
             income

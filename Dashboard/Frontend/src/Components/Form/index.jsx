@@ -10,7 +10,7 @@ export default function Form() {
 
     const handleclick = () => {
         navigate("/signup");
-    }
+    } 
 
     // const handleDashboard = ()=>{
     //   window.location.href = 'http://localhost:5173/dashboard';
@@ -25,11 +25,12 @@ export default function Form() {
         try{
             const email = localStorage.getItem("userEmail");
             console.log(`${BASE_URL}/form`);
-console.log("Payload:", { name, profession, income, email });
-if (!email) {
-            setError("User not found. Please sign up again.");
-            return;
-        }
+            console.log("Payload:", { name, profession, income, email });
+            if (!email) {
+                setError("User not found. Please sign up again.");
+                return;
+            }
+            
             const respond = await axios.post( `${BASE_URL}/form`,
                 {
                     name,
