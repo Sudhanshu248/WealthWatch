@@ -39,9 +39,8 @@ const connectDB = async () =>{
     }
 }
 
-app.use('/', userRoutes); 
+app.use('/', userRoutes);
 app.use('/', formRouter); 
-
 
 app.use("/" , (req ,res)=>{
     res.send("8080 server is working");

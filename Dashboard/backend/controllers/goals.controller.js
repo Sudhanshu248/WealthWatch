@@ -19,6 +19,7 @@ export const getGoals = async (req, res) => {
         return res.status(500).json({ message: error});
     }
 };
+
 export const goals = async (req, res) => {
     try {
 
@@ -34,11 +35,7 @@ export const goals = async (req, res) => {
         }
         console.log(`Received goal:  ${name} - ₹${value}`);
 
-        // const userId = await User.findOne({
-        //     _id
-        // });
-
-        // const userId = "685bb07b89dd82abe19889a4";
+      
         
         // Convert string to ObjectId
         const userId = mongoose.Types.ObjectId("685bb07b89dd82abe19889a4");

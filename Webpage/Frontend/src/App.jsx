@@ -7,14 +7,10 @@ import AboutUs from './Components/AboutUs/index.jsx'
 import Support from './Components/Support/index.jsx'
 
 function AppRoutes() {
-  const location = useLocation();
-
-  const hideLayout = ['/login', '/signup', '/form'];
-  const shouldHideLayout = hideLayout.includes(location.pathname.toLowerCase());
 
   return (
     <>
-      {!shouldHideLayout && <Navbar />}
+     <Navbar />
 
       <Routes>
         <Route path='/' element={<Homepage/>} />
@@ -22,7 +18,7 @@ function AppRoutes() {
         <Route path='/support' element={<Support />} />
       </Routes>
 
-      {!shouldHideLayout && <Footer />}
+   <Footer />
     </>
   );
 }

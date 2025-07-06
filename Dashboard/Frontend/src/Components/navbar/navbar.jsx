@@ -8,6 +8,7 @@ export default function Navbar() {
 
     const navigate = useNavigate();
 
+
       const [show, setShow] = useState(false);
 
     const handleClick = () => {
@@ -52,7 +53,7 @@ export default function Navbar() {
                             <a href="/profile">username</a>
                         </div>
                     </div>
-             
+
                 </div>
 
             </nav>
