@@ -5,7 +5,7 @@ export default function Navbar() {
     const navigate = useNavigate();
 
     const handleclick = () => {
-        navigate("/signup");
+        window.location.href = "http://localhost:5173/signup";
     }
 
     const handleAction = () =>{

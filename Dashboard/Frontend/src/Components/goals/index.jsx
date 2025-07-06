@@ -1,13 +1,14 @@
 import { useState , useEffect} from "react";
 import { goals as staticGoals } from "./goals.js";
 import axios from "axios";
+import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 
 export default function GoalsPage() {
     
-  const [GoalValue, setGoalValue] = useState({});
-  const [savedGoals, setSavedGoals] = useState({});
-  const [goals, setGoals] = useState([]);
+  const [GoalValue, setGoalValue] = useState({}); //State Variables for updation 
+  const [savedGoals, setSavedGoals] = useState({}); //State Variables check whether goals are saved or not
+
 
 
 console.log("Goals:", goals);
@@ -35,8 +36,11 @@ console.log("Goals:", goals);
   
   const handleSave = async(name) => {
     const value = parseFloat(GoalValue[name]);
-    
-    if (isNaN(value)) return;
+
+    if (isNaN(value)) {
+      alert("Please enter a valid number");
+      return;
+    };
     
     const totalValue = Object.entries(GoalValue).reduce((sum, [key, value]) => {
       const parsedValue = parseFloat(value);
@@ -49,8 +53,11 @@ console.log("Goals:", goals);
     }
     
     try {
-      const respond = await axios.post( "http://localhost:8080/list/goals",
-        { name, value },
+      const respond = await axios.post( `${BASE_URL}/goals`,
+        { 
+          name, 
+          value 
+        },
         {
           headers: {
             "Content-Type": "application/json",
@@ -99,10 +106,11 @@ console.log("Goals:", goals);
     <div className="flex">
       <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh] w-[60vw] grow">
         <h1 className="text-3xl text-emerald-900 font-bold ml-16 mt-6 mb-1.5">Goals</h1>
-        <p className="ml-16">Set your monthly goals for different categories.</p>
+        <p className="ml-16">Set your goals for different categories.</p>
 
         <section className="mt-7">
-        {(goals.length > 0 ? goals : staticGoals).map((item) => (
+        {goals.map((item) => (
+        // {(goals.length > 0 ? goals : staticGoals).map((item) => (
           <div
             key={item.name}
             id={item.name}
@@ -151,5 +159,4 @@ console.log("Goals:", goals);
       </div>
     </div>
   );
-}
-
+};
