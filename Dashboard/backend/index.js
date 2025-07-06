@@ -6,6 +6,8 @@ import bodyParser from "body-parser";
 import goalRouter from "./routes/goals.routes.js";
 import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
+import goalRouter from "./route/goal.routes.js";
+
 
 const app = express();
 dotenv.config();
@@ -21,6 +23,10 @@ app.use(cors({
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
+// Mount the goalRouter at /list, so all routes in goalRouter are prefixed with /list
+app.use('/list', goalRouter);
+
 
 const dblink = process.env.DB_CONNECT;
 const connectDB = async () =>{

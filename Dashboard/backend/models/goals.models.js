@@ -15,7 +15,7 @@ const GoalsSchema = new mongoose.Schema({
     personal: {
         type: Number
     },
-    Saving: {
+    saving: {
         type: Number
     },
     transportation: {

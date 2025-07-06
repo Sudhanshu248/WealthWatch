@@ -1,5 +1,5 @@
 import { useState , useEffect} from "react";
-import { goals } from "./goals.js";
+import { goals as staticGoals } from "./goals.js";
 import axios from "axios";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
@@ -9,6 +9,10 @@ export default function GoalsPage() {
   const [GoalValue, setGoalValue] = useState({}); //State Variables for updation 
   const [savedGoals, setSavedGoals] = useState({}); //State Variables check whether goals are saved or not
 
+};
+
+console.log("Goals:", goals);
+  
   useEffect(() => {
     const storedGoals = localStorage.getItem("savedGoals");
     const storedValues = localStorage.getItem("goalValues");
@@ -58,7 +62,7 @@ export default function GoalsPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          timeout: 1000,
+          timeout: 5000,
         }
       );
       
@@ -106,6 +110,7 @@ export default function GoalsPage() {
 
         <section className="mt-7">
         {goals.map((item) => (
+        // {(goals.length > 0 ? goals : staticGoals).map((item) => (
           <div
             key={item.name}
             id={item.name}
@@ -116,14 +121,14 @@ export default function GoalsPage() {
             <div className="flex items-center mt-2">
               <span>&#8377;</span>
               {savedGoals[item.name] ? (
-                <div className="ml-2">{GoalValue[item.name] ?? "N/A"}</div>
+                <div className="ml-2">{GoalValue[item.name] ?? item.value ?? "N/A"}</div>
               ) : (
                 <input
                   type="number"
                   placeholder="Enter Price"
                   className="pl-5 py-2 w-35 rounded-2xl ml-2"
                   style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
-                  value={GoalValue[item.name] ?? ""}
+                  value={GoalValue[item.name] ?? item.value ?? ""}
                   onChange={(e) => handleInput(item.name, e.target.value)}
                 />
               )}
