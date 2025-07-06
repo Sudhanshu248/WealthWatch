@@ -3,7 +3,7 @@ import { BASE_url } from "../../axios.config.js";
 
 export const fetchData = async () => {
     try {
-        const response = await axios.get(`${BASE_url}/input/alldata`);
+        const response = await axios.get(`${BASE_url}/alldata`);
         const TotalBudget = response.data[0].totalBudget;
         const expence = response.data[0].expence;
         

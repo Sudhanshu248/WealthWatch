@@ -40,7 +40,7 @@ const connectDB = async () =>{
 
 
 app.use('/', userRoutes);
-app.use('/input', InputRoutes);
+app.use('/', InputRoutes);
 app.use('/', formRouter);
 
 
