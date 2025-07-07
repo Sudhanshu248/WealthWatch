@@ -2,13 +2,13 @@ import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
 const FormSchema = new mongoose.Schema({
-    profilePicture: {
-        type: String,
-        default: "profile.png"
-    },
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    },
+    profilePicture: {
+        type: String,
+        default: "profile.png"
     },
     name: {
         type: String,

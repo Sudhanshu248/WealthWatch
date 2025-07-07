@@ -1,8 +1,8 @@
-import { fetchData2 } from "./InputData.js";
+import { fetchData4 } from "./InputData.js";
 
 export const FoodExpence = async () => {
 
-    const inputData = await fetchData2();
+    const inputData = await fetchData4();
     const TotalBudget = inputData.TotalBudget || 0;
     
     const FoodExpenceObj = inputData.expence?.[0]?.items || {};
@@ -30,7 +30,7 @@ export const FoodExpence = async () => {
 
 export const TransportExpence = async () => {
 
-    const inputData = await fetchData2();
+    const inputData = await fetchData4();
     const TotalBudget = inputData.TotalBudget || 0;
     const TransportExpenceObj = inputData.expence?.[1]?.items || {};
 
@@ -56,7 +56,7 @@ export const TransportExpence = async () => {
 export const PersonalExpence = async () => {
 
 
-    const inputData = await fetchData2();
+    const inputData = await fetchData4();
     const TotalBudget = inputData.TotalBudget || 0;
     const PersonalExpenceObj = inputData.expence?.[2]?.items || {};
 
@@ -81,7 +81,7 @@ export const PersonalExpence = async () => {
 
 export const HousingExpence = async () => {
 
-    const inputData = await fetchData2();
+    const inputData = await fetchData4();
     const TotalBudget = inputData.TotalBudget || 0;
     const HousingExpenceObj = inputData.expence?.[3]?.items || {};
 
@@ -105,7 +105,7 @@ export const HousingExpence = async () => {
 
 export const SavingExpence = async () => {
 
-    const inputData = await fetchData2();
+    const inputData = await fetchData4();
     const TotalBudget = inputData.TotalBudget || 0;
     const SavingExpenceObj = inputData.expence?.[4]?.items || {};
 
@@ -130,7 +130,7 @@ export const SavingExpence = async () => {
 }
 
 export const TotalExpence = async () => {
-    const inputData = await fetchData2();
+    const inputData = await fetchData4();
     const TotalBudget = inputData.TotalBudget || 0;
     const Expences = inputData?.expence? inputData.expence : [];
     
@@ -144,13 +144,12 @@ export const TotalExpence = async () => {
     return { TotalBudget, TotalExpence_percentage, Spended }
 }
 
-export const SecondDate =async()=>{
-    const data = await  fetchData2();
+export const ForthDate =async()=>{
+    const data = await  fetchData4();
     const date = data.date
 
     return date;
 }
-
 
 
 

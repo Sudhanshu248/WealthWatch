@@ -61,12 +61,7 @@ export default function CashflowPage() {
                         </>
                     ) : ""}
 
-                    {location.pathname === "/cashflow/lastMonth" && (
-                        <>
-                            <LastMonth />
-                        </>
-                    )}
-
+                   
 
                     {location.pathname === "/cashflow/SixMonth" && (
                         <>

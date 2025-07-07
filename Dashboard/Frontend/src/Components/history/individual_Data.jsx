@@ -1,9 +1,9 @@
 import {  FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../data/CalExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-// import axios from "axios";
-// import { useState, useEffect } from "react";
-// import { BASE_url } from "../../axios.config.js"; // Adjust the import path as necessary
+import axios from "axios";
+import { BASE_URL } from "../../../../backend/axiosConfig.js"; 
+
 export default function IndividualData() {
     const navigate = useNavigate();
 
@@ -43,11 +43,31 @@ export default function IndividualData() {
     }
 
     const value = location.pathname.replace("/history/", "");
+    const category = value.charAt(0).toLowerCase() + value.slice(1);
+ 
 
+  const handleDelete = async (name) => {
+    const token = localStorage.getItem("token");
+    try {
+        const response = await axios.post(
+            `${BASE_URL}/deleteData`,
+            { category, name },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": token,
+                },
+                timeout: 5000,
+            }
+        );
 
-    // useEffect(()=>{
-    //     axios.get(`http://localhost:3001/api/individual/${value}`);
-    // })
+        if (response.data && response.data.message) {
+            alert("Item deleted successfully");
+        }
+    } catch (error) {
+        console.error("Error deleting item:", error);
+    }
+};
 
     return (
         <>
@@ -80,9 +100,14 @@ export default function IndividualData() {
                                         <button className="text-xl font-medium " value=''>{item.name}</button>
                                         <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
-                                    <div>
+                                    <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                    {item.name && (
+                                        <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
+                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
+                                        </button>
+                                    )}
                                     </div>
                                 </div>
 

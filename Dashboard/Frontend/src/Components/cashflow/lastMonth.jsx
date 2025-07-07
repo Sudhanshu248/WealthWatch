@@ -1,29 +1,35 @@
-import LastMonthList from "./lastMonthList.jsx";
 import { useState, useEffect } from "react";
-// import { holdings } from "../data/data";
+import LastMonthList from "./lastMonthList.jsx";
 import BarGraph from "./barGraph.jsx";
 import PieChart from "./pieChart.jsx";
 import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalExpence";
 
 export default function LastMonth() {
-    const [monthData, setMonthData] = useState([]);
+           const [Foodpercentage, setFoodpercentage] = useState(0);
+            const [TransportPercentage, setTransportPercentage] = useState(0);
+            const [Personal_percentage, setPersonal_percentage] = useState(0); 
+            const [Housing_percentage, setHousing_percentage] = useState(0);
+            const [Saving_percentage, setSaving_percentage] = useState(0);
 
-            const { Foodpercentage } = FoodExpence();
-            const { TransportPercentage } = TransportExpence();
-            const { Personal_percentage } = PersonalExpence();
-            const { Housing_percentage } = HousingExpence();
-            const { Saving_percentage } = SavingExpence();
+            useEffect(() => {
+                const loadData = async () => {  
+                    const food = await FoodExpence();
+                    const transport = await TransportExpence(); 
+                    const personal = await PersonalExpence();
+                    const saving = await SavingExpence();
+                    const housing = await HousingExpence();
+                   
+                    setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
+                    setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
+                    setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
+                    setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
+                    setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
 
-    //     useEffect(() => {
-        //     axios.get("http://localhost:8080/allHoldings").then((res) => {
-//       // console.log(res.data);
-//       setAllHoldings(res.data);
-//     });
-//   }, []);
+                }
+            loadData();
+            });
 
     const labels =  ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-//   const labels = allHoldings.map((subArray) => subArray["name"]);
-
 
     const datas = {
         labels,
@@ -31,8 +37,7 @@ export default function LastMonth() {
             {
                 type: 'bar',
                 label: 'Dec 2024',
-                data: [10, 22, 30, 18, 24],
-                // data: allHoldings.map((stock) => stock.price),
+                data: [10, 22, 30, 18, 24],                
                 backgroundColor: 'rgb(130, 231, 130)'
             }
         ]
@@ -113,7 +118,7 @@ export default function LastMonth() {
                                 </div>
 
                                 <div>
-                                    {Housing_percentage.toFixed(0)}%
+                                    {Housing_percentage}%
                                 </div>
 
                             </li>
@@ -124,7 +129,7 @@ export default function LastMonth() {
                                 </div>
 
                                 <div>
-                                    {Foodpercentage.toFixed(0)}%
+                                    {Foodpercentage}%
                                 </div>
                             </li>
                             <li className="flex justify-between ">
@@ -134,7 +139,7 @@ export default function LastMonth() {
                                     <h1>Transport</h1>
                                 </div>
                                 <div>
-                                    {TransportPercentage.toFixed(0)}%
+                                    {TransportPercentage}%
                                 </div>
                             </li>
                             <li className="flex justify-between ">
@@ -144,7 +149,7 @@ export default function LastMonth() {
                                     <h1>Personal Expence</h1>
                                 </div>
                                 <div>
-                                    {Personal_percentage.toFixed(0)}%
+                                    {Personal_percentage}%
                                 </div>
 
                             </li>
@@ -156,7 +161,7 @@ export default function LastMonth() {
                                 </div>
                                 <div>
 
-                                    {Saving_percentage.toFixed(0)}%
+                                    {Saving_percentage}%
                                 </div>
                             </li>
 

@@ -42,11 +42,6 @@ export default function CurrMonthData() {
     loadData();
     }, []);
 
-    // const { Foodpercentage, foodExpence } = FoodExpence();
-    // const { TransportPercentage, transportExpence } = TransportExpence();
-    // const { Personal_percentage, personalExpence } = PersonalExpence();
-    // const { Housing_percentage, housingExpence } = HousingExpence();
-    // const { Saving_percentage, savingExpence } = SavingExpence();
 
     const handleclick = (e) => {
         const value = e.target.value;
@@ -72,7 +67,7 @@ export default function CurrMonthData() {
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >
                             <button className="text-xl font-medium hover:cursor-pointer" value='Food' onClick={handleclick}>Food</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Foodpercentage}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Foodpercentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
@@ -84,7 +79,7 @@ export default function CurrMonthData() {
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2 hover:cursor-pointer">
                         <div className="flex flex-row gap-2">
                             <button className="text-xl font-medium hover:cursor-pointer" value='Housing' onClick={handleclick}>Housing</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Housing_percentage}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Housing_percentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
@@ -97,7 +92,7 @@ export default function CurrMonthData() {
                         <div className="flex flex-row gap-2">
 
                             <button className="text-xl font-medium hover:cursor-pointer" value='PersonalExpence' onClick={handleclick}>Personal expence</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Personal_percentage}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Personal_percentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
@@ -110,7 +105,7 @@ export default function CurrMonthData() {
                         <div className="flex flex-row gap-2">
 
                             <button className="text-xl font-medium hover:cursor-pointer" value='Transport' onClick={handleclick}>Transport</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{TransportPercentage}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{TransportPercentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
@@ -123,12 +118,13 @@ export default function CurrMonthData() {
                         <div className="flex flex-row gap-2">
 
                             <button className="text-xl font-medium hover:cursor-pointer" value='Saving' onClick={handleclick}>Saving</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Saving_percentage}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Saving_percentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
                             <p className="text-[15px] mt-1">- &nbsp; &#8377;{savingExpence}</p>
                         </div>
+                       
                     </div>
 
                 </div>
