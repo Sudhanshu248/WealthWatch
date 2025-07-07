@@ -6,19 +6,19 @@ const GoalsSchema = new mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User',
     },
-    food: {
+    Food: {
         type: Number,
     },
-    housing: {
+    Housing: {
         type: Number
     },
-    personal: {
+    Personal: {
         type: Number
     },
-    saving: {
+    Saving: {
         type: Number
     },
-    transportation: {
+    Transportation: {
         type: Number
     }
 });
