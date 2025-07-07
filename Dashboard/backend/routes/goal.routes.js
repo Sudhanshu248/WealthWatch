@@ -1,8 +1,10 @@
+// routes/goals.routes.js
 import express from "express";
-import { goals } from "../controllers/goals.controller.js";
+import { goals, getGoals } from "../controllers/goals.controller.js";
+
 const router = express.Router();
 
-router.route("/goals").post(goals);
+router.get("/goals", getGoals);   // <-- GET endpoint to fetch goals
+router.post("/goals", goals);     // <-- POST to save/update goals
 
- 
 export default router;

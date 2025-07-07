@@ -5,7 +5,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
-import goalsRoutes from "./routes/goals.routes.js"; 
+import goalsRoutes from "./routes/goal.routes.js" 
 import InputRoutes from "../backend/routes/Input.routes.js";
 
 const app = express();
@@ -39,7 +39,7 @@ const connectDB = async () =>{
 app.use('/', userRoutes); 
 app.use('/', formRouter); 
 app.use('/', goalsRoutes); 
-app.use('/input', InputRoutes);
+app.use('/', InputRoutes);
 
 
 
@@ -50,6 +50,10 @@ app.use((err, req , res  , next )=>{
         error: process.env.NODE_ENV === 'development' ? err.message : undefined
     });
 })
+
+app.get("/", (req, res) => {
+    res.send("Backend Server is properly working on 8080.");
+});
 
 app.listen(8080,()=>{
     console.log("Server is successfully running on 8080 port.");

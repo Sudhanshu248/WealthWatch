@@ -1,31 +1,35 @@
 import { useState } from "react";
 import axios from "axios";
-import { BASE_url } from "../../axios.config";
+import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 export default function AddDailyRecord() {
-    const [Category, setCategory] = useState("");
-    const [PaymentWay, setPaymentWay] = useState("");
-    const [Date, setDate] = useState("");
-    const [ProductName, setProductName] = useState("");
-    const [Price, setPrice] = useState("");
-
+    const [category, setCategory] = useState("");
+    const [paymentMethod, setPaymentMethod] = useState("");
+    const [date, setDate] = useState("");
+    const [name, setName] = useState("");
+    const [price, setPrice] = useState("");
+ 
     const handleSave = async () => {
         try {
             const token = localStorage.getItem("token");
             console.log("Token:", token);
-          
-            const response = await axios.post(`http://localhost:8080/input/dailyrecord`,
+            if (!token) {
+                setError("Unauthorized user");
+                return;
+            }
+
+            const response = await axios.post(`${BASE_URL}/dashboard`,
                 {
-                    category: Category,
-                    paymentMethod: PaymentWay,
-                    date: Date,
-                    name: ProductName,
-                    value: Number(Price),
-                    token
+                    category,
+                    paymentMethod,
+                    date,
+                    name,
+                    price
                 },
                 {
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": token,
                     },
                     timeout: 5000,
                 });
@@ -33,9 +37,9 @@ export default function AddDailyRecord() {
             if(response.data){
                 console.log("Daily Record Saved Successfully", response.data);
                 setCategory("");
-                setPaymentWay("");
+                setPaymentMethod("");
                 setDate("");
-                setProductName("");
+                setName("");
                 setPrice("");
             }
         } catch (error) {
@@ -55,11 +59,11 @@ export default function AddDailyRecord() {
                     </div>
                     {/* block 1 */}
                     <div className="flex flex-row justify-between my-2">
-                        <input type="text" placeholder="Product name" className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5" value={ProductName} onChange={(e) => setProductName(e.target.value)} />
+                        <input type="text" placeholder="Enter Product name" value={name} className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5" onChange={(e) => setName(e.target.value)} />
                         <select
                             id="category"
                             name="category"
-                            value={Category}
+                            value={category}
                             onChange={(e) => setCategory(e.target.value)}
                             className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[40px] p-2"
                             style={{ border: "none", outline: "none" }}
@@ -73,16 +77,16 @@ export default function AddDailyRecord() {
                     </div>
                     {/* block 2 */}
                     <div className="flex flex-row justify-between my-2">
-                        <input type="number" min={0} placeholder="Price" className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5" value={Price} onChange={(e)=> setPrice(e.target.value)}/>
-                        <input type="date" placeholder="Date" className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-5" value={Date} onChange={(e)=> setDate(e.target.value)}/>
+                        <input type="number" min={0} placeholder="Price" value={price} className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5"  onChange={(e)=> setPrice(e.target.value)}/>
+                        <input type="date" placeholder="Date" value={date} className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-5" onChange={(e)=> setDate(e.target.value)}/>
                     </div>
                     {/* block 3 */}
                     <div className="flex flex-row justify-between my-2">
                         <select
                             id="payment_method"
                             name="payment_method"
-                            value={PaymentWay}
-                            onChange={(e) => setPaymentWay(e.target.value)}
+                            value={paymentMethod}
+                            onChange={(e) => setPaymentMethod(e.target.value)}
                             className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[40px] p-2"
                             style={{ border: "none", outline: "none" }}
                         >
@@ -94,7 +98,7 @@ export default function AddDailyRecord() {
                     </div>
                     {/* Saved Button */}
                     <div className=" my-2 ">
-                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1" onClick={handleSave} >&nbsp;Save</button>
+                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer"  onClick={handleSave} >&nbsp;Save</button>
                     </div>
                 </div>
             </div>

@@ -18,7 +18,6 @@ export default function GoalsPage() {
     import("./goals.js")
       .then((module) => setInitialGoals(module.goals))
       .catch((err) => console.error("Failed to load goals:", err));
-           
 
     fetchGoalsFromBackend();
   }, []);
@@ -34,6 +33,7 @@ export default function GoalsPage() {
       const response = await axios.get(`${BASE_URL}/goals`, {
         headers: {
           "Content-Type": "application/json",
+          "Authorization": userToken,
         },
       });
 
@@ -44,7 +44,7 @@ export default function GoalsPage() {
 
         const updatedSaved = {};
         for (const key in fetched) {
-          if (!["_id", "userId", "__v"].includes(key)) {
+          if (!["_id", "token", "__v"].includes(key)) {
             updatedSaved[key.charAt(0).toUpperCase() + key.slice(1)] = true;
           }
         }
@@ -92,7 +92,7 @@ export default function GoalsPage() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: userToken,
+            "Authorization": userToken,
           },
         }
       );
