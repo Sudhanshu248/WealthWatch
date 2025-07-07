@@ -14,7 +14,7 @@ export default function AddDailyRecord() {
             const token = localStorage.getItem("token");
             console.log("Token:", token);
           
-            const response = await axios.post(`http://localhost:8080/dailyrecord`,
+            const response = await axios.post(`${BASE_url}/alldata`,
                 {
                     category: Category,
                     paymentMethod: PaymentWay,

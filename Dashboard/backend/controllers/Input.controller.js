@@ -7,7 +7,6 @@ export const SavedinputData = async (req, res) => {
   try {
     const { category, paymentMethod, date, name, value, token } = req.body;
 
-    console.log("Token:", token);
 
     const user = await User.findOne({ token });
     if (!user) {
