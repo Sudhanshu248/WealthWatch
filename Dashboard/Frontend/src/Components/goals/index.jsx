@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 export default function GoalsPage() {
@@ -7,25 +8,47 @@ export default function GoalsPage() {
   const [savedGoals, setSavedGoals] = useState({});
   const [initialGoals, setInitialGoals] = useState([]);
   const [backendGoalsData, setBackendGoalsData] = useState({});
+  const [userId, setUserId] = useState(null);
 
+  // Extract userId from token
   useEffect(() => {
-    const storedGoals = localStorage.getItem("savedGoals");
-    const storedValues = localStorage.getItem("goalValues");
+    const token = localStorage.getItem("token");
 
-    if (storedGoals) setSavedGoals(JSON.parse(storedGoals));
+    if (token) {
+      try {
+const decoded = jwtDecode(token);
+        const id = decoded?.id || decoded?.email || "guest";
+        setUserId(id);
+      } catch (err) {
+        console.error("Invalid token", err);
+      }
+    }
+  }, []);
+
+  // Load goals when userId is ready
+  useEffect(() => {
+    if (!userId) return;
+
+    const goalsKey = `goalValues_${userId}`;
+    const savedKey = `savedGoals_${userId}`;
+
+    const storedGoals = localStorage.getItem(savedKey);
+    const storedValues = localStorage.getItem(goalsKey);
+
     if (storedValues) setGoalValue(JSON.parse(storedValues));
+    if (storedGoals) setSavedGoals(JSON.parse(storedGoals));
 
     import("./goals.js")
       .then((module) => setInitialGoals(module.goals))
       .catch((err) => console.error("Failed to load goals:", err));
 
-    fetchGoalsFromBackend();
-  }, []);
+    fetchGoalsFromBackend(userId);
+  }, [userId]);
 
-  const fetchGoalsFromBackend = async () => {
+  const fetchGoalsFromBackend = async (userId) => {
     const userToken = localStorage.getItem("token");
     if (!userToken) {
-      console.warn("No user token found.");
+      console.error("No user token found.");
       return;
     }
 
@@ -50,8 +73,13 @@ export default function GoalsPage() {
         }
 
         setSavedGoals((prev) => ({ ...prev, ...updatedSaved }));
-        localStorage.setItem("goalValues", JSON.stringify({ ...GoalValue, ...fetched }));
-        localStorage.setItem("savedGoals", JSON.stringify({ ...savedGoals, ...updatedSaved }));
+
+        // Scoped localStorage
+        const goalsKey = `goalValues_${userId}`;
+        const savedKey = `savedGoals_${userId}`;
+
+        localStorage.setItem(goalsKey, JSON.stringify({ ...GoalValue, ...fetched }));
+        localStorage.setItem(savedKey, JSON.stringify({ ...savedGoals, ...updatedSaved }));
       }
     } catch (error) {
       console.error("Error while fetching goals:", error.message);
@@ -103,8 +131,12 @@ export default function GoalsPage() {
 
       const updatedSaved = { ...savedGoals, [name]: true };
       setSavedGoals(updatedSaved);
-      localStorage.setItem("goalValues", JSON.stringify(GoalValue));
-      localStorage.setItem("savedGoals", JSON.stringify(updatedSaved));
+
+      const goalsKey = `goalValues_${userId}`;
+      const savedKey = `savedGoals_${userId}`;
+
+      localStorage.setItem(goalsKey, JSON.stringify(GoalValue));
+      localStorage.setItem(savedKey, JSON.stringify(updatedSaved));
     } catch (error) {
       console.error("Error while saving goal:", error.message);
     }
@@ -118,8 +150,12 @@ export default function GoalsPage() {
 
     setGoalValue(updatedValues);
     setSavedGoals(updatedSaved);
-    localStorage.setItem("goalValues", JSON.stringify(updatedValues));
-    localStorage.setItem("savedGoals", JSON.stringify(updatedSaved));
+
+    const goalsKey = `goalValues_${userId}`;
+    const savedKey = `savedGoals_${userId}`;
+
+    localStorage.setItem(goalsKey, JSON.stringify(updatedValues));
+    localStorage.setItem(savedKey, JSON.stringify(updatedSaved));
   };
 
   return (
