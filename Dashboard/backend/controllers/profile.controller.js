@@ -3,18 +3,18 @@ import Form from "../models/form.models.js";
 
 export const uploadProfilePicture = async (req, res) => {
     try {
+        const file = req.file;
+        if (!file) return res.status(400).json({ message: "No file uploaded" });
 
         const token = req.headers.authorization;
-
         if (!token) return res.status(401).json({ message: "No token provided" });
 
         const user = await User.findOne({ token });
-
         if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
 
 
-
+ 
     
         const form = await Form.findOne({ userId: user._id });
 
@@ -34,6 +34,43 @@ export const uploadProfilePicture = async (req, res) => {
     }
 };
 
+export const updateProfileData = async (req, res) => {
+
+    try {
+        const {name, value} = req.body;
+
+        if (!name || value === undefined) {
+            return res.status(400).json({ message: "Missing field name or value" });
+        }
+
+        const allowedFields = ["profession", "income"];
+        if (!allowedFields.includes(name)) {
+            return res.status(400).json({ message: "You can only update profession or income" });
+        }
+
+        const token = req.headers.authorization;
+        if (!token) return res.status(401).json({ message: "No token provided" });
+
+        const user = await User.findOne({ token });
+        if (!user) return res.status(401).json({ message: "Unauthorized user" });
+
+        const update = { $set: { [name]: value } };
+        const updatedProfile = await Form.findOneAndUpdate(
+            { userId: user._id },
+            update,
+            { new: true }
+        );
+
+        if (!updatedProfile) {
+            return res.status(404).json({ message: "Profile not found" });
+        }
+
+    return res.status(200).json(updatedProfile);
+
+    }catch(error){
+        return res.status(500).json({message: error.message});
+    }
+}
 
 
 
@@ -55,13 +92,13 @@ export const getUserData = async (req, res) => {
 
         const data = await User.findOne( { _id: user._id } );
         
-        const { email, username } = data;
+        const { email } = data;
         
         const userData = {
             email,
-            username
         };
         
+        console.log(userData);
         if (!formData || !userData) {
         return res.status(404).json({ message: "No data found for this user" });
         }
@@ -75,32 +112,3 @@ export const getUserData = async (req, res) => {
         
     }
 };
-// export const updateProfileData = async (req, res) => {
-
-//     try {
-
-//         const token = req.headers.authorization;
-
-//         if (!token) return res.status(401).json({ message: "No token provided" });
-
-//         const user = await User.findOne({ token });
-
-//         if (!user) return res.status(401).json({ message: "Unauthorized user" });
-
-        
-
-
-//         const {...newProfileData} = req.body;
-
-//         const profileToUpdate = await Form.findOne({  userId: user._id });
-
-//         Object.assign(profileToUpdate, newProfileData);
-
-//         await profileToUpdate.save();
-
-//         return res.json({message: "Profile Updated"});
-
-//     }catch(error){
-//         return res.status(500).json({message: error.message});
-//     }
-// }
