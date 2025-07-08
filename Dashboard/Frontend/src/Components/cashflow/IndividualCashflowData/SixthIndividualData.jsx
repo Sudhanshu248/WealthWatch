@@ -1,10 +1,9 @@
-import {  FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../data/CalCurrentMonthExpence.js";
+import {  FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalSixthMonthExpence";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { BASE_URL } from "../../../../backend/axiosConfig.js"; 
 
-export default function IndividualData() {
+
+export default function SixthIndividualData() {
     const navigate = useNavigate();
 
     
@@ -40,35 +39,11 @@ const [refreshKey, setRefreshKey] = useState(0);
     
 
     const handleclick = () => {
-        navigate('/history/')
+        navigate('/cashflow/SixMonth/6')
     }
 
-    const value = location.pathname.replace("/history/", "");
-    const category = value.charAt(0).toLowerCase() + value.slice(1);
- 
-
-  const handleDelete = async (name) => {
-    const token = localStorage.getItem("token");
-    try {
-        const response = await axios.post(
-            `${BASE_URL}/deleteData`,
-            { category, name },
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": token,
-                },
-                timeout: 5000,
-            }
-        );
-
-        if (response.data && response.data.message) {
-            alert("Item deleted successfully");
-        }
-    } catch (error) {
-        console.error("Error deleting item:", error);
-    }
-};
+    const value = location.pathname.replace("/cashflow/SixMonth/6/", "");
+  
 
     return (
         <>
@@ -94,7 +69,7 @@ const [refreshKey, setRefreshKey] = useState(0);
 
 
                         {
-                            location.pathname == "/history/Food" && (Foodlist || []).map((item, index) => (
+                            location.pathname == "/cashflow/SixMonth/6/Food" && (Foodlist || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -104,18 +79,14 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                    {item.name && (
-                                        <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                        </button>
-                                    )}
+                                 
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/history/Transport" && (TransportListing || []).map((item, index) => (
+                            location.pathname == "/cashflow/SixMonth/6/Transport" && (TransportListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -136,7 +107,7 @@ const [refreshKey, setRefreshKey] = useState(0);
                             ))
                         }
                         {
-                            location.pathname == "/history/Housing" && (HousingListing || []).map((item, index) => (
+                            location.pathname == "/cashflow/SixMonth/6/Housing" && (HousingListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -147,18 +118,14 @@ const [refreshKey, setRefreshKey] = useState(0);
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
 
-                                          {item.name && (
-                                        <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                        </button>
-                                    )}
+                                       
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/history/Saving" && (SavingListing || []).map((item, index) => (
+                            location.pathname == "/cashflow/SixMonth/6/Saving" && (SavingListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -170,18 +137,14 @@ const [refreshKey, setRefreshKey] = useState(0);
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
 
-                                          {item.name && (
-                                        <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                        </button>
-                                    )}
+                                       
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/history/PersonalExpence" && (PersonalListing || []).map((item, index) => (
+                            location.pathname == "/cashflow/SixMonth/6/Personal" && (PersonalListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -192,11 +155,7 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                          {item.name && (
-                                        <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                        </button>
-                                    )}
+                                       
                                     </div>
                                 </div>
 

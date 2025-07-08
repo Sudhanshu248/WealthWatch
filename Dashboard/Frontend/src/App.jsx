@@ -12,6 +12,13 @@ import Signup from './Components/SignUp/index.jsx'
 import Login from './Components/Login/index.jsx'
 import Form from './Components/Form/index.jsx'
 import IndividualData from './Components/history/individual_Data.jsx'
+import CashflowIndividual from './Components/cashflow/IndividualCashflow/CashflowIndividual.jsx'
+import CurrentIndividualData from './Components/cashflow/IndividualCashflowData/CurrentIndividualData.jsx'
+import SecondIndividualData from './Components/cashflow/IndividualCashflowData/SecondIndividualData.jsx'
+import ThirdIndividualData from './Components/cashflow/IndividualCashflowData/ThirdIndividualData.jsx'
+import ForthIndividualData from './Components/cashflow/IndividualCashflowData/ForthIndividualData.jsx'
+import FifthIndividualData from './Components/cashflow/IndividualCashflowData/FifthIndividualData.jsx'
+import SixthIndividualData from './Components/cashflow/IndividualCashflowData/SixthIndividualData.jsx'
 
 
 
@@ -42,6 +49,14 @@ function AppRoutes() {
         <Route path='/goals' element={<GoalsPage />} />
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
+        <Route path='/cashflow/SixMonth/:urlId' element={<CashflowIndividual/>}/>
+        <Route path='/cashflow/SixMonth/1/:id' element={<CurrentIndividualData/>}/>
+        <Route path='/cashflow/SixMonth/2/:id' element={<SecondIndividualData/>}/>
+        <Route path='/cashflow/SixMonth/3/:id' element={<ThirdIndividualData/>}/>
+        <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData/>}/>
+        <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData/>}/>
+        <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData/>}/>
+
 
 
       </Routes>

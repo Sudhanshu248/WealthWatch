@@ -1,51 +1,46 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalCurrentMonthExpence.js";
-import { useNavigate } from 'react-router-dom';
+import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
 import { useState, useEffect } from "react";
-
-export default function CurrMonthData() {
-
-    const navigate = useNavigate();
+export default function ForthMonthList() {
 
     const [Foodpercentage, setFoodpercentage] = useState(0);
-    const [TransportPercentage, setTransportPercentage] =  useState(0);   
+    const [TransportPercentage, setTransportPercentage] = useState(0);
     const [Personal_percentage, setPersonal_percentage] = useState(0);
     const [Housing_percentage, setHousing_percentage] = useState(0);
-    const [Saving_percentage, setSaving_percentage] =  useState(0);
+    const [Saving_percentage, setSaving_percentage] = useState(0);
 
-    const [foodExpence, setFoodExpence] =  useState(0);
-    const [transportExpence, setTransportExpence] =  useState(0);
-    const [personalExpence, setPersonalExpence] =  useState(0);
-    const [housingExpence, setHousingExpence] =  useState(0);
-    const [savingExpence, setSavingExpence] =  useState(0);
+    const [FoodExpences, setFoodExpences] = useState(0);
+    const [TransportExpences, setTransportExpences] = useState(0);
+    const [PersonalExpences, setPersonalExpences] = useState(0);
+    const [HousingExpences, setHousingExpences] = useState(0);
+    const [SavingExpences, setSavingExpences] = useState(0);
+
 
     useEffect(() => {
         const loadData = async () => {
-
             const food = await FoodExpence();
-            const transport = await TransportExpence();     
+            const transport = await TransportExpence();
             const personal = await PersonalExpence();
             const saving = await SavingExpence();
             const housing = await HousingExpence();
 
-            setFoodpercentage(food?.Foodpercentage || 0);
-            setTransportPercentage(transport?.TransportPercentage || 0);
-            setPersonal_percentage(personal?.Personal_percentage || 0);
-            setSaving_percentage(saving?.Saving_percentage || 0);
-            setHousing_percentage(housing?.Housing_percentage || 0);
+            setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
+            setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
+            setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
+            setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
+            setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
 
-            setFoodExpence(food?.foodExpence || 0);
-            setTransportExpence(transport?.transportExpence || 0);  
-            setPersonalExpence(personal?.personalExpence || 0);
-            setSavingExpence(saving?.savingExpence || 0);
-            setHousingExpence(housing?.housingExpence || 0);
+            setFoodExpences(food?.foodExpence.toFixed(1) || 0);
+            setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
+            setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
+            setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
+            setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
         }
-    loadData();
-    }, []);
-
+        loadData();
+    });
 
     const handleclick = (e) => {
         const value = e.target.value;
-        navigate(`/history/${value}`)
+        navigate(`/cashflow/SixMonth/4/${value}`)
     }
 
 
@@ -56,12 +51,13 @@ export default function CurrMonthData() {
 
                 {/* Heading */}
                 <div className="font-medium text-xl ">
-                    Current Month Data
+                    Last Month Data
                 </div>
 
 
                 {/* Data */}
                 <div className="w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
+
 
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
@@ -71,7 +67,7 @@ export default function CurrMonthData() {
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{foodExpence}</p>
+                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{FoodExpences}</p>
                         </div>
                     </div>
 
@@ -83,7 +79,7 @@ export default function CurrMonthData() {
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{housingExpence}</p>
+                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{HousingExpences}</p>
                         </div>
                     </div>
 
@@ -96,7 +92,7 @@ export default function CurrMonthData() {
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{personalExpence}</p>
+                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{PersonalExpences}</p>
                         </div>
                     </div>
 
@@ -109,7 +105,7 @@ export default function CurrMonthData() {
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{transportExpence}</p>
+                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{TransportExpences}</p>
                         </div>
                     </div>
 
@@ -122,14 +118,14 @@ export default function CurrMonthData() {
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{savingExpence}</p>
+                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{SavingExpences}</p>
                         </div>
-                       
-                    </div>
 
+                    </div>
                 </div>
 
             </div>
+
 
         </>
     )

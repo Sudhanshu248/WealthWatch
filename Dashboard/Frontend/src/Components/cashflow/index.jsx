@@ -1,10 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { MonthData } from "./cashflow"
 import { Link } from "react-router-dom"
-import LastMonth from "./lastMonth.jsx";
-import ThisMonth from "./ThisMonth.jsx";
 import SixMonth from "./SixMonth.jsx";
 import CompareTwoMonth from "./CompareTwoMonth.jsx";
+import CurrentMonth from "./MonthList/CurrentMonth.jsx";
 
 export default function CashflowPage() {
 
@@ -57,7 +56,7 @@ export default function CashflowPage() {
 
                     {location.pathname === "/cashflow/thisMonth" || location.pathname === "/cashflow" ? (
                         <>
-                            <ThisMonth />
+                            <CurrentMonth />
                         </>
                     ) : ""}
 

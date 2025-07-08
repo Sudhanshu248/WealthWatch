@@ -1,6 +1,6 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalExpence";
+import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalCurrentMonthExpence";
 import { useState, useEffect } from "react";
-import PieChart from "../cashflow/pieChart";
+import PieChart from "../cashflow/pie/pieChart";
 
 export default function MonthlyChart() {
     const [monthData, setMonthData] = useState([]);
@@ -33,6 +33,7 @@ export default function MonthlyChart() {
         loadData();
     }, []);
 
+    // console.log(monthData);
     const labels =  ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
 
 
