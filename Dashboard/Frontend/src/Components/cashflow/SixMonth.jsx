@@ -1,45 +1,41 @@
-import FirstPie from "./pie/OneMonthpie.jsx"
-import SecondPie from "./pie/secMonthpie.jsx";
-import ThirdPie from "./pie/thirdMonthpie.jsx";
-import ForthPie from "./pie/forthMonthpie.jsx";
-import FifthPie from "./pie/fifthMonthpie.jsx";
-import SixthPie from "./pie/sixthMonthpie.jsx";
-
-
-import { useEffect } from "react";
+import CurrPie from "./pie/CurrentMonthpie"
+import SecondPie from "./pie/SecondMonthpie"
+import ThirdPie from "./pie/thirdMonthpie"
+import ForthPie from "./pie/ForthMonthpie"
+import FifthPie from "./pie/fifthMonthpie"
+import SixthPie from "./pie/sixthMonthpie"
 
 export default function SixMonth() {
-
- 
  
     return (
         <>
             
  <div className="grid grid-cols-2 gap-3 mt-8 w-full h-fit">
                
-  <div className="bg-white w-full h-[300px] rounded-2xl p-5 ">
+  <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
     
-                  <FirstPie/>
+                  <CurrPie/>
+                  
                   
                 </div>
-  <div className="bg-white w-full h-[300px] rounded-2xl p-5 ">
+  <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
     
                   <SecondPie/>
                   
                 </div>
-  <div className="bg-white w-full h-[300px] rounded-2xl p-5 ">
+  <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
                   <ThirdPie/>
                   
                 </div>
-  <div className="bg-white w-full h-[300px] rounded-2xl p-5 ">
+  <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
                   <ForthPie/>
                   
                 </div>
-  <div className="bg-white w-full h-[300px] rounded-2xl p-5 ">
+  <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
                   <FifthPie/>
                   
                 </div>
-  <div className="bg-white w-full h-[300px] rounded-2xl p-5 ">
+  <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
                   <SixthPie/>
                   
                 </div>

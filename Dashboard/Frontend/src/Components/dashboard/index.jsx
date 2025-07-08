@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { TotalExpence } from "../data/CalExpence.js";
+import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
 import AddDailyRecord from "./AddDailyRecord.jsx";
 import MonthlyChart from "./MonthlyChart.jsx";
 

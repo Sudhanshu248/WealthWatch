@@ -1,15 +1,11 @@
-import CurrMonthData from "../history/CurrMonthData";
-import LastMonth from "./lastMonth";
-import LastMonthList from "./lastMonthList";
-import ThisMonth from "./ThisMonth";
-import ThisMonthList from "./ThisMonthList";
 import { useState, useEffect } from "react";
-import BarGraph from "./barGraph.jsx";
-import PieChart from "./pieChart.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalExpence";
+import BarGraph from "./pie/barGraph.jsx";
+import PieChart from "./pie/pieChart.jsx";
+import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalCurrentMonthExpence.js";
+import CurrentMonthList from "./MonthList/CurrentMonthList.jsx";
+import SecondMonthList from "./MonthList/SecondMonthList.jsx";
 
 export default function CompareTwoMonth() {
-
 
 
     const [Foodpercentage, setFoodpercentage] = useState([]);
@@ -17,7 +13,7 @@ export default function CompareTwoMonth() {
     const [Personal_percentage, setPersonal_percentage] = useState([]);
     const [Housing_percentage, setHousing_percentage] = useState([]);
     const [Saving_percentage, setSaving_percentage] = useState([]);
-
+    
     useEffect(() => {
         const loadData = async () => {
             const food = await FoodExpence();
@@ -25,21 +21,19 @@ export default function CompareTwoMonth() {
             const personal = await PersonalExpence();
             const saving = await SavingExpence();
             const housing = await HousingExpence();
-
+            
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
             setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
             setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
-
+            
         }
         loadData();
     });
 
+    
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
-
-
     const datas = {
         labels,
         datasets: [{
@@ -75,12 +69,10 @@ export default function CompareTwoMonth() {
 
     return (
         <>
-            {/* Main Container */}
+           
             <div className='mt-6'>
 
-
-
-                {/* Compare Bar Charts */}
+              
                 <div className="bg-white w-full h-[61%] mt-4 rounded-2xl p-5 ">
                     <div className="font-medium text-xl mb-7">
                         Monthly Expenses
@@ -267,8 +259,8 @@ export default function CompareTwoMonth() {
 
                 <div className="flex flex-row gap-4 mt-6">
 
-                    <ThisMonthList />
-                    <LastMonthList />
+                    <CurrentMonthList />
+                    <SecondMonthList />
                 </div>
 
 

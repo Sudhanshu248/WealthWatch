@@ -1,51 +1,63 @@
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 import { sixMonthExpense } from "../../Frontend/src/Components/data/LastSixMonthExp.js";
 import InputData from "../models/inputData.models.js";
-import mongoose from "mongoose";
 
-// const DB_CONNECT = process.env.DB_CONNECT;
+dotenv.config();
+
+const DB_CONNECT='mongodb+srv://sainisudhanshu389:WKKlBH58fXyqHE2A@wealthwatchcluster.6vudzkg.mongodb.net/WealthWatch?retryWrites=true&w=majority&appName=WealthWatchCluster'
 
 async function main() {
   try {
     await mongoose.connect(DB_CONNECT);
-    console.log("Connected to MongoDB");
+    console.log(" Connected to MongoDB");
 
-    await getMonthlyData();
-    console.log("Monthly data transfer successful");
+    await seedSixMonthData();
+    console.log(" Expense data seeded successfully");
 
-    process.exit(0); 
+    await mongoose.disconnect();
+    process.exit(0);
   } catch (err) {
+    console.error(" Error:", err);
     process.exit(1);
   }
 }
 
-const getMonthlyData = async () => {
+const seedSixMonthData = async () => {
   try {
-    await InputData.deleteMany({});
+    await InputData.deleteMany({}); // Clean old data
 
-    for (const monthData of sixMonthExpense) {
-      const transformedExpence = monthData.expence.map((categoryObj) => ({
+    const userId = "685bb07b89dd82abe19889a4"; // example user ID
+
+    const Monthly = sixMonthExpense.map((monthData) => {
+      const expence = monthData.expence.map((categoryObj) => ({
         category: categoryObj.category,
         items: Object.entries(categoryObj.items).map(([name, item]) => ({
           name,
-          value: item.value,
-          date: item.date ? new Date(item.date) : null,
-          paymentMethod: item.payMethod || '',
-        })),
+          price: item.value,
+          date: new Date(item.date),
+          paymentMethod: item.payMethod
+        }))
       }));
 
-      const monthlyData = new InputData({
-        userId: "685bb07b89dd82abe19889a4",
+      return {
         month: monthData.month,
         totalBudget: monthData.totalBudget.value,
-        expence: transformedExpence,
-      });
+        expence,
+        createdAt: new Date()
+      };
+    });
 
-      await monthlyData.save();
-    }
+    const userEntry = new InputData({
+      userId,
+      Monthly
+    });
+
+    await userEntry.save();
   } catch (error) {
+    console.error(" Seed Error:", error);
     throw error;
   }
 };
-
 
 main();

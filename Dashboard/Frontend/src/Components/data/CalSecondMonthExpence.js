@@ -1,8 +1,7 @@
 import { fetchMonthlyData } from "./InputData.js";
 
-
 const getCategoryData = async (categoryIndex) => {
-  const inputData = await fetchMonthlyData(5);
+  const inputData = await fetchMonthlyData(2);
   const TotalBudget = inputData.TotalBudget || 0;
   const categoryItems = inputData.expence?.[categoryIndex]?.items || {};
 
@@ -25,7 +24,6 @@ const getCategoryData = async (categoryIndex) => {
     TotalBudget,
   };
 };
-
 
 export const FoodExpence = async () => {
   const { listing: Foodlist, total: foodExpence, percentage: Foodpercentage, TotalBudget } =
@@ -59,7 +57,7 @@ export const SavingExpence = async () => {
 
 
 export const TotalExpence = async () => {
-  const inputData = await fetchMonthlyData(5);
+  const inputData = await fetchMonthlyData(2);
   const TotalBudget = inputData.TotalBudget || 0;
   const Expences = inputData.expence ?? [];
 
@@ -73,7 +71,7 @@ export const TotalExpence = async () => {
   return { TotalBudget, TotalExpence_percentage, Spended };
 };
 
-export const CurrDate = async () => {
-  const data = await fetchMonthlyData(5);
+export const ForthDate = async () => {
+  const data = await fetchMonthlyData(2);
   return data.date;
 };

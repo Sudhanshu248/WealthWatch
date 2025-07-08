@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode";
+import {jwtDecode} from "jwt-decode";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 export default function GoalsPage() {

@@ -1,44 +1,57 @@
 import { useState, useEffect } from "react";
 import PieChart from "./pieChart.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
+import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalCurrentMonthExpence.js";
 import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
+export default function CurrPie() {
 
-export default function ForthPie() {
-     const [Foodpercentage, setFoodpercentage] = useState(0);
-       const [TransportPercentage, setTransportPercentage] = useState(0);
-       const [Personal_percentage, setPersonal_percentage] = useState(0);
-       const [Housing_percentage, setHousing_percentage] = useState(0);
-       const [Saving_percentage, setSaving_percentage] = useState(0);
-   
-       const [FoodExpences, setFoodExpences] = useState(0);
-       const [TransportExpences, setTransportExpences] = useState(0);
-       const [PersonalExpences, setPersonalExpences] = useState(0);
-       const [HousingExpences, setHousingExpences] = useState(0);
-       const [SavingExpences, setSavingExpences] = useState(0);
-   
-   
-       useEffect(() => {
-           const loadData = async () => {
-               const food = await FoodExpence();
-               const transport = await TransportExpence();
-               const personal = await PersonalExpence();
-               const saving = await SavingExpence();
-               const housing = await HousingExpence();
-               setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
-               setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
-               setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
-               setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
-               setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
-   
-               setFoodExpences(food?.foodExpence.toFixed(1) || 0);
-               setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
-               setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
-               setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
-               setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
-           }
-           loadData();
-       });
+
+    const [Foodpercentage, setFoodpercentage] = useState(0);
+    const [TransportPercentage, setTransportPercentage] = useState(0);
+    const [Personal_percentage, setPersonal_percentage] = useState(0);
+    const [Housing_percentage, setHousing_percentage] = useState(0);
+    const [Saving_percentage, setSaving_percentage] = useState(0);
+
+    const [FoodExpences, setFoodExpences] = useState(0);
+    const [TransportExpences, setTransportExpences] = useState(0);
+    const [PersonalExpences, setPersonalExpences] = useState(0);
+    const [HousingExpences, setHousingExpences] = useState(0);
+    const [SavingExpences, setSavingExpences] = useState(0);
+
+
+    useEffect(() => {
+        const loadData = async () => {
+            const food = await FoodExpence();
+            const transport = await TransportExpence();
+            const personal = await PersonalExpence();
+            const saving = await SavingExpence();
+            const housing = await HousingExpence();
+            setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
+            setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
+            setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
+            setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
+            setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
+
+            setFoodExpences(food?.foodExpence.toFixed(1) || 0);
+            setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
+            setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
+            setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
+            setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
+        }
+        loadData();
+    });
+
+    useEffect(() => {
+        const loadAllData = async () => {
+            const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
+            const results = await Promise.all(promises);
+            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
+            setMonthName(name);
+        };
+
+        loadAllData();
+    }, []);
+
 
     const [MonthName, setMonthName] = useState([]);
 
@@ -53,15 +66,12 @@ export default function ForthPie() {
         loadAllData();
     }, []);
 
-
-const navigate= useNavigate();
+const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/cashflow/SixMonth/4`)
+        navigate(`/cashflow/SixMonth/1`)
     }
 
-
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const data = {
         labels,
         datasets: [{
@@ -82,7 +92,7 @@ const navigate= useNavigate();
         <>
 
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[2]}
+                {MonthName[5]}
             </div>
 
             <div className="flex justify-between ">
@@ -150,9 +160,12 @@ const navigate= useNavigate();
                 </div>
             </div>
 
-          {location.pathname === "/cashflow/SixMonth" && <div className="h-fit ">
+            {location.pathname === "/cashflow/SixMonth" && <div className="h-fit ">
                 <button className="bg-[#2D5359] flex flex-row justify-center items-center h-fit text-white text-center text-[20px] font-medium rounded-lg py-1 px-1" onClick={handleClick}>Detail &nbsp;<i className="fa-solid fa-arrow-right"></i></button>
             </div>}
+
+
+
 
         </>
     )
