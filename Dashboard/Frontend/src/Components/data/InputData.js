@@ -106,9 +106,6 @@ export const fetchData3 = async () => {
 }
 
 export const fetchData4 = async () => {
-
-
-
     try {
         const response = await axios.get(`${BASE_url}/alldata` ,{
               headers: {

@@ -47,7 +47,7 @@ export default function FifthPie() {
         labels,
         datasets: [{
             label: 'My First Dataset',
-            data: [300, 50, 100, 200, 43],
+            data: [100, 100, 100, 100, 100],
             backgroundColor: [
                 'rgb(59, 192, 95)',
                 'rgb(66, 133, 244)',

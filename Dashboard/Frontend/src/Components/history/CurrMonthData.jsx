@@ -122,7 +122,7 @@ export default function CurrMonthData() {
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{savingExpence}</p>
+                            <p className="text-[15px] mt-1">+ &nbsp; &#8377;{savingExpence}</p>
                         </div>
                        
                     </div>

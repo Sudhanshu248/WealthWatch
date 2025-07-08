@@ -155,7 +155,7 @@ export default function IndividualData() {
                                     </div>
                                     <div>
 
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                        <p className="text-[15px] mt-1">+ &nbsp; &#8377;{item.value}</p>
                                     </div>
                                 </div>
 
