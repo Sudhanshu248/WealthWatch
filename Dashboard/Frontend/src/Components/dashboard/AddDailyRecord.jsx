@@ -14,7 +14,7 @@ export default function AddDailyRecord() {
             const token = localStorage.getItem("token");
             console.log("Token:", token);
             if (!token) {
-                console.log("Error")
+                console.log("Token is not found need Login first")
                 return;
             }
 
