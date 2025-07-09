@@ -1,15 +1,17 @@
 import "./style.css"
 import { useNavigate } from 'react-router-dom';
-
-import { useState } from "react";
+import { BASE_URL } from "../../../../backend/axiosConfig.js";
+import { useState, useEffect } from "react";
+import axios from "axios";
 import Calendar from "./calendar";
 
 export default function Navbar() {
 
     const navigate = useNavigate();
 
-
-      const [show, setShow] = useState(false);
+    const [profileImage, setProfileImage] = useState("");
+    const [name, setName] = useState("");
+    const [show, setShow] = useState(false);
 
     const handleClick = () => {
         setShow(true);
@@ -18,6 +20,37 @@ export default function Navbar() {
     const handleCross = () => {
         setShow(false)
     }
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+    
+        if (token) {
+            fetchGoalsFromBackend();
+        }
+        else{
+            console.error("No user token found.");
+            return;
+        }
+    }, []);
+
+    const fetchGoalsFromBackend = async () => {
+            
+        try {
+            const response = await axios.get(`${BASE_URL}/getUserProfile`, {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            });
+
+            if (response.data?.formData) {                
+                setProfileImage(response.data.formData.profilePicture);
+                setName(response.data.formData.name);
+            }
+    
+        } catch (error) {
+            console.error("Error while fetching goals:", error.message);
+        }
+    };
 
     return (
         <>
@@ -39,20 +72,25 @@ export default function Navbar() {
                                 </div>
                              }
 
-               <div  className="col-2 flex  align-middle items-center justify-center gap-2">
-                        <div className="block w-[150px] h-fit rounded-full m-auto cursor-pointer" onClick={ handleClick}>
-                            Calendar
-                        </div>
-
-
-                        <div className="h-[30px] w-[30px] rounded-full ">
-                            <img className="rounded-full " src="/image/profile.png" alt="" />
-                        </div>
-
-                        <div>
-                            <a href="/profile">username</a>
-                        </div>
+                <div  className="col-2 flex  align-middle items-center justify-center gap-2">
+                    <div className="block w-[150px] h-fit rounded-full m-auto cursor-pointer" onClick={ handleClick}>
+                        Calendar
                     </div>
+
+
+                    <div className="h-[30px] w-[30px] rounded-full ">
+                        <img
+                            src={`${BASE_URL}/uploads/${profileImage}`}
+                            alt="ProfileImage"
+                            width={150}
+                            style={{borderRadius: "50%"}}                                    
+                        />
+                    </div>
+
+                    <div>
+                        <a href="/profile">{name}</a>
+                    </div>
+                </div>
 
                 </div>
 

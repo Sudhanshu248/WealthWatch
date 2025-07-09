@@ -10,7 +10,7 @@ export const getGoals = async (req, res) => {
     if (!token) return res.status(401).json({ message: "No token provided" });
 
     const user = await User.findOne({ token });
-    if (!user) return res.status(401).json({ message: "Invalid token" });
+    if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
     const goalsData = await Goals.findOne({  userId: user._id });
 
@@ -37,7 +37,7 @@ export const goals = async (req, res) => {
 
     const user = await User.findOne({ token }); // ✅ Proper usage
 
-    if (!user) return res.status(401).json({ message: "Invalid token" });
+    if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
     const update = { $set: { [name]: value } };
 
