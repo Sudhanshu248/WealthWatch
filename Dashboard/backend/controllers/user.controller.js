@@ -5,21 +5,21 @@ import User from '../models/user.models.js';
 
 
 dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET; 
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const signup = async (req, res) => {
     try {
-        const { username, email, password} = req.body;
+        const { username, email, password } = req.body;
 
-        if(!username || !email || !password ) {
-            return res.status(400).json({message: "All fields are required"});
+        if (!username || !email || !password) {
+            return res.status(400).json({ message: "All fields are required" });
         }
 
         // Check if user exists with a timeout
         const user = await User.findOne({ email }).maxTimeMS(5000);
 
-        if(user) {
-            return res.status(400).json({message: "User already exists"});
+        if (user) {
+            return res.status(400).json({ message: "User already exists" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -28,10 +28,10 @@ const signup = async (req, res) => {
             email,
             password: hashedPassword
         });
- 
-        const token = jwt.sign({ id: newUser._id}, JWT_SECRET);
+
+        const token = jwt.sign({ id: newUser._id }, JWT_SECRET);
         newUser.token = token;
-        
+
         // Save with timeout
         await newUser.save({ maxTimeMS: 5000 });
 
@@ -40,29 +40,29 @@ const signup = async (req, res) => {
             token
         });
 
-    }catch(error){
-        return res.status(500).json({message: error.message});
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
 }
 
 const login = async (req, res) => {
     try {
         const { email, password } = req.body;
-        
+
         const response = await User.findOne({
-            email:email
+            email: email
         })
 
-        if(!response){
+        if (!response) {
             res.status(401).send({
-                Message:"Your email is not correct"
+                Message: "Your email is not correct"
             })
         };
 
-        const passwordmatch = await bcrypt.compare(password,response.password);
+        const passwordmatch = await bcrypt.compare(password, response.password);
 
-        if(passwordmatch){
-            const token = jwt.sign({ id: response._id}, JWT_SECRET);
+        if (passwordmatch) {
+            const token = jwt.sign({ id: response._id }, JWT_SECRET);
             console.log(token);
             response.token = token;
             await response.save();
@@ -70,10 +70,10 @@ const login = async (req, res) => {
                 token
             })
         }
-        else{
-    
+        else {
+
             res.status(401).send({
-                Message:"Incorrect Password"
+                Message: "Incorrect Password"
             })
         }
 
@@ -83,17 +83,6 @@ const login = async (req, res) => {
     }
 };
 
-// const userData = async (req, res) => {
-//     try {
-//        const data = await User.find();
-//         res.json(data);
-
-//     } catch (error) {
-
-//         console.error("Error fetching user data:", error);
-//         res.status(500).json({ message: "Server error" });
-//     }
-// }
 
 export { signup, login };
 

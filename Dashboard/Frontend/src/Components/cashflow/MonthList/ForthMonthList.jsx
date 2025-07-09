@@ -1,5 +1,6 @@
 import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function ForthMonthList() {
 
     const [Foodpercentage, setFoodpercentage] = useState(0);
@@ -38,8 +39,11 @@ export default function ForthMonthList() {
         loadData();
     });
 
+    const navigate = useNavigate();
     const handleclick = (e) => {
         const value = e.target.value;
+        const path = location.pathname
+
         navigate(`/cashflow/SixMonth/4/${value}`)
     }
 

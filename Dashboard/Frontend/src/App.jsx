@@ -11,7 +11,6 @@ import ProfilePage from './Components/profile/index.jsx'
 import Signup from './Components/SignUp/index.jsx'
 import Login from './Components/Login/index.jsx'
 import Form from './Components/Form/index.jsx'
-import IndividualData from './Components/history/individual_Data.jsx'
 import CashflowIndividual from './Components/cashflow/IndividualCashflow/CashflowIndividual.jsx'
 import CurrentIndividualData from './Components/cashflow/IndividualCashflowData/CurrentIndividualData.jsx'
 import SecondIndividualData from './Components/cashflow/IndividualCashflowData/SecondIndividualData.jsx'
@@ -19,7 +18,7 @@ import ThirdIndividualData from './Components/cashflow/IndividualCashflowData/Th
 import ForthIndividualData from './Components/cashflow/IndividualCashflowData/ForthIndividualData.jsx'
 import FifthIndividualData from './Components/cashflow/IndividualCashflowData/FifthIndividualData.jsx'
 import SixthIndividualData from './Components/cashflow/IndividualCashflowData/SixthIndividualData.jsx'
-
+import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 
 
 function AppRoutes() {
@@ -37,6 +36,7 @@ function AppRoutes() {
 
       <Routes>
 
+
         <Route path='/' element={<Dashboard />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/blogs' element={<BlogPage />} />
@@ -44,8 +44,9 @@ function AppRoutes() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/form' element={<Form />} />
-        <Route path='/history' element={<HistoryPage />} />
-        <Route path='/history/:urlId' element={<IndividualData />} />
+        <Route path="/historys" element={<HistoryPage />} />
+        <Route path="/historys/:month" element={<HistoryPage />} />
+        <Route path='/historys/:month/:urlId' element={<HistoryIndividualRouter />} />
         <Route path='/goals' element={<GoalsPage />} />
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
@@ -56,7 +57,6 @@ function AppRoutes() {
         <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData/>}/>
         <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData/>}/>
         <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData/>}/>
-
 
 
       </Routes>

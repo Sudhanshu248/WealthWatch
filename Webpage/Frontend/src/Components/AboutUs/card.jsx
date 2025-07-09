@@ -1,5 +1,5 @@
 export default function Card() {
-    return(
+    return (
         <>
             <div className='flex mx-40'>
                 <div className='flex-5 py-20 pl-25'>

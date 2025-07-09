@@ -1,12 +1,11 @@
-
-  export  const navItem = [
+export  const navItem = [
         {
             name: "dashboard",
             href:"/dashboard"
         },
         {
             name: "cashflow",
-            href:`/cashflow`
+            href:"/cashflow"
         },
         {
             name: "goals",
@@ -14,7 +13,7 @@
         },
         {
             name: "history",
-            href: "/history"
+            href: "/historys"
         },
         {
             name: "blogs",

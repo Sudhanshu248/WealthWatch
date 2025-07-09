@@ -16,7 +16,7 @@ export default function Dashboard({ }) {
     useEffect(() => {
         const loadData = async () => {
             const budget = await TotalExpence();
-            
+
             setTotalExpence(budget.TotalBudget);
             setSpended(budget.Spended);
             setPercentage(budget.TotalExpence_percentage);
@@ -105,7 +105,7 @@ export default function Dashboard({ }) {
 
                             {/* Add daily record Box */}
                             <AddDailyRecord />
-                            
+
                         </div>
 
 

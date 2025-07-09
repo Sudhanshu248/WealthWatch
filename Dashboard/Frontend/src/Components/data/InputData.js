@@ -24,10 +24,10 @@ export const fetchMonthlyData = async (monthIndex) => {
     const date = rawDate ? new Date(rawDate).getMonth() + 1 : null;
 
     return {
-        monthName: data?.month ?? "",
-        TotalBudget: data?.totalBudget ?? 0,
-        expence: data?.expence ?? [],
-        date: date,
+      monthName: data?.month ?? "",
+      TotalBudget: data?.totalBudget ?? 0,
+      expence: data?.expence ?? [],
+      date: date,
     };
   } catch (error) {
     console.error("Failed to fetch monthly data:", error);

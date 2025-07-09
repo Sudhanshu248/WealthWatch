@@ -1,4 +1,3 @@
-// routes/goals.routes.js
 import express from "express";
 import { goals, getGoals } from "../controllers/goals.controller.js";
 

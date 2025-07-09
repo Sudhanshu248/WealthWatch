@@ -4,8 +4,7 @@ import { sixMonthExpense } from "../../Frontend/src/Components/data/LastSixMonth
 import InputData from "../models/inputData.models.js";
 
 dotenv.config();
-
-const DB_CONNECT='mongodb+srv://sainisudhanshu389:WKKlBH58fXyqHE2A@wealthwatchcluster.6vudzkg.mongodb.net/WealthWatch?retryWrites=true&w=majority&appName=WealthWatchCluster'
+const DB_CONNECT = process.env.DB_CONNECT;
 
 async function main() {
   try {

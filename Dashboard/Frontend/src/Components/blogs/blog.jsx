@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import { Article, post, ytData } from "./blogData.js"
 
 export default function Blogs() {
-  
+
   return (
     <>
       {/* Main Container */}
@@ -39,14 +39,14 @@ export default function Blogs() {
                 {post.map((item, index) => (
                   <SwiperSlide key={index}>
 
-                    <div className="bg-white w-[320px] mb-11 mt-2 ml-16 pb-4 pt-8 px-4 rounded-[1rem]"  style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " }}>
-                        <img src={item.image} alt="post-image" style={{height: "190px", borderRadius: "10px"}}/>
+                    <div className="bg-white w-[320px] mb-11 mt-2 ml-16 pb-4 pt-8 px-4 rounded-[1rem]" style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " }}>
+                      <img src={item.image} alt="post-image" style={{ height: "190px", borderRadius: "10px" }} />
 
-                        <p className="mt-2 mb-4">{item.title}</p>
+                      <p className="mt-2 mb-4">{item.title}</p>
 
-                        <div className="text-end my-2 pb-2 pt-2">
-                          <a className="text-center text-white bg-[#2D5359] rounded-md px-4 py-2" href={item.url} target="_blank">VISIT &nbsp;<i className="fa-solid fa-arrow-right"></i></a>
-                        </div>
+                      <div className="text-end my-2 pb-2 pt-2">
+                        <a className="text-center text-white bg-[#2D5359] rounded-md px-4 py-2" href={item.url} target="_blank">VISIT &nbsp;<i className="fa-solid fa-arrow-right"></i></a>
+                      </div>
                     </div>
                   </SwiperSlide>
                 ))}

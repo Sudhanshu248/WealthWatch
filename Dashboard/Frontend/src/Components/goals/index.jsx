@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 export default function GoalsPage() {
@@ -16,7 +16,7 @@ export default function GoalsPage() {
 
     if (token) {
       try {
-const decoded = jwtDecode(token);
+        const decoded = jwtDecode(token);
         const id = decoded?.id || decoded?.email || "guest";
         setUserId(id);
       } catch (err) {

@@ -1,12 +1,12 @@
-import "./style.css"; 
+import "./style.css";
 import Testimonials from "./testimonial.jsx";
-import Hero from "./hero.jsx"; 
+import Hero from "./hero.jsx";
 import Record from "./record.jsx";
 import Card from "./card.jsx";
 import Team from "./team.jsx";
 import Vision from "./vision.jsx";
 
-export default function AboutUs(){
+export default function AboutUs() {
 
     return (
         <>
@@ -15,7 +15,7 @@ export default function AboutUs(){
             <Card />
             <Vision />
             <Team />
-            <Testimonials/>
+            <Testimonials />
         </>
-   );
+    );
 };

@@ -8,7 +8,7 @@ export default function AddDailyRecord() {
     const [date, setDate] = useState("");
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
- 
+
     const handleSave = async () => {
         try {
             const token = localStorage.getItem("token");
@@ -34,7 +34,7 @@ export default function AddDailyRecord() {
                     timeout: 5000,
                 });
 
-            if(response.data){
+            if (response.data) {
                 console.log("Daily Record Saved Successfully", response.data);
                 setCategory("");
                 setPaymentMethod("");
@@ -77,8 +77,8 @@ export default function AddDailyRecord() {
                     </div>
                     {/* block 2 */}
                     <div className="flex flex-row justify-between my-2">
-                        <input type="number" min={0} placeholder="Price" value={price} className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5"  onChange={(e)=> setPrice(e.target.value)}/>
-                        <input type="date" placeholder="Date" value={date} className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-5" onChange={(e)=> setDate(e.target.value)}/>
+                        <input type="number" min={0} placeholder="Price" value={price} className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5" onChange={(e) => setPrice(e.target.value)} />
+                        <input type="date" placeholder="Date" value={date} className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-5" onChange={(e) => setDate(e.target.value)} />
                     </div>
                     {/* block 3 */}
                     <div className="flex flex-row justify-between my-2">
@@ -98,7 +98,7 @@ export default function AddDailyRecord() {
                     </div>
                     {/* Saved Button */}
                     <div className=" my-2 ">
-                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer"  onClick={handleSave} >&nbsp;Save</button>
+                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer" onClick={handleSave} >&nbsp;Save</button>
                     </div>
                 </div>
             </div>

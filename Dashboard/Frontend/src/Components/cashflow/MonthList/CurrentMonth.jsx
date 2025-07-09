@@ -40,7 +40,7 @@ export default function CurrentMonth() {
                 type: 'bar',
                 label: 'Jan 2025',
                 data: [FoodExpences, HousingExpences, PersonalExpences, TransportExpences, SavingExpences],
-            
+
                 backgroundColor: 'rgb(130, 231, 130)'
             }
         ]

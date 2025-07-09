@@ -1,5 +1,3 @@
-import mongoose from "mongoose";
-
 import Goals from '../models/goals.models.js';
 import User from '../models/user.models.js';
 
@@ -12,7 +10,7 @@ export const getGoals = async (req, res) => {
     const user = await User.findOne({ token });
     if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
-    const goalsData = await Goals.findOne({  userId: user._id });
+    const goalsData = await Goals.findOne({ userId: user._id });
 
     if (!goalsData) {
       return res.status(404).json({ message: "No goals found for this user" });

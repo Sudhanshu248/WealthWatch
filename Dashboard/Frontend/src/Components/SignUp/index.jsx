@@ -29,7 +29,7 @@ export default function Signup() {
         try {
             setLoading(true);
             setError("");
-  
+
             const response = await axios.post(`${BASE_URL}/signup`, {
                 username: username,
                 email: email,

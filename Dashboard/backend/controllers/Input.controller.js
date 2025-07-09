@@ -95,7 +95,7 @@ export const SavedinputData = async (req, res) => {
 // GET: Fetch all input data
 export const getInputData = async (req, res) => {
   try {
-   
+
     // const  token = req.headers.authorization;
     // if (!token) {
     //   return res.status(401).json({ error: 'No token provided' });
@@ -141,7 +141,7 @@ export const deleteInputData = async (req, res) => {
           "expence.$.items": { name }
         }
       },
-      { new: true } 
+      { new: true }
     );
 
     if (!result) {

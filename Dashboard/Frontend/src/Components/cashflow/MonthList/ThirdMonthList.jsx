@@ -1,5 +1,6 @@
 import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalThirdMonthExpence.js";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function ThirdMonthList() {
 
 
@@ -38,11 +39,14 @@ export default function ThirdMonthList() {
         loadData();
     });
 
-     const handleclick = (e) => {
+    const navigate = useNavigate();
+    const handleclick = (e) => {
         const value = e.target.value;
+        const path = location.pathname
+
         navigate(`/cashflow/SixMonth/3/${value}`)
     }
-    
+
 
     return (
         <>
@@ -58,8 +62,8 @@ export default function ThirdMonthList() {
 
                 {/* Data */}
                 <div className="w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
- 
-                 {/* Food */}
+
+                    {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >
                             <button className="text-xl font-medium hover:cursor-pointer" value='Food' onClick={handleclick}>Food</button>
@@ -120,7 +124,7 @@ export default function ThirdMonthList() {
 
                             <p className="text-[15px] mt-1">- &nbsp; &#8377;{SavingExpences}</p>
                         </div>
-                       
+
                     </div>
 
                 </div>

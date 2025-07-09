@@ -7,32 +7,27 @@ import AboutUs from './Components/AboutUs/index.jsx'
 import Support from './Components/Support/index.jsx'
 
 function AppRoutes() {
-
   return (
     <>
-     <Navbar />
+      <Navbar />
 
       <Routes>
-        <Route path='/' element={<Homepage/>} />
+        <Route path='/' element={<Homepage />} />
         <Route path='/aboutus' element={<AboutUs />} />
         <Route path='/support' element={<Support />} />
       </Routes>
 
-   <Footer />
+      <Footer />
     </>
   );
 }
 
 
-
 function App() {
-
-   
-
   return (
     <>
       <BrowserRouter>
-    <AppRoutes/>
+        <AppRoutes />
       </BrowserRouter>
     </>
   )
