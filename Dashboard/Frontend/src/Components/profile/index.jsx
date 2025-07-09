@@ -24,7 +24,7 @@ export default function ProfilePage() {
         }
     }, []);
  
-    const fetchGoalsFromBackend = async (userId) => {
+    const fetchGoalsFromBackend = async () => {
         
         try {
             const response = await axios.get(`${BASE_URL}/getUserProfile`, {
@@ -47,13 +47,9 @@ export default function ProfilePage() {
     };
 
     const handleSave = () => {
-  updateProfileData();
-};
-
-    const handleUpdate = () => {
-
-    }
-
+        updateProfileData();
+        SetIsModelOpen(false);
+    };
 
     const updateProfilePicture = async (file) => {
         const formData = new FormData();
@@ -104,13 +100,13 @@ export default function ProfilePage() {
                     "Authorization": userToken,
                 },
             });
+            alert("Profile Updated Successfully");
 
-        alert("Profile updated successfully!");
-    } catch (error) {
-        console.error("Error updating profile:", error.message);
-        return;
-    }
-};
+        } catch (error) {
+            console.error("Error updating profile:", error.message);
+            return;
+        }
+    };
 
 
     return (
@@ -128,9 +124,6 @@ export default function ProfilePage() {
                     <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-4">My Profile</h1>
 
                     <div className="flex flex-col items-center justify-center bg-white h-[37vh] w-[90%] mx-auto rounded-2xl">
-
-
-                        {/* <img src="image/profile.png" alt="profile.png" style={{height: "100px"}} className="m-3"/> */}
 
                         <span className="flex flex-col items-center gap-2">
                             {profileImage && (
@@ -151,8 +144,6 @@ export default function ProfilePage() {
                             </label>
                         </span>
 
-
-
                         <div className="text-center mb-0">
                             <p className="text-2xl m-0"> {name}</p>
                             <p className="" style={{color: "rgb(50, 47, 47)"}}>{email}</p>
@@ -165,25 +156,32 @@ export default function ProfilePage() {
                         style={{width: "90%"}}>
                         <p className="text-2xl pt-1 font-medium">Profession</p>
 
-
-                        <input
-                        type="text"
-                        value={profession}
-                        onChange={(e) => setProfession(e.target.value)}
-                        />
-
-                        <input
-                        type="number"
-                        value={income}
-                        onChange={(e) => setIncome(e.target.value)}
-                        />
-
+                        {isModelOpen ? 
+                            <input
+                                type="text"
+                                value={profession}
+                                onChange={(e) => setProfession(e.target.value)}
+                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4" 
+                            /> 
+                            : 
+                            <p style={{color: "rgb(50, 47, 47)"}}>{profession}</p>
+                        }
                     </div>
 
 
                     <div className="bg-white p-4 px-8 mx-auto mb-3 rounded-2xl flex items-center align-middle justify-between m-5" style={{width: "90%"}}>
                         <p className="text-2xl pt-1 font-medium">Income</p>
-                        <p style={{color: "rgb(50, 47, 47)"}}>&#8377; 7247</p>
+
+                        {isModelOpen ? 
+                            <input
+                                type="number"
+                                value={income}
+                                onChange={(e) => setIncome(e.target.value)}
+                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4" 
+                            />
+                            : 
+                            <p style={{color: "rgb(50, 47, 47)"}}>&#8377; {income}</p>
+                        }
                     </div>
 
                     <div className="bg-white p-4 px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{width: "90%"}}>
@@ -191,9 +189,17 @@ export default function ProfilePage() {
                         <p style={{color: "rgb(50, 47, 47)"}}>&#8377; 2477</p>
                     </div>
 
-                    <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer mr-5 ml-16" onClick={handleUpdate}>Edit</button>
+                    <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer mr-5 ml-16 mb-10" onClick={() => SetIsModelOpen(true)}>Edit</button>
 
-                    <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer" onClick={handleSave}>Save</button>
+                    {isModelOpen && (
+                    <button
+                        className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer"
+                        onClick={handleSave}
+                    >
+                        Save
+                    </button>
+                    )}
+
 
 
                 </div>
