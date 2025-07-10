@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalThirdMonthExpence.js";
+import { ThirdFoodExpence, ThirdTransportExpence, ThirdPersonalExpence, ThirdHousingExpence, ThirdSavingExpence } from "../../data/CalThirdMonthExpence.js";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
@@ -21,11 +21,11 @@ export default function ThirdHistory() {
     useEffect(() => {
         const loadData = async () => {
 
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await ThirdFoodExpence();
+            const transport = await ThirdTransportExpence();
+            const personal = await ThirdPersonalExpence();
+            const saving = await ThirdSavingExpence();
+            const housing = await ThirdHousingExpence();
 
             setFoodpercentage(food?.Foodpercentage || 0);
             setTransportPercentage(transport?.TransportPercentage || 0);

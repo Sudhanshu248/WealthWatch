@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalThirdMonthExpence.js";
+import { ThirdFoodExpence, ThirdTransportExpence, ThirdPersonalExpence, ThirdHousingExpence, ThirdSavingExpence } from "../../data/CalThirdMonthExpence.js";
 import ThirdMonthList from "./ThirdMonthList.jsx";
 import ThirdPie from "../pie/thirdMonthpie.jsx";
 
@@ -14,11 +14,11 @@ export default function ThirdMonth() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+             const food = await ThirdFoodExpence();
+                    const transport = await ThirdTransportExpence();
+                    const personal = await ThirdPersonalExpence();
+                    const saving = await ThirdSavingExpence();
+                    const housing = await ThirdHousingExpence();
 
             setFoodExpences(food?.foodExpence.toFixed(1) || 0);
             setTransportExpences(transport?.transportExpence.toFixed(1) || 0);

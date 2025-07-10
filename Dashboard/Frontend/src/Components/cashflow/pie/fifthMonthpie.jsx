@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PieChart from "./pieChart.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalFifthMonthExpence.js";
+import { FifthFoodExpence, FifthTransportExpence, FifthPersonalExpence, FifthHousingExpence, FifthSavingExpence } from "../../data/CalFifthMonthExpence.js";
 import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
 
@@ -20,11 +20,11 @@ export default function FifthPie() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await FifthFoodExpence();
+            const transport = await FifthTransportExpence();
+            const personal = await FifthPersonalExpence();
+            const saving = await FifthSavingExpence();
+            const housing = await FifthHousingExpence();
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -81,7 +81,7 @@ export default function FifthPie() {
     return (
         <>
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[4]}
+                {MonthName[1]}
             </div>
 
             <div className="flex justify-between ">

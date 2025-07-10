@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalFifthMonthExpence.js";
+import { FifthFoodExpence, FifthTransportExpence, FifthHousingExpence, FifthSavingExpence, FifthPersonalExpence } from "../../data/CalFifthMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -20,11 +20,11 @@ export default function FifthtHistoryIndividual() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await FifthFoodExpence();
+            const transport = await FifthTransportExpence();
+            const personal = await FifthPersonalExpence();
+            const saving = await FifthSavingExpence();
+            const housing = await FifthHousingExpence();
 
             setFoodlist(food?.Foodlist || []);
             setTransportListing(transport?.TransportListing || []);

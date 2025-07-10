@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PieChart from "./pieChart.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalThirdMonthExpence.js";
+import { ThirdFoodExpence, ThirdTransportExpence, ThirdPersonalExpence, ThirdHousingExpence, ThirdSavingExpence } from "../../data/CalThirdMonthExpence.js";
 import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
 
@@ -21,11 +21,11 @@ export default function ThirdPie() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await ThirdFoodExpence();
+            const transport = await ThirdTransportExpence();
+            const personal = await ThirdPersonalExpence();
+            const saving = await ThirdSavingExpence();
+            const housing = await ThirdHousingExpence();
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);

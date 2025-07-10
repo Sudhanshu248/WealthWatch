@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalCurrentMonthExpence";
+import { CurrentFoodExpence, CurrentTransportExpence, CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence } from "../data/CalCurrentMonthExpence";
 import { useState, useEffect } from "react";
 import PieChart from "../cashflow/pie/pieChart";
 
@@ -16,11 +16,11 @@ export default function MonthlyChart() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await CurrentFoodExpence();
+            const transport = await CurrentTransportExpence();
+            const personal = await CurrentPersonalExpence();
+            const saving = await CurrentSavingExpence();
+            const housing = await CurrentHousingExpence();
 
             setMonthData([
                 { name: 'Food', value: food.foodExpence, percentage: food.Foodpercentage },

@@ -2,13 +2,25 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
+import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
+
 
 export default function GoalsPage() {
   const [GoalValue, setGoalValue] = useState({});
   const [savedGoals, setSavedGoals] = useState({});
   const [initialGoals, setInitialGoals] = useState([]);
   const [backendGoalsData, setBackendGoalsData] = useState({});
+  const [TotalExpences ,setTotalExpences] = useState(0)
   const [userId, setUserId] = useState(null);
+
+    useEffect(() => {
+          const loadData = async () => {
+              const budget = await TotalExpence();
+              setTotalExpences(budget?.TotalBudget);
+          };
+  
+          loadData();
+      }, []);
 
   // Extract userId from token
   useEffect(() => {
@@ -102,7 +114,7 @@ export default function GoalsPage() {
       return sum + (isNaN(parsed) ? 0 : parsed);
     }, 0);
 
-    if (totalValue > 1000) {
+    if (totalValue > TotalExpences ) {
       console.error("Total should not exceed ₹1000");
       return;
     }

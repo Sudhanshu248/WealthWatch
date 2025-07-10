@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PieChart from "./pieChart.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalCurrentMonthExpence.js";
+import { CurrentFoodExpence, CurrentTransportExpence, CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence } from "../../data/CalCurrentMonthExpence.js";
 import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
 export default function CurrPie() {
@@ -21,11 +21,12 @@ export default function CurrPie() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await CurrentFoodExpence();
+            const transport = await CurrentTransportExpence();
+            const personal = await CurrentPersonalExpence();
+            const saving = await CurrentSavingExpence();
+            const housing = await CurrentHousingExpence();
+            
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -62,6 +63,7 @@ export default function CurrPie() {
         navigate(`/cashflow/SixMonth/1`)
     }
 
+    if (!FoodExpences || !MonthName || !Foodpercentage) return <p className="text-center mt-20">Loading...</p>;
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const data = {
         labels,
