@@ -19,7 +19,7 @@ import ThirdIndividualData from './Components/cashflow/IndividualCashflowData/Th
 import ForthIndividualData from './Components/cashflow/IndividualCashflowData/ForthIndividualData.jsx'
 import FifthIndividualData from './Components/cashflow/IndividualCashflowData/FifthIndividualData.jsx'
 import SixthIndividualData from './Components/cashflow/IndividualCashflowData/SixthIndividualData.jsx'
-
+import OpenAI from "./Components/dashboard/budgetRecommendations.jsx"
 
 
 function AppRoutes() {
@@ -39,6 +39,7 @@ function AppRoutes() {
 
         <Route path='/' element={<Dashboard />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/budgetRecommendation/ai' element={<OpenAI />} />
         <Route path='/blogs' element={<BlogPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/login' element={<Login />} />

@@ -7,10 +7,12 @@ import formRouter from "./routes/form.routes.js";
 import  userRoutes from "./routes/user.routes.js";
 import goalsRoutes from "./routes/goal.routes.js" 
 import InputRoutes from "../backend/routes/Input.routes.js";
-import profilesRoutes from "./routes/profile.routes.js"
+import profilesRoutes from "./routes/profile.routes.js";
+import genAIRoutes from "./routes/genAI.routes.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -50,7 +52,7 @@ app.use('/', formRouter);
 app.use('/', goalsRoutes); 
 app.use('/', InputRoutes);
 app.use('/', profilesRoutes)
-
+app.use('/', genAIRoutes);
 
 app.use((err, req , res  , next )=>{
     console.error(err);

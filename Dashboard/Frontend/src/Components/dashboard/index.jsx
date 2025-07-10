@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
 import AddDailyRecord from "./AddDailyRecord.jsx";
 import MonthlyChart from "./MonthlyChart.jsx";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard({ }) {
+
+    const navigate = useNavigate();
 
 
     const [isDismissed, setIsDismissed] = useState(false);
@@ -51,6 +54,10 @@ export default function Dashboard({ }) {
         localStorage.setItem('anomalyDismissedAt', new Date().getTime().toString());
     };
 
+    const handleClick = () => {
+        navigate("/budgetRecommendation/ai")
+    }
+
     // Balance Bar
     const ProgressBar = () => {
         return (
@@ -68,7 +75,7 @@ export default function Dashboard({ }) {
             {/* Main Container */}
 
             <div className="flex flex-row ">
-                <div className=" bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-full   py-6 px-4">
+                <div className=" bg-[#B8D7DE8C] rounded-md mt-4 ml-64 w-full   py-6 px-4">
                     <h1 className=" text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2">Dashboard</h1>
 
 
@@ -120,7 +127,7 @@ export default function Dashboard({ }) {
 
                         {/* Heading */}
                         <div className="w-full">
-                            <h1 className="text-[1.1rem] text-start text-shadow-sm font-medium text-start ">Anomaly Detected</h1>
+                            <h1 className="text-[1.1rem] text-start text-shadow-sm font-medium text-start mb-5 ">Anomaly Detected</h1>
                         </div>
 
                         {/* Paragraph */}
@@ -160,7 +167,7 @@ export default function Dashboard({ }) {
 
                             <h1 className="text-[1.1rem] text-start text-shadow-sm font-medium text-start ">Budget Recommendations</h1>
 
-                            <div className="flex flex-row justify-between gap-2 items-center px-3  h-fit w-fit bg-black rounded-md  ">
+                            <div className="flex flex-row justify-between gap-1 items-center px-3  h-fit w-fit bg-black rounded-md  ">
                                 <p className="text-blue-600 text-2xl">&#9733;</p>
                                 <h1 className="text-white font-bold">AI</h1>
                             </div>
@@ -169,8 +176,9 @@ export default function Dashboard({ }) {
 
                         {/* Paragraph */}
                         <div className="flex flex-row justify-between gap-2 items-center text-start w-full">
-                            <p className="text-gray-600">Reduce your Travel expenses to save money.</p>
-                            <a href="/blogs" className="text-blue-700">Learn More</a>
+                            <p className="text-gray-600">Ask AI for smart investment tips, savings strategies, or personalized budgeting advice in simple language!</p>
+                            <button className="bg-[#2D5359] text-white text-[19px] font-medium rounded-lg px-5 py-1 cursor-pointer" onClick={handleClick}>Ask AI &nbsp; <i className="fa-solid fa-arrow-right" style={{color: "#fff"}}></i> </button>
+                            
                         </div>
 
 
