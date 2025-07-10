@@ -18,6 +18,7 @@ import ThirdIndividualData from './Components/cashflow/IndividualCashflowData/Th
 import ForthIndividualData from './Components/cashflow/IndividualCashflowData/ForthIndividualData.jsx'
 import FifthIndividualData from './Components/cashflow/IndividualCashflowData/FifthIndividualData.jsx'
 import SixthIndividualData from './Components/cashflow/IndividualCashflowData/SixthIndividualData.jsx'
+import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 
 
@@ -36,9 +37,10 @@ function AppRoutes() {
 
       <Routes>
 
-
+ 
         <Route path='/' element={<Dashboard />} />
         <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/budgetRecommendation/ai' element={<BudgetRecommendation/>} />
         <Route path='/blogs' element={<BlogPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/login' element={<Login />} />

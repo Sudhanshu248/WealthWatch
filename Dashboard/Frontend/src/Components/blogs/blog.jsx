@@ -3,7 +3,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Article, post, ytData } from "./blogData.js"
+import { tips, articles, ytData } from "./blogData.js"
 
 export default function Blogs() {
 
@@ -18,10 +18,10 @@ export default function Blogs() {
           <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-6">Blogs</h1>
 
 
-          {/* Post Section */}
+          {/*  Article Section */}
           <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
 
-            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Posts</h1>
+            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Money guides</h1>
 
             <div className='flex flex-row h-[75%] w-[100%]  items-center '>
               {/* Card 1 */}
@@ -36,11 +36,11 @@ export default function Blogs() {
                 className="w-full h-auto custom-swiper"
               >
 
-                {post.map((item, index) => (
+                {articles.map((item, index) => (
                   <SwiperSlide key={index}>
 
-                    <div className="bg-white w-[320px] mb-11 mt-2 ml-16 pb-4 pt-8 px-4 rounded-[1rem]" style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " }}>
-                      <img src={item.image} alt="post-image" style={{ height: "190px", borderRadius: "10px" }} />
+                    <div className=" w-[320px] mb-11 mt-2 ml-16 pb-4 pt-4 px-4 rounded-[1rem]"  style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}>
+                        <img src={item.image} alt="post-image" style={{height: "190px", borderRadius: "10px"}}/>
 
                       <p className="mt-2 mb-4">{item.title}</p>
 
@@ -52,7 +52,7 @@ export default function Blogs() {
                 ))}
 
               </Swiper>
-              {/* WHole posts section */}
+              {/* Whole articles section */}
             </div>
 
           </div>
@@ -61,7 +61,7 @@ export default function Blogs() {
 
           {/*  video Section */}
           <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
-            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Videos</h1>
+            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Finance clips</h1>
 
             <div className='flex flex-row h-[75%] w-[100%]  items-center '>
 
@@ -83,17 +83,17 @@ export default function Blogs() {
                   <SwiperSlide key={index}>
                     <div
                       // key={index}
-                      className="bg-white  h-[280px] w-[300px] ml-20 mb-9  my-6 py-4 px-4 rounded-[1rem]"
-                      style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " }}
+                      className="bg-white  h-[300px] w-[300px] ml-20 mb-11  my-6 py-4 px-4 rounded-[1rem]"
+                      style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}
                     >
                       <div className="mb-6">
-                        <div className=" h-[55%] flex flex-col">
+                        <div className=" h-[60%] flex flex-col">
                           <iframe
                             src={`${item.videoId}`}
 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
-                            className="w-full h-full rounded-lg"
+                            className="w-full h-full rounded-lg mb-3"
                           ></iframe>
                         </div>
 
@@ -117,44 +117,45 @@ export default function Blogs() {
           </div>
 
 
-          {/* Article Section */}
-          <div className="bg-white w-[85%] h-[470px] mx-auto my-8 px-4 py-2 rounded-2xl overflow-y-auto">
+          {/* Tips Section */}
+          <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
 
-            <h1 className='text-2xl  font-medium text-start px-8 mb-4 pt-4 '>Article</h1>
+            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Ways to Achieve Financial Freedom </h1>
 
-            {/* Cards Container — no overflow, let the page scroll */}
-            <div className="flex flex-col h-[75%] w-[100%] items-center  px-2 space-y-4 ">
+            <div className='flex flex-row  w-[100%]  items-center '>
+              {/* Card 1 */}
+              <Swiper
+                modules={[Navigation, Pagination]}
+                loop={true}
+                autoHeight={true}
+                navigation
+                pagination={{ clickable: true }}
+                spaceBetween={40}
+                slidesPerView={3}
+                className="w-full h-auto custom-swiper"
+              >
 
-              {/* CARD 1 */}
-              {Article.map((item, index) => (
+                {tips.map((item, index) => (
+                  <SwiperSlide key={index}>
 
-                <div key={index} className="flex flex-row border  w-full border h-[100%] rounded-md p-2">
+                    <div className="bg-white w-[320px] h-[460px] mb-12 mt-2 ml-16 pb-4 pt-4 px-4 rounded-[1rem]"  
+                      style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}>
+                    
+                        <img src={item.image} className="w-full mb-4"  alt="post-image" style={{height: "350px", borderRadius: "10px"}}/>
 
-                  <div className="border h-full w-[30%]">
-                    <iframe
-                      src={`${item.url}`}
-                      title={item.title}
+                        <p className="mt-2 mb-4">{item.title}</p>
+                        
+                    </div>
+                  </SwiperSlide>
+                ))}
 
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                      className="w-full h-full"
-                    ></iframe>
-                  </div>
-
-                  <div className="  text-start px-4 w-[60%]">
-                    <a href="">{item.title}
-                    </a>
-                  </div>
-
-                </div>
-              ))}
+              </Swiper>
+              {/* Whole tips section */}
             </div>
-
 
           </div>
 
 
-          {/*whole blogs part*/}
         </div>
       </div>
 

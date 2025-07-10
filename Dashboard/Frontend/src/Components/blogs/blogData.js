@@ -1,63 +1,33 @@
-export const Article = [
+export const articles = [
   {
-    url: "https://empeople.com/learn/empeople-insights/why-financial-literacy-is-important-for-everyone/",
-    title: "Practice Management Software – A Guide for Modern Accountants"
-  },
-  {
-    url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-    title: "Practice Management Software – A Guide for Modern Accountants"
-  },
-  {
-    url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-    title: "Practice Management Software – A Guide for Modern Accountants"
-  },
-  {
-    url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-    title: "Practice Management Software – A Guide for Modern Accountants"
-  },
-  {
-    url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-    title: "Practice Management Software – A Guide for Modern Accountants"
-  },
-
-  {
-    url: "https://www.acecloudhosting.com/blog/practice-management-software/",
-    title: "Practice Management Software – A Guide for Modern Accountants"
-  }
-
-]
-
-export const post = [
-  {
-    image: "/image/post1.png",
+    image: "/image/article1.png",
     url: "https://empeople.com/learn/empeople-insights/why-financial-literacy-is-important-for-everyone/",
     title: "Why Financial Literacy is Important for Everyone"
   },
   {
-    image: "/image/post2.png",
+    image: "/image/article2.png",
     url: "https://blogs.uofi.uillinois.edu/view/7550/176801781",
     title: "The Power of Financial Education: A Key to Success for College Students"
   },
   {
-    image: "/image/post3.png",
+    image: "/image/article3.png",
     url: "https://www.investopedia.com/terms/f/financial-literacy.asp",
     title: "What is Financial Literacy: What is it and Why it is important to Teens"
   },
   {
-    image: "/image/post4.png",
+    image: "/image/article4.png",
     url: "https://www.investopedia.com/articles/investing/022516/saving-vs-investing-understanding-key-differences.asp",
     title: "Saving vs. Investing: What Teens Should Know"
   },
   {
-    image: "/image/post5.png",
+    image: "/image/article5.png",
     url: "https://www.investopedia.com/financial-edge/1109/6-reasons-why-you-need-a-budget.aspx",
     title: "How to Budget Money: Your Step-by-Step Guide"
   }
+];
 
-]
 
-
-export const ytData = [
+export  const ytData = [
   {
     videoId: "https://www.youtube.com/embed/0iRbD5rM5qc",
     title: "Financial Literacy | Learn the basics of finance and budgeting"
@@ -75,74 +45,101 @@ export const ytData = [
     title: "Financial Education | The 4 Rules Of Being Financially Literate"
   }
 ];
+  
 
-
-
-export const CurrExpence = {
-  totalBudget: {
-    value: 1000,
+export const tips = [
+  {
+    image: "/image/tips1.jpg",
+    title: "5 tips that will help You Save Money - Budget and savings"
   },
-
-  expence: {
-    food: {
-      daal: {
-        value: 50
-      },
-
-      samosa: {
-        value: 40
-      },
-      coldDrink: {
-        value: 30
-      },
-      milk: {
-        value: 30
-      },
-      biscuit: {
-        value: 50
-      },
-    },
-
-    transport: {
-      petrol: {
-        value: 100
-      },
-      bus: {
-        value: 30
-      },
-      auto: {
-        value: 20
-      },
-    },
-
-    personalExp: {
-      clothes: {
-        value: 100
-      },
-      grooming: {
-        value: 50
-      },
-    },
-
-    housing: {
-      rent: {
-        value: 200
-      },
-      electricity: {
-        value: 60
-      },
-      water: {
-        value: 20
-      },
-    },
-
-    saving: {
-      bank: {
-        value: 100
-      },
-      cash: {
-        value: 70
-      },
-    },
+  {
+    image: "/image/tips2.jpg",
+    title: "5 Years to Financial Freedom: Steps to Achieve Independence"
   },
-};
+  {
+    image: "/image/tips3.jpg",
+    title: "Best 16 Ways To Invest Your Money"
+  },
+  {
+    image: "/image/tips4.jpg",
+    title: "Investing Tips: To Achieve Financial Freedom"
+  },
+  {
+    image: "/image/tips5.jpg",
+    title: "Tips To Invest Your Money"
+  },
+  {
+    image: "/image/tips6.jpg",
+    title: "10 Money Habits of People that are Rich"
+  }
+];
+
+
+  export const CurrExpence = {
+    totalBudget: {
+        value: 1000,
+      },
+
+    expence: {
+        food: {
+          daal: {
+                value: 50
+            },
+
+            samosa: {
+              value: 40
+            },
+            coldDrink: {
+                value: 30
+            },
+            milk: {
+              value: 30
+            },
+            biscuit: {
+                value: 50
+              },
+        },
+
+        transport: {
+          petrol: {
+                value: 100
+            },
+            bus: {
+              value: 30
+            },
+            auto: {
+                value: 20
+            },
+        },
+
+        personalExp: {
+            clothes: {
+                value: 100
+            },
+            grooming: {
+                value: 50
+            },
+        },
+
+        housing: {
+            rent: {
+                value: 200
+            },
+            electricity: {
+                value: 60
+            },
+            water: {
+                value: 20
+            },
+        },
+
+        saving: {
+            bank: {
+                value: 100
+            },
+            cash: {
+                value: 70
+              },
+        },
+    },
+  };
