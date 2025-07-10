@@ -10,7 +10,6 @@ export default function CashflowPage() {
 
     const navigate = useNavigate();
 
-
     const handleClick = (e) => {
         const value = e.target.value;
         navigate(`/cashflow${value}`)
@@ -22,17 +21,13 @@ export default function CashflowPage() {
             {/* Main Container */}
             <div className='flex flex-row '>
 
-
                 {/* Cashflow Container */}
                 <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 px-8 py-4  h-fit w-[60vw]  grow ">
-
 
                     {/* Heading */}
                     <div>
 
                         <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2  mt-6 mb-2.5">Cashflow</h1>
-
-                        {/* <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start  mb-6 mt-3">Cashflow</h1> */}
 
                     </div>
 
@@ -60,7 +55,7 @@ export default function CashflowPage() {
                         </>
                     ) : ""}
 
-                   
+
 
                     {location.pathname === "/cashflow/SixMonth" && (
                         <>

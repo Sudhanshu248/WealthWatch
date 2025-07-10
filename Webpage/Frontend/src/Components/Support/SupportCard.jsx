@@ -4,10 +4,10 @@ export default function SupportCard() {
         <>
             <h1 className="text-center text-4xl font-semibold pl-16 mt-8 text-shadow-md">Tips and Answer</h1>
 
-{/* Flips Card */}
+            {/* Flips Card */}
             <div className="text-center flex flex-row flex-wrap align-item-center justify-center-safe px-8 mt-12 mb-12 gap-16">
 
-    {/* Flip card 1 */}
+                {/* Flip card 1 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
@@ -26,7 +26,7 @@ export default function SupportCard() {
 
                 </div>
 
-                   {/* Flip card 2 */}
+                {/* Flip card 2 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
@@ -43,7 +43,7 @@ export default function SupportCard() {
                     </div>
 
                 </div>
-                   {/* Flip card 3 */}
+                {/* Flip card 3 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
@@ -60,7 +60,7 @@ export default function SupportCard() {
                     </div>
 
                 </div>
-                   {/* Flip card 4 */}
+                {/* Flip card 4 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
@@ -77,7 +77,7 @@ export default function SupportCard() {
                     </div>
 
                 </div>
-                   {/* Flip card 5 */}
+                {/* Flip card 5 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
@@ -96,7 +96,7 @@ export default function SupportCard() {
 
                 </div>
 
-                   {/* Flip card 6 */}
+                {/* Flip card 6 */}
                 <div className="flip-card  ">
 
                     <div className="flip-card-inner p-4">

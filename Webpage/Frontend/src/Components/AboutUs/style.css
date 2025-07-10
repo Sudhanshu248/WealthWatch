@@ -1,4 +1,4 @@
-.container{
+.container {
     background-image: url("/image/about-background.png");
     background-repeat: no-repeat;
     background-size: cover;
@@ -6,6 +6,6 @@
     height: 75vh;
 }
 
-.profile{
+.profile {
     box-shadow: 1px 2px 12px 4px rgba(0, 0, 0, 0.13);
 }

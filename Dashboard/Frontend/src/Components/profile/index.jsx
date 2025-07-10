@@ -4,7 +4,7 @@ import axios from "axios";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 export default function ProfilePage() {
-    
+
     const [profileImage, setProfileImage] = useState("");
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -14,18 +14,18 @@ export default function ProfilePage() {
 
     useEffect(() => {
         const token = localStorage.getItem("token");
-    
+
         if (token) {
             fetchGoalsFromBackend();
         }
-        else{
+        else {
             console.error("No user token found.");
             return;
         }
     }, []);
- 
+
     const fetchGoalsFromBackend = async () => {
-        
+
         try {
             const response = await axios.get(`${BASE_URL}/getUserProfile`, {
                 headers: {
@@ -33,14 +33,14 @@ export default function ProfilePage() {
                 },
             });
 
-            if (response.data?.formData) {                
+            if (response.data?.formData) {
                 setProfileImage(response.data.formData.profilePicture);
                 setProfession(response.data.formData.profession);
                 setIncome(response.data.formData.income);
                 setName(response.data.formData.name);
                 setEmail(response.data.userData.email);
             }
- 
+
         } catch (error) {
             console.error("Error while fetching goals:", error.message);
         }
@@ -79,12 +79,12 @@ export default function ProfilePage() {
             console.error("User not authenticated.");
             return;
         }
-        
+
         try {
             await axios.post(`${BASE_URL}/updateProfileData`, {
-                    name: "profession",
-                    value: profession,
-                }, {
+                name: "profession",
+                value: profession,
+            }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": userToken,
@@ -92,9 +92,9 @@ export default function ProfilePage() {
             });
 
             await axios.post(`${BASE_URL}/updateProfileData`, {
-                    name: "income",
-                    value: income,
-                }, {
+                name: "income",
+                value: income,
+            }, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": userToken,
@@ -118,7 +118,7 @@ export default function ProfilePage() {
                 {/* Sidebar section */}
 
 
-                {/* BLogs Container */} 
+                {/* BLogs Container */}
                 <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64  w-[60vw]  grow">
 
                     <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-4">My Profile</h1>
@@ -127,14 +127,14 @@ export default function ProfilePage() {
 
                         <span className="flex flex-col items-center gap-2">
                             {profileImage && (
-                                 <img
+                                <img
                                     src={`${BASE_URL}/uploads/${profileImage}`}
                                     alt="ProfileImage"
                                     style={{borderRadius: "50%", width: "170px", height: "170px"}}                                    
                                 />
                             )}
-                            <label className= "icon" style={{ cursor: 'pointer', display: 'inline-block', lineHeight: 0  }}>
-                                <i className="fa-solid fa-circle-plus fa-2xl" style={{color: "#2D5359"}}></i>
+                            <label className="icon" style={{ cursor: 'pointer', display: 'inline-block', lineHeight: 0 }}>
+                                <i className="fa-solid fa-circle-plus fa-2xl" style={{ color: "#2D5359" }}></i>
                                 <input
                                     type="file"
                                     onChange={(e) => updateProfilePicture(e.target.files[0])}
@@ -145,58 +145,58 @@ export default function ProfilePage() {
 
                         <div className="text-center mb-0">
                             <p className="text-2xl m-0"> {name}</p>
-                            <p className="" style={{color: "rgb(50, 47, 47)"}}>{email}</p>
+                            <p className="" style={{ color: "rgb(50, 47, 47)" }}>{email}</p>
                         </div>
 
                     </div>
 
 
-                    <div className="bg-white p-4 px-10 mx-auto mb-3 rounded-2xl flex items-center justify-between m-5" 
-                        style={{width: "90%"}}>
+                    <div className="bg-white p-4 px-10 mx-auto mb-3 rounded-2xl flex items-center justify-between m-5"
+                        style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Profession</p>
 
-                        {isModelOpen ? 
+                        {isModelOpen ?
                             <input
                                 type="text"
                                 value={profession}
                                 onChange={(e) => setProfession(e.target.value)}
-                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4" 
-                            /> 
-                            : 
-                            <p style={{color: "rgb(50, 47, 47)"}}>{profession}</p>
+                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4"
+                            />
+                            :
+                            <p style={{ color: "rgb(50, 47, 47)" }}>{profession}</p>
                         }
                     </div>
 
 
-                    <div className="bg-white p-4 px-8 mx-auto mb-3 rounded-2xl flex items-center align-middle justify-between m-5" style={{width: "90%"}}>
+                    <div className="bg-white p-4 px-8 mx-auto mb-3 rounded-2xl flex items-center align-middle justify-between m-5" style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Income</p>
 
-                        {isModelOpen ? 
+                        {isModelOpen ?
                             <input
                                 type="number"
                                 value={income}
                                 onChange={(e) => setIncome(e.target.value)}
-                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4" 
+                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4"
                             />
-                            : 
-                            <p style={{color: "rgb(50, 47, 47)"}}>&#8377; {income}</p>
+                            :
+                            <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {income}</p>
                         }
                     </div>
 
-                    <div className="bg-white p-4 px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{width: "90%"}}>
+                    <div className="bg-white p-4 px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Average Expenses</p>
-                        <p style={{color: "rgb(50, 47, 47)"}}>&#8377; 2477</p>
+                        <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; 2477</p>
                     </div>
 
                     <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer mr-5 ml-16 mb-10" onClick={() => SetIsModelOpen(true)}>Edit</button>
 
                     {isModelOpen && (
-                    <button
-                        className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer"
-                        onClick={handleSave}
-                    >
-                        Save
-                    </button>
+                        <button
+                            className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer"
+                            onClick={handleSave}
+                        >
+                            Save
+                        </button>
                     )}
 
 

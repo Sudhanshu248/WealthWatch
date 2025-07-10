@@ -4,8 +4,6 @@ import { navItem } from "./sidebar.js";
 export default function Sidebar() {
 
     const location = useLocation();
-
-
     const [Active, setActive] = useState("");
 
     useEffect(() => {
@@ -16,8 +14,6 @@ export default function Sidebar() {
         else {
             setActive("");
         }
-
-
     }, [location.pathname]);
 
 
@@ -29,9 +25,9 @@ export default function Sidebar() {
                         key={item.name}
                         to={item.href}
                         onClick={() => setActive(item.name)}
-                        className={`block w-[150px] h-fit rounded-full m-auto ${Active === item.name && item.href === location.pathname 
-                                ? "bg-white text-[#2D5359] font-bold py-2 w-[140px]"
-                                : "font-normal"
+                        className={`block w-[150px] h-fit rounded-full m-auto ${Active === item.name && item.href === location.pathname
+                            ? "bg-white text-[#2D5359] font-bold py-2 w-[140px]"
+                            : "font-normal"
                             }`}
                     >
                         {item.name}

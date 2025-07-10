@@ -1,13 +1,10 @@
 import "./style.css"
-import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Calendar from "./calendar";
 
 export default function Navbar() {
-
-    const navigate = useNavigate();
 
     const [profileImage, setProfileImage] = useState("");
     const [name, setName] = useState("");

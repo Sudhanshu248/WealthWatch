@@ -1,4 +1,4 @@
-import {  FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalCurrentMonthExpence";
+import { FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalCurrentMonthExpence";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,15 +6,14 @@ import { useNavigate } from "react-router-dom";
 export default function CurrentIndividualData() {
     const navigate = useNavigate();
 
-    
-      
+
+
     const [Foodlist, setFoodlist] = useState([]);
     const [TransportListing, setTransportListing] = useState([]);
     const [PersonalListing, setPersonalListing] = useState([]);
     const [SavingListing, setSavingListing] = useState([]);
     const [HousingListing, setHousingListing] = useState([]);
-
-const [refreshKey, setRefreshKey] = useState(0);
+    const [refreshKey, setRefreshKey] = useState(0);
 
 
     useEffect(() => {
@@ -36,14 +35,16 @@ const [refreshKey, setRefreshKey] = useState(0);
     }, [refreshKey]);
 
 
-    
 
-    const handleclick = () => {
+    const path = location.pathname
+
+    const handleBack = () => {
+
         navigate('/cashflow/SixMonth/1')
     }
 
     const value = location.pathname.replace("/cashflow/SixMonth/1/", "");
-  
+
 
     return (
         <>
@@ -55,7 +56,7 @@ const [refreshKey, setRefreshKey] = useState(0);
 
                     {/* Back Btn */}
                     <div className=" mb-8">
-                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1" onClick={handleclick} ><i className="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
+                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1" onClick={handleBack} ><i className="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
                     </div>
 
                     {/* History data list*/}
@@ -69,7 +70,7 @@ const [refreshKey, setRefreshKey] = useState(0);
 
 
                         {
-                            location.pathname == "/cashflow/SixMonth/1/Food" && (Foodlist || []).map((item, index) => (
+                            location.pathname == `/cashflow/SixMonth/1/Food` && (Foodlist || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -79,14 +80,14 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                 
+
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/cashflow/SixMonth/1/Transport" && (TransportListing || []).map((item, index) => (
+                            location.pathname == `/cashflow/SixMonth/5/Transport` && (TransportListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -96,36 +97,52 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                      {item.name && (
-                                          <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                        </button>
-                                    )}
+
+                                    </div>
+                                </div>
+
+                            ))
+                        }
+
+                        {
+                            location.pathname == `/cashflow/SixMonth/5/Housing` && (HousingListing || []).map((item, index) => (
+                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
+                                    <div className="flex flex-row gap-2">
+
+                                        <button className="text-xl font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                    </div>
+                                    <div className="flex flex-row gap-2">
+
+                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+
+
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/cashflow/SixMonth/1/Housing" && (HousingListing || []).map((item, index) => (
+                            location.pathname == `/cashflow/SixMonth/5/Saving` && (SavingListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
                                         <button className="text-xl font-medium " value=''>{item.name}</button>
                                         <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
+
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
 
-                                       
+
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/cashflow/SixMonth/1/Saving" && (SavingListing || []).map((item, index) => (
+                            location.pathname == `/cashflow/SixMonth/5/PersonalExpence` && (PersonalListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -137,25 +154,6 @@ const [refreshKey, setRefreshKey] = useState(0);
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
 
-                                       
-                                    </div>
-                                </div>
-
-                            ))
-                        }
-                        {
-                            location.pathname == "/cashflow/SixMonth/1/Personal" && (PersonalListing || []).map((item, index) => (
-                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
-                                    <div className="flex flex-row gap-2">
-
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
-                                    </div>
-
-                                    <div className="flex flex-row gap-2">
-
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                       
                                     </div>
                                 </div>
 

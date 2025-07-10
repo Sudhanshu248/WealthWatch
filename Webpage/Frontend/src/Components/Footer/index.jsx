@@ -1,7 +1,7 @@
-export default function Footer(){
-    return(
+export default function Footer() {
+    return (
         <>
-            <div style={{ backgroundColor: "#023e8a"}}>
+            <div style={{ backgroundColor: "#023e8a" }}>
                 <div className="mt-5">
                     <footer className="text-center text-white" style={{ backgroundColor: "#3f51b5" }}>
                         <div>
@@ -36,7 +36,7 @@ export default function Footer(){
                                 <div>
                                     <div >
                                         <p className="px-30">
-                                        Take control of your financial future, today with WealthWatch – your trusted partner for smart spending, savvy saving, and achieving your money goals. Your journey to financial freedom starts here.
+                                            Take control of your financial future, today with WealthWatch – your trusted partner for smart spending, savvy saving, and achieving your money goals. Your journey to financial freedom starts here.
                                         </p>
                                     </div>
                                 </div>
@@ -44,10 +44,10 @@ export default function Footer(){
 
                             <section className="text-center mb-5 p-5">
                                 <a href="https://t.me/aashu_025" target="_blank" className="text-white me-4">
-                                    <i className="fa-brands fa-telegram fa-lg" style={{color: "#fff"}}></i>
+                                    <i className="fa-brands fa-telegram fa-lg" style={{ color: "#fff" }}></i>
                                 </a>
                                 <a href="mailto:sainisudhanshu389@gmail.com " target="_blank" className="text-white me-4">
-                                    <i className="fa-regular fa-envelope" style={{color: "#fff"}}></i>
+                                    <i className="fa-regular fa-envelope" style={{ color: "#fff" }}></i>
                                 </a>
                                 <a href="https://www.instagram.com/beast__ashu__/" target="_blank" className="text-white me-4">
                                     <i className="fab fa-instagram"></i>
@@ -66,9 +66,9 @@ export default function Footer(){
                             style={{ backgroundColor: "#023e8a" }}
                         >
                             &copy; 2025 Copyright: &nbsp;
-                            <a className="text-white" href="/" style={{color: "#4193FF", fontWeight: "500"}}>
-                                WealthWatch 
-                                
+                            <a className="text-white" href="/" style={{ color: "#4193FF", fontWeight: "500" }}>
+                                WealthWatch
+
                             </a>
                             &nbsp;
                             All Rights Reserved.

@@ -13,7 +13,7 @@ export default function CompareTwoMonth() {
     const [Personal_percentage, setPersonal_percentage] = useState([]);
     const [Housing_percentage, setHousing_percentage] = useState([]);
     const [Saving_percentage, setSaving_percentage] = useState([]);
-    
+
     useEffect(() => {
         const loadData = async () => {
             const food = await FoodExpence();
@@ -21,18 +21,18 @@ export default function CompareTwoMonth() {
             const personal = await PersonalExpence();
             const saving = await SavingExpence();
             const housing = await HousingExpence();
-            
+
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
             setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
             setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
-            
+
         }
         loadData();
     });
 
-    
+
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const datas = {
         labels,
@@ -69,10 +69,10 @@ export default function CompareTwoMonth() {
 
     return (
         <>
-           
+
             <div className='mt-6'>
 
-              
+
                 <div className="bg-white w-full h-[61%] mt-4 rounded-2xl p-5 ">
                     <div className="font-medium text-xl mb-7">
                         Monthly Expenses

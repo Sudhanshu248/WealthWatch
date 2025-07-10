@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.post("/dashboard", SavedinputData);  // <-- POST to input data
 router.get("/alldata", getInputData);  // <-- GET endpoint to fetch goals
-router.post("/deleteData" , deleteInputData)    
+router.post("/deleteData" , deleteInputData)    // <-- DELETE the InputData
 export default router;
 

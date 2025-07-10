@@ -6,30 +6,30 @@ import ForthMonthList from "./ForthMonthList.jsx";
 import ForthPie from "../pie/ForthMonthpie.jsx";
 
 export default function ForthMonth() {
-   const [FoodExpences, setFoodExpences] = useState(0);
-       const [TransportExpences, setTransportExpences] = useState(0);
-       const [PersonalExpences, setPersonalExpences] = useState(0);
-       const [HousingExpences, setHousingExpences] = useState(0);
-       const [SavingExpences, setSavingExpences] = useState(0);
-   
-       useEffect(() => {
-           const loadData = async () => {
-               const food = await FoodExpence();
-               const transport = await TransportExpence();
-               const personal = await PersonalExpence();
-               const saving = await SavingExpence();
-               const housing = await HousingExpence();
-   
-                setFoodExpences(food?.foodExpence.toFixed(1) || 0);
-               setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
-               setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
-               setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
-               setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
-   
-   
-           }
-           loadData();
-       });
+    const [FoodExpences, setFoodExpences] = useState(0);
+    const [TransportExpences, setTransportExpences] = useState(0);
+    const [PersonalExpences, setPersonalExpences] = useState(0);
+    const [HousingExpences, setHousingExpences] = useState(0);
+    const [SavingExpences, setSavingExpences] = useState(0);
+
+    useEffect(() => {
+        const loadData = async () => {
+            const food = await FoodExpence();
+            const transport = await TransportExpence();
+            const personal = await PersonalExpence();
+            const saving = await SavingExpence();
+            const housing = await HousingExpence();
+
+            setFoodExpences(food?.foodExpence.toFixed(1) || 0);
+            setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
+            setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
+            setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
+            setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
+
+
+        }
+        loadData();
+    });
 
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
@@ -40,14 +40,14 @@ export default function ForthMonth() {
             {
                 type: 'bar',
                 label: 'Dec 2024',
-                 data: [FoodExpences, HousingExpences, PersonalExpences, TransportExpences, SavingExpences],
-            
+                data: [FoodExpences, HousingExpences, PersonalExpences, TransportExpences, SavingExpences],
+
                 backgroundColor: 'rgb(130, 231, 130)'
             }
         ]
     };
 
-   
+
     return (
         <>
 
@@ -85,9 +85,9 @@ export default function ForthMonth() {
 
 
             {/* Data Pie charts  */}
-<div className="bg-white w-full mt-4 rounded-2xl p-5">
-               
-            <ForthPie />
+            <div className="bg-white w-full mt-4 rounded-2xl p-5">
+
+                <ForthPie />
 
             </div>
             {/*  */}

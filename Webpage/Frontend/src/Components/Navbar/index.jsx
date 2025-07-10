@@ -10,19 +10,19 @@ export default function Navbar() {
         window.location.href = `${DASHBOARD_URL}/signup`;
     };
 
-    const handleAction = () =>{
+    const handleAction = () => {
         navigate("/")
     }
 
     return (
         <>
-            <nav id="navbar" className="sticky top-0 p-9  h-[10px] shadow-md z-50 align-middle" style={{ backgroundColor: "#a2d2ff"}}>
+            <nav id="navbar" className="sticky top-0 p-9  h-[10px] shadow-md z-50 align-middle" style={{ backgroundColor: "#a2d2ff" }}>
 
                 <div className="px-2 flex items-center align-middle justify-between h-full ">
-                  
-                  {/*Page_LOGO  */}
+
+                    {/*Page_LOGO  */}
                     <div className=" w-1/4 p-8 " onClick={handleAction} >
-                        <img src="/logo.png" alt="logo_image" className="cursor-pointer" style={{height: "fit-content"}}/>
+                        <img src="/logo.png" alt="logo_image" className="cursor-pointer" style={{ height: "fit-content" }} />
                     </div>
 
                     <div className="col-2 flex  align-middle items-center justify-center gap-6">

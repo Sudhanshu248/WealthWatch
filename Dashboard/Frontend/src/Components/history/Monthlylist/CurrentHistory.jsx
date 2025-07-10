@@ -1,28 +1,28 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../data/CalCurrentMonthExpence.js";
+import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalCurrentMonthExpence.js";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 
-export default function CurrMonthData() {
+export default function CurrentHistory() {
 
     const navigate = useNavigate();
 
     const [Foodpercentage, setFoodpercentage] = useState(0);
-    const [TransportPercentage, setTransportPercentage] =  useState(0);   
+    const [TransportPercentage, setTransportPercentage] = useState(0);
     const [Personal_percentage, setPersonal_percentage] = useState(0);
     const [Housing_percentage, setHousing_percentage] = useState(0);
-    const [Saving_percentage, setSaving_percentage] =  useState(0);
+    const [Saving_percentage, setSaving_percentage] = useState(0);
 
-    const [foodExpence, setFoodExpence] =  useState(0);
-    const [transportExpence, setTransportExpence] =  useState(0);
-    const [personalExpence, setPersonalExpence] =  useState(0);
-    const [housingExpence, setHousingExpence] =  useState(0);
-    const [savingExpence, setSavingExpence] =  useState(0);
+    const [foodExpence, setFoodExpence] = useState(0);
+    const [transportExpence, setTransportExpence] = useState(0);
+    const [personalExpence, setPersonalExpence] = useState(0);
+    const [housingExpence, setHousingExpence] = useState(0);
+    const [savingExpence, setSavingExpence] = useState(0);
 
     useEffect(() => {
         const loadData = async () => {
 
             const food = await FoodExpence();
-            const transport = await TransportExpence();     
+            const transport = await TransportExpence();
             const personal = await PersonalExpence();
             const saving = await SavingExpence();
             const housing = await HousingExpence();
@@ -34,19 +34,22 @@ export default function CurrMonthData() {
             setHousing_percentage(housing?.Housing_percentage || 0);
 
             setFoodExpence(food?.foodExpence || 0);
-            setTransportExpence(transport?.transportExpence || 0);  
+            setTransportExpence(transport?.transportExpence || 0);
             setPersonalExpence(personal?.personalExpence || 0);
             setSavingExpence(saving?.savingExpence || 0);
             setHousingExpence(housing?.housingExpence || 0);
         }
-    loadData();
+        loadData();
     }, []);
-
 
     const handleclick = (e) => {
         const value = e.target.value;
-        navigate(`/history/${value}`)
-    }
+        const path = location.pathname;
+        navigate(`${path}/${value}`)
+    };
+
+
+
 
 
     return (
@@ -60,8 +63,10 @@ export default function CurrMonthData() {
                 </div>
 
 
+
+
                 {/* Data */}
-                <div className="w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
+                <div className="w-full h-fit  rounded-2xl px-8  ">
 
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
@@ -124,7 +129,7 @@ export default function CurrMonthData() {
 
                             <p className="text-[15px] mt-1">+ &nbsp; &#8377;{savingExpence}</p>
                         </div>
-                       
+
                     </div>
 
                 </div>

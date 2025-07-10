@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CurrentMonthList() {
 
-    const navigate = useNavigate();
+
 
     const [Foodpercentage, setFoodpercentage] = useState(0);
     const [TransportPercentage, setTransportPercentage] = useState(0);
@@ -41,10 +41,21 @@ export default function CurrentMonthList() {
         loadData();
     });
 
+    const navigate = useNavigate();
+
     const handleclick = (e) => {
         const value = e.target.value;
-        navigate(`/cashflow/SixMonth/1/${value}`)
-    }
+        const path = location.pathname;
+
+        console.log(path);
+
+        if (path === "/cashflow/thisMonth" || path === "/cashflow") {
+            return;
+        } else {
+            navigate(`/cashflow/SixMonth/1/${value}`);
+        }
+    };
+
 
 
     return (

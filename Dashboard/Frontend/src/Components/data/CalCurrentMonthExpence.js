@@ -2,7 +2,7 @@ import { fetchMonthlyData } from "./InputData.js";
 
 const getCategoryData = async (categoryIndex) => {
   const inputData = await fetchMonthlyData(0);
- 
+
   const TotalBudget = inputData.TotalBudget || 0;
   const categoryItems = inputData.expence?.[categoryIndex]?.items || {};
 
@@ -10,7 +10,7 @@ const getCategoryData = async (categoryIndex) => {
     return sum + (Number(item?.price) || 0);
   }, 0);
 
-  
+
 
   const listing = Object.entries(categoryItems).map(([key, item]) => ({
     name: item.name,
@@ -32,7 +32,7 @@ const getCategoryData = async (categoryIndex) => {
 export const FoodExpence = async () => {
   const { listing: Foodlist, total: foodExpence, percentage: Foodpercentage, TotalBudget } =
     await getCategoryData(0);
-   
+
   return { Foodlist, foodExpence, Foodpercentage, TotalBudget };
 };
 

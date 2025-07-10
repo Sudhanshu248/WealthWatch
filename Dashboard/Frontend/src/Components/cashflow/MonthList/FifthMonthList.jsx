@@ -1,5 +1,6 @@
 import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalFifthMonthExpence.js";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 export default function FifthMonthList() {
 
     const [Foodpercentage, setFoodpercentage] = useState(0);
@@ -38,8 +39,11 @@ export default function FifthMonthList() {
         loadData();
     });
 
+    const navigate = useNavigate();
     const handleclick = (e) => {
         const value = e.target.value;
+        const path = location.pathname
+
         navigate(`/cashflow/SixMonth/5/${value}`)
     }
 

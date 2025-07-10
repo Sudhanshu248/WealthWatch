@@ -41,16 +41,7 @@ export default function CurrPie() {
         loadData();
     });
 
-    useEffect(() => {
-        const loadAllData = async () => {
-            const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
-            const results = await Promise.all(promises);
-            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
-            setMonthName(name);
-        };
 
-        loadAllData();
-    }, []);
 
 
     const [MonthName, setMonthName] = useState([]);
@@ -66,7 +57,7 @@ export default function CurrPie() {
         loadAllData();
     }, []);
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/cashflow/SixMonth/1`)
     }

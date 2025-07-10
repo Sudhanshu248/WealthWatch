@@ -1,8 +1,6 @@
 import Form from "../models/form.models.js";
 import mongoose from "mongoose";
 
-
-
 async function main() {
     try {
         await mongoose.connect(DB_CONNECT);

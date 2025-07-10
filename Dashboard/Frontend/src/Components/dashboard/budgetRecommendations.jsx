@@ -2,7 +2,7 @@ import  { useState, useEffect, useRef } from "react";
 import { BASE_URL } from "../../../../backend/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
-export default function OpenAI() {
+export default function BudgetRecommendation() {
     const chatEndRef = useRef(null);
     const [prompt, setPrompt] = useState("");
     const [response, setResponse] = useState([]);

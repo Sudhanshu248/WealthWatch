@@ -12,10 +12,6 @@ export const uploadProfilePicture = async (req, res) => {
         const user = await User.findOne({ token });
         if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
-
-
- 
-    
         const form = await Form.findOne({ userId: user._id });
 
         if (!form) {
@@ -25,9 +21,9 @@ export const uploadProfilePicture = async (req, res) => {
         form.profilePicture = req.file.filename;
 
         await form.save();
-    
+
         return res.json({ message: "Profile Picture Updated" });
-  
+
     } catch (error) {
 
         return res.status(500).json({ message: error.message });
@@ -37,7 +33,7 @@ export const uploadProfilePicture = async (req, res) => {
 export const updateProfileData = async (req, res) => {
 
     try {
-        const {name, value} = req.body;
+        const { name, value } = req.body;
 
         if (!name || value === undefined) {
             return res.status(400).json({ message: "Missing field name or value" });
@@ -65,16 +61,12 @@ export const updateProfileData = async (req, res) => {
             return res.status(404).json({ message: "Profile not found" });
         }
 
-    return res.status(200).json(updatedProfile);
+        return res.status(200).json(updatedProfile);
 
-    }catch(error){
-        return res.status(500).json({message: error.message});
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
     }
 }
-
-
-
-
 
 
 
@@ -88,27 +80,27 @@ export const getUserData = async (req, res) => {
 
         if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
-        const formData = await Form.findOne({  userId: user._id });
+        const formData = await Form.findOne({ userId: user._id });
 
-        const data = await User.findOne( { _id: user._id } );
-        
+        const data = await User.findOne({ _id: user._id });
+
         const { email } = data;
-        
+
         const userData = {
             email,
         };
-        
+
         console.log(userData);
         if (!formData || !userData) {
-        return res.status(404).json({ message: "No data found for this user" });
+            return res.status(404).json({ message: "No data found for this user" });
         }
 
-        return res.status(200).json({formData, userData});
-  
+        return res.status(200).json({ formData, userData });
+
     } catch (error) {
-        
+
         console.error("Error in getGoals:", error);
         return res.status(500).json({ message: error.message });
-        
+
     }
 };

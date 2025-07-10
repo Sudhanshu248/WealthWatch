@@ -6,43 +6,43 @@ import { useNavigate } from "react-router-dom";
 
 export default function SixthPie() {
 
-      const [Foodpercentage, setFoodpercentage] = useState(0);
-        const [TransportPercentage, setTransportPercentage] = useState(0);
-        const [Personal_percentage, setPersonal_percentage] = useState(0);
-        const [Housing_percentage, setHousing_percentage] = useState(0);
-        const [Saving_percentage, setSaving_percentage] = useState(0);
-    
-        const [FoodExpences, setFoodExpences] = useState(0);
-        const [TransportExpences, setTransportExpences] = useState(0);
-        const [PersonalExpences, setPersonalExpences] = useState(0);
-        const [HousingExpences, setHousingExpences] = useState(0);
-        const [SavingExpences, setSavingExpences] = useState(0);
-    
-    
-        useEffect(() => {
-            const loadData = async () => {
-                const food = await FoodExpence();
-                const transport = await TransportExpence();
-                const personal = await PersonalExpence();
-                const saving = await SavingExpence();
-                const housing = await HousingExpence();
-                setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
-                setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
-                setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
-                setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
-                setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
-    
-                setFoodExpences(food?.foodExpence.toFixed(1) || 0);
-                setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
-                setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
-                setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
-                setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
-            }
-            loadData();
-        });
+    const [Foodpercentage, setFoodpercentage] = useState(0);
+    const [TransportPercentage, setTransportPercentage] = useState(0);
+    const [Personal_percentage, setPersonal_percentage] = useState(0);
+    const [Housing_percentage, setHousing_percentage] = useState(0);
+    const [Saving_percentage, setSaving_percentage] = useState(0);
+
+    const [FoodExpences, setFoodExpences] = useState(0);
+    const [TransportExpences, setTransportExpences] = useState(0);
+    const [PersonalExpences, setPersonalExpences] = useState(0);
+    const [HousingExpences, setHousingExpences] = useState(0);
+    const [SavingExpences, setSavingExpences] = useState(0);
 
 
-const navigate= useNavigate();
+    useEffect(() => {
+        const loadData = async () => {
+            const food = await FoodExpence();
+            const transport = await TransportExpence();
+            const personal = await PersonalExpence();
+            const saving = await SavingExpence();
+            const housing = await HousingExpence();
+            setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
+            setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
+            setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
+            setSaving_percentage(saving?.Saving_percentage.toFixed(1) || 0);
+            setHousing_percentage(housing?.Housing_percentage.toFixed(1) || 0);
+
+            setFoodExpences(food?.foodExpence.toFixed(1) || 0);
+            setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
+            setPersonalExpences(personal?.personalExpence.toFixed(1) || 0);
+            setSavingExpences(saving?.savingExpence.toFixed(1) || 0);
+            setHousingExpences(housing?.housingExpence.toFixed(1) || 0);
+        }
+        loadData();
+    });
+
+
+    const navigate = useNavigate();
     const handleClick = () => {
         navigate(`/cashflow/SixMonth/6`)
     }
@@ -151,7 +151,7 @@ const navigate= useNavigate();
                 </div>
             </div>
 
-         {location.pathname === "/cashflow/SixMonth" && <div className="h-fit ">
+            {location.pathname === "/cashflow/SixMonth" && <div className="h-fit ">
                 <button className="bg-[#2D5359] flex flex-row justify-center items-center h-fit text-white text-center text-[20px] font-medium rounded-lg py-1 px-1" onClick={handleClick}>Detail &nbsp;<i className="fa-solid fa-arrow-right"></i></button>
             </div>}
         </>

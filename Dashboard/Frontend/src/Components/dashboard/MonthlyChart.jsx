@@ -6,15 +6,15 @@ export default function MonthlyChart() {
     const [monthData, setMonthData] = useState([]);
 
     const backgroundColors = [
-  'rgb(59, 192, 95)',
-  'rgb(66, 133, 244)',
-  'rgb(116, 180, 228)',
-  'rgb(251, 188, 5)',
-  'rgb(11, 209, 235)',
-];
+        'rgb(59, 192, 95)',
+        'rgb(66, 133, 244)',
+        'rgb(116, 180, 228)',
+        'rgb(251, 188, 5)',
+        'rgb(11, 209, 235)',
+    ];
 
 
-     useEffect(() => {
+    useEffect(() => {
         const loadData = async () => {
             const food = await FoodExpence();
             const transport = await TransportExpence();
@@ -34,7 +34,7 @@ export default function MonthlyChart() {
     }, []);
 
     // console.log(monthData);
-    const labels =  ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
+    const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
 
 
     const data = {
@@ -53,7 +53,7 @@ export default function MonthlyChart() {
             hoverOffset: 3
         }]
     };
- 
+
 
     return (
         <>
@@ -66,7 +66,7 @@ export default function MonthlyChart() {
                     </div>
 
                     <div className="w-[90%] m-auto">
-                        <PieChart key={JSON.stringify(data)} data={data}/>
+                        <PieChart key={JSON.stringify(data)} data={data} />
                     </div>
 
                     <div className=" text-start font-medium mt-4">

@@ -1,21 +1,21 @@
-import "./record.css"; 
+import "./record.css";
 import { useEffect, useState, useRef } from "react";
 
 export default function Record() {
-    
+
     const [activated, setActivated] = useState(false);
     const countersRef = useRef();
 
     const countersData = [
-        { image:"/image/record1.png", label: "Happy Clients", count: 247, suffix: "k+"},
-        { image:"/image/record2.png", label: "Years of Expereince", count: 4, suffix: "+" },
-        { image:"/image/record3.png", label: "Accuracy Rate", count: 95, suffix: "%" },
-        { image:"/image/record4.png", label: "Reviews of Users", count: 4, suffix: ".5☆" },
+        { image: "/image/record1.png", label: "Happy Clients", count: 247, suffix: "k+" },
+        { image: "/image/record2.png", label: "Years of Expereince", count: 4, suffix: "+" },
+        { image: "/image/record3.png", label: "Accuracy Rate", count: 95, suffix: "%" },
+        { image: "/image/record4.png", label: "Reviews of Users", count: 4, suffix: ".5☆" },
     ];
-    
+
     useEffect(() => {
         const handleScroll = () => {
-        const container = countersRef.current;
+            const container = countersRef.current;
 
             if (container) {
                 const containerTop = container.getBoundingClientRect().top;
@@ -32,14 +32,14 @@ export default function Record() {
                 }
             }
         };
-    
+
         window.addEventListener("scroll", handleScroll);
         return () => {
-        window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", handleScroll);
         };
 
     }, [activated]);
-    
+
     const activateCounters = () => {
         const counters = document.querySelectorAll(".counter span");
 
@@ -52,8 +52,8 @@ export default function Record() {
                 if (count < target) {
                     count += increment;
                     if (count > target) count = target;
-                        counter.innerText = count;
-                        setTimeout(updateCount, 10);
+                    counter.innerText = count;
+                    setTimeout(updateCount, 10);
                 } else {
                     counter.innerText = target;
                 }
@@ -62,7 +62,7 @@ export default function Record() {
             updateCount();
         });
     };
-    
+
     const resetCounters = () => {
         const counters = document.querySelectorAll(".counter span");
         counters.forEach((counter) => {
@@ -70,7 +70,7 @@ export default function Record() {
         });
     };
 
-    return(
+    return (
         <>
             <div ref={countersRef} className="counters m-80">
 

@@ -1,4 +1,4 @@
-import {  FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalSixthMonthExpence";
+import { FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalSixthMonthExpence";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -6,15 +6,14 @@ import { useNavigate } from "react-router-dom";
 export default function SixthIndividualData() {
     const navigate = useNavigate();
 
-    
-      
+
+
     const [Foodlist, setFoodlist] = useState([]);
     const [TransportListing, setTransportListing] = useState([]);
     const [PersonalListing, setPersonalListing] = useState([]);
     const [SavingListing, setSavingListing] = useState([]);
     const [HousingListing, setHousingListing] = useState([]);
-
-const [refreshKey, setRefreshKey] = useState(0);
+    const [refreshKey, setRefreshKey] = useState(0);
 
 
     useEffect(() => {
@@ -36,14 +35,14 @@ const [refreshKey, setRefreshKey] = useState(0);
     }, [refreshKey]);
 
 
-    
+
 
     const handleclick = () => {
         navigate('/cashflow/SixMonth/6')
     }
 
     const value = location.pathname.replace("/cashflow/SixMonth/6/", "");
-  
+
 
     return (
         <>
@@ -79,7 +78,7 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                 
+
                                     </div>
                                 </div>
 
@@ -96,11 +95,11 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                      {item.name && (
-                                          <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                        </button>
-                                    )}
+                                        {item.name && (
+                                            <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
+                                                <i className="fa-solid fa-trash text-[#2D5359]"></i>
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
 
@@ -118,7 +117,7 @@ const [refreshKey, setRefreshKey] = useState(0);
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
 
-                                       
+
                                     </div>
                                 </div>
 
@@ -137,14 +136,14 @@ const [refreshKey, setRefreshKey] = useState(0);
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
 
-                                       
+
                                     </div>
                                 </div>
 
                             ))
                         }
                         {
-                            location.pathname == "/cashflow/SixMonth/6/Personal" && (PersonalListing || []).map((item, index) => (
+                            location.pathname == "/cashflow/SixMonth/6/PersonalExpence" && (PersonalListing || []).map((item, index) => (
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
@@ -155,7 +154,7 @@ const [refreshKey, setRefreshKey] = useState(0);
                                     <div className="flex flex-row gap-2">
 
                                         <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                       
+
                                     </div>
                                 </div>
 
