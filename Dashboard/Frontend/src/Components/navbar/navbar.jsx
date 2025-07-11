@@ -79,8 +79,8 @@ export default function Navbar() {
                         <img
                             src={`${BASE_URL}/uploads/${profileImage}`}
                             alt="ProfileImage"
-                            width={150}
-                            style={{borderRadius: "50%", width: "35px", height: "35px"}}                                   
+                            
+                            style={{borderRadius: "50%", width: "35px", height: "35px"}}                                    
                         />
                     </div>
 

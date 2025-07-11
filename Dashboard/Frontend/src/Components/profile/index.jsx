@@ -122,9 +122,7 @@ export default function ProfilePage() {
                                 <img
                                     src={`${BASE_URL}/uploads/${profileImage}`}
                                     alt="ProfileImage"
-
-                                    width={150}
-                                    style={{ borderRadius: "50%", width: "150px", height: "170px" }}
+                                    style={{borderRadius: "50%", width: "170px", height: "170px"}}                                    
                                 />
                             )}
                             <label className="icon" style={{ cursor: 'pointer', display: 'inline-block', lineHeight: 0 }}>

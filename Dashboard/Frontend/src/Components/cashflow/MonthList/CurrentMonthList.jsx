@@ -1,4 +1,4 @@
-import {CurrentFoodExpence, CurrentTransportExpence, CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence } from "../../data/CalCurrentMonthExpence.js";
+import { CurrentFoodExpence, CurrentTransportExpence, CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence } from "../../data/CalCurrentMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 
@@ -21,11 +21,11 @@ export default function CurrentMonthList() {
 
     useEffect(() => {
         const loadData = async () => {
-              const food = await CurrentFoodExpence();
-                    const transport = await CurrentTransportExpence();
-                    const personal = await CurrentPersonalExpence();
-                    const saving = await CurrentSavingExpence();
-                    const housing = await CurrentHousingExpence();
+            const food = await CurrentFoodExpence();
+            const transport = await CurrentTransportExpence();
+            const personal = await CurrentPersonalExpence();
+            const saving = await CurrentSavingExpence();
+            const housing = await CurrentHousingExpence();
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -55,7 +55,7 @@ export default function CurrentMonthList() {
             navigate(`/cashflow/SixMonth/1/${value}`);
         }
     };
-
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
 
     return (

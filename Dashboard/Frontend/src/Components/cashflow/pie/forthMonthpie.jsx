@@ -59,9 +59,9 @@ export default function ForthPie() {
         navigate(`/cashflow/SixMonth/4`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const data = {
         labels,
         datasets: [{

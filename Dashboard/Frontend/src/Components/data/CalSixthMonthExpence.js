@@ -58,7 +58,7 @@ export const SixthSavingExpence = async () => {
 };
 
 
-export const TotalExpence = async () => {
+export const SixthTotalExpence = async () => {
   const inputData = await fetchMonthlyData(5);
   const TotalBudget = inputData.TotalBudget || 0;
   const Expences = inputData.expence ?? [];

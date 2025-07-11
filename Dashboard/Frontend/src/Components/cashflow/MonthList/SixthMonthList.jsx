@@ -1,4 +1,4 @@
-import { SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence  } from "../../data/CalSixthMonthExpence.js";
+import { SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence } from "../../data/CalSixthMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function SixthMonthList() {
@@ -47,6 +47,7 @@ export default function SixthMonthList() {
         navigate(`/cashflow/SixMonth/6/${value}`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     return (
         <>

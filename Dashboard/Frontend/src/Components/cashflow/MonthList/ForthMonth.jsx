@@ -31,9 +31,9 @@ export default function ForthMonth() {
         loadData();
     });
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const datas = {
         labels,
         datasets: [

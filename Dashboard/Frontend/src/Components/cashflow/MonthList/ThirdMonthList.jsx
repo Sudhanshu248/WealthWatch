@@ -19,11 +19,11 @@ export default function ThirdMonthList() {
 
     useEffect(() => {
         const loadData = async () => {
-               const food = await ThirdFoodExpence();
-                      const transport = await ThirdTransportExpence();
-                      const personal = await ThirdPersonalExpence();
-                      const saving = await ThirdSavingExpence();
-                      const housing = await ThirdHousingExpence();
+            const food = await ThirdFoodExpence();
+            const transport = await ThirdTransportExpence();
+            const personal = await ThirdPersonalExpence();
+            const saving = await ThirdSavingExpence();
+            const housing = await ThirdHousingExpence();
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -47,6 +47,7 @@ export default function ThirdMonthList() {
         navigate(`/cashflow/SixMonth/3/${value}`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     return (
         <>

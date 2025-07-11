@@ -27,7 +27,7 @@ export default function SecondPie() {
             const personal = await SecondPersonalExpence();
             const saving = await SecondSavingExpence();
             const housing = await SecondHousingExpence();
-            
+
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -63,8 +63,9 @@ export default function SecondPie() {
         navigate(`/cashflow/SixMonth/2`)
     }
 
-    const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
 
+    const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const data = {
         labels,
         datasets: [{

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
-import {SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence  } from "../../data/CalSixthMonthExpence.js";
+import { SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence } from "../../data/CalSixthMonthExpence.js";
 import SixthMonthList from "./SixthMonthList.jsx";
 import SixthPie from "../pie/sixthMonthpie.jsx";
 
@@ -14,7 +14,7 @@ export default function SixthMonth() {
 
     useEffect(() => {
         const loadData = async () => {
-           const food = await SixthFoodExpence();
+            const food = await SixthFoodExpence();
             const transport = await SixthTransportExpence();
             const personal = await SixthPersonalExpence();
             const saving = await SixthSavingExpence();
@@ -31,7 +31,7 @@ export default function SixthMonth() {
         loadData();
     });
 
-
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const datas = {

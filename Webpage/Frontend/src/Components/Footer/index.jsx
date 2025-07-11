@@ -3,7 +3,7 @@ export default function Footer() {
         <>
             <div style={{ backgroundColor: "#023e8a" }}>
                 <div className="mt-5">
-                    <footer className="text-center text-white" style={{ backgroundColor: "#3f51b5" }}>
+                    <footer className="text-center text-white" style={{ backgroundColor: "#4193ff" }}>
                         <div>
                             <section className="mt-5 text-center p-3">
                                 <div className="pt-5 flex flex-row justify-center gap-10">

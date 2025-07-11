@@ -14,11 +14,11 @@ export default function ThirdMonth() {
 
     useEffect(() => {
         const loadData = async () => {
-             const food = await ThirdFoodExpence();
-                    const transport = await ThirdTransportExpence();
-                    const personal = await ThirdPersonalExpence();
-                    const saving = await ThirdSavingExpence();
-                    const housing = await ThirdHousingExpence();
+            const food = await ThirdFoodExpence();
+            const transport = await ThirdTransportExpence();
+            const personal = await ThirdPersonalExpence();
+            const saving = await ThirdSavingExpence();
+            const housing = await ThirdHousingExpence();
 
             setFoodExpences(food?.foodExpence.toFixed(1) || 0);
             setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
@@ -31,6 +31,7 @@ export default function ThirdMonth() {
         loadData();
     });
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const datas = {

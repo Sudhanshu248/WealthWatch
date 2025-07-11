@@ -47,6 +47,7 @@ export default function ForthMonthList() {
         navigate(`/cashflow/SixMonth/4/${value}`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     return (
         <>

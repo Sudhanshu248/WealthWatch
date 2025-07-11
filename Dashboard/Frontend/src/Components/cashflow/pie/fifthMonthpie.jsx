@@ -59,9 +59,9 @@ export default function FifthPie() {
         navigate(`/cashflow/SixMonth/5`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const data = {
         labels,
         datasets: [{

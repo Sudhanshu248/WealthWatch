@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
-import { FifthFoodExpence, FifthTransportExpence, FifthPersonalExpence, FifthHousingExpence, FifthSavingExpence} from "../../data/CalFifthMonthExpence.js";
+import { FifthFoodExpence, FifthTransportExpence, FifthPersonalExpence, FifthHousingExpence, FifthSavingExpence } from "../../data/CalFifthMonthExpence.js";
 import FifthMonthList from "./FifthMonthList.jsx";
 import FifthPie from "../pie/fifthMonthpie.jsx";
 
@@ -13,11 +13,11 @@ export default function FifthMonth() {
 
     useEffect(() => {
         const loadData = async () => {
-         const food = await FifthFoodExpence();
-                    const transport = await FifthTransportExpence();
-                    const personal = await FifthPersonalExpence();
-                    const saving = await FifthSavingExpence();
-                    const housing = await FifthHousingExpence();
+            const food = await FifthFoodExpence();
+            const transport = await FifthTransportExpence();
+            const personal = await FifthPersonalExpence();
+            const saving = await FifthSavingExpence();
+            const housing = await FifthHousingExpence();
 
             setFoodExpences(food?.foodExpence.toFixed(1) || 0);
             setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
@@ -30,10 +30,9 @@ export default function FifthMonth() {
         loadData();
     });
 
-
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const datas = {
         labels,
         datasets: [

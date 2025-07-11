@@ -26,7 +26,7 @@ export default function CurrPie() {
             const personal = await CurrentPersonalExpence();
             const saving = await CurrentSavingExpence();
             const housing = await CurrentHousingExpence();
-            
+
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -63,7 +63,9 @@ export default function CurrPie() {
         navigate(`/cashflow/SixMonth/1`)
     }
 
-    if (!FoodExpences || !MonthName || !Foodpercentage) return <p className="text-center mt-20">Loading...</p>;
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
+
+
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const data = {
         labels,
