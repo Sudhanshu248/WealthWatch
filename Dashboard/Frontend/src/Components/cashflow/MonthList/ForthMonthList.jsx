@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 export default function ForthMonthList() {
@@ -18,11 +18,11 @@ export default function ForthMonthList() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+        const food = await ForthFoodExpence();
+                  const transport = await ForthTransportExpence();
+                  const personal = await ForthPersonalExpence();
+                  const saving = await ForthSavingExpence();
+                  const housing = await ForthHousingExpence();
 
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
@@ -47,6 +47,7 @@ export default function ForthMonthList() {
         navigate(`/cashflow/SixMonth/4/${value}`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     return (
         <>
@@ -67,7 +68,7 @@ export default function ForthMonthList() {
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >
                             <button className="text-xl font-medium hover:cursor-pointer" value='Food' onClick={handleclick}>Food</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Foodpercentage.toFixed(1)}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Foodpercentage}%</p>
                         </div>
                         <div>
 
@@ -79,7 +80,7 @@ export default function ForthMonthList() {
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2 hover:cursor-pointer">
                         <div className="flex flex-row gap-2">
                             <button className="text-xl font-medium hover:cursor-pointer" value='Housing' onClick={handleclick}>Housing</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Housing_percentage.toFixed(1)}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Housing_percentage}%</p>
                         </div>
                         <div>
 
@@ -92,7 +93,7 @@ export default function ForthMonthList() {
                         <div className="flex flex-row gap-2">
 
                             <button className="text-xl font-medium hover:cursor-pointer" value='PersonalExpence' onClick={handleclick}>Personal expence</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Personal_percentage.toFixed(1)}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Personal_percentage}%</p>
                         </div>
                         <div>
 
@@ -105,7 +106,7 @@ export default function ForthMonthList() {
                         <div className="flex flex-row gap-2">
 
                             <button className="text-xl font-medium hover:cursor-pointer" value='Transport' onClick={handleclick}>Transport</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{TransportPercentage.toFixed(1)}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{TransportPercentage}%</p>
                         </div>
                         <div>
 
@@ -118,7 +119,7 @@ export default function ForthMonthList() {
                         <div className="flex flex-row gap-2">
 
                             <button className="text-xl font-medium hover:cursor-pointer" value='Saving' onClick={handleclick}>Saving</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Saving_percentage.toFixed(1)}%</p>
+                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Saving_percentage}%</p>
                         </div>
                         <div>
 

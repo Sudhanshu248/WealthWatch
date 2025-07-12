@@ -1,7 +1,7 @@
 import { fetchMonthlyData } from "./InputData.js";
 
 const getCategoryData = async (categoryIndex) => {
-  const inputData = await fetchMonthlyData(2);
+  const inputData = await fetchMonthlyData(4);
   const TotalBudget = inputData.TotalBudget || 0;
   const categoryItems = inputData.expence?.[categoryIndex]?.items || {};
 
@@ -25,39 +25,39 @@ const getCategoryData = async (categoryIndex) => {
   };
 };
 
-export const FoodExpence = async () => {
+export const SecondFoodExpence = async () => {
   const { listing: Foodlist, total: foodExpence, percentage: Foodpercentage, TotalBudget } =
     await getCategoryData(0);
   return { Foodlist, foodExpence, Foodpercentage, TotalBudget };
 };
 
-export const TransportExpence = async () => {
+export const SecondTransportExpence = async () => {
   const { listing: TransportListing, total: transportExpence, percentage: TransportPercentage } =
     await getCategoryData(1);
   return { TransportListing, transportExpence, TransportPercentage };
 };
 
-export const PersonalExpence = async () => {
+export const SecondPersonalExpence = async () => {
   const { listing: PersonalListing, total: personalExpence, percentage: Personal_percentage } =
     await getCategoryData(2);
   return { PersonalListing, personalExpence, Personal_percentage };
 };
 
-export const HousingExpence = async () => {
+export const SecondHousingExpence = async () => {
   const { listing: HousingListing, total: housingExpence, percentage: Housing_percentage } =
     await getCategoryData(3);
   return { HousingListing, housingExpence, Housing_percentage };
 };
 
-export const SavingExpence = async () => {
+export const SecondSavingExpence = async () => {
   const { listing: SavingListing, total: savingExpence, percentage: Saving_percentage } =
     await getCategoryData(4);
   return { SavingListing, savingExpence, Saving_percentage };
 };
 
 
-export const TotalExpence = async () => {
-  const inputData = await fetchMonthlyData(2);
+export const SecTotalExpence = async () => {
+  const inputData = await fetchMonthlyData(4);
   const TotalBudget = inputData.TotalBudget || 0;
   const Expences = inputData.expence ?? [];
 
@@ -72,6 +72,6 @@ export const TotalExpence = async () => {
 };
 
 export const ForthDate = async () => {
-  const data = await fetchMonthlyData(2);
+  const data = await fetchMonthlyData(4);
   return data.date;
 };

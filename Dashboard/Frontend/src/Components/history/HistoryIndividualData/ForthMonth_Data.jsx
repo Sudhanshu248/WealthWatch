@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence, ForthTransportExpence, ForthHousingExpence, ForthSavingExpence, ForthPersonalExpence } from "../../data/CalForthMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -20,11 +20,11 @@ export default function ForthHistoryIndividual() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await ForthFoodExpence();
+            const transport = await ForthTransportExpence();
+            const personal = await ForthPersonalExpence();
+            const saving = await ForthSavingExpence();
+            const housing = await ForthHousingExpence();
 
             setFoodlist(food?.Foodlist || []);
             setTransportListing(transport?.TransportListing || []);

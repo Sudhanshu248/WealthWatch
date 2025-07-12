@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence  } from "../../data/CalForthMonthExpence.js";
 
 import ForthMonthList from "./ForthMonthList.jsx";
 import ForthPie from "../pie/ForthMonthpie.jsx";
@@ -14,11 +14,11 @@ export default function ForthMonth() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+           const food = await ForthFoodExpence();
+            const transport = await ForthTransportExpence();
+            const personal = await ForthPersonalExpence();
+            const saving = await ForthSavingExpence();
+            const housing = await ForthHousingExpence();
 
             setFoodExpences(food?.foodExpence.toFixed(1) || 0);
             setTransportExpences(transport?.transportExpence.toFixed(1) || 0);
@@ -31,9 +31,9 @@ export default function ForthMonth() {
         loadData();
     });
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const datas = {
         labels,
         datasets: [

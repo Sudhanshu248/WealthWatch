@@ -40,7 +40,7 @@ router.post("/updateProfilePicture", (req, res) => {
 
 router.route("/updateProfilePicture").post(upload.single('profileImage'), uploadProfilePicture);
 router.route("/updateProfileData").post(updateProfileData);
-
 router.get('/getUserProfile', getUserData);
+
 
 export default router;

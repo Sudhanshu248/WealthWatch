@@ -82,8 +82,8 @@ export default function ProfilePage() {
 
         try {
             await axios.post(`${BASE_URL}/updateProfileData`, {
-                name: "profession",
-                value: profession,
+                profession,
+                income
             }, {
                 headers: {
                     "Content-Type": "application/json",
@@ -91,22 +91,14 @@ export default function ProfilePage() {
                 },
             });
 
-            await axios.post(`${BASE_URL}/updateProfileData`, {
-                name: "income",
-                value: income,
-            }, {
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": userToken,
-                },
-            });
+
             alert("Profile Updated Successfully");
 
         } catch (error) {
             console.error("Error updating profile:", error.message);
-            return;
         }
     };
+
 
 
     return (

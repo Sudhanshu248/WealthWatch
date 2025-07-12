@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence.js";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { BASE_url } from "../../axios.config.js";
+import { BASE_URL } from "../../../../backend/axiosConfig.js";
 
 export const fetchMonthlyData = async (monthIndex) => {
   const token = localStorage.getItem("token");
@@ -38,3 +39,19 @@ export const fetchMonthlyData = async (monthIndex) => {
     };
   }
 };
+
+ export  const fetchGoalsFromBackend = async () => {
+
+        try {
+            const response = await axios.get(`${BASE_URL}/getUserProfile`, {
+                headers: {
+                    Authorization: localStorage.getItem("token"),
+                },
+            });
+
+           const TotalBudget = response?.data?.formData.income;
+           return TotalBudget
+        } catch (error) {
+            console.error("Error while fetching goals:", error.message);
+        }
+    };

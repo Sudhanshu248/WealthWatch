@@ -1,4 +1,4 @@
-import { FoodExpence, TransportExpence, HousingExpence, SavingExpence, PersonalExpence } from "../../data/CalSecondMonthExpence.js";
+import { SecondFoodExpence, SecondTransportExpence, SecondPersonalExpence, SecondHousingExpence, SecondSavingExpence } from "../../data/CalSecondMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -20,11 +20,11 @@ export default function SecondHistoryIndividual() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await SecondFoodExpence();
+            const transport = await SecondTransportExpence();
+            const personal = await SecondPersonalExpence();
+            const saving = await SecondSavingExpence();
+            const housing = await SecondHousingExpence();
 
             setFoodlist(food?.Foodlist || []);
             setTransportListing(transport?.TransportListing || []);

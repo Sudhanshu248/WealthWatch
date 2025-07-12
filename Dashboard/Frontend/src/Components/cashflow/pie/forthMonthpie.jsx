@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PieChart from "./pieChart.jsx";
-import { FoodExpence, TransportExpence, PersonalExpence, HousingExpence, SavingExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence.js";
 import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
 
@@ -20,11 +20,11 @@ export default function ForthPie() {
 
     useEffect(() => {
         const loadData = async () => {
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await ForthFoodExpence();
+            const transport = await ForthTransportExpence();
+            const personal = await ForthPersonalExpence();
+            const saving = await ForthSavingExpence();
+            const housing = await ForthHousingExpence();
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -59,9 +59,9 @@ export default function ForthPie() {
         navigate(`/cashflow/SixMonth/4`)
     }
 
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
-
     const data = {
         labels,
         datasets: [{
