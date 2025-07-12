@@ -2,7 +2,9 @@
     padding: 3em 0;
     color: #fff;
     display: flex;
-    margin: 3rem 11rem 2rem 15rem;
+    gap: 1.5rem;
+    margin: 0 auto;
+    margin: 0 12rem;
     justify-content: space-between;
 }
 
@@ -15,7 +17,7 @@
     padding: 12px;
     display: flex;
     flex-direction: column;
-    width: 15rem;
+    width: 13rem;
     border: 2px solid #fff;
     background: #4193ff;
     border-radius: 25px;
@@ -34,4 +36,55 @@
     top: 50%;
     transform: translateY(-50%);
     right: -1em;
+}
+
+@media screen and (max-width: 1200px){
+    .counters{
+        margin: 0 8rem;
+    }
+}
+
+@media screen and (max-width: 1060px){
+    .counters{
+        margin: 0 4rem;
+        gap: 0.8rem;
+    }
+    .counter{
+        width: 12rem;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .counters{
+        margin: 0 15px;
+        gap: 10px;
+    }
+    .counter{
+        width: 12rem;
+    }
+    .counter h1{
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 790px){
+    .counters{
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        align-items: center;
+    }
+    .counter h1{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .counters{
+        display: flex;
+        margin: auto;
+        gap: 3rem;
+        align-items: center;
+        flex-direction: column;
+    }
 }

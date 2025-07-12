@@ -40,7 +40,7 @@ export default function Card() {
                     </div>
 
                     <div className="text-start max-[744px]:text-center flex flex-col gap-4">
-                        <h1 className="text-start max-[744px]:text-center text-5xl font-bold max-[840px]:text-3xl " style={{ color: "#023e8a" }}>Budget recommendation</h1>
+                        <h1 className="text-start max-[744px]:text-center text-5xl font-bold max-[840px]:text-3xl " style={{ color: "#023e8a" }}>Budget </h1>
                         <p className="text-gray-600">We help you build a budget that fits your life. Based on how you spend, we suggest smart ways to manage your money and save more.</p>
                     </div>
 

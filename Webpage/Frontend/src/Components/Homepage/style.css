@@ -60,21 +60,93 @@
 }
 
 
-@media screen and (max-width: 955px) {
+@media screen and (max-width: 965px) {
   #home-text {
-    font-size: 40px;
+    font-size: 45px;
   }
 
   #home-btn {
     font-size: large;
     padding: 2px 0px 2px 0px;
-    max-width: 150px;
+  }
+  #home-btn{
+    padding: 0.75rem;
+    max-width: 290px ;
+  }
+  #home-block{
+    width: 200px;
+    /* padding: 15px; */
   }
 }
 
 @media screen and (max-width: 750px) {
   #home-block {
-    width: 210px;
+    width: 250px;
+    margin: auto;
     padding: 15px;
   }
+  #home-text {
+    font-size: 41px;
+  }
+  #home-btn{
+    max-width: 270px;
+  }
 }
+
+@media  screen and (max-width: 670px) {
+  #home-text{
+    font-size: 37px;
+  }
+  #home-text .first-text{
+    margin: 0;
+  }
+  #home-btn{
+    max-width: 250px;
+  }
+}
+
+@media  screen and (max-width: 580px) {
+  #home-text{
+    font-size: 30px;
+  }
+  #home-text .first-text{
+    margin: 0 21px;
+  }
+  #home-text .second-text{
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+  #home-btn{
+    max-width: 230px;
+  }
+}
+
+@media  screen and (max-width: 380px) {
+  #home-text{
+    font-size: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    height: 46vh !important;
+  }
+  #home-text .second-text{
+    margin: 1rem 1rem;
+  }
+  #home-block {
+    border-radius: 30px;
+    margin: 10px auto 0;
+    width: 220px;
+  }
+  #home-text .text-center{
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+  #home-btn{
+    padding: 10px;
+    max-width: 210px ;
+    margin: 0;
+  }
+  .blocks{
+    margin-top: 40px;
+  }
+}
+

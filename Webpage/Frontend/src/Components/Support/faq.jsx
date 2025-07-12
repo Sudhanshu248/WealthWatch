@@ -16,12 +16,12 @@ export default function Faq() {
 
             {/* Heading */}
             <div className="text-center mt-32 mb-16">
-                <h1 className="font-semibold text-4xl cabin-fam">Frequently Asked Questions</h1>
+                <h1 className="font-semibold text-4xl cabin-fam px-3" style={{ color: "#023e8a" }}>Frequently Asked Questions</h1>
             </div>
 
 
             {/* FAQ Question */}
-            <div className="text-center px-16 py-6 mb-16 flex flex-col  gap-8">
+            <div className="faq-box text-center px-16 py-6 mb-16 flex flex-col  gap-8">
 
                 {/* FAQ-1 */}
                 <div className="faq-outer m-auto w-[80%] h-[5rem]  rounded-full text-center flex flex-row justify-between align-item-center"
@@ -38,7 +38,7 @@ export default function Faq() {
 
                     </div>
 
-                    <div className="w-1/2  font-bold text-[20px] mt-4 px-6 grow">
+                    <div className="faq-text w-1/2  font-bold text-[20px] mt-4 px-6 grow">
                         {!hovered1 ? "What is WealthWatch?" : "An expense tracker is a tool or app that helps you record, categorize, and monitor your spending to manage your finances effectively."}
                     </div>
 
@@ -52,7 +52,7 @@ export default function Faq() {
                     id={hovered2 ? "faq-outer" : ""}
                 >
 
-                    <div className="w-1/2 font-bold text-[20px] mt-4 px-6 grow">
+                    <div className="faq-text w-1/2 font-bold text-[20px] mt-4 px-6 grow">
                         {!hovered2 ? "How do I add an expense or income?" : "Go to the add transaction section, enter the details (amount, category, date), and save."}
                     </div>
 
@@ -76,7 +76,7 @@ export default function Faq() {
                 >
 
 
-                    <div className="faq-inner text-white  text-center  rounded-full bg-blue-700 w-[80px] h-[80px] text-sm font-semibold relative hover:scale-105 "
+                    <div className="faq-inner text-white  text-center  rounded-full w-[80px] h-[80px] text-sm font-semibold relative hover:scale-105 "
                         id={hovered3 ? "faq-inner" : ""}
                         onMouseEnter={() => setHovered3(true)}
                         onMouseLeave={() => setHovered3(false)}>
@@ -85,7 +85,7 @@ export default function Faq() {
 
                     </div>
 
-                    <div className="w-1/2 font-bold text-[20px] mt-4 px-6 grow">
+                    <div className="faq-text w-1/2 font-bold text-[20px] mt-4 px-6 grow">
                         {!hovered3 ? "Is my data secure?" : "Yes, all your data is stored securely and never shared with third parties."}
                     </div>
 
@@ -96,7 +96,7 @@ export default function Faq() {
                 <div className="faq-outer m-auto w-[80%] h-[5rem]  rounded-full text-center flex flex-row justify-between align-item-center"
                     id={hovered4 ? "faq-outer" : ""}
                 >
-                    <div className="w-1/2  font-bold text-[20px] mt-4 px-6 grow">
+                    <div className="faq-text w-1/2  font-bold text-[20px] mt-4 px-6 grow">
                         {!hovered4 ? "Can I set budgets for different categories?" : "Yes, you can set monthly budgets per category and track your progress."}
                     </div>
 
@@ -129,7 +129,7 @@ export default function Faq() {
 
                     </div>
 
-                    <div className="w-1/2 font-bold text-[20px] mt-4 px-6 grow">
+                    <div className="faq-text w-1/2 font-bold text-[20px] mt-4 px-6 grow">
                         {!hovered5 ? "Is my data secure?" : "Yes, all your data is stored securely and never shared with third parties."}
                     </div>
 
@@ -140,7 +140,7 @@ export default function Faq() {
                 <div className="faq-outer m-auto w-[80%] h-[5rem]  rounded-full text-center flex flex-row justify-between align-item-center"
                     id={hovered6 ? "faq-outer" : ""}
                 >
-                    <div className="w-1/2  font-bold text-[20px] mt-4 px-6 grow">
+                    <div className="faq-text w-1/2  font-bold text-[20px] mt-4 px-6 grow">
                         {!hovered6 ? "Can I set budgets for different categories?" : "Yes, you can set monthly budgets per category and track your progress."}
                     </div>
 

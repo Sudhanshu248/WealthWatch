@@ -2,7 +2,7 @@ export default function Team() {
     return (
         <>
             <div >
-                <h1 className='text-center text-5xl mx-20 mb-10 '>The Minds Behind this Magic</h1>
+                <h1 className='text-center text-5xl mx-20 mb-10 '>The Minds Behind This Magic</h1>
 
                 <div className="mx-60 flex">
                     <div className="flex-4  justify-items-center p-5" >

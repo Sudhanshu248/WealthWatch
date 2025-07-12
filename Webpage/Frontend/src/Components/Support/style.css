@@ -47,7 +47,7 @@
 
 /* Back of the card */
 .flip-card-back {
-  background-color: #1e3a8a; /* dark blue */
+  background-color: #023e8a;
   color: white;
   transform: rotateY(180deg);
   display: flex;
@@ -57,18 +57,44 @@
 }
 
 .faq-outer{
-  background-color:#60A5FA ;
-  color: #1e3a8a;
+  background-color: #a2d2ff ;
+  color: #023e8a;
 }
 
-#faq-inner{
-  background-color: #2b898b;
+.faq-inner{
+  background-color: #023e8a;
 }
 
 #faq-outer{
-   /* background-color: #8d89ff; */
+   background-color: #4193ff;
+   /* width: 95%; */
    color: white;
-   background-color: #38a3a5;
+   /* background-color: #38a3a5; */
   transition: transform 0.3s;
   transform-style: unset;
+}
+
+@media screen and (max-width: 750px) {
+  .faq-text{
+    padding: 13px;
+    margin: 0;
+  }
+  .faq-box{
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #support-heading{
+    font-size: 32px;
+  }
+  #card-one{
+    padding: 10px;
+  }
+  .faq-text{
+    font-size: 17px;
+  }
+  .faq-outer{
+    width: 90%;
+  }
 }
