@@ -1,0 +1,40 @@
+
+@media screen and (max-width: 1030px) {
+
+    .history-individual{
+        margin-left: 0px;
+    }
+    .history{
+        margin-left: 0px;
+    }
+
+}
+@media screen and (max-width: 550px) {
+    .history-individual-1 {
+        padding: 6px 14px;
+    }
+    .history-individual{
+        padding: 5px 12px;
+
+    }
+     .history{
+         padding: 5px 12px;
+    }
+    .monthlist {
+        padding: 5px 12px;
+    }
+
+    .monthlist-1 {
+        padding: 0px;
+    }
+
+
+}
+
+@media screen and (max-width: 420px) {
+
+    .monthlist-head {
+        text-align: center;
+    }
+
+}

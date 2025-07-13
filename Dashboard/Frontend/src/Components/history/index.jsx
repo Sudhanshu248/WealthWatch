@@ -44,7 +44,7 @@ export default function HistoryPage() {
 
     return (
         <div className="flex flex-row">
-            <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.9vh] w-[60vw] grow px-8 py-4">
+            <div className="history bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.9vh] w-[60vw] grow px-8 py-4">
                 <h1 className="text-3xl text-emerald-900 font-bold text-start">History</h1>
 
                 {/* Dropdown */}
@@ -53,7 +53,7 @@ export default function HistoryPage() {
                     name="category"
                     value={currentMonth}
                     onChange={handleChange}
-                    className="bg-gray-300 text-gray-500 rounded-md w-[10%] h-[40px] p-2 my-4"
+                    className="bg-gray-300 text-gray-500 rounded-md w-[8rem] h-[40px] p-2 my-4"
                     style={{ border: "none", outline: "none" }}
                 >
                     {MonthName.map((name, index) => (

@@ -1,0 +1,84 @@
+@media screen and (max-width: 1030px) {
+    .dashboard {
+        margin-left: 0px;
+    }
+
+
+}
+
+@media screen and (max-width: 770px) {
+    .d-1 {
+        margin-bottom: 55px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .d-1 {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .balance-1 {
+
+        width: 100%;
+
+    }
+
+    .monthlychart {
+        flex-direction: row;
+        width: 100%;
+    }
+
+    .monthchart-2 {
+        flex-direction: row;
+    }
+
+    .piechart-1 {
+        width: 380px;
+    }
+
+}
+
+@media screen and (max-width: 445px) {
+    .monthchart-1{
+        padding: 10px 10px;
+    }
+    .piechart-1 {
+        width: 300px;
+    }
+
+    .add-daily {
+        padding: 2px 15px;
+    }
+
+    .add-daily-b-1 {
+        width: 100%;
+    }
+
+    .add-daily-b-2 {
+
+        width: 100%;
+    }
+
+    .add-daily-b-3 {
+
+        width: 100%;
+    }
+    .anomaly-alert{
+        text-align: center;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .add-b{
+        width: 49%;
+    }
+    .progess-bar{
+        padding: 2px 8px;
+    }
+}
+
+@media screen and (max-width: 1024px)and(min-width :780px) {
+    .d-1 {
+        margin-bottom: 10px;
+    }
+}

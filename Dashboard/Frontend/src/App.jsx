@@ -20,6 +20,7 @@ import FifthIndividualData from './Components/cashflow/IndividualCashflowData/Fi
 import SixthIndividualData from './Components/cashflow/IndividualCashflowData/SixthIndividualData.jsx'
 import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
+import PhoneBar from './Components/sidebar/phonebar.jsx'
 
 
 function AppRoutes() {
@@ -30,17 +31,16 @@ function AppRoutes() {
   return (
     <>
       {!shouldHideLayout && <Navbar />}
-      {!shouldHideLayout && <div className='fixed  left-0 h-[100%] px-2 bg-[#B8D7DE8C] rounded-md mt-4   w-[16vw]'>
+
+      {!shouldHideLayout && <div className='sidebar fixed  left-0 h-[100%] pl-4 pr-16 bg-[#B8D7DE8C] rounded-md mt-4 w-fit '>
         <Sidebar />
       </div>}
 
 
       <Routes>
-
- 
         <Route path='/' element={<Dashboard />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/budgetRecommendation/ai' element={<BudgetRecommendation/>} />
+        <Route path='/budgetRecommendation/ai' element={<BudgetRecommendation />} />
         <Route path='/blogs' element={<BlogPage />} />
         <Route path='/profile' element={<ProfilePage />} />
         <Route path='/login' element={<Login />} />
@@ -52,17 +52,19 @@ function AppRoutes() {
         <Route path='/goals' element={<GoalsPage />} />
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
-        <Route path='/cashflow/SixMonth/:urlId' element={<CashflowIndividual/>}/>
-        <Route path='/cashflow/SixMonth/1/:id' element={<CurrentIndividualData/>}/>
-        <Route path='/cashflow/SixMonth/2/:id' element={<SecondIndividualData/>}/>
-        <Route path='/cashflow/SixMonth/3/:id' element={<ThirdIndividualData/>}/>
-        <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData/>}/>
-        <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData/>}/>
-        <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData/>}/>
+        <Route path='/cashflow/SixMonth/:urlId' element={<CashflowIndividual />} />
+        <Route path='/cashflow/SixMonth/1/:id' element={<CurrentIndividualData />} />
+        <Route path='/cashflow/SixMonth/2/:id' element={<SecondIndividualData />} />
+        <Route path='/cashflow/SixMonth/3/:id' element={<ThirdIndividualData />} />
+        <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData />} />
+        <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData />} />
+        <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData />} />
 
 
       </Routes>
-
+      <div className="phone-bar fixed bottom-0  left-0 w-full h-[40px] bg-[#2D5359] ">
+        <PhoneBar />
+      </div>
     </>
   )
 }

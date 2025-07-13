@@ -17,9 +17,12 @@ export default function Form() {
     const [profession, setProfession] = useState("");
     const [income, setIncome] = useState("");
     const [error, setError] = useState("");
+       const [success ,setSuccess] = useState("")
+    
 
     const handleDashboard = async () => {
         try {
+             setSuccess("")
             const email = localStorage.getItem("userEmail");
             console.log(`${BASE_URL}/form`);
             console.log("Payload:", { name, profession, income, email });
@@ -45,6 +48,7 @@ export default function Form() {
 
             if (respond.data) {
                 console.log("Form response", respond.data);
+                  setSuccess("SuccessFully Signed Up");
                 navigate(`/dashboard`);
             }
         } catch (error) {
@@ -65,7 +69,7 @@ export default function Form() {
             <div className="box m-120">
                 <button className="text-center m-4 w-50 p-3 px-0 font-bold font-lg rounded-md" style={{ border: "3px solid #2D5359" }}> User Details</button>
                 {error && <div className="text-red-600 font-mediud">{error}</div>}
-
+ {success && <div className="text-green-600 font-mediud">{success}</div>}
                 <div className="form">
 
                     <div className="input flex p-3  rounded-xl my-7">

@@ -1,10 +1,9 @@
 import "./style.css";
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../../../../backend/axiosConfig";
 import { WEBPAGE_URL } from "../../../../backend/axiosConfig";
-
 
 export default function Signup() {
 
@@ -21,9 +20,9 @@ export default function Signup() {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const handleSignUp = async () => {
         try {
@@ -41,13 +40,11 @@ export default function Signup() {
                 timeout: 5000 // 5 second timeout
             });
 
-            console.log("Signup response:", response.data);
-
             if (response.data && response.data.token) {
                 localStorage.setItem('token', response.data.token);
                 localStorage.setItem("userEmail", email); // Save email locally
+                setSuccess("SuccessFully Signed Up");
                 navigate("/form"); // Go to form page
-
             }
 
         } catch (error) {
@@ -59,6 +56,8 @@ export default function Signup() {
             setLoading(false);
         }
     }
+
+
 
     return (
         <>
@@ -72,9 +71,8 @@ export default function Signup() {
                 <div className="box">
                     <button className="text-center m-4 w-30 p-3 px-0 font-bold font-sm rounded-md" style={{ border: "2px solid #023e8a" }}> Sign up</button>
                     {error && <div className="text-red-600 font-mediud">{error}</div>}
-
+                    {success && <div className="text-green-600 font-mediud">{success}</div>}
                     <div className="w-[90%]">
-
                         <div className="username flex pt-5 pb-1" style={{ borderBottom: "2px solid rgba(0, 0, 0, 0.2" }}>
                             <img src="/image/signUp-user.png" alt="signUp-user.png" className='w-9 h-9 p-2' />
                             <input type="name" id="username" placeholder='Enter your username' className='p-6 ml-1'

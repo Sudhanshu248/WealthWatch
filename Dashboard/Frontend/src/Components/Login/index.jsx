@@ -19,7 +19,7 @@ export default function Login() {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
+    const [success, setSuccess] = useState("")
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(false);
 
@@ -31,6 +31,7 @@ export default function Login() {
 
         try {
             setLoading(true);
+            setSuccess("")
             setError("");
 
             const response = await axios.post(`${BASE_URL}/login`, {
@@ -47,6 +48,7 @@ export default function Login() {
 
             if (response.data && response.data.token) {
                 localStorage.setItem('token', response.data.token);
+                setSuccess("SuccessFully Signed Up");
                 navigate(`/dashboard`);
             } else {
                 setError("Invalid credentials. Please try again.");
@@ -79,6 +81,17 @@ export default function Login() {
                 <div className="box">
                     <button className="text-center m-4 w-30 p-3 px-0 font-bold font-sm rounded-md" style={{ border: "2px solid #023e8a" }}> Login</button>
                     {error && <div className="text-red-600 font-mediud">{error}</div>}
+                    {success && <div style={{
+                        backgroundColor: "#d4edda",
+                        border: "1px solid #c3e6cb",
+                        color: "#155724",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        marginTop: "10px"
+                    }}>
+                        ✅ Login successful!
+                    </div>
+                    }
 
                     <div className="w-[90%]">
 

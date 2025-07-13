@@ -1,7 +1,7 @@
 import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence.js";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
-
+import '../style.css'
 export default function ForthHistory() {
 
     const navigate = useNavigate();
@@ -21,11 +21,11 @@ export default function ForthHistory() {
     useEffect(() => {
         const loadData = async () => {
 
-            const food = await FoodExpence();
-            const transport = await TransportExpence();
-            const personal = await PersonalExpence();
-            const saving = await SavingExpence();
-            const housing = await HousingExpence();
+            const food = await ForthFoodExpence();
+            const transport = await ForthTransportExpence();
+            const personal = await ForthPersonalExpence();
+            const saving = await ForthSavingExpence();
+            const housing = await ForthHousingExpence();
 
             setFoodpercentage(food?.Foodpercentage || 0);
             setTransportPercentage(transport?.TransportPercentage || 0);
@@ -44,25 +44,26 @@ export default function ForthHistory() {
 
     const handleclick = (e) => {
         const value = e.target.value;
-        const path = location.pathname;
-        navigate(`${path}/${value}`)
+        
+        navigate(`/historys/${value}`)
     };
 
+    const monthName = location.pathname.replace('/historys/' ,'');
 
 
     return (
         <>
             {/* History Data */}
-            <div className="w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
 
                 {/* Heading */}
-                <div className="font-medium text-xl ">
-                    Current Month Data
+                <div className="monthlist-head font-medium text-xl ">
+                 {monthName}
                 </div>
 
 
                 {/* Data */}
-                <div className="w-full h-fit  rounded-2xl px-8  ">
+                <div className="monthlist-1 w-full h-fit  rounded-2xl px-8  ">
 
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
