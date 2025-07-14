@@ -42,8 +42,8 @@ const testimonialsData = [
 const Testimonials = () => {
 
   return (
-    <div className=" mx-40 p-20 w-[30]vw h-[10]vh">
-      <h1 className="text-5xl text-center mb-2">Loved By People</h1>
+    <div className="testimonials mx-40 p-20 w-[27]vw h-[10]vh">
+      <h1 className="testimonials-heading text-5xl text-center mb-2 font-medium" style={{color: "rgb(2, 62, 138)"}}>Loved By People</h1>
 
       <Swiper
         modules={[Navigation, Pagination]}
@@ -56,11 +56,11 @@ const Testimonials = () => {
       >
         {testimonialsData.map((testimonial, index) => (
           <SwiperSlide key={index}>
-            <div className="testominals flex items-center mx-20 my-12">
+            <div className="testimonials-box flex items-center mx-20 my-12">
               <img src={testimonial.image} alt="Testimonial" className="w-80 h-90 rounded-xl" />
-              <div className="pl-30">
-                <p className="mb-10">{testimonial.text}</p>
+              <div className="testimonials-text pl-30">
                 <p className="font-bold">{testimonial.author}</p>
+                <p className="">{testimonial.text}</p>
               </div>
             </div>
           </SwiperSlide>

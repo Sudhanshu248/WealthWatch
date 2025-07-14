@@ -14,3 +14,31 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+  #logo img{
+    width: 160px;
+  }
+}
+
+@media  screen and (max-width: 380px) {
+  #footer-text{
+   padding: 0; 
+  }
+  #links{
+    gap: 24px;
+  }
+  #icons{
+    padding-top: 0;
+  }
+  #navbar{
+    padding: 0 7px;
+  }
+  #logo{
+    padding: 0;
+    width: fit-content;
+  }
+  #nav-btn{
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

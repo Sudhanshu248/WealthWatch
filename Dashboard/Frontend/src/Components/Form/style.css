@@ -13,25 +13,12 @@
     border: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-.box{
-    background-color: #fff;
-    height: 70vh; 
-    width: 30%; 
-    margin: auto;
-    border-radius: 10px; 
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-}
-
-.box input{
-    width: 100%;
-    padding: 0;   
-    color: #254449;
-}
-
 .form{
     width: 90%;
+}
+
+@media screen and (max-width: 520px) {
+    #form-btn{
+        width: 90%;
+    }
 }

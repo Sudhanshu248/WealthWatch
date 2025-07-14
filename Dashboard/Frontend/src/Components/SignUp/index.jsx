@@ -62,7 +62,7 @@ export default function Signup() {
     return (
         <>
             <div className="page" style={{ backgroundColor: "rgba(0, 0, 0, 0.4)", height: "100vh" }}>
-                <button className="text-center m-4  px-5 py-2 font-bold font-sm text-white rounded-md hover:scale-105 cursor-pointer"
+                <button className="text-center m-4  px-5 mb-17 py-2 font-bold font-sm text-white rounded-md hover:scale-105 cursor-pointer"
                     style={{ backgroundColor: "#023e8a" }} onClick={handleclick}>
                     <i className="fa-solid fa-arrow-left" style={{ color: "#fff" }}></i> &nbsp;
                     Back

@@ -72,7 +72,7 @@ export default function Record() {
 
     return (
         <>
-            <div ref={countersRef} className="counters m-80">
+            <div ref={countersRef} className="counters">
 
                 {countersData.map((item, index) => (
                     <div key={index} className="counter">

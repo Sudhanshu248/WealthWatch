@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./style.css";
+import "../SignUp/style.css"
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import { BASE_URL } from "../../../../backend/axiosConfig";
@@ -60,7 +61,7 @@ export default function Form() {
     return (
         <> <div className="page">
 
-            <button className="text-center m-4  px-5 py-2 font-bold font-sm text-white rounded-md hover:scale-105 cursor-pointer"
+            <button className="text-center m-4  px-5 py-2 mb-17 font-bold font-sm text-white rounded-md hover:scale-105 cursor-pointer"
                 style={{ backgroundColor: "#2D5359" }} onClick={handleclick}>
                 <i className="fa-solid fa-arrow-left" style={{ color: "#fff" }}></i> &nbsp;
                 Back
@@ -92,7 +93,7 @@ export default function Form() {
                 </div>
 
                 <div className="w-full text-center items-center h-[20%]">
-                    <button className="m-4 w-[70%] px-5 py-2 font-bold font-sm text-white hover:scale-105 cursor-pointer"
+                    <button id="form-btn" className="m-4 w-[70%] px-5 py-2 font-bold font-sm text-white hover:scale-105 cursor-pointer"
                         style={{ backgroundColor: "#2D5359", borderRadius: "45px" }}
                         onClick={handleDashboard} >
                         Go to Dashboard

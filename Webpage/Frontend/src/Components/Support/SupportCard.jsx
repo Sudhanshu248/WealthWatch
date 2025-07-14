@@ -2,16 +2,16 @@ import "./style.css"
 export default function SupportCard() {
     return (
         <>
-            <h1 className="text-center text-4xl font-semibold pl-16 mt-8 text-shadow-md">Tips and Answer</h1>
+            <h1 id="support-heading" className="text-center text-4xl font-semibold px-5 mt-18" style={{ color: "#023e8a" }}>Tips and Answer</h1>
 
             {/* Flips Card */}
-            <div className="text-center flex flex-row flex-wrap align-item-center justify-center-safe px-8 mt-12 mb-12 gap-16">
+            <div className="text-center flex flex-row flex-wrap align-item-center justify-center-safe px-8 mt-6 mb-12 gap-16">
 
                 {/* Flip card 1 */}
-                <div className="flip-card  ">
+                <div  className="flip-card  ">
 
                     <div className="flip-card-inner p-4">
-                        <div className="flip-card-front flex flex-col py-8 px-2">
+                        <div id="card-one" className="flip-card-front flex flex-col py-8 px-2">
                             <img src="/image/ai.png" style={{ margin: "auto", height: "110px", width: "125px" }} alt="AI_image" />
 
                             <h1 className="font-semibold text-2xl text-blue-900 mt-4 text-shadow-lg">Budget Recommendation </h1>

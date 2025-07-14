@@ -1,4 +1,4 @@
-import "./style.css";
+import "../SignUp/style.css";
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -72,7 +72,7 @@ export default function Login() {
     return (
         <>
             <div className="page" style={{ backgroundColor: "rgba(0, 0, 0, 0.4)", height: "100vh" }}>
-                <button className="text-center m-4  px-5 py-2 font-bold font-sm text-white rounded-md hover:scale-105 cursor-pointer"
+                <button className="text-center m-4  px-5 py-2 mb-17 font-bold font-sm text-white rounded-md hover:scale-105 cursor-pointer"
                     style={{ backgroundColor: "#023e8a" }} onClick={handleclick}>
                     <i className="fa-solid fa-arrow-left" style={{ color: "#fff" }}></i> &nbsp;
                     Back
