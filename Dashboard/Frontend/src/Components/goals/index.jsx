@@ -3,24 +3,26 @@ import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
-
+import './style.css'
 
 export default function GoalsPage() {
   const [GoalValue, setGoalValue] = useState({});
   const [savedGoals, setSavedGoals] = useState({});
   const [initialGoals, setInitialGoals] = useState([]);
   const [backendGoalsData, setBackendGoalsData] = useState({});
-  const [TotalExpences ,setTotalExpences] = useState(0)
+  const [TotalExpences, setTotalExpences] = useState(0)
   const [userId, setUserId] = useState(null);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
-    useEffect(() => {
-          const loadData = async () => {
-              const budget = await TotalExpence();
-              setTotalExpences(budget?.TotalBudget);
-          };
-  
-          loadData();
-      }, []);
+  useEffect(() => {
+    const loadData = async () => {
+      const budget = await TotalExpence();
+      setTotalExpences(budget?.TotalBudget);
+    };
+
+    loadData();
+  }, []);
 
   // Extract userId from token
   useEffect(() => {
@@ -114,8 +116,8 @@ export default function GoalsPage() {
       return sum + (isNaN(parsed) ? 0 : parsed);
     }, 0);
 
-    if (totalValue > TotalExpences ) {
-      console.error("Total should not exceed ₹1000");
+    if (totalValue > TotalExpences) {
+      alert(`Total should not be exceed ${TotalExpences}`);
       return;
     }
 
@@ -139,6 +141,10 @@ export default function GoalsPage() {
 
       if (res.data) {
         setBackendGoalsData(res.data);
+        setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 10000);
       }
 
       const updatedSaved = { ...savedGoals, [name]: true };
@@ -168,22 +174,62 @@ export default function GoalsPage() {
 
     localStorage.setItem(goalsKey, JSON.stringify(updatedValues));
     localStorage.setItem(savedKey, JSON.stringify(updatedSaved));
+    localStorage.removeItem(goalsKey);
+    localStorage.removeItem(savedKey);
+    setError(true);
+    setTimeout(() => {
+      setError(false);
+    }, 5000);
   };
+
+  const handleSuccess = () => {
+    setSuccess(false)
+  }
+  const handleError = () => {
+    setError(false)
+  }
 
   return (
     <div className="flex">
-      <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh] w-[60vw] grow">
-        <h1 className="text-3xl text-emerald-900 font-bold ml-16 mt-6 mb-1.5">Goals</h1>
-        <p className="ml-16">Set your goals for different categories.</p>
+      <div className="goals bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh]  w-[60vw] grow px-16 py-8">
+      <div className="flex flex-col ">
+          <h1 className="text-3xl text-emerald-900 font-bold text-start ">Goals</h1>
+        <p className="">Set your goals for different categories.</p>
+      </div>
 
-        <section className="mt-7">
+        {success && <div className="flex flex-row m-auto justify-between w-full" style={{
+          backgroundColor: "#d4edda",
+          border: "1px solid #c3e6cb",
+          color: "#155724",
+          padding: "10px",
+          borderRadius: "5px",
+        
+          marginTop: "10px"
+        }}>
+          <div> Goal Successfully Recorded !</div>
+          <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
+        </div>}
+        {error && <div className="flex flex-row m-auto justify-between w-full" style={{
+          backgroundColor: "#efb0abff",
+          border: "1px solid #d48377ff",
+          color: "#c10000ff",
+          padding: "10px",
+          borderRadius: "5px",
+         
+          marginTop: "10px"
+        }}>
+          <div> Set Goal Deleted!</div>
+          <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
+        </div>}
+
+        <section className="mt-6 flex flex-col items-center justify-center gap-6 w-full">
           {initialGoals.map((item) => (
             <div
               key={item.name}
-              className="flex flex-row bg-white p-4 px-8 mx-auto mb-5 rounded-2xl justify-between"
-              style={{ width: "90%" }}
+              className="goal-1 flex flex-row justify-between items-center bg-white p-4 px-8 rounded-2xl w-full"
+       
             >
-              <p className="text-2xl pt-1 font-medium">{item.name}</p>
+              <p className="goal-text text-2xl pt-1 font-medium">{item.name}</p>
               <div className="flex items-center mt-2">
                 <span>&#8377;</span>
                 {savedGoals[item.name] ? (
@@ -194,7 +240,7 @@ export default function GoalsPage() {
                   <input
                     type="number"
                     placeholder="Enter Amount"
-                    className="pl-5 py-2 w-35 rounded-2xl ml-2"
+                    className="pl-2 sm:pl-5 py-2 w-35 rounded-2xl ml-2"
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
                     value={GoalValue[item.name] ?? ""}
                     onChange={(e) => handleInput(item.name, e.target.value)}
@@ -203,7 +249,7 @@ export default function GoalsPage() {
 
                 {!savedGoals[item.name] && (
                   <button
-                    className="text-white px-8 py-2 rounded-3xl ml-6 cursor-pointer"
+                    className="text-white px-4 sm:px-8 py-2 rounded-3xl ml-6 cursor-pointer"
                     style={{ backgroundColor: "rgba(45, 83, 89, 1)" }}
                     onClick={() => handleSave(item.name)}
                   >

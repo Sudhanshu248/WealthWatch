@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import SixMonth from "./SixMonth.jsx";
 import CompareTwoMonth from "./CompareTwoMonth.jsx";
 import CurrentMonth from "./MonthList/CurrentMonth.jsx";
-
+import './style.css'
 export default function CashflowPage() {
 
 
@@ -22,7 +22,7 @@ export default function CashflowPage() {
             <div className='flex flex-row '>
 
                 {/* Cashflow Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 px-8 py-4  h-fit w-[60vw]  grow ">
+                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 px-8 py-4  h-fit w-[60vw]  grow cashflow">
 
                     {/* Heading */}
                     <div>
@@ -33,14 +33,14 @@ export default function CashflowPage() {
 
 
                     {/* Button for changing data list */}
-                    <div className="text-start flex flex-row gap-4 bg-white w-full h-fit  rounded-2xl px-8 py-4">
+                    <div className="cashflow-head text-center flex flex-row  gap-4 bg-white w-full h-fit  rounded-2xl px-8 py-4">
                         {MonthData.map((item) => (
 
                             <Link
                                 key={item.name}
                                 to={item.href}
                                 onClick={handleClick}
-                                className={`rounded-full px-5 py-1 border ${location.pathname === item.href ? "bg-gray-300" : ""}`}
+                                className={`cashflow-head-1 rounded-full sm:px-5 sm:py-1 sm:border ${location.pathname === item.href ? "bg-gray-300" : ""}`}
                             >
                                 {item.name}
                             </Link>

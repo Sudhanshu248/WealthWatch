@@ -1,7 +1,7 @@
 import { ThirdFoodExpence, ThirdTransportExpence, ThirdPersonalExpence, ThirdHousingExpence, ThirdSavingExpence } from "../../data/CalThirdMonthExpence.js";
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from "react";
-
+import '../style.css'
 export default function ThirdHistory() {
 
     const navigate = useNavigate();
@@ -48,22 +48,22 @@ export default function ThirdHistory() {
         navigate(`${path}/${value}`)
     };
 
-
+const monthName = location.pathname.replace('/historys/' ,'');
 
     return (
         <>
             {/* History Data */}
-            <div className="w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
 
                 {/* Heading */}
-                <div className="font-medium text-xl ">
-                    Current Month Data
+                <div className="monthlist-head font-medium text-xl ">
+                  {monthName}
                 </div>
 
 
 
                 {/* Data */}
-                <div className="w-full h-fit  rounded-2xl px-8  ">
+                <div className="monthlist-1 w-full h-fit  rounded-2xl px-8  ">
 
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">

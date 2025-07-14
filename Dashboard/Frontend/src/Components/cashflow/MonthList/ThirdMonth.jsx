@@ -53,28 +53,28 @@ export default function ThirdMonth() {
         <>
 
             {/* Data Charts */}
-            <div className="bg-white w-full mt-4 rounded-2xl py-5 px-10">
+            <div className="monthly-exp bg-white w-full mt-4 rounded-2xl py-5 px-10">
                 <div className="font-medium text-xl mb-7">
                     Monthly Expenses
                 </div>
 
-                <div className="flex justify-between">
-                    <div className=" w-[60%] h-full">
+                <div className="bar-graph flex justify-between">
+                    <div className="bar-graph-1 w-[60%] h-full">
                         <BarGraph data={datas} />
                     </div>
 
-                    <div className="text-center flex flex-col mb-12 mr-10 w-[24%]" style={{ justifyContent: "center" }}>
-                        <div className="w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
+                    <div className="bar-graph-2 text-center flex flex-col mb-12 mr-10 w-[24%]" style={{ justifyContent: "center" }}>
+                        <div className="bar-graph-2-1 w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
                             <p className="text-xl">Income</p>
                             <p className="text-lg font-semibold"> &#8377; 2477 </p>
                         </div>
 
-                        <div className="w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
+                        <div className="bar-graph-2-1 w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
                             <p className="text-xl">Expenses</p>
                             <p className="text-lg font-semibold" style={{ color: "rgb(255, 0, 0)" }}> &#8377; 7724 </p>
                         </div>
 
-                        <div className="w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
+                        <div className="bar-graph-2-1 w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
                             <p className="text-xl">Balance</p>
                             <p className="text-lg font-semibold" style={{ color: "rgb(48, 161, 78)" }}> &#8377; 7247 </p>
                         </div>
@@ -86,7 +86,7 @@ export default function ThirdMonth() {
 
 
             {/* Data Pie charts  */}
-            <div className="bg-white w-full mt-4 rounded-2xl p-5">
+            <div className="c-monthlychart bg-white w-full mt-4 rounded-2xl p-5">
                 <ThirdPie />
 
 

@@ -86,16 +86,16 @@ export default function CurrPie() {
     return (
         <>
 
-            <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
+            <div className="font-medium text-xl sm:text-start mb-2 hover:cursor-pointer" >
                 {MonthName[5]}
             </div>
 
-            <div className="flex justify-between ">
-                <div className="w-[40%] ">
+            <div className="flex justify-between c-monthchart-1 w-full text-center">
+                <div className="w-[40%] flex c-monthchart-1-2 ">
                     <PieChart key={JSON.stringify(data)} data={data} />
                 </div>
 
-                <div className="w-[45%] flex items-center pr-2 mb-5">
+                <div className=" c-monthchart-1-2 w-[50%] flex items-center pr-2 mb-5">
                     <ul className="w-full">
                         <li className="flex justify-between">
                             <div className="flex flex-row items-center gap-3 ">
@@ -132,7 +132,7 @@ export default function CurrPie() {
                             <div className="flex flex-row items-center gap-3 ">
 
                                 <div className="rounded-full h-[12px] w-[12px] " style={{ backgroundColor: 'rgb(116, 180, 228)' }}></div>
-                                <h1>Personal Expence</h1>
+                                <h1>Personal expence</h1>
                             </div>
                             <div>
                                 {Personal_percentage}%

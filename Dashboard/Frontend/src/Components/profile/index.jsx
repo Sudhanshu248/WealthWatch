@@ -11,6 +11,8 @@ export default function ProfilePage() {
     const [profession, setProfession] = useState("");
     const [income, setIncome] = useState("");
     const [isModelOpen, SetIsModelOpen] = useState(false);
+    const [Error, setError] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -62,14 +64,25 @@ export default function ProfilePage() {
             },
         });
 
+        if (!response.data) {
+            setError(true)
+            setTimeout(() => {
+                setError(false);
+            }, 5000);
+        }
+
         if (response.data?.message === "Profile Picture Updated") {
+            setSuccess(true);
+            setTimeout(() => {
+                setSuccess(false);
+            }, 5000);
             const userRes = await axios.get(`${BASE_URL}/getUserProfile`, {
                 headers: {
                     Authorization: localStorage.getItem("token"),
                 },
             });
-
             setProfileImage(userRes.data.formData?.profilePicture);
+
         }
     };
 
@@ -99,6 +112,12 @@ export default function ProfilePage() {
         }
     };
 
+    const handleSuccess = () => {
+        setSuccess(false)
+    }
+    const handleError = () => {
+        setError(false)
+    }
 
 
     return (
@@ -106,14 +125,39 @@ export default function ProfilePage() {
             {/* Main Container */}
             <div className='flex flex-row '>
 
-
-                {/* Sidebar section */}
-
-
                 {/* BLogs Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64  w-[60vw]  grow">
+                <div className="profile bg-[#B8D7DE8C] rounded-md mt-4 ml-64  w-[60vw]  grow">
 
-                    <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-4">My Profile</h1>
+                    <h1 className="profile-text text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-4">My Profile</h1>
+
+                    {success && <div className="flex flex-row m-auto justify-between w-full" style={{
+                        backgroundColor: "#d4edda",
+                        border: "1px solid #c3e6cb",
+                        color: "#155724",
+                        padding: "10px",
+                        borderRadius: "5px",
+
+                        marginTop: "10px"
+                    }}>
+                        <div> Profile Picture Successfully Recorded !</div>
+                        <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
+                    </div>}
+                    {Error && (
+                        <div
+                            className="flex flex-row m-auto justify-between w-full"
+                            style={{
+                                backgroundColor: "#efb0abff",
+                                border: "1px solid #d48377ff",
+                                color: "#c10000ff",
+                                padding: "10px",
+                                borderRadius: "5px",
+                                marginTop: "10px",
+                            }}
+                        >
+                            Your image must be larger than 4MB.
+                        </div>
+                    )}
+
 
                     <div className="flex flex-col items-center justify-center bg-white h-[37vh] w-[90%] mx-auto rounded-2xl">
 
@@ -122,7 +166,7 @@ export default function ProfilePage() {
                                 <img
                                     src={`${BASE_URL}/uploads/${profileImage}`}
                                     alt="ProfileImage"
-                                    style={{borderRadius: "50%", width: "170px", height: "170px"}}                                    
+                                    style={{ borderRadius: "50%", width: "170px", height: "170px" }}
                                 />
                             )}
                             <label className="icon" style={{ cursor: 'pointer', display: 'inline-block', lineHeight: 0 }}>
@@ -143,7 +187,7 @@ export default function ProfilePage() {
                     </div>
 
 
-                    <div className="bg-white p-4 px-10 mx-auto mb-3 rounded-2xl flex items-center justify-between m-5"
+                    <div className="goal-1 bg-white p-4 px-10 mx-auto mb-3 rounded-2xl flex items-center justify-between m-5"
                         style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Profession</p>
 
@@ -152,7 +196,7 @@ export default function ProfilePage() {
                                 type="text"
                                 value={profession}
                                 onChange={(e) => setProfession(e.target.value)}
-                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4"
+                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4"
                             />
                             :
                             <p style={{ color: "rgb(50, 47, 47)" }}>{profession}</p>
@@ -160,7 +204,7 @@ export default function ProfilePage() {
                     </div>
 
 
-                    <div className="bg-white p-4 px-8 mx-auto mb-3 rounded-2xl flex items-center align-middle justify-between m-5" style={{ width: "90%" }}>
+                    <div className="goal-1 bg-white p-4 px-8 mx-auto mb-3 rounded-2xl flex items-center align-middle justify-between m-5" style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Income</p>
 
                         {isModelOpen ?
@@ -168,14 +212,14 @@ export default function ProfilePage() {
                                 type="number"
                                 value={income}
                                 onChange={(e) => setIncome(e.target.value)}
-                                className="w-[20%] h-[30px] bg-gray-200 rounded-md p-4"
+                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4"
                             />
                             :
                             <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {income}</p>
                         }
                     </div>
 
-                    <div className="bg-white p-4 px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{ width: "90%" }}>
+                    <div className="goal-1 bg-white p-4 px-2 sm:px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Average Expenses</p>
                         <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; 2477</p>
                     </div>

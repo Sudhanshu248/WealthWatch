@@ -1,4 +1,4 @@
-import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence  } from "../../data/CalForthMonthExpence";
+import { ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,11 +18,11 @@ export default function ForthIndividualData() {
 
     useEffect(() => {
         const loadData = async () => {
-         const food = await ForthFoodExpence();
-                const transport = await ForthTransportExpence();
-                const personal = await ForthPersonalExpence();
-                const saving = await ForthSavingExpence();
-                const housing = await ForthHousingExpence();
+            const food = await ForthFoodExpence();
+            const transport = await ForthTransportExpence();
+            const personal = await ForthPersonalExpence();
+            const saving = await ForthSavingExpence();
+            const housing = await ForthHousingExpence();
 
             setFoodlist(food?.Foodlist || []);
             setTransportListing(transport?.TransportListing || []);
@@ -50,7 +50,7 @@ export default function ForthIndividualData() {
             <div className='flex flex-row '>
 
                 {/* History Data Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-[60vw]  grow px-12 py-8">
+                <div className="c-individual-data bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-[60vw]  grow px-12 py-8">
 
                     {/* Back Btn */}
                     <div className=" mb-8">
@@ -58,7 +58,7 @@ export default function ForthIndividualData() {
                     </div>
 
                     {/* History data list*/}
-                    <div className="bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
+                    <div className="c-individual-data-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
 
                         <div className="font-medium text-[25px]">
                             <h1>{value}</h1>

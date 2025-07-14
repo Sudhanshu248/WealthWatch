@@ -1,4 +1,4 @@
-import {SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence  } from "../../data/CalSixthMonthExpence";
+import { SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence } from "../../data/CalSixthMonthExpence";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -19,10 +19,10 @@ export default function SixthIndividualData() {
     useEffect(() => {
         const loadData = async () => {
             const food = await SixthFoodExpence();
-                     const transport = await SixthTransportExpence();
-                     const personal = await SixthPersonalExpence();
-                     const saving = await SixthSavingExpence();
-                     const housing = await SixthHousingExpence();
+            const transport = await SixthTransportExpence();
+            const personal = await SixthPersonalExpence();
+            const saving = await SixthSavingExpence();
+            const housing = await SixthHousingExpence();
 
             setFoodlist(food?.Foodlist || []);
             setTransportListing(transport?.TransportListing || []);
@@ -50,7 +50,7 @@ export default function SixthIndividualData() {
             <div className='flex flex-row '>
 
                 {/* History Data Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-[60vw]  grow px-12 py-8">
+                <div className="c-individual-data bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-[60vw]  grow px-12 py-8">
 
                     {/* Back Btn */}
                     <div className=" mb-8">
@@ -58,7 +58,7 @@ export default function SixthIndividualData() {
                     </div>
 
                     {/* History data list*/}
-                    <div className="bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
+                    <div className="c-individual-data-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
 
                         <div className="font-medium text-[25px]">
                             <h1>{value}</h1>

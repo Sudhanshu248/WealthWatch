@@ -1,6 +1,8 @@
 import { ThirdFoodExpence, ThirdTransportExpence, ThirdPersonalExpence, ThirdHousingExpence, ThirdSavingExpence } from "../../data/CalThirdMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { fetchMonthlyData } from "../../data/InputData.js";
+import '../style.css'
 export default function ThirdMonthList() {
 
 
@@ -16,6 +18,18 @@ export default function ThirdMonthList() {
     const [HousingExpences, setHousingExpences] = useState(0);
     const [SavingExpences, setSavingExpences] = useState(0);
 
+    const [MonthName, setMonthName] = useState([]);
+    
+        useEffect(() => {
+            const loadAllData = async () => {
+                const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
+                const results = await Promise.all(promises);
+                const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
+                setMonthName(name);
+            };
+    
+            loadAllData();
+        }, []);
 
     useEffect(() => {
         const loadData = async () => {
@@ -42,8 +56,6 @@ export default function ThirdMonthList() {
     const navigate = useNavigate();
     const handleclick = (e) => {
         const value = e.target.value;
-        const path = location.pathname
-
         navigate(`/cashflow/SixMonth/3/${value}`)
     }
 
@@ -53,16 +65,16 @@ export default function ThirdMonthList() {
         <>
 
             {/* History Data */}
-            <div className="w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
 
                 {/* Heading */}
-                <div className="font-medium text-xl ">
-                    Current Month Data
+                <div className="font-medium text-xl monthlist-head">
+                  {MonthName[3]}
                 </div>
 
 
                 {/* Data */}
-                <div className="w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
+                <div className="monthlist-1 w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
 
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">

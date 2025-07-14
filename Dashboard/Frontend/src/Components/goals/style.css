@@ -1,0 +1,42 @@
+@media screen and (max-width: 1030px) {
+    .goals {
+        margin-left: 0px;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .goals {
+        padding: 20px 20px;
+    }
+
+}
+
+@media screen and (max-width: 590px) {
+    .goals {
+        padding: 20px 10px;
+    }
+
+    .goal-1 {
+        padding: 15px 10px;
+    }
+
+}
+
+@media screen and (max-width: 530px) {
+    .goal-text {
+        font-size: 20px;
+    }
+
+}
+
+@media screen and (max-width: 460px) {
+    .goal-1 {
+        padding: 10px 10px;
+    }
+
+    .goal-text {
+        font-size: 18px;
+    }
+
+}

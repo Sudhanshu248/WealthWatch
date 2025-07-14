@@ -1,0 +1,158 @@
+@media screen and (max-width : 1300px)and (min-width: 1030px) {
+    .sixmonth {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 1030px) {
+    .c-monthchart-1 {
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .c-monthchart-1-2 {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1030px) {
+    .cashflow {
+        margin-left: 0px;
+    }
+
+    .c-individual {
+        margin-left: 0px;
+    }
+
+    .c-individual-data {
+        margin-left: 0px;
+    }
+}
+
+
+@media screen and (max-width: 720px) {
+    .monthly-exp {
+        padding: 8px 4px 0px 10px;
+    }
+
+    .bar-graph {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 720px) and (min-width: 650px) {
+
+
+    .bar-graph-1 {
+        width: 100%;
+    }
+
+    .bar-graph-2 {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+}
+
+
+@media screen and (max-width:690px) {
+    .cashflow-head {
+        padding: 10px 10px;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .sixmonth {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .bar-graph {
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+
+
+
+@media screen and (max-width: 590px) {
+    .monthlist {
+        padding: 5px 12px;
+    }
+
+    .monthlist-1 {
+        padding: 0px;
+    }
+
+    .cashflow-head {
+        padding: 10px 10px;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-around;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .monthlist {
+        padding: 5px 12px;
+    }
+
+    .monthlist-1 {
+        padding: 0px;
+    }
+
+    .monthlist-head-1 {
+        border: none;
+    }
+
+    .c-monthchart-1 {
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+    }
+
+    .c-monthchart-1-2 {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .c-monthlychart {
+        flex-direction: column;
+        width: 100%;
+    }
+     .c-individual {
+        padding: 10px 8px;
+    }
+     .c-individual-data {
+       padding: 10px 12px;
+    }
+    .c-individual-data-1 {
+       padding: 10px 14px;
+    }
+
+}
+
+@media screen and (max-width: 420px) {
+
+    .cashflow {
+        padding: 10px 8px;
+    }
+
+    .monthlist-head {
+        text-align: center;
+    }
+
+}
