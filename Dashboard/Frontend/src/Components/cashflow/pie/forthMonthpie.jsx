@@ -82,7 +82,7 @@ export default function ForthPie() {
         <>
 
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[2]}
+                {MonthName[2].toUpperCase()}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">

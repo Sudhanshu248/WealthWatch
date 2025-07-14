@@ -62,7 +62,7 @@ function AppRoutes() {
 
 
       </Routes>
-      <div className="phone-bar fixed bottom-0  left-0 w-full h-[40px] bg-[#2D5359] ">
+      <div className="z-20 phone-bar fixed bottom-0  left-0 w-full h-[40px] bg-[#2D5359] ">
         <PhoneBar />
       </div>
     </>

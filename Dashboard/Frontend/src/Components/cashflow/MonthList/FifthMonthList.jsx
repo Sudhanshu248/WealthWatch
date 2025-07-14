@@ -70,7 +70,7 @@ export default function FifthMonthList() {
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                   {MonthName[1]}
+                   {MonthName[1].toUpperCase()}
                 </div>
 
 

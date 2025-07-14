@@ -81,7 +81,7 @@ export default function FifthPie() {
     return (
         <>
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[1]}
+                {MonthName[1].toUpperCase()}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">

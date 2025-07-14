@@ -82,7 +82,7 @@ export default function ThirdPie() {
     return (
         <>
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[3]}
+                {MonthName[3].toUpperCase()}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">

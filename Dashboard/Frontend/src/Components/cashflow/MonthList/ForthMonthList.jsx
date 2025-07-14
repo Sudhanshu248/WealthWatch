@@ -70,7 +70,7 @@ export default function ForthMonthList() {
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                    {MonthName[2]}
+                    {MonthName[2].toUpperCase()}
                 </div>
 
 

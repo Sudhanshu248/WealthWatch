@@ -9,6 +9,18 @@
     }
 
 }
+
+@media screen and (max-width: 590px) {
+    .monthlist {
+        padding: 5px 12px;
+    }
+
+    .monthlist-1 {
+        padding: 0px;
+    }
+
+}
+
 @media screen and (max-width: 550px) {
     .history-individual-1 {
         padding: 6px 14px;

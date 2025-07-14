@@ -87,7 +87,7 @@ export default function CurrPie() {
         <>
 
             <div className="font-medium text-xl sm:text-start mb-2 hover:cursor-pointer" >
-                {MonthName[5]}
+                {MonthName[5].toUpperCase()}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">

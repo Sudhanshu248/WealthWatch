@@ -2,7 +2,7 @@ import "./style.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
-
+import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
 export default function ProfilePage() {
 
     const [profileImage, setProfileImage] = useState("");
@@ -10,15 +10,25 @@ export default function ProfilePage() {
     const [email, setEmail] = useState("");
     const [profession, setProfession] = useState("");
     const [income, setIncome] = useState("");
+    const [AverageExpences, setAverageExpences] = useState("");
     const [isModelOpen, SetIsModelOpen] = useState(false);
     const [Error, setError] = useState(false);
+    const [FileError, setFileError] = useState(false);
     const [success, setSuccess] = useState(false);
+
+    useEffect(() => {
+        const loadData = async () => {
+            const CurrentData = await TotalExpence();
+            setAverageExpences(CurrentData?.AverageExpence)
+        };
+        loadData();
+    }, [])
 
     useEffect(() => {
         const token = localStorage.getItem("token");
 
         if (token) {
-            fetchGoalsFromBackend();
+            fetchProfileFromBackend();
         }
         else {
             console.error("No user token found.");
@@ -26,7 +36,7 @@ export default function ProfilePage() {
         }
     }, []);
 
-    const fetchGoalsFromBackend = async () => {
+    const fetchProfileFromBackend = async () => {
 
         try {
             const response = await axios.get(`${BASE_URL}/getUserProfile`, {
@@ -54,35 +64,42 @@ export default function ProfilePage() {
     };
 
     const updateProfilePicture = async (file) => {
-        const formData = new FormData();
-        formData.append("profileImage", file);
-
-        const response = await axios.post(`${BASE_URL}/updateProfilePicture`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Authorization': localStorage.getItem("token"),
-            },
-        });
-
-        if (!response.data) {
-            setError(true)
-            setTimeout(() => {
-                setError(false);
-            }, 5000);
-        }
-
-        if (response.data?.message === "Profile Picture Updated") {
-            setSuccess(true);
-            setTimeout(() => {
-                setSuccess(false);
-            }, 5000);
-            const userRes = await axios.get(`${BASE_URL}/getUserProfile`, {
+        try {
+            const formData = new FormData();
+            formData.append("profileImage", file);
+            const response = await axios.post(`${BASE_URL}/updateProfilePicture`, formData, {
                 headers: {
-                    Authorization: localStorage.getItem("token"),
+                    'Content-Type': 'multipart/form-data',
+                    'Authorization': localStorage.getItem("token"),
                 },
             });
-            setProfileImage(userRes.data.formData?.profilePicture);
 
+            if (!response.data) {
+                setError(true)
+                setTimeout(() => {
+                    setError(false);
+                }, 5000);
+            }
+
+            if (response.data?.message === "Profile Picture Updated") {
+                setSuccess(true);
+                setTimeout(() => {
+                    setSuccess(false);
+                }, 5000);
+                const userRes = await axios.get(`${BASE_URL}/getUserProfile`, {
+                    headers: {
+                        Authorization: localStorage.getItem("token"),
+                    },
+                });
+                setProfileImage(userRes.data.formData?.profilePicture);
+
+            }
+        } catch (error) {
+            setFileError(true);
+            setTimeout(() => {
+                setFileError(false);
+            }, 5000);
+            console.error("Error while updating profile picture:", error.message);
         }
     };
 
@@ -118,6 +135,12 @@ export default function ProfilePage() {
     const handleError = () => {
         setError(false)
     }
+    const handleFileError = () => {
+        setFileError(false)
+    }
+
+
+
 
 
     return (
@@ -130,18 +153,18 @@ export default function ProfilePage() {
 
                     <h1 className="profile-text text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-4">My Profile</h1>
 
-                    {success && <div className="flex flex-row m-auto justify-between w-full" style={{
+                    {success && <div className="flex flex-row mx-auto justify-between w-[90%]" style={{
                         backgroundColor: "#d4edda",
                         border: "1px solid #c3e6cb",
                         color: "#155724",
                         padding: "10px",
                         borderRadius: "5px",
-
                         marginTop: "10px"
                     }}>
                         <div> Profile Picture Successfully Recorded !</div>
                         <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
                     </div>}
+
                     {Error && (
                         <div
                             className="flex flex-row m-auto justify-between w-full"
@@ -154,7 +177,27 @@ export default function ProfilePage() {
                                 marginTop: "10px",
                             }}
                         >
-                            Your image must be larger than 4MB.
+                            <div>Your image must be larger than 4MB.</div>
+                            <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
+
+                        </div>
+                    )}
+                    {(FileError &&
+                        <div
+                            className="flex flex-row mx-auto justify-between w-[90%]"
+                            style={{
+                                backgroundColor: "#efb0abff",
+                                border: "1px solid #d48377ff",
+                                color: "#c10000ff",
+                                padding: "10px",
+                                borderRadius: "5px",
+                                marginTop: "10px",
+                                marginBottom: "10px",
+                            }}
+                        >
+
+                            <div>Only image files are allowed.</div>
+                            <button onClick={handleFileError}><i className="fa-solid fa-xmark"></i></button>
                         </div>
                     )}
 
@@ -221,7 +264,7 @@ export default function ProfilePage() {
 
                     <div className="goal-1 bg-white p-4 px-2 sm:px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{ width: "90%" }}>
                         <p className="text-2xl pt-1 font-medium">Average Expenses</p>
-                        <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; 2477</p>
+                        <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {AverageExpences}</p>
                     </div>
 
                     <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer mr-5 ml-16 mb-10" onClick={() => SetIsModelOpen(true)}>Edit</button>
