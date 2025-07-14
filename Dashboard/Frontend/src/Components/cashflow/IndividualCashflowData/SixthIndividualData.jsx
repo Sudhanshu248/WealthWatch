@@ -61,7 +61,7 @@ export default function SixthIndividualData() {
                     <div className="c-individual-data-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
 
                         <div className="font-medium text-[25px]">
-                            <h1>{value}</h1>
+                            <h1>{value.toUpperCase()}</h1>
                         </div>
 
 

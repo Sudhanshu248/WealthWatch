@@ -20,7 +20,7 @@ export default function HistoryPage() {
         const loadAllData = async () => {
             const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
             const results = await Promise.all(promises);
-            const names = results.map((data) => data.monthName);
+            const names = results.map((data) => data.monthName.toUpperCase());
             setMonthName(names);
 
 
@@ -41,7 +41,7 @@ export default function HistoryPage() {
 
     // Get the selected month from the URL path
     const currentMonth = decodeURIComponent(location.pathname.replace("/historys/", ""));
-
+   const Monthname = currentMonth.toUpperCase();
     return (
         <div className="flex flex-row">
             <div className="history bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
@@ -65,12 +65,12 @@ export default function HistoryPage() {
                 </select>
 
                 {/* Conditional Component Rendering */}
-                {currentMonth === MonthName[0] && <CurrentHistory />}
-                {currentMonth === MonthName[1] && <SecondHistory />}
-                {currentMonth === MonthName[2] && <ThirdHistory />}
-                {currentMonth === MonthName[3] && <ForthHistory />}
-                {currentMonth === MonthName[4] && <FifthHistory />}
-                {currentMonth === MonthName[5] && <SixthHistory />}
+                {Monthname === MonthName[0] && <CurrentHistory />}
+                {Monthname === MonthName[1] && <SecondHistory />}
+                {Monthname === MonthName[2] && <ThirdHistory />}
+                {Monthname === MonthName[3] && <ForthHistory />}
+                {Monthname === MonthName[4] && <FifthHistory />}
+                {Monthname === MonthName[5] && <SixthHistory />}
             </div>
         </div>
     );

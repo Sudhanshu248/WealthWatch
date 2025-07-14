@@ -57,7 +57,7 @@ const monthName = location.pathname.replace('/historys/' ,'');
 
                 {/* Heading */}
                 <div className="monthlist-head font-medium text-xl ">
-                   {monthName}
+                 {monthName.toUpperCase()}
                 </div>
 
 

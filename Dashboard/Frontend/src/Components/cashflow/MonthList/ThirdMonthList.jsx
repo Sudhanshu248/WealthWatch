@@ -69,7 +69,7 @@ export default function ThirdMonthList() {
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                  {MonthName[3]}
+                  {MonthName[3].toUpperCase()}
                 </div>
 
 

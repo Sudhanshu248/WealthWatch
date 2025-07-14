@@ -79,7 +79,7 @@ export default function CurrentMonthList() {
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                   {MonthName[5]}
+                   {MonthName[5].toUpperCase()}
                 </div>
 
 

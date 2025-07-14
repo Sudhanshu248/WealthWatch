@@ -1,5 +1,4 @@
 import axios from "axios";
-import User from "../../../../backend/models/user.models.js";
 import { BASE_url } from "../../axios.config.js";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 

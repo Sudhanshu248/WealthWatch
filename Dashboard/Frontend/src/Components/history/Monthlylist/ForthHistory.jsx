@@ -58,7 +58,7 @@ export default function ForthHistory() {
 
                 {/* Heading */}
                 <div className="monthlist-head font-medium text-xl ">
-                 {monthName}
+                {monthName.toUpperCase()}
                 </div>
 
 

@@ -20,7 +20,7 @@ export default function Blogs() {
 
 
           {/*  Article Section */}
-          <div className="bg-white w-[90%  py-5 px-2 my-8 rounded-2xl">
+          <div className="bg-white   py-5 px-2 my-8 rounded-2xl">
 
             <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Money guides</h1>
 
@@ -33,7 +33,13 @@ export default function Blogs() {
                 navigation
                 pagination={{ clickable: true }}
                 spaceBetween={40}
-                slidesPerView={3}
+                breakpoints={{
+                  0: { slidesPerView: 1 },       // Default for all screen widths
+                  700: { slidesPerView: 2 },       // Default for all screen widths
+                  1330: { slidesPerView: 3 },    // Override when width is 1330px or more
+                }}
+
+
                 className="w-full h-auto custom-swiper"
               >
 
@@ -74,7 +80,11 @@ export default function Blogs() {
                 navigation
                 pagination={{ clickable: true }}
                 spaceBetween={40}
-                slidesPerView={3}
+                breakpoints={{
+                  0: { slidesPerView: 1 },       // Default for all screen widths
+                  700: { slidesPerView: 2 },       // Default for all screen widths
+                  1330: { slidesPerView: 3 },    // Override when width is 1330px or more
+                }}
                 className="w-full h-auto custom-swiper"
               >
 
@@ -121,7 +131,7 @@ export default function Blogs() {
           {/* Tips Section */}
           <div className="bg-white py-5 px-2 my-8 rounded-2xl">
 
-            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Ways to Achieve Financial Freedom </h1>
+            <h1 className="text-2xl font-medium sm:text-start  px-8 mb-4 ">Ways to Achieve Financial Freedom </h1>
 
             <div className='flex flex-row  w-[100%]  items-center '>
               {/* Card 1 */}
@@ -132,20 +142,24 @@ export default function Blogs() {
                 navigation
                 pagination={{ clickable: true }}
                 spaceBetween={40}
-                slidesPerView={3}
+                breakpoints={{
+                  0: { slidesPerView: 1 },       // Default for all screen widths
+                  700: { slidesPerView: 2 },       // Default for all screen widths
+                  1330: { slidesPerView: 3 },    // Override when width is 1330px or more
+                }}
                 className="w-full h-auto custom-swiper"
               >
 
                 {tips.map((item, index) => (
                   <SwiperSlide key={index}>
 
-                    <div className="bg-white w-[320px] h-[460px] mb-12 mt-2 ml-16 pb-4 pt-4 px-4 rounded-[1rem]"  
-                      style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}>
-                    
-                        <img src={item.image} className="w-full mb-4"  alt="post-image" style={{height: "350px", borderRadius: "10px"}}/>
+                    <div className="blog-slider bg-white w-[320px] h-[460px] mb-12 mt-2 ml-16 pb-4 pt-4 px-4 rounded-[1rem]"
+                      style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) ", backgroundColor: "rgba(173, 216, 230, 0.15)" }}>
 
-                        <p className="mt-2 mb-4">{item.title}</p>
-                        
+                      <img src={item.image} className="w-full mb-4" alt="post-image" style={{ height: "350px", borderRadius: "10px" }} />
+
+                      <p className="mt-2 mb-4">{item.title}</p>
+
                     </div>
                   </SwiperSlide>
                 ))}
