@@ -86,8 +86,8 @@
 
 
 @media screen and (max-width: 590px) {
-    .monthlist {
-        padding: 5px 12px;
+    .history-individual-1 {
+        padding: 30px 25px;
     }
 
     .monthlist-1 {
@@ -103,9 +103,6 @@
 }
 
 @media screen and (max-width: 550px) {
-    .monthlist {
-        padding: 5px 12px;
-    }
 
     .monthlist-1 {
         padding: 0px;
@@ -142,7 +139,9 @@
     .c-individual-data-1 {
        padding: 10px 14px;
     }
-
+    .monthlist {
+        padding: 18px;
+    }
 }
 
 @media screen and (max-width: 420px) {

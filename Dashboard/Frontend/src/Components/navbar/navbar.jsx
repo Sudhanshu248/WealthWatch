@@ -51,14 +51,15 @@ export default function Navbar() {
 
     return (
         <>
-            <nav id="navbar" className="sticky top-0 h-[80px] max-w-full shadow-md z-50 align-middle" style={{ backgroundColor: "rgb(184, 215, 222)" }}>
+            <nav id="navbar" className="sticky top-0 px-4 max-[450px]:px-0 py-2 shadow-md z-50 align-middle" style={{ backgroundColor: "rgb(184, 215, 222)" }}>
 
-                <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between h-full ">
+                <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between">
 
                     {/*Page_LOGO  */}
-                    <div className=" w-1/4 ">
-                        <img src="/image/logo.png" alt="logo_image" />
+                    <div id="logo">
+                        <img src="/image/logo.png" alt="logo_image" className="h-10 w-auto"/>
                     </div>
+
 
 
 
@@ -69,8 +70,8 @@ export default function Navbar() {
                         </div>
                     }
 
-                    <div className=" flex flex-row  align-middle items-center justify-center gap-4">
-                        <div className="block px-4 h-fit rounded-full m-auto cursor-pointer" onClick={handleClick}>
+                    <div className=" flex flex-row  align-middle items-center justify-center gap-2">
+                        <div className="block px-5 h-fit rounded-full m-auto cursor-pointer  max-[500px]:px-0 max-[450px]:mr-2" onClick={handleClick}>
                             <i className="fa-solid fa-calendar-days"></i>
                         </div>
 
@@ -80,7 +81,7 @@ export default function Navbar() {
                                 src={`${BASE_URL}/uploads/${profileImage}`}
                                 alt="ProfileImage"
 
-                                style={{ borderRadius: "50%", width: "35px", height: "35px" }}
+                                style={{ borderRadius: "50%", width: "35px", height: "30px" }}
                             />
                         </div>
 

@@ -58,7 +58,7 @@ export default function Faq() {
       {faqs.map((faq, index) => (
         <div
           key={index}
-          className=" bg-[#023e8a] border border-gray-700 rounded-lg transition-all"
+          className=" border border-gray-700 rounded-lg transition-all" style={{backgroundColor: "rgba(10, 67, 140, 0.9)"}}
         >
           <button
             className="w-full flex justify-between items-center px-6 py-4 text-left text-white  rounded-lg font-medium  transition-colors"

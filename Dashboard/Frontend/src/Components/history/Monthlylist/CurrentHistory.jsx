@@ -71,24 +71,24 @@ const monthName = location.pathname.replace('/historys/' ,'');
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >
-                            <button className="text-xl font-medium hover:cursor-pointer" value='Food' onClick={handleclick}>Food</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Foodpercentage.toFixed(1)}%</p>
+                            <button className="text-xl max-[450px]:text-[17px] font-medium hover:cursor-pointer" value='Food' onClick={handleclick}>Food</button>
+                            <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{Foodpercentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{foodExpence}</p>
+                            <p className="text-[15px] max-[450px]:text-[13px] mt-1">- &nbsp; &#8377;{foodExpence}</p>
                         </div>
                     </div>
 
                     {/* Housing */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2 hover:cursor-pointer">
                         <div className="flex flex-row gap-2">
-                            <button className="text-xl font-medium hover:cursor-pointer" value='Housing' onClick={handleclick}>Housing</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Housing_percentage.toFixed(1)}%</p>
+                            <button className="text-xl max-[450px]:text-[17px] font-medium hover:cursor-pointer" value='Housing' onClick={handleclick}>Housing</button>
+                            <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{Housing_percentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{housingExpence}</p>
+                            <p className="text-[15px] max-[450px]:text-[13px] mt-1">- &nbsp; &#8377;{housingExpence}</p>
                         </div>
                     </div>
 
@@ -96,12 +96,12 @@ const monthName = location.pathname.replace('/historys/' ,'');
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2  hover:cursor-pointer">
                         <div className="flex flex-row gap-2">
 
-                            <button className="text-xl font-medium hover:cursor-pointer" value='PersonalExpence' onClick={handleclick}>Personal expence</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Personal_percentage.toFixed(1)}%</p>
+                            <button className="text-xl max-[450px]:text-[17px] font-medium hover:cursor-pointer" value='PersonalExpence' onClick={handleclick}>Personal expence</button>
+                            <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{Personal_percentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{personalExpence}</p>
+                            <p className="text-[15px] max-[450px]:text-[13px] mt-1">- &nbsp; &#8377;{personalExpence}</p>
                         </div>
                     </div>
 
@@ -109,12 +109,12 @@ const monthName = location.pathname.replace('/historys/' ,'');
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2 hover:cursor-pointer">
                         <div className="flex flex-row gap-2">
 
-                            <button className="text-xl font-medium hover:cursor-pointer" value='Transport' onClick={handleclick}>Transport</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{TransportPercentage.toFixed(1)}%</p>
+                            <button className="text-xl max-[450px]:text-[17px] font-medium hover:cursor-pointer" value='Transport' onClick={handleclick}>Transport</button>
+                            <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{TransportPercentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">- &nbsp; &#8377;{transportExpence}</p>
+                            <p className="text-[15px] max-[450px]:text-[13px] mt-1">- &nbsp; &#8377;{transportExpence}</p>
                         </div>
                     </div>
 
@@ -122,12 +122,12 @@ const monthName = location.pathname.replace('/historys/' ,'');
                     <div className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 hover:cursor-pointer">
                         <div className="flex flex-row gap-2">
 
-                            <button className="text-xl font-medium hover:cursor-pointer" value='Saving' onClick={handleclick}>Saving</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Saving_percentage.toFixed(1)}%</p>
+                            <button className="text-xl max-[450px]:text-[17px] font-medium hover:cursor-pointer" value='Saving' onClick={handleclick}>Saving</button>
+                            <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{Saving_percentage.toFixed(1)}%</p>
                         </div>
                         <div>
 
-                            <p className="text-[15px] mt-1">+ &nbsp; &#8377;{savingExpence}</p>
+                            <p className="text-[15px] max-[450px]:text-[13px] mt-1">+ &nbsp; &#8377;{savingExpence}</p>
                         </div>
 
                     </div>

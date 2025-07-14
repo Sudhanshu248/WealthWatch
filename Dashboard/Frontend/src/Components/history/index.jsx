@@ -44,7 +44,8 @@ export default function HistoryPage() {
 
     return (
         <div className="flex flex-row">
-            <div className="history bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.9vh] w-[60vw] grow px-8 py-4">
+            <div className="history bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+                style={{ position: "fixed", right: 0, overflowY: "auto" }}>
                 <h1 className="text-3xl text-emerald-900 font-bold text-start">History</h1>
 
                 {/* Dropdown */}

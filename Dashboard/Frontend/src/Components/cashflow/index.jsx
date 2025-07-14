@@ -22,7 +22,7 @@ export default function CashflowPage() {
             <div className='flex flex-row '>
 
                 {/* Cashflow Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 px-8 py-4  h-fit w-[60vw]  grow cashflow">
+                <div className="bg-[#B8D7DE8C] rounded-md mt-4 px-8 py-4  h-fit w-[85vw] right-0 fixed scroll  grow cashflow">
 
                     {/* Heading */}
                     <div>

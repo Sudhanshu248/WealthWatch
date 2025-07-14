@@ -70,7 +70,7 @@ const monthName = location.pathname.replace('/historys/' ,'');
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >
                             <button className="text-xl font-medium hover:cursor-pointer" value='Food' onClick={handleclick}>Food</button>
-                            <p className="text-[12px] mt-2 font-medium text-gray-800">{Foodpercentage.toFixed(1)}%</p>
+                            <p className="text-[12px] max-[500px]:text-[20px] mt-2 font-medium  text-gray-800">{Foodpercentage.toFixed(1)}%</p>
                         </div>
                         <div>
 

@@ -25,3 +25,11 @@
     opacity: var(--swiper-pagination-bullet-opacity, 1);
     background: #2D5359;
 }
+
+@media screen and (max-width: 1200px){
+  .blogs{
+    width: 275px;
+    height: 360px;
+    margin-right: 40px;
+  }
+}

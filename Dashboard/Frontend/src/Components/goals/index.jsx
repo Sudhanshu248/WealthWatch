@@ -191,7 +191,8 @@ export default function GoalsPage() {
 
   return (
     <div className="flex">
-      <div className="goals bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh]  w-[60vw] grow px-16 py-8">
+      <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
       <div className="flex flex-col ">
           <h1 className="text-3xl text-emerald-900 font-bold text-start ">Goals</h1>
         <p className="">Set your goals for different categories.</p>
@@ -222,7 +223,7 @@ export default function GoalsPage() {
           <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
         </div>}
 
-        <section className="mt-6 flex flex-col items-center justify-center gap-6 w-full">
+        <section className="mt-6 flex flex-col items-center justify-center gap-6 w-full max-[460px]:mb-[200px]">
           {initialGoals.map((item) => (
             <div
               key={item.name}
@@ -240,7 +241,7 @@ export default function GoalsPage() {
                   <input
                     type="number"
                     placeholder="Enter Amount"
-                    className="pl-2 sm:pl-5 py-2 w-35 rounded-2xl ml-2"
+                    className="pl-2 sm:pl-5 py-2 w-40 max rounded-2xl ml-2 max-[460px]:w-[10rem]"
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
                     value={GoalValue[item.name] ?? ""}
                     onChange={(e) => handleInput(item.name, e.target.value)}

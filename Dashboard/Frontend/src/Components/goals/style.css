@@ -18,7 +18,7 @@
     }
 
     .goal-1 {
-        padding: 15px 10px;
+        padding: 15px 13px;
     }
 
 }
@@ -27,16 +27,26 @@
     .goal-text {
         font-size: 20px;
     }
+    .goal-1 button{
+        margin-left: 10px;
+    }
 
 }
 
 @media screen and (max-width: 460px) {
     .goal-1 {
-        padding: 10px 10px;
+        padding: 15px 13px;
+        flex-direction: column;
+        align-items: start;
+        padding-inline: 24px;
+        gap: 8px;
     }
 
     .goal-text {
         font-size: 18px;
+    }
+    .goal-1 button {
+        padding-inline: 20px
     }
 
 }

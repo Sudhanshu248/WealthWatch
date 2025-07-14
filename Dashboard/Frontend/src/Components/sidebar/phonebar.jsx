@@ -6,31 +6,46 @@ export default function PhoneBar() {
     return (
         <>
      
-                <div className="phone-bar flex flex-row justify-evenly items-center text-white text-[20px] w-full h-full">
+                <div className="phone-bar flex flex-row pt-4 justify-evenly items-center text-white py-3 text-[15px] max-[450px]:text-[13px] w-full h-full">
                     <Link
                         to={`${DASHBOARD_URL}/dashboard`}
                     >
-                        <i className="fa-solid fa-house-user"></i>
+                        <div className="flex flex-col items-center justify-between">
+                            <i className="fa-solid fa-house-user"></i>
+                            <span>Home</span>
+                        </div>
                     </Link>
                     <Link
                         to={`${DASHBOARD_URL}/cashflow`}
                     >
-                        <i className="fa-solid fa-money-bill"></i>
+                        <div className="flex flex-col items-center justify-between">
+                            <i className="fa-solid fa-money-bill"></i>
+                            <span>Cashflow</span>
+                        </div>
                     </Link>
                     <Link
                         to={`${DASHBOARD_URL}/goals`}
                     >
-                        <i className="fa-brands fa-goodreads-g"></i>
+                        <div className="flex flex-col items-center justify-between">
+                            <i class="fa-solid fa-bullseye"></i>
+                            <span>Goals</span>
+                        </div>
                     </Link>
                     <Link
                         to={`${DASHBOARD_URL}/historys`}
                     >
-                        <i className="fa-solid fa-clock-rotate-left"></i>
+                        <div className="flex flex-col items-center justify-between">
+                            <i className="fa-solid fa-clock-rotate-left"></i>
+                            <span>History</span>
+                        </div>
                     </Link>
                     <Link
                         to={`${DASHBOARD_URL}/blogs`}
                     >
-                        <i className="fa-solid fa-blog"></i>
+                        <div className="flex flex-col items-center justify-between">
+                            <i className="fa-solid fa-blog"></i>
+                            <span>Blogs</span>
+                        </div>
                     </Link>
                 </div>
 

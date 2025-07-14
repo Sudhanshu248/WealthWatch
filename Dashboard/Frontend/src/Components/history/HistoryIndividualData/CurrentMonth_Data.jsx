@@ -85,7 +85,8 @@ export default function CurrentHistoryIndividual() {
             <div className='flex flex-row '>
 
                 {/* History Data Container */}
-                <div className="history-individual bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-[60vw]  grow px-12 py-8">
+                <div className="history-individual bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+                    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
 
                     {/* Back Btn */}
                     <div className=" mb-8">
@@ -107,12 +108,12 @@ export default function CurrentHistoryIndividual() {
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl max-[450px]:text-[17px] font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
                                     <div className="flex flex-row gap-2">
 
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                        <p className="text-[15px]  max-[450px]:text-[13px]  mt-1">- &nbsp; &#8377;{item.value}</p>
                                         {item.name && (
                                             <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
                                                 <i className="fa-solid fa-trash text-[#2D5359]"></i>
@@ -128,12 +129,12 @@ export default function CurrentHistoryIndividual() {
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl max-[450px]:text-[17px] font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px]max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
                                     <div className="flex flex-row gap-2">
 
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                        <p className="text-[15px] max-[450px]:text-[13px]  mt-1">- &nbsp; &#8377;{item.value}</p>
                                         {item.name && (
                                             <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
                                                 <i className="fa-solid fa-trash text-[#2D5359]"></i>
@@ -149,12 +150,12 @@ export default function CurrentHistoryIndividual() {
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl max-[450px]:text-[17px] font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
                                     <div className="flex flex-row gap-2">
 
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                        <p className="text-[15px] max-[450px]:text-[13px]  mt-1">- &nbsp; &#8377;{item.value}</p>
 
                                         {item.name && (
                                             <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
@@ -171,13 +172,13 @@ export default function CurrentHistoryIndividual() {
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl max-[450px]:text-[17px] font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
 
                                     <div className="flex flex-row gap-2">
 
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                        <p className="text-[15px] max-[450px]:text-[13px]  mt-1">- &nbsp; &#8377;{item.value}</p>
 
                                         {item.name && (
                                             <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
@@ -194,13 +195,13 @@ export default function CurrentHistoryIndividual() {
                                 <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
                                     <div className="flex flex-row gap-2">
 
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
+                                        <button className="text-xl max-[450px]:text-[17px] font-medium " value=''>{item.name}</button>
+                                        <p className="text-[12px] max-[450px]:text-[10px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
                                     </div>
 
                                     <div className="flex flex-row gap-2">
 
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
+                                        <p className="text-[15px] max-[450px]:text-[13px]  mt-1">- &nbsp; &#8377;{item.value}</p>
                                         {item.name && (
                                             <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
                                                 <i className="fa-solid fa-trash text-[#2D5359]"></i>

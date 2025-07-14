@@ -63,10 +63,10 @@ export default function AddDailyRecord() {
 
             {/* Add Daily  Record box */}
 
-            <div className=" flex flex-col   h-fit w-full  my-2">
+            <div className=" flex flex-col   h-fit  my-2">
                 {/* Heading */}
-                <div className="w-full mb-1">
-                    <h1 className="text-[1.2rem] text-start text-shadow-sm font-medium text-start ">Add Daily Record</h1>
+                <div className=" mb-5">
+                    <h1 className="text-[1.4rem] font-semibold text-start ">Add Daily Record</h1>
                 </div>
                 {success && <div className="flex flex-row mb-1 w-1/2 justify-between" style={{
                     backgroundColor: "#d4edda",
@@ -81,14 +81,14 @@ export default function AddDailyRecord() {
                 </div>}
 
                 {/* block 1 */}
-                <div className="add-daily-b-1 w-full flex flex-row justify-between my-1">
-                    <input type="text" placeholder="Enter Product name" value={name} className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5 add-b" onChange={(e) => setName(e.target.value)} />
+                <div className="add-daily-b-1 flex flex-row justify-between my-2 mb-4">
+                    <input type="text" placeholder="Enter Product name" value={name} className="w-[40%] h-[30px] max-[600px]:px-[5px] max-[450px]:px-[24px] bg-gray-200 rounded-md p-6 add-b" onChange={(e) => setName(e.target.value)} />
                     <select
                         id="category"
                         name="category"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[40px] p-2 add-b"
+                        className="bg-gray-200 text-gray-500 rounded-md w-[40%] h-[40px] p-2 add-b h-[40px]"
                         style={{ border: "none", outline: "none" }}
                     >
                         <option value="" disabled>Category</option>
@@ -101,8 +101,8 @@ export default function AddDailyRecord() {
 
                 {/* block 2 */}
                 <div className="add-daily-b-2 flex flex-row justify-between my-2">
-                    <input type="number" min={0} placeholder="Price" value={price} className="w-[40%] h-[30px] bg-gray-200 rounded-md p-5 add-b" onChange={(e) => setPrice(e.target.value)} />
-                    <input type="date" placeholder="Date" value={date} className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-5 add-b" onChange={(e) => setDate(e.target.value)} />
+                    <input type="number" min={0} placeholder="Enter Price" value={price} className="w-[40%] h-[30px] max-[600px]:px-[5px] max-[450px]:px-[24px] bg-gray-200 rounded-md p-6 add-b" onChange={(e) => setPrice(e.target.value)} />
+                    <input type="date" placeholder="Date" value={date} className="w-[40%] text-gray-500 h-[30px] bg-gray-200 rounded-md p-6 add-b" onChange={(e) => setDate(e.target.value)} />
                 </div>
 
                 {/* block 3 */}
@@ -122,7 +122,7 @@ export default function AddDailyRecord() {
                     </select>
                 </div>
                     {/* Saved Button */}
-                    <div className=" my-2 ">
+                    <div className=" my-2 text-end">
                         <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer" onClick={handleSave} >&nbsp;Save</button>
                     </div>
 

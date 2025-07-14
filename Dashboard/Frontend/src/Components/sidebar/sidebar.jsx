@@ -19,13 +19,13 @@ export default function Sidebar() {
 
     return (
         <>
-            <div className="flex flex-col justify-center items-center text-center h-[45%] space-y-1 text-[20px] capitalize">
+            <div className="flex flex-col justify-center items-center text-center h-[50%] space-y-1 text-[20px] capitalize">
                 {navItem.map((item) => (
                     <Link
                         key={item.name}
                         to={item.href}
                         onClick={() => setActive(item.name)}
-                        className={`block w-[150px] h-fit rounded-full m-auto ${Active === item.name && item.href === location.pathname
+                        className={`block w-[180px] h-fit rounded-full mx-auto my-5 ${Active === item.name && item.href === location.pathname
                             ? "bg-white text-[#2D5359] font-bold py-2 w-[140px]"
                             : "font-normal"
                             }`}

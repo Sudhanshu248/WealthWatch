@@ -32,7 +32,7 @@ function AppRoutes() {
     <>
       {!shouldHideLayout && <Navbar />}
 
-      {!shouldHideLayout && <div className='sidebar fixed  left-0 h-[100%] pl-4 pr-16 bg-[#B8D7DE8C] rounded-md mt-4 w-fit '>
+      {!shouldHideLayout && <div className='sidebar fixed  left-0 h-[100%] w-[14.5vw]  bg-[#B8D7DE8C] rounded-md mt-4'>
         <Sidebar />
       </div>}
 
@@ -62,7 +62,7 @@ function AppRoutes() {
 
 
       </Routes>
-      <div className="phone-bar fixed bottom-0  left-0 w-full h-[40px] bg-[#2D5359] ">
+      <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">
         <PhoneBar />
       </div>
     </>

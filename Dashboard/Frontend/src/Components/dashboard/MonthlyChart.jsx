@@ -57,20 +57,20 @@ export default function MonthlyChart() {
     };
 
     return (
-        <div className="monthchart-1 bg-white text-center xl:h-full md:h-[28rem] w-full rounded-2xl py-4 px-6">
-            <h1 className="text-xl mb-3">Monthly Expense</h1>
+        <div className="monthchart-1 bg-white text-center w-[24vw] max-[1200px]:w-[22.5vw] h-[72vh] max-[1215px]:px-[10px] rounded-2xl py-4 px-6">
+            <h1 className="text-[1.5rem] font-semibold mb-2 p-2">Monthly Expense</h1>
 
 
-            <div className="monthchart-2">
+            <div className="monthchart-2 ">
 
-                <div className="piechart-1 w-[90%] m-auto">
+                <div className="piechart-1 w-[75%] h-[40vh] max-[1450px]:w-[100%]  max-[1215px]:w-[110%] max-[1108px]:h-[35vh]  justify-center  flex items-center m-auto">
                     <PieChart key={JSON.stringify(data)} data={data} />
                 </div>
 
                 {loading ? (
                     <p className="text-center mt-20">Loading...</p>
                 ) : (
-                    <div className="text-start font-medium mt-4">
+                    <div className="text-start font-medium mt-5">
                         <ul>
                             {monthData.map((item, index) => (
                                 <li key={index} className="flex flex-row items-center gap-3 justify-between">

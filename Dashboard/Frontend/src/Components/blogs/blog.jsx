@@ -14,12 +14,13 @@ export default function Blogs() {
 
 
         {/* BLogs Container */}
-        <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-full w-[60vw]  grow">
+        <div className=" bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-6 dashboard"
+                    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
           <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-6">Blogs</h1>
 
 
           {/*  Article Section */}
-          <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
+          <div className="bg-white w-[90%  py-5 px-2 my-8 rounded-2xl">
 
             <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Money guides</h1>
 
@@ -39,7 +40,7 @@ export default function Blogs() {
                 {articles.map((item, index) => (
                   <SwiperSlide key={index}>
 
-                    <div className=" w-[320px] mb-11 mt-2 ml-16 pb-4 pt-4 px-4 rounded-[1rem]"  style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}>
+                    <div className="blogs w-[320px] mb-11 mt-2 ml-16 pb-4 pt-4 px-4 rounded-[1rem]"  style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}>
                         <img src={item.image} alt="post-image" style={{height: "190px", borderRadius: "10px"}}/>
 
                       <p className="mt-2 mb-4">{item.title}</p>
@@ -60,7 +61,7 @@ export default function Blogs() {
 
 
           {/*  video Section */}
-          <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
+          <div className="bg-white py-5 px-2 my-8 rounded-2xl">
             <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Finance clips</h1>
 
             <div className='flex flex-row h-[75%] w-[100%]  items-center '>
@@ -83,7 +84,7 @@ export default function Blogs() {
                   <SwiperSlide key={index}>
                     <div
                       // key={index}
-                      className="bg-white  h-[300px] w-[300px] ml-20 mb-11  my-6 py-4 px-4 rounded-[1rem]"
+                      className="bg-white  h-[300px] ml-20 mb-11  my-6 py-4 px-4 rounded-[1rem]"
                       style={{ boxShadow: "0px 1px 4px 0px rgba(0, 0, 0, 0.30) " , backgroundColor: "rgba(173, 216, 230, 0.15)"}}
                     >
                       <div className="mb-6">
@@ -118,7 +119,7 @@ export default function Blogs() {
 
 
           {/* Tips Section */}
-          <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
+          <div className="bg-white py-5 px-2 my-8 rounded-2xl">
 
             <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Ways to Achieve Financial Freedom </h1>
 

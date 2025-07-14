@@ -7,11 +7,14 @@
     .history{
         margin-left: 0px;
     }
+    .monthlist{
+        margin-bottom: 220px;
+    }
 
 }
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 590px) {
     .history-individual-1 {
-        padding: 6px 14px;
+        padding: 30px 25px;
     }
     .history-individual{
         padding: 5px 12px;
@@ -21,7 +24,7 @@
          padding: 5px 12px;
     }
     .monthlist {
-        padding: 5px 12px;
+        padding: 20px 28px
     }
 
     .monthlist-1 {

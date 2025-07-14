@@ -67,43 +67,44 @@ export default function Dashboard() {
     return (
         <>
             <div className="flex flex-row gap-2 ">
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 lg:ml-64 w-full py-6 px-4 dashboard">
+                <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
                     <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2">
                         Dashboard
                     </h1>
 
-                    <div className=" d-1 flex flex-row   mt-2 h-fit">
+                    <div className=" d-1 flex flex-row h-[50vh] w-[98%]   mt-2 h-fit">
 
-                        <div className="balance-1 w-[70%]   h-[400px] flex flex-col justify-between gap-5 py-2">
-                            <div className="progess-bar bg-white w-full h-[40%] rounded-2xl px-12 py-4">
+                        <div className="balance-1 mr-2    flex flex-col justify-between gap-5 py-2">
+                            <div className="progess-bar anomaly bg-white h-[30%] rounded-2xl px-12 py-4">
                                 <div className="flex flex-row justify-between h-fit w-full my-2">
                                     <h1 className="text-[1.5rem] font-semibold">Balance</h1>
                                     <h1 className="text-[1.5rem] font-semibold">Spended</h1>
                                 </div>
-                                <div className="flex flex-row justify-between h-fit w-full">
-                                    <h1 className="text-[1rem] font-medium">&#8377;{Balance}</h1>
-                                    <h1 className="text-[1rem] font-medium">
+                                <div className="flex flex-row justify-between h-fit mb-8 w-full">
+                                    <p className="text-[1rem] font-medium">&#8377;{Balance}</p>
+                                    <p className="text-[1rem] font-medium">
                                         &#8377;{Spended}/{Totalincome}
-                                    </h1>
+                                    </p>
                                 </div>
-                                <div className="h-[10px] w-full bg-gray-200 my-4 rounded-full">
+                                <div className="h-[10px] w-full bg-gray-200 my-4 mr-4 rounded-full">
                                     {ProgressBar()}
                                 </div>
                             </div>
 
-                            <div className="add-daily bg-white w-full h-fit rounded-2xl  px-12 py-1 xl:mb-12 ">
+                            <div id="add-daily" className="add-daily anomaly bg-white w-[57.2vw] max-[450px]:py-[24px] p-[1.5rem]  h-fit rounded-2xl " style={{paddingInline: "45px"}}>
                                 <AddDailyRecord />
                             </div>
                         </div>
 
-                        <div className="monthlychart xl:h-full lg:h-[28rem] grow  flex flex-col gap-2  py-2 px-2 w-fit " >
+                        <div className="monthlychart  grow  flex flex-col gap-2  py-2 px-2 w-fit " >
                             <MonthlyChart />
                         </div>
                     </div>
 
-                    <div className="flex flex-col bg-white w-full h-fit rounded-2xl xl:mt-4 lg:mt-4 px-12 py-4">
+                    <div className="anomaly flex flex-col bg-white w-[98.5%] h-fit rounded-2xl mt-4 lg:mt-4 p-[1.5rem]" style={{paddingInline: "45px"}}>
                         <div className="w-full">
-                            <h1 className="text-[1.1rem] font-medium mb-5">Anomaly Detected</h1>
+                            <h1 className="text-[1.4rem] font-semibold mb-5">Anomaly Detected</h1>
                         </div>
                         <div className="text-start w-full">
                             <p className="text-gray-600">
@@ -138,28 +139,28 @@ export default function Dashboard() {
                         )}
                     </div>
 
-                    <div className="flex flex-col gap-2 bg-white w-full h-fit rounded-2xl mt-4 px-12 py-4 mb-4">
+                    <div className="budget flex flex-col gap-2 bg-white w-[98.5%] h-fit rounded-2xl mt-4 mb-8 p-[1.5rem]" style={{paddingInline: "45px", marginBottom: "220px"}}>
                         <div className="w-full flex flex-row gap-4">
-                            <h1 className="text-[1.1rem] font-medium">Budget Recommendations</h1>
+                            <h1 className="text-[1.4rem] font-semibold mb-5">Budget Recommendations</h1>
                             <div className="flex flex-row justify-between gap-1 items-center px-3 h-fit w-fit bg-black rounded-md">
                                 <p className="text-blue-600 text-2xl">&#9733;</p>
                                 <h1 className="text-white font-bold">AI</h1>
                             </div>
                         </div>
 
-                        <div className="flex flex-col items-start text-start w-full">
-                            <p className="text-gray-600">
+                            <div className="budget-text flex justify-between gap-8">
+                                <p className="text-gray-600 w-fit">
                                 Ask AI for smart investment tips, savings strategies, or
                                 personalized budgeting advice in simple language!
-                            </p>
-                            <button
-                                className="bg-[#2D5359] text-white text-[19px] font-medium rounded-lg px-5 py-1 cursor-pointer"
-                                onClick={handleClick}
-                            >
-                                Ask AI &nbsp;{" "}
-                                <i className="fa-solid fa-arrow-right" style={{ color: "#fff" }}></i>
-                            </button>
-                        </div>
+                                </p>
+                                <button
+                                    className="bg-[#2D5359] text-white w-fit text-[19px] font-medium rounded-lg px-5 py-1 cursor-pointer"
+                                    onClick={handleClick} style={{alignSelf: "end"}}
+                                >
+                                    Ask AI &nbsp;{" "}
+                                    <i className="fa-solid fa-arrow-right" style={{ color: "#fff" }}></i>
+                                </button>
+                            </div>
                     </div>
 
                    
