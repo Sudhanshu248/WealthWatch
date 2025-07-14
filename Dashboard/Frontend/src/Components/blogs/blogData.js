@@ -27,7 +27,7 @@ export const articles = [
 ];
 
 
-export  const ytData = [
+export const ytData = [
   {
     videoId: "https://www.youtube.com/embed/0iRbD5rM5qc",
     title: "Financial Literacy | Learn the basics of finance and budgeting"
@@ -45,7 +45,7 @@ export  const ytData = [
     title: "Financial Education | The 4 Rules Of Being Financially Literate"
   }
 ];
-  
+
 
 export const tips = [
   {
@@ -75,4 +75,3 @@ export const tips = [
 ];
 
 
-  

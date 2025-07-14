@@ -4,6 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { tips, articles, ytData } from "./blogData.js"
+import { useEffect } from "react";
 
 export default function Blogs() {
 
