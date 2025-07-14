@@ -2,11 +2,11 @@ export default function Team() {
     return (
         <>
             <div >
-                <h1 className='text-center text-5xl mx-20 mb-10 '>The Minds Behind This Magic</h1>
+                <h1 className='team-heading text-center text-5xl mx-20 mb-10 font-medium' style={{color: "rgb(2, 62, 138)"}}>The Minds Behind This Magic</h1>
 
-                <div className="mx-60 flex">
+                <div className="team-box mx-60 flex">
                     <div className="flex-4  justify-items-center p-5" >
-                        <div className="profile justify-items-center p-5 rounded-lg">
+                        <div className="team justify-items-center p-5 rounded-lg">
                             <img src="/image/himanshu.png" alt="himanshu.png" className='w-76 h-76 rounded-lg' style={{ borderRadius: "50%" }}></img>
                             <h3 className='text-2xl pt-5'>Himanshu Kumar</h3>
                             <p>Software Engineer</p>
@@ -19,10 +19,10 @@ export default function Team() {
                         </div>
                     </div>
 
-                    <div className='flex-2'></div>
+                    <div className='team-btn-space flex-2'></div>
 
                     <div className="flex-4  justify-items-center p-5">
-                        <div className="profile justify-items-center p-5 rounded-lg">
+                        <div className="team justify-items-center p-5 rounded-lg">
                             <img src="/image/sudhanshu.png" alt="sudhanshu.png" className='w-76 h-76 rounded-lg' style={{ borderRadius: "50%" }} />
                             <h3 className='text-2xl pt-5'>Sudhanshu Saini</h3>
                             <p>Software Engineer</p>

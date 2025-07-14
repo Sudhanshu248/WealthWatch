@@ -70,8 +70,10 @@
 @media screen and (max-width: 790px){
     .counters{
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         margin: auto;
+        justify-content: center;
+        gap: 1rem;
         align-items: center;
     }
     .counter h1{
@@ -83,7 +85,7 @@
     .counters{
         display: flex;
         margin: auto;
-        gap: 3rem;
+        gap: 1rem;
         align-items: center;
         flex-direction: column;
     }

@@ -89,12 +89,23 @@
     font-size: 32px;
   }
   #card-one{
-    padding: 10px;
+    padding: 9px;
   }
   .faq-text{
     font-size: 17px;
   }
   .faq-outer{
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 450px){
+  .faq-heading{
+    font-size: 35px;
+    font-weight: 500;
+  }
+  #support-heading{
+    font-size: 36px;
+    font-weight: 500;
   }
 }

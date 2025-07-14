@@ -14,6 +14,12 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+  #logo img{
+    width: 160px;
+  }
+}
+
 @media  screen and (max-width: 380px) {
   #footer-text{
    padding: 0; 
@@ -30,10 +36,6 @@
   #logo{
     padding: 0;
     width: fit-content;
-  }
-  #logo img{
-    height: 105px !important;
-    width: 160px;
   }
   #nav-btn{
     font-size: 12px;

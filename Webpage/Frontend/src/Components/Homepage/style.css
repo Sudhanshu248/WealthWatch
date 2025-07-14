@@ -59,10 +59,27 @@
   /* 1.75 second animation */
 }
 
+@media screen and (max-width: 1200px){
+  .cards{
+    margin-inline: 0;
+    gap: 0rem;
+    padding-inline: 0;
+  }
+}
+
 
 @media screen and (max-width: 965px) {
   #home-text {
     font-size: 45px;
+  }
+  .cards img{
+    margin-left: 0;
+  }
+  .cards p{
+    padding: 15px;
+  }
+  .cards{
+    gap: 14px;
   }
 
   #home-btn {
@@ -84,6 +101,15 @@
     width: 250px;
     margin: auto;
     padding: 15px;
+  }
+  .cards-text{
+    gap: 10px;
+    margin-bottom: 1rem;
+  }
+  .blocks{
+    flex-wrap: wrap;
+    display: flex;
+    gap: 45px;
   }
   #home-text {
     font-size: 41px;
@@ -118,6 +144,10 @@
   }
   #home-btn{
     max-width: 230px;
+  }
+  .cards img{
+    margin: auto;
+    width: 15rem;
   }
 }
 

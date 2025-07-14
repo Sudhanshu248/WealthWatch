@@ -3,7 +3,7 @@ export default function Block() {
         <>
             <div className="text-center">
 
-                <div className="blocks text-center flex flex-row mx-auto mt-14 justify-evenly align-item-center max-[750px]:flex-col text-center gap-12 my-auto mx-auto py-6 w-full flex-wrap">
+                <div className="blocks text-center flex flex-row mx-auto mt-14 justify-evenly align-item-center text-center gap-12 my-auto mx-auto py-6 w-full flex-wrap">
 
                     {/* Bouncing CARD */}
                     <div id="home-block" className="text-center  w-58   h-48 p-2 text-2xl font-semibold  bg-sky-100 hover:scale-105 bounce-1s " style={{ borderRadius: "30px" }}>

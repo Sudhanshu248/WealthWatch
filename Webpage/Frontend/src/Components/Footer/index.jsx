@@ -23,7 +23,7 @@ export default function Footer() {
                                     </div>
                                     <div className="col-md-2">
                                         <h6 >
-                                            <a href="/support" className="text-white">Suport</a>
+                                            <a href="/support" className="text-white">Support</a>
                                         </h6>
                                     </div>
                                     <div className="col-md-2">

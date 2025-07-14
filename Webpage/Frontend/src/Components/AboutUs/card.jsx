@@ -1,10 +1,10 @@
 export default function Card() {
     return (
         <>
-            <h1 className='card-heading text-center text-5xl my-14'>Why we are?</h1>
-            <div className='card flex gap-40 mx-50 mb-28'>
-                <div className='flex-5'>
-                    <img src="/image/about1.png" alt="about1.png" className='w-90 h-90 rounded-md' />
+            <h2 className='card-heading text-center text-5xl my-14 font-medium' style={{color: "rgb(2, 62, 138)"}}>Why We Are?</h2>
+            <div className='card flex gap-40 mx-72 mb-28'>
+                <div className='card-img flex-5'>
+                    <img src="/image/about1.png" alt="about1.png" className='w-100 h-95 rounded-lg' />
                 </div>
 
                 <div className="card-text flex-5  justify-center">
