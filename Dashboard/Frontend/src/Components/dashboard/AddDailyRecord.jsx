@@ -13,10 +13,8 @@ export default function AddDailyRecord() {
     const handleSave = async () => {
         try {
             const token = localStorage.getItem("token");
-            console.log("Token:", token);
             if (!token) {
-                console.log("Token is not found need Login first")
-                return;
+                return res.status(401).json({ message: "No token provided" });
             }
 
             const response = await axios.post(`${BASE_URL}/dashboard`,
@@ -36,7 +34,6 @@ export default function AddDailyRecord() {
                 });
 
             if (response.data) {
-                console.log("Daily Record Saved Successfully", response.data);
                 setCategory("");
                 setPaymentMethod("");
                 setDate("");
@@ -48,8 +45,8 @@ export default function AddDailyRecord() {
                 }, 5000);
             }
         } catch (error) {
-            console.error("Error saving daily record:", error);
             alert("Failed to save daily record. Please try again.");
+            return res.status(500).json({ message: error.message });
         }
     }
 

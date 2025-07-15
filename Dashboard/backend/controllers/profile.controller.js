@@ -51,14 +51,12 @@ export const getUserData = async (req, res) => {
             email,
         };
 
-        console.log(userData);
         if (!formData || !userData) {
             return res.status(404).json({ message: "No data found for this user" });
         }
         return res.status(200).json({ formData, userData });
 
     } catch (error) {
-        console.error("Error in getGoals:", error);
         return res.status(500).json({ message: error.message });
     }
 };
@@ -124,7 +122,6 @@ export const updateProfileData = async (req, res) => {
 
         return res.status(200).json(updatedProfile);
     } catch (error) {
-        console.error("Update profile error:", error);
         return res.status(500).json({ message: error.message });
     }
 };

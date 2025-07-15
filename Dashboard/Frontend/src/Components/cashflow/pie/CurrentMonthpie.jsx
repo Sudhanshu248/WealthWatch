@@ -90,7 +90,7 @@ export default function CurrPie() {
                 {MonthName[5].toUpperCase()}
             </div>
 
-            <div className="flex justify-between c-monthchart-1 w-full text-center">
+            <div className="flex justify-between c-monthchart-1 w-full text-center mb-5">
                 <div className="w-[40%] flex c-monthchart-1-2 ">
                     <PieChart key={JSON.stringify(data)} data={data} />
                 </div>
@@ -156,7 +156,7 @@ export default function CurrPie() {
             </div>
 
             {location.pathname === "/cashflow/SixMonth" && <div className="h-fit ">
-                <button className="bg-[#2D5359] flex flex-row justify-center items-center h-fit text-white text-center text-[20px] font-medium rounded-lg py-1 px-1" onClick={handleClick}>Detail &nbsp;<i className="fa-solid fa-arrow-right"></i></button>
+                <button className="bg-[#2D5359] flex flex-row justify-center items-center h-fit text-white text-center text-[20px] font-medium rounded-lg py-1 px-3" onClick={handleClick}>Detail &nbsp;<i className="fa-solid fa-arrow-right"></i></button>
             </div>}
 
 

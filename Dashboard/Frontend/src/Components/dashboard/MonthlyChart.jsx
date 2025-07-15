@@ -34,7 +34,7 @@ export default function MonthlyChart() {
                     { name: 'Saving', value: saving.savingExpence, percentage: saving.Saving_percentage }
                 ]);
             } catch (error) {
-                console.error("Failed to load expense data:", error);
+                return res.status(500).json({ message: error.message });
             } finally {
                 setLoading(false);
             }

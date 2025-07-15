@@ -60,8 +60,6 @@ export default function CurrentMonthList() {
         const value = e.target.value;
         const path = location.pathname;
 
-        console.log(path);
-
         if (path === "/cashflow/thisMonth" || path === "/cashflow") {
             return;
         } else {
@@ -75,7 +73,7 @@ export default function CurrentMonthList() {
         <>
 
             {/* History Data */}
-            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4 max-[1030px]:mb-[200px]">
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">

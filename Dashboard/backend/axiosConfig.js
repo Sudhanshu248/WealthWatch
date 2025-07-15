@@ -11,6 +11,4 @@ const clientServer = axios.create({
   }
 });
 
-
-
 export default clientServer;

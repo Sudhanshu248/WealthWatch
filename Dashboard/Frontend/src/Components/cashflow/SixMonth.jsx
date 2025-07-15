@@ -10,7 +10,7 @@ export default function SixMonth() {
   return (
     <>
 
-      <div className="sixmonth grid grid-cols-2 gap-3 mt-8 w-full h-fit">
+      <div className="sixmonth grid grid-cols-2 gap-3 mt-8 w-full h-fit mb-[200px]">
 
         <div className="bg-white w-full h-fit rounded-2xl px-5 py-6">
           <CurrPie />

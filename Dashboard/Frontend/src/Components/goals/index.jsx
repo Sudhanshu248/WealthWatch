@@ -34,7 +34,7 @@ export default function GoalsPage() {
         const id = decoded?.id || decoded?.email || "guest";
         setUserId(id);
       } catch (err) {
-        console.error("Invalid token", err);
+        return res.status(500).json({ message: err.message });
       }
     }
   }, []);
@@ -97,6 +97,7 @@ export default function GoalsPage() {
       }
     } catch (error) {
       console.error("Error while fetching goals:", error.message);
+      return res.status(500).json({ message: error.message });
     }
   };
 
@@ -191,11 +192,11 @@ export default function GoalsPage() {
 
   return (
     <div className="flex">
-      <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+      <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-5 dashboard"
     style={{ position: "fixed", right: 0, overflowY: "auto" }}>
       <div className="flex flex-col ">
-          <h1 className="text-3xl text-emerald-900 font-bold text-start ">Goals</h1>
-        <p className="">Set your goals for different categories.</p>
+          <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2" style={{marginBottom: "0.5rem"}}>Goals</h1>
+        <p className="ml-2 mb-2">Set your goals for different categories.</p>
       </div>
 
         {success && <div className="flex flex-row m-auto justify-between w-full" style={{

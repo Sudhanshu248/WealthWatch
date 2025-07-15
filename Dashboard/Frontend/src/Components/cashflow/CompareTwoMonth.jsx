@@ -133,7 +133,7 @@ export default function CompareTwoMonth() {
     <div className="compare-two-month-pieBox bg-white w-full h-fit  rounded-2xl p-5">
       <div className="font-medium text-xl mb-2">{title}</div>
       <div className="compare-two-month-pieCard flex justify-between">
-        <div className="compare-two-month-pie w-[40%]">
+        <div className="compare-two-month-pie w-[50%] flex justify-center h-[40vh] max-[1200px]:w-[60%] max-[900px]:w-[75%] max-[750px]:w-[85%] max-[500px]:w-[80%]">
           <PieChart key={JSON.stringify(pieData)} data={pieData} />
         </div>
         <div className="compare-two-month-pielist w-fit flex items-center  mb-4">
@@ -206,7 +206,7 @@ export default function CompareTwoMonth() {
         {renderPieCard(monthNames[4].toUpperCase(), secondPieData, secondData.percentages, secondData.total, secondData.balance)}
       </div>
 
-      <div className="compare-two-month-list flex flex-row gap-4 mt-6">
+      <div className="compare-two-month-list flex flex-row gap-4 mt-6 mb-[200px]">
         <CurrentMonthList />
         <SecondMonthList />
       </div>

@@ -149,7 +149,7 @@ export default function BudgetRecommendation() {
     disabled={loading}
     className="bg-[#2D5359] p-3 rounded-full max-[600px]:block hidden flex justify-center"
   >
-    <img src="/image/sendIcon.png" alt="Send" className="w-[30px] h-[30px]" />
+    <img src="/image/sendIcon.png" alt="Send-icon Image" className="w-[30px] h-[30px]" />
   </button>
 </div>
 

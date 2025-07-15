@@ -24,16 +24,16 @@ export default function Blogs() {
 <div className="flex flex-col md:flex-row w-full">
 
   {/* Blogs Container - Responsive */}
-           <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+           <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-5 dashboard"
     style={{ position: "fixed", right: 0, overflowY: "auto" }}>
-    <h1 className="text-2xl md:text-3xl text-emerald-900 font-bold text-start ml-4 md:ml-16 my-4 md:my-6">
+    <h1 className="text-3xl md:text-3xl text-shadow-md text-emerald-900 font-bold text-start ml-2" style={{marginBottom: "1.5rem"}}>
       Blogs
     </h1>
 
     {/* Article Section */}
-    <div className="bg-white py-5 px-4 md:px-2 my-6 md:my-8 rounded-2xl">
-      <h1 className="text-xl md:text-2xl font-medium text-start mb-4 px-2 md:px-8">
-        Money guides
+    <div className="bg-white py-5 px-4 md:px-2 mb-6 rounded-2xl">
+      <h1 className="text-start heading text-[1.4rem] font-semibold mb-4 px-2 md:px-8">
+        Money guides 
       </h1>
 
 <div className="relative">
@@ -60,7 +60,7 @@ export default function Blogs() {
               >
                 <img
                   src={item.image}
-                  alt="post-image"
+                  alt="articles-image"
                   className="h-[190px] w-full object-cover rounded-[10px]"
                 />
                 <p className="mt-2 mb-4">{item.title}</p>
@@ -85,7 +85,7 @@ export default function Blogs() {
 
           {/*  video Section */}
           <div className="bg-white py-5 px-2 my-8 rounded-2xl">
-            <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Finance clips</h1>
+            <h1 className="heading text-[1.4rem] font-semibold text-start px-8 mb-4 ">Finance clips</h1>
 
 <div className="relative">
   <Swiper
@@ -143,7 +143,7 @@ export default function Blogs() {
 
           {/* Tips Section */}
 <div className="bg-white py-5 px-2 my-8 rounded-2xl w-full mb-[200px]" >
-  <h1 className="text-xl sm:text-2xl font-medium text-start mb-4 px-2 sm:px-4 md:px-6">
+  <h1 className="heading text-[1.4rem] font-semibold text-start mb-4 px-2 sm:px-4 md:px-6">
     Ways to Achieve Financial Freedom
   </h1>
 
@@ -173,7 +173,7 @@ export default function Blogs() {
           >
             <img
               src={item.image}
-              alt="post"
+              alt="post Image"
               onClick={() => openImageModal(item.image)}
               className="w-full h-[42vh] object-cover rounded-lg mb-4 cursor-pointer hover:opacity-90 transition-opacity"
             />

@@ -74,21 +74,21 @@ export default function Signup() {
                     {success && <div className="text-green-600 font-mediud">{success}</div>}
                     <div className="w-[90%]">
                         <div className="username flex pt-5 pb-1" style={{ borderBottom: "2px solid rgba(0, 0, 0, 0.2" }}>
-                            <img src="/image/signUp-user.png" alt="signUp-user.png" className='w-9 h-9 p-2' />
+                            <img src="/image/signUp-user.png" alt="signUp-user Image" className='w-9 h-9 p-2' />
                             <input type="name" id="username" placeholder='Enter your username' className='p-6 ml-1'
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
                         <div className="email flex pt-5 pb-1" style={{ borderBottom: "2px solid rgba(0, 0, 0, 0.2" }}>
-                            <img src="/image/signUp-email.png" alt="signUp-email.png" className='w-9 h-9 p-2' />
+                            <img src="/image/signUp-email.png" alt="signUp-email Image" className='w-9 h-9 p-2' />
                             <input type="email" id="email" placeholder='Enter your email' className='p-6 ml-1'
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
                         <div className="password flex pt-5 pb-1" style={{ borderBottom: "2px solid rgba(0, 0, 0, 0.2" }}>
-                            <img src="/image/signUp-email.png" alt="signUp-password.png" className='w-10 h-10 p-2' />
+                            <img src="/image/signUp-password.png" alt="signUp-password Image" className='w-10 h-10 p-2' />
                             <input type="password" id="password" placeholder='Enter your password' className='p-6 ml-1'
                                 onChange={(e) => setPassword(e.target.value)}
                             />

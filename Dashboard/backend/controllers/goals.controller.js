@@ -18,7 +18,6 @@ export const getGoals = async (req, res) => {
 
     return res.status(200).json(goalsData);
   } catch (error) {
-    console.error("Error in getGoals:", error);
     return res.status(500).json({ message: error.message });
   }
 };
@@ -29,12 +28,11 @@ export const getGoals = async (req, res) => {
 export const goals = async (req, res) => {
   try {
     const { name, value } = req.body;
-    const token = req.headers.authorization;
 
+    const token = req.headers.authorization;
     if (!token) return res.status(401).json({ message: "No token provided" });
 
-    const user = await User.findOne({ token }); // ✅ Proper usage
-
+    const user = await User.findOne({ token }); 
     if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
     const update = { $set: { [name]: value } };
@@ -52,7 +50,6 @@ export const goals = async (req, res) => {
 
     return res.status(200).json(updatedGoal);
   } catch (error) {
-    console.error("Error in goals POST:", error);
     return res.status(500).json({ message: error.message });
   }
 };

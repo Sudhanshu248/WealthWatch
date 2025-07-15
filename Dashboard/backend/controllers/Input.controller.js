@@ -109,7 +109,6 @@ export const SavedinputData = async (req, res) => {
     return res.status(200).json({ message: 'Data saved successfully' });
 
   } catch (error) {
-    console.error("Error saving input data:", error);
     return res.status(500).json({ error: 'Server error' });
   }
 };
@@ -176,7 +175,6 @@ export const deleteInputData = async (req, res) => {
     return res.status(200).json({ message: 'Item deleted successfully' });
 
   } catch (error) {
-    console.error("Delete error:", error);
     return res.status(500).json({ error: 'Server error', details: error.message });
   }
 };

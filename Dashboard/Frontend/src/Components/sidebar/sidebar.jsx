@@ -19,7 +19,7 @@ export default function Sidebar() {
 
     return (
         <>
-            <div className="flex flex-col justify-center items-center text-center h-[50%] space-y-1 text-[20px] capitalize">
+            <div className="flex flex-col justify-center items-center text-center h-[65%] space-y-1 text-[20px] capitalize">
                 {navItem.map((item) => (
                     <Link
                         key={item.name}
