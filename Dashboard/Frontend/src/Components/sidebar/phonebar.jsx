@@ -27,7 +27,7 @@ export default function PhoneBar() {
                         to={`${DASHBOARD_URL}/goals`}
                     >
                         <div className="flex flex-col items-center justify-between">
-                            <i class="fa-solid fa-bullseye"></i>
+                            <i className="fa-solid fa-bullseye"></i>
                             <span>Goals</span>
                         </div>
                     </Link>

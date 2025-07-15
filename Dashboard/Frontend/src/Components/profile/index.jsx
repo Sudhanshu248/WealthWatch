@@ -149,8 +149,8 @@ export default function ProfilePage() {
             <div className='flex flex-row '>
 
                 {/* BLogs Container */}
-                <div className="profile bg-[#B8D7DE8C] rounded-md mt-4 ml-64  w-[60vw]  grow">
-
+                 <div className="profile bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
                     <h1 className="profile-text text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-4">My Profile</h1>
 
                     {success && <div className="flex flex-row mx-auto justify-between w-[90%]" style={{
@@ -209,6 +209,7 @@ export default function ProfilePage() {
                                 <img
                                     src={`${BASE_URL}/uploads/${profileImage}`}
                                     alt="ProfileImage"
+                                    id="profileImage"
                                     style={{ borderRadius: "50%", width: "170px", height: "170px" }}
                                 />
                             )}
@@ -232,14 +233,14 @@ export default function ProfilePage() {
 
                     <div className="goal-1 bg-white p-4 px-10 mx-auto mb-3 rounded-2xl flex items-center justify-between m-5"
                         style={{ width: "90%" }}>
-                        <p className="text-2xl pt-1 font-medium">Profession</p>
+                        <p className="text-2xl pt-1 max-[460px]:text-[20px] font-medium">Profession</p>
 
                         {isModelOpen ?
                             <input
                                 type="text"
                                 value={profession}
                                 onChange={(e) => setProfession(e.target.value)}
-                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4"
+                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4 max-[450px]:w-[50%]"
                             />
                             :
                             <p style={{ color: "rgb(50, 47, 47)" }}>{profession}</p>
@@ -248,14 +249,14 @@ export default function ProfilePage() {
 
 
                     <div className="goal-1 bg-white p-4 px-8 mx-auto mb-3 rounded-2xl flex items-center align-middle justify-between m-5" style={{ width: "90%" }}>
-                        <p className="text-2xl pt-1 font-medium">Income</p>
+                        <p className="text-2xl max-[460px]:text-[20px] pt-1 font-medium">Income</p>
 
                         {isModelOpen ?
                             <input
                                 type="number"
                                 value={income}
                                 onChange={(e) => setIncome(e.target.value)}
-                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4"
+                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4 max-[450px]:w-[50%]"
                             />
                             :
                             <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {income}</p>
@@ -263,11 +264,11 @@ export default function ProfilePage() {
                     </div>
 
                     <div className="goal-1 bg-white p-4 px-2 sm:px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between m-5" style={{ width: "90%" }}>
-                        <p className="text-2xl pt-1 font-medium">Average Expenses</p>
+                        <p className="text-2xl max-[460px]:text-[20px] pt-1 font-medium">Average Expenses</p>
                         <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {AverageExpences}</p>
                     </div>
 
-                    <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer mr-5 ml-16 mb-10" onClick={() => SetIsModelOpen(true)}>Edit</button>
+                    <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer mr-5 ml-16 mb-[200px]" onClick={() => SetIsModelOpen(true)}>Edit</button>
 
                     {isModelOpen && (
                         <button

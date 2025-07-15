@@ -83,6 +83,9 @@
     .piechart-1 {
         width: 300px;
     }
+    .ai-box{
+        padding-inline: 0px !important;
+    }
     .budget button {
         width: 106px;
         padding: 5px;
@@ -130,7 +133,7 @@
     .anomaly-alert{
         text-align: center;
         flex-direction: column;
-        gap: 6px;
+        gap: 20px;
     }
     .add-b{
         width: 100%;

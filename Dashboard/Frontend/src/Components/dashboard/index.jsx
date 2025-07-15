@@ -107,7 +107,7 @@ export default function Dashboard() {
                             <h1 className="text-[1.4rem] font-semibold mb-5">Anomaly Detected</h1>
                         </div>
                         <div className="text-start w-full">
-                            <p className="text-gray-600">
+                            <p className="text-gray-600 ">
                                 Our system analyzes your past spending habits to identify
                                 significant deviations. We will alert you to expenses that are
                                 higher than your average or appear to be unusual, ensuring you
@@ -122,7 +122,7 @@ export default function Dashboard() {
                                         <div className="text-center rounded-full h-[30px] w-[30px] bg-red-700 text-white font-bold text-xl">
                                             !
                                         </div>
-                                        <h1 className="text-red-700 font-medium">
+                                        <h1 className="text-red-700 font-medium ml-[10px]">
                                             Higher than usual restaurant spending.
                                         </h1>
                                     </div>

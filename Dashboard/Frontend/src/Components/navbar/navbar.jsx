@@ -64,7 +64,7 @@ export default function Navbar() {
 
 
                     {show &&
-                        <div className=" bg-white p-5 rounded-2xl" style={{ position: "fixed", top: "100px", right: "30px", border: "3px solid rgb(184, 215, 222)", boxShadow: " 1px 1px 16px 4pxrgba(192, 192, 192, 0.2)" }}>
+                        <div className="calendar bg-white p-5 rounded-2xl" style={{ position: "fixed", top: "100px", right: "30px", border: "3px solid rgb(184, 215, 222)", boxShadow: " 1px 1px 16px 4pxrgba(192, 192, 192, 0.2)" }}>
                             <i className="fa-solid fa-xmark fa-xl mb-4 cursor-pointer" onClick={handleCross} style={{ color: "#2D5359" }}></i>
                             <Calendar />
                         </div>

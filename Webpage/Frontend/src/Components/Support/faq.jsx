@@ -31,14 +31,7 @@ const faqs = [
 
 export default function Faq() {
 
-    const [hovered1, setHovered1] = useState(false);
-    const [hovered2, setHovered2] = useState(false);
-    const [hovered3, setHovered3] = useState(false);
-    const [hovered4, setHovered4] = useState(false);
-    const [hovered5, setHovered5] = useState(false);
-    const [hovered6, setHovered6] = useState(false);
-
-      const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
   const toggleIndex = (index) => {
     setOpenIndex(openIndex === index ? null : index);

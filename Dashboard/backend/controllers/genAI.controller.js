@@ -17,18 +17,6 @@ const generationConfig = {
 
 export const askGeminiAI = async (req, res) => {
   const { prompt } = req.body;
-  
-  const token = req.headers.authorization;
-  if (!token) {
-    console.error("No token provided");
-    return ;
-  }
-
-  const user = await User.findOne({ token });
-  if (!user) {
-    console.error("Unauthorized user");
-    return ;
-  }
 
   if (!prompt) {
     return res.status(400).json({ error: "Prompt is required" });
