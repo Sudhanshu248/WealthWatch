@@ -48,6 +48,9 @@ export default function CurrentHistory() {
         loadData();
     }, []);
 
+
+  
+
     // Handles navigation to detailed view of each expense category
     const handleclick = (e) => {
         const value = e.target.value;
@@ -56,7 +59,7 @@ export default function CurrentHistory() {
     };
 
     // Extract month name from URL path
-    const monthName = location.pathname.replace('/historys/', '');
+    const monthName = location.pathname.replace(`/historys/`, '');
 
     return (
         <>

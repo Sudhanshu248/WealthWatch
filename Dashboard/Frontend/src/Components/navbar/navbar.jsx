@@ -9,10 +9,7 @@ export default function Navbar() {
     // State to hold user profile image
     const [profileImage, setProfileImage] = useState("");
 
-    // State to hold user name
     const [name, setName] = useState("");
-
-    // State to toggle calendar visibility
     const [show, setShow] = useState(false);
 
     // Show the calendar popup
@@ -107,12 +104,20 @@ export default function Navbar() {
                         {/* User profile image */}
                         <div className="h-[30px] w-[30px] rounded-full">
                             <img
-                                src={`${BASE_URL}/uploads/${profileImage}`} // Dynamically load profile image
+                                src={
+                                    profileImage
+                                        ? `${BASE_URL}/uploads/${profileImage}`
+                                        : `${BASE_URL}/uploads/profile.png`
+                                }
                                 alt="ProfileImage"
                                 style={{
                                     borderRadius: "50%",
                                     width: "35px",
                                     height: "35px"
+                                }}
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = `${BASE_URL}/uploads/profile.png`;
                                 }}
                             />
                         </div>

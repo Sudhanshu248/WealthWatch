@@ -11,17 +11,10 @@ import ProfilePage from './Components/profile/index.jsx'
 import Signup from './Components/SignUp/index.jsx'
 import Login from './Components/Login/index.jsx'
 import Form from './Components/Form/index.jsx'
-import CashflowIndividual from './Components/cashflow/IndividualCashflow/CashflowIndividual.jsx'
-import CurrentIndividualData from './Components/cashflow/IndividualCashflowData/CurrentIndividualData.jsx'
-import SecondIndividualData from './Components/cashflow/IndividualCashflowData/SecondIndividualData.jsx'
-import ThirdIndividualData from './Components/cashflow/IndividualCashflowData/ThirdIndividualData.jsx'
-import ForthIndividualData from './Components/cashflow/IndividualCashflowData/ForthIndividualData.jsx'
-import FifthIndividualData from './Components/cashflow/IndividualCashflowData/FifthIndividualData.jsx'
-import SixthIndividualData from './Components/cashflow/IndividualCashflowData/SixthIndividualData.jsx'
+import CashflowIndividual from './Components/cashflow/IndividualCashflow/CashflowIndividual.jsx';
 import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 import PhoneBar from './Components/sidebar/phonebar.jsx'
-import CurrentHistory from './Components/history/Monthlylist/CurrentHistory.jsx'
 import CashflowIndividualData from './Components/cashflow/IndividualCashflowData/CashflowIndividualData.jsx'
 
 
@@ -49,7 +42,7 @@ function AppRoutes() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/form' element={<Form />} />
         <Route path='/goals' element={<GoalsPage />} />
-        
+
         <Route path="/historys" element={<HistoryPage />} />
         <Route path="/historys/:month" element={<HistoryPage />} />
         <Route path='/historys/:month/:urlId' element={<HistoryIndividualRouter />} />

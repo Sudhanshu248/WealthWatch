@@ -77,7 +77,7 @@ export default function FifthtHistoryIndividual() {
     // Navigate back to the monthly history overview
     const handleBack = () => {
         if (pathParts.length >= 4) {
-            const basePath = `/${pathParts[1]}/${pathParts[2]}`;
+           const basePath = `/${pathParts[1]}/${pathParts[2]}`;
             navigate(basePath);
         }
     };

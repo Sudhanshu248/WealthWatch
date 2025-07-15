@@ -166,7 +166,7 @@ export default function ProfilePage() {
                     <span className="flex flex-col items-center gap-2">
                         {profileImage && (
                             <img
-                                src={`${BASE_URL}/uploads/${profileImage}`}
+                                src={profileImage ? `${BASE_URL}/uploads/${profileImage}` : `${BASE_URL}/uploads/profile.png`}
                                 alt="Profile"
                                 className="rounded-full"
                                 style={{ width: "170px", height: "170px" }}

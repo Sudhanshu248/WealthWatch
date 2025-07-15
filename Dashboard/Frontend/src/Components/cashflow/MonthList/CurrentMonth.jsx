@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
-import {  CurrentTotalExpence,  CurrentFoodExpence,  CurrentTransportExpence,  CurrentPersonalExpence,  CurrentHousingExpence,  CurrentSavingExpence
-} from "../../data/CalCurrentMonthExpence.js";
+import {  CurrentTotalExpence,  CurrentFoodExpence,  CurrentTransportExpence,  CurrentPersonalExpence,  CurrentHousingExpence,  CurrentSavingExpence } from "../../data/CalCurrentMonthExpence.js";
 import CurrentMonthList from "./CurrentMonthList.jsx";
 import CurrPie from "../pie/CurrentMonthpie.jsx";
 import '../style.css'
@@ -61,8 +60,7 @@ export default function CurrentMonth() {
     return (
         <>
             {/*  Monthly Bar Chart Section  */}
-            <div className="monthly-exp bg-white w-full mt-4 rounded-2xl py-5 px-10">\
-
+            <div className="monthly-exp bg-white w-full mt-4 rounded-2xl py-5 px-10">
                 {/* Section Title */}
                 <div className="font-medium text-xl mb-7">
                     Monthly Expenses

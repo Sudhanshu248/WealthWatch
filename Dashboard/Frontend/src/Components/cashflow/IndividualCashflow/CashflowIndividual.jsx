@@ -33,31 +33,31 @@ export default function CashflowIndividual() {
 
          {/* Render second most recent month */}
          {
-            location.pathname == "/cashflow/SixMonth/2" &&
+            location.pathname == `/cashflow/SixMonth/${MonthName[4]}` &&
             <SecondIndividual />
          }
 
          {/* Render third most recent month */}
          {
-            location.pathname == "/cashflow/SixMonth/3" &&
+            location.pathname == `/cashflow/SixMonth/${MonthName[3]}` &&
             <ThirdIndividual />
          }
 
          {/* Render fourth most recent month */}
          {
-            location.pathname == "/cashflow/SixMonth/4" &&
+            location.pathname == `/cashflow/SixMonth/${MonthName[2]}` &&
             <ForthIndividual />
          }
 
          {/* Render fifth most recent month */}
          {
-            location.pathname == "/cashflow/SixMonth/5" &&
+            location.pathname == `/cashflow/SixMonth/${MonthName[1]}` &&
             <FifthIndividual />
          }
 
          {/* Render sixth most recent month */}
          {
-            location.pathname == "/cashflow/SixMonth/6" &&
+            location.pathname == `/cashflow/SixMonth/${MonthName[0]}` &&
             <SixthIndividual />
          }
       </>
