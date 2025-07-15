@@ -5,7 +5,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useState } from "react";
 import { tips, articles, ytData } from "./blogData.js"
-import { useEffect } from "react";
 
 export default function Blogs() {
 
@@ -141,7 +140,7 @@ export default function Blogs() {
           </div>
 
 
-          {/* Tips Section */}
+          {/* Financial Freedom Section */}
 <div className="bg-white py-5 px-2 my-8 rounded-2xl w-full mb-[200px]" >
   <h1 className="heading text-[1.4rem] font-semibold text-start mb-4 px-2 sm:px-4 md:px-6">
     Ways to Achieve Financial Freedom
@@ -212,8 +211,6 @@ export default function Blogs() {
 
         </div>
       </div>
-
-
     </>
   )
 }

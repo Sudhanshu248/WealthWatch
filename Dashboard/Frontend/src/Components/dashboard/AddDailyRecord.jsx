@@ -9,14 +9,20 @@ export default function AddDailyRecord() {
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleSave = async () => {
         try {
+            // Retrieve the JWT token from local storage for authentication
             const token = localStorage.getItem("token");
+
+            // If no token is found, notify the user and exit the function
             if (!token) {
-                return res.status(401).json({ message: "No token provided" });
+                alert("Please login first.");
+                return ;
             }
 
+            // Send a POST request to save the daily record
             const response = await axios.post(`${BASE_URL}/dashboard`,
                 {
                     category,
@@ -28,30 +34,40 @@ export default function AddDailyRecord() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": token,
+                        "Authorization": token, // Attach the token to the Authorization header
                     },
-                    timeout: 5000,
+                    timeout: 5000, // Set request timeout
                 });
 
+            // If the response is successful, reset input fields and show success message
             if (response.data) {
                 setCategory("");
                 setPaymentMethod("");
                 setDate("");
                 setName("");
                 setPrice("");
-                setSuccess(true);
+
+                setSuccess(true);            // Show success message
                 setTimeout(() => {
-                    setSuccess(false);
+                    setSuccess(false);// Hide success message after 5 seconds
                 }, 5000);
             }
         } catch (error) {
+            setError(true);            // Show Error message
+            setTimeout(() => {
+                setError(false);// Hide Error message after 5 seconds
+            }, 5000);
             alert("Failed to save daily record. Please try again.");
             return res.status(500).json({ message: error.message });
         }
     }
 
-    const handlealert = () => {
+
+    const handleSuccess = () => {
         setSuccess(false)
+    }
+    const handleError = () => {
+        setError(false)
     }
 
     return (
@@ -65,6 +81,8 @@ export default function AddDailyRecord() {
                 <div className=" mb-5">
                     <h1 className="text-[1.4rem] font-semibold text-start ">Add Daily Record</h1>
                 </div>
+
+                {/* Success Message */}
                 {success && <div className="flex flex-row mb-1 w-1/2 justify-between" style={{
                     backgroundColor: "#d4edda",
                     border: "1px solid #c3e6cb",
@@ -74,8 +92,24 @@ export default function AddDailyRecord() {
                     marginTop: "10px"
                 }}>
                     <div> Daily Record Saved Successfully!</div>
-                    <button onClick={handlealert}><i className="fa-solid fa-xmark"></i></button>
+                    <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
                 </div>}
+
+                {/* Error  Message */}
+                {error && <div className="flex flex-row m-auto justify-between w-full" style={{
+                    backgroundColor: "#efb0abff",
+                    border: "1px solid #d48377ff",
+                    color: "#c10000ff",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    marginTop: "10px"
+                }}>
+                    <div> Failed to save daily record. Please try again.</div>
+
+                    <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
+                </div>}
+
+
 
                 {/* block 1 */}
                 <div className="add-daily-b-1 flex flex-row justify-between my-2 mb-4">

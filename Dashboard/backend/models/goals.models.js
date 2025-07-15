@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import { Schema } from "mongoose";
 
 const GoalsSchema = new mongoose.Schema({
+        // Reference to the associated user
     userId:{
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -23,6 +24,7 @@ const GoalsSchema = new mongoose.Schema({
     }
 });
 
+// Create the Goals model from the schema
 const Goals = mongoose.model("Goals", GoalsSchema);
 
 export default Goals;

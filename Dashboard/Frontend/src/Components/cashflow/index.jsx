@@ -32,7 +32,6 @@ export default function CashflowPage() {
 
                     </div>
 
-
                     {/* Button for changing data list */}
                     <div className="cashflow-head text-center flex flex-row  gap-4 bg-white w-full h-fit  rounded-2xl px-8 py-4">
                         {MonthData.map((item) => (
@@ -48,15 +47,11 @@ export default function CashflowPage() {
                         ))}
                     </div>
 
-
-
                     {location.pathname === "/cashflow/thisMonth" || location.pathname === "/cashflow" ? (
                         <>
                             <CurrentMonth />
                         </>
                     ) : ""}
-
-
 
                     {location.pathname === "/cashflow/SixMonth" && (
                         <>
@@ -69,10 +64,6 @@ export default function CashflowPage() {
                             <CompareTwoMonth />
                         </>
                     )}
-
-
-
-                    {/*  */}
                 </div>
             </div>
         </>

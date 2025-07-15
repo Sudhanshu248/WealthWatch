@@ -9,12 +9,16 @@ export const forms = async (req, res) => {
         if (!token) return res.status(401).json({ error: 'No token provided' });
 
         const user = await User.findOne({ email });
-        if (!user) return res.status(404).json({ message: "User not found" });
+        // If user is not found
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
         if (!name || !profession || !income) {
             return res.status(400).json({ message: "Please fill all fields." });
         }
 
+        // If user exists, update the form
         const newForm = new Form({
             userId: user._id,
             name,

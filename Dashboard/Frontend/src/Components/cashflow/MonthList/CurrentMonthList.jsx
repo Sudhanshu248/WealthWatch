@@ -5,8 +5,6 @@ import { fetchMonthlyData } from "../../data/InputData.js";
 import '../style.css'
 export default function CurrentMonthList() {
 
-
-
     const [Foodpercentage, setFoodpercentage] = useState(0);
     const [TransportPercentage, setTransportPercentage] = useState(0);
     const [Personal_percentage, setPersonal_percentage] = useState(0);
@@ -19,18 +17,6 @@ export default function CurrentMonthList() {
     const [HousingExpences, setHousingExpences] = useState(0);
     const [SavingExpences, setSavingExpences] = useState(0);
 
-     const [MonthName, setMonthName] = useState([]);
-        
-            useEffect(() => {
-                const loadAllData = async () => {
-                    const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
-                    const results = await Promise.all(promises);
-                    const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
-                    setMonthName(name);
-                };
-        
-                loadAllData();
-            }, []);
 
     useEffect(() => {
         const loadData = async () => {
@@ -54,8 +40,22 @@ export default function CurrentMonthList() {
         loadData();
     });
 
-    const navigate = useNavigate();
+    // State to store month names
+    const [MonthName, setMonthName] = useState([]);
 
+    useEffect(() => {
+        // Fetch names of the last 6 months on mount
+        const loadAllData = async () => {
+            const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
+            const results = await Promise.all(promises);
+            const name = results.map(data => data.monthName.toUpperCase());
+            setMonthName(name);
+        };
+
+        loadAllData();
+    }, []);
+
+    const navigate = useNavigate();
     const handleclick = (e) => {
         const value = e.target.value;
         const path = location.pathname;
@@ -63,11 +63,12 @@ export default function CurrentMonthList() {
         if (path === "/cashflow/thisMonth" || path === "/cashflow") {
             return;
         } else {
-            navigate(`/cashflow/SixMonth/1/${value}`);
+            navigate(`/cashflow/SixMonth/${MonthName[5]}/${value}`);
         }
     };
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
 
+
+    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) return <p className="text-center mt-20">Loading...</p>;
 
     return (
         <>
@@ -77,7 +78,7 @@ export default function CurrentMonthList() {
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                   {MonthName[5].toUpperCase()}
+                    {MonthName[5].toUpperCase()}
                 </div>
 
 

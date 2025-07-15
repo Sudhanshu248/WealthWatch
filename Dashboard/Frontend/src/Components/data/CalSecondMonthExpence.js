@@ -1,20 +1,25 @@
 import { fetchMonthlyData } from "./InputData.js";
 
 const getCategoryData = async (categoryIndex) => {
+
+  // fetch Monthly Data Form InputData Model
   const inputData = await fetchMonthlyData(4);
   const TotalBudget = inputData.TotalBudget || 0;
   const categoryItems = inputData.expence?.[categoryIndex]?.items || {};
 
+  // Individual category data Sum like Food-132 (total Spended)
   const total = Object.values(categoryItems).reduce((sum, item) => {
     return sum + (Number(item?.price) || 0);
   }, 0);
 
+  // Showing Individual Category Data List 
   const listing = Object.entries(categoryItems).map(([key, item]) => ({
     name: item.name,
     value: item.price,
     percentage: total > 0 ? (item.price / total) * 100 : 0,
   }));
 
+  // Showing Percentage of Total Budget
   const percentage = TotalBudget > 0 ? (total / TotalBudget) * 100 : 0;
 
   return {
@@ -55,7 +60,7 @@ export const SecondSavingExpence = async () => {
   return { SavingListing, savingExpence, Saving_percentage };
 };
 
-
+// Second Month Total Expence , Balance , Expences and Percentage Calculation
 export const SecTotalExpence = async () => {
   const inputData = await fetchMonthlyData(4);
   const TotalBudget = inputData.TotalBudget || 0;

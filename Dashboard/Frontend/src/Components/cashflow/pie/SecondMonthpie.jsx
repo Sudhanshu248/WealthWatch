@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function SecondPie() {
+    const navigate = useNavigate();
     const [Foodpercentage, setFoodpercentage] = useState(0);
     const [TransportPercentage, setTransportPercentage] = useState(0);
     const [Personal_percentage, setPersonal_percentage] = useState(0);
@@ -50,7 +51,7 @@ export default function SecondPie() {
         const loadAllData = async () => {
             const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
             const results = await Promise.all(promises);
-            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
+            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName.toUpperCase());
             setMonthName(name);
         };
 
@@ -58,12 +59,7 @@ export default function SecondPie() {
     }, []);
 
 
-    const navigate = useNavigate();
-    const handleClick = () => {
-        navigate(`/cashflow/SixMonth/2`)
-    }
 
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const data = {
@@ -82,10 +78,15 @@ export default function SecondPie() {
             hoverOffset: 3
         }]
     };
+
+    const handleClick = () => {
+        navigate(`/cashflow/SixMonth/${MonthName[4]}`)
+    }
+
     return (
         <>
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[4].toUpperCase()}
+                {MonthName[4]}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">

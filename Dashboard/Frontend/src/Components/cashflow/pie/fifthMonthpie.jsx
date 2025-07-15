@@ -5,6 +5,7 @@ import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
 
 export default function FifthPie() {
+    const navigate = useNavigate();
     const [Foodpercentage, setFoodpercentage] = useState(0);
     const [TransportPercentage, setTransportPercentage] = useState(0);
     const [Personal_percentage, setPersonal_percentage] = useState(0);
@@ -40,26 +41,23 @@ export default function FifthPie() {
         loadData();
     });
 
-
     const [MonthName, setMonthName] = useState([]);
 
     useEffect(() => {
         const loadAllData = async () => {
             const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
             const results = await Promise.all(promises);
-            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
+            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName.toUpperCase());
             setMonthName(name);
         };
 
         loadAllData();
     }, []);
 
-    const navigate = useNavigate();
-    const handleClick = () => {
-        navigate(`/cashflow/SixMonth/5`)
-    }
 
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
+    const handleClick = () => {
+        navigate(`/cashflow/SixMonth/${MonthName[1]}`)
+    }
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const data = {
@@ -81,7 +79,7 @@ export default function FifthPie() {
     return (
         <>
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[1].toUpperCase()}
+                {MonthName[1]}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">
@@ -152,7 +150,6 @@ export default function FifthPie() {
             {location.pathname === "/cashflow/SixMonth" && <div className="h-fit ">
                 <button className="bg-[#2D5359] flex flex-row justify-center items-center h-fit text-white text-center text-[20px] font-medium rounded-lg py-1 px-1" onClick={handleClick}>Detail &nbsp;<i className="fa-solid fa-arrow-right"></i></button>
             </div>}
-
         </>
     )
 }

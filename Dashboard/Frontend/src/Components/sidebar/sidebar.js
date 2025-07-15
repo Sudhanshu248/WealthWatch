@@ -12,7 +12,7 @@ export  const navItem = [
             href: "/goals"
         },
         {
-            name: "history",
+            name: "historys",
             href: "/historys"
         },
         {

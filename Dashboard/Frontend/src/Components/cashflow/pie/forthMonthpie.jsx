@@ -5,6 +5,7 @@ import { fetchMonthlyData } from "../../data/InputData.js";
 import { useNavigate } from "react-router-dom";
 
 export default function ForthPie() {
+    const navigate = useNavigate();
     const [Foodpercentage, setFoodpercentage] = useState(0);
     const [TransportPercentage, setTransportPercentage] = useState(0);
     const [Personal_percentage, setPersonal_percentage] = useState(0);
@@ -46,7 +47,7 @@ export default function ForthPie() {
         const loadAllData = async () => {
             const promises = Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i));
             const results = await Promise.all(promises);
-            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName);
+            const name = Array.from({ length: 6 }, (_, i) => results[i].monthName.toUpperCase());
             setMonthName(name);
         };
 
@@ -54,12 +55,10 @@ export default function ForthPie() {
     }, []);
 
 
-    const navigate = useNavigate();
     const handleClick = () => {
-        navigate(`/cashflow/SixMonth/4`)
+        navigate(`/cashflow/SixMonth/${MonthName[2]}`)
     }
 
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences || !MonthName) return <p className="text-center mt-20">Loading...</p>;
 
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const data = {
@@ -80,9 +79,8 @@ export default function ForthPie() {
     };
     return (
         <>
-
             <div className="font-medium text-xl mb-2 hover:cursor-pointer" >
-                {MonthName[2].toUpperCase()}
+                {MonthName[2]}
             </div>
 
             <div className="flex justify-between c-monthchart-1 w-full text-center">

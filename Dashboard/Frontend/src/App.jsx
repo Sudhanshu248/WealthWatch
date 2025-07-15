@@ -22,6 +22,9 @@ import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.j
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 import PhoneBar from './Components/sidebar/phonebar.jsx'
 import NotFound from './Components/NotFound.jsx'
+import CurrentHistory from './Components/history/Monthlylist/CurrentHistory.jsx'
+import CashflowIndividualData from './Components/cashflow/IndividualCashflowData/CashflowIndividualData.jsx'
+
 
 function AppRoutes() {
   const location = useLocation();
@@ -46,10 +49,13 @@ function AppRoutes() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/form' element={<Form />} />
+        <Route path='/goals' element={<GoalsPage />} />
+        
         <Route path="/historys" element={<HistoryPage />} />
         <Route path="/historys/:month" element={<HistoryPage />} />
         <Route path='/historys/:month/:urlId' element={<HistoryIndividualRouter />} />
-        <Route path='/goals' element={<GoalsPage />} />
+
+
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
         <Route path='/cashflow/SixMonth/:urlId' element={<CashflowIndividual />} />
@@ -60,6 +66,10 @@ function AppRoutes() {
         <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData />} />
         <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData />} />
         <Route path='*' element={<NotFound />}/>
+        <Route path='/cashflow/SixMonth/:month' element={<CashflowIndividual />} />
+        <Route path='/cashflow/SixMonth/:month/:urlId' element={<CashflowIndividualData />} />
+
+
 
       </Routes>
       <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">

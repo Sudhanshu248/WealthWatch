@@ -1,4 +1,4 @@
-import "./style.css"
+import "./style.css";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -6,93 +6,124 @@ import Calendar from "./calendar";
 
 export default function Navbar() {
 
+    // State to hold user profile image
     const [profileImage, setProfileImage] = useState("");
+
+    // State to hold user name
     const [name, setName] = useState("");
+
+    // State to toggle calendar visibility
     const [show, setShow] = useState(false);
 
+    // Show the calendar popup
     const handleClick = () => {
         setShow(true);
-    }
+    };
 
+    // Hide the calendar popup
     const handleCross = () => {
-        setShow(false)
-    }
+        setShow(false);
+    };
 
+    // On component mount, check for token and fetch user profile
     useEffect(() => {
         const token = localStorage.getItem("token");
 
         if (token) {
-            fetchGoalsFromBackend();
-        }
-        else {
+            fetchGoalsFromBackend(); // Fetch user info if token exists
+        } else {
             console.error("No user token found.");
-            return;
         }
     }, []);
 
+    // Fetch user profile data from backend
     const fetchGoalsFromBackend = async () => {
-
         try {
             const response = await axios.get(`${BASE_URL}/getUserProfile`, {
                 headers: {
-                    Authorization: localStorage.getItem("token"),
+                    Authorization: localStorage.getItem("token"), // Pass token in headers
                 },
             });
 
+            // Update UI with fetched profile data
             if (response.data?.formData) {
                 setProfileImage(response.data.formData.profilePicture);
                 setName(response.data.formData.name);
             }
 
         } catch (error) {
-            console.error("Error while fetching goals:", error.message);
+            console.error("Error while fetching user profile:", error.message);
         }
     };
 
     return (
         <>
-            <nav id="navbar" className="sticky top-0 px-4 max-[450px]:px-0 py-2 shadow-md z-50 align-middle" style={{ backgroundColor: "rgb(184, 215, 222)" }}>
+            {/* Main navigation bar container */}
+            <nav
+                id="navbar"
+                className="sticky top-0 h-[80px] max-w-full shadow-md z-50 align-middle"
+                style={{ backgroundColor: "rgb(184, 215, 222)" }}
+            >
+                {/* Inner content container */}
+                <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between h-full">
 
-                <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between">
-
-                    {/*Page_LOGO  */}
-                    <div id="logo">
-                        <img src="/image/logo.png" alt="logo_image" className="h-10 w-auto"/>
+                    {/* Left: Logo */}
+                    <div className="w-1/4">
+                        <img src="/image/logo.png" alt="logo_image" />
                     </div>
 
-
-
-
+                    {/* Calendar popup */}
                     {show &&
-                        <div className="calendar bg-white p-5 rounded-2xl" style={{ position: "fixed", top: "100px", right: "30px", border: "3px solid rgb(184, 215, 222)", boxShadow: " 1px 1px 16px 4pxrgba(192, 192, 192, 0.2)" }}>
-                            <i className="fa-solid fa-xmark fa-xl mb-4 cursor-pointer" onClick={handleCross} style={{ color: "#2D5359" }}></i>
+                        <div
+                            className="bg-white p-5 rounded-2xl"
+                            style={{
+                                position: "fixed",
+                                top: "100px",
+                                right: "30px",
+                                border: "3px solid rgb(184, 215, 222)",
+                                boxShadow: "1px 1px 16px 4px rgba(192, 192, 192, 0.2)",
+                            }}
+                        >
+                            {/* Close button for calendar */}
+                            <i
+                                className="fa-solid fa-xmark fa-xl mb-4 cursor-pointer"
+                                onClick={handleCross}
+                                style={{ color: "#2D5359" }}
+                            ></i>
+
+                            {/* Embedded calendar component */}
                             <Calendar />
                         </div>
                     }
 
-                    <div className=" flex flex-row  align-middle items-center justify-center gap-2">
-                        <div className="block px-5 h-fit rounded-full m-auto cursor-pointer  max-[500px]:px-0 max-[450px]:mr-2" onClick={handleClick}>
+                    {/* Right side: Calendar button, profile image, user name */}
+                    <div className="flex flex-row align-middle items-center justify-center gap-4">
+
+                        {/* Calendar toggle icon */}
+                        <div className="block px-4 h-fit rounded-full m-auto cursor-pointer" onClick={handleClick}>
                             <i className="fa-solid fa-calendar-days"></i>
                         </div>
 
-
-                        <div className="h-[30px] w-[30px] rounded-full ">
+                        {/* User profile image */}
+                        <div className="h-[30px] w-[30px] rounded-full">
                             <img
-                                src={`${BASE_URL}/uploads/${profileImage}`}
+                                src={`${BASE_URL}/uploads/${profileImage}`} // Dynamically load profile image
                                 alt="ProfileImage"
-                                // onError={(e) => { e.target.src = '/uploads/profile.png'; }}
-                                style={{ borderRadius: "50%", width: "35px", height: "30px" }}
+                                style={{
+                                    borderRadius: "50%",
+                                    width: "35px",
+                                    height: "35px"
+                                }}
                             />
                         </div>
 
+                        {/* Username with link to profile page */}
                         <div>
                             <a href="/profile">{name}</a>
                         </div>
                     </div>
-
                 </div>
-
             </nav>
         </>
-    )
+    );
 }
