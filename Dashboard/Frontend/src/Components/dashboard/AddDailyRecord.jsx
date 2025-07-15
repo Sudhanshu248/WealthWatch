@@ -9,17 +9,16 @@ export default function AddDailyRecord() {
     const [name, setName] = useState("");
     const [price, setPrice] = useState("");
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
     const handleSave = async () => {
         try {
             // Retrieve the JWT token from local storage for authentication
             const token = localStorage.getItem("token");
-            console.log("Token:", token);
 
             // If no token is found, notify the user and exit the function
             if (!token) {
-                console.log("Token is not found need Login first")
-                return;
+                return alert("Please login first.");
             }
 
             // Send a POST request to save the daily record
@@ -41,9 +40,6 @@ export default function AddDailyRecord() {
 
             // If the response is successful, reset input fields and show success message
             if (response.data) {
-                console.log("Daily Record Saved Successfully", response.data);
-
-                // Clear all input fields
                 setCategory("");
                 setPaymentMethod("");
                 setDate("");
@@ -56,15 +52,20 @@ export default function AddDailyRecord() {
                 }, 5000);
             }
         } catch (error) {
-            // Log and alert error if request fails
-            console.error("Error saving daily record:", error);
+            setError(true);            // Show Error message
+            setTimeout(() => {
+                setError(false);// Hide Error message after 5 seconds
+            }, 5000);
             alert("Failed to save daily record. Please try again.");
         }
     }
 
 
-    const handlealert = () => {
+    const handleSuccess = () => {
         setSuccess(false)
+    }
+    const handleError = () => {
+        setError(false)
     }
 
     return (
@@ -78,6 +79,8 @@ export default function AddDailyRecord() {
                 <div className="w-full mb-1">
                     <h1 className="text-[1.2rem] text-start text-shadow-sm font-medium text-start ">Add Daily Record</h1>
                 </div>
+
+                {/* Success Message */}
                 {success && <div className="flex flex-row mb-1 w-1/2 justify-between" style={{
                     backgroundColor: "#d4edda",
                     border: "1px solid #c3e6cb",
@@ -87,8 +90,24 @@ export default function AddDailyRecord() {
                     marginTop: "10px"
                 }}>
                     <div> Daily Record Saved Successfully!</div>
-                    <button onClick={handlealert}><i className="fa-solid fa-xmark"></i></button>
+                    <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
                 </div>}
+
+                {/* Error  Message */}
+                {error && <div className="flex flex-row m-auto justify-between w-full" style={{
+                    backgroundColor: "#efb0abff",
+                    border: "1px solid #d48377ff",
+                    color: "#c10000ff",
+                    padding: "10px",
+                    borderRadius: "5px",
+                    marginTop: "10px"
+                }}>
+                    <div> Failed to save daily record. Please try again.</div>
+
+                    <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
+                </div>}
+
+
 
                 {/* block 1 */}
                 <div className="add-daily-b-1 w-full flex flex-row justify-between my-1">

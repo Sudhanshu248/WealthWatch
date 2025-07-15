@@ -15,7 +15,6 @@ export const forms = async (req, res) => {
         if (!name || !profession || !income) {
             return res.status(400).json({ message: "Please fill all fields." });
         }
-        console.log(`Name: ${name}, Profession: ${profession}, Income: ${income}`);
 
         // If user exists, update the form
         const newForm = new Form({

@@ -53,7 +53,6 @@ export default function Form() {
                 navigate(`/dashboard`);
             }
         } catch (error) {
-            console.error("Form error: ", error);
             setError("Please fill all the details correctly.");
         }
     };

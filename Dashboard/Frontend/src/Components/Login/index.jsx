@@ -51,8 +51,6 @@ export default function Login() {
                 timeout: 5000, // Optional timeout for request
             });
 
-            console.log("Login response:", response.data);
-
             // If login is successful and token received
             if (response.data && response.data.token) {
                 localStorage.setItem('token', response.data.token); // Store token
@@ -64,9 +62,6 @@ export default function Login() {
             }
 
         } catch (error) {
-            // Catch and handle different types of errors
-            console.error("Login error:", error);
-
             if (error.response && error.response.data && error.response.data.message) {
                 setError(error.response.data.message); // API-provided error
             } else {

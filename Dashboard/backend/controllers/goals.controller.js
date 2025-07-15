@@ -19,7 +19,6 @@ export const getGoals = async (req, res) => {
 
     return res.status(200).json(goalsData);
   } catch (error) {
-    console.error("Error in getGoals:", error);
     return res.status(500).json({ message: error.message });
   }
 };
@@ -55,7 +54,6 @@ export const goals = async (req, res) => {
     return res.status(200).json(updatedGoal);
 
   } catch (error) {
-    console.error("Error in goals POST:", error);
     return res.status(500).json({ message: error.message });
   }
 };

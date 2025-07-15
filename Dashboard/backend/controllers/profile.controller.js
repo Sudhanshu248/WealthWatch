@@ -49,7 +49,6 @@ export const getUserData = async (req, res) => {
 
         return res.status(200).json({ formData, userData });
     } catch (error) {
-        console.error("Error in getGoals:", error);
         return res.status(500).json({ message: error.message });
     }
 };
@@ -109,7 +108,6 @@ export const updateProfileData = async (req, res) => {
 
         return res.status(200).json(updatedProfile);
     } catch (error) {
-        console.error("Update profile error:", error);
         return res.status(500).json({ message: error.message });
     }
 };

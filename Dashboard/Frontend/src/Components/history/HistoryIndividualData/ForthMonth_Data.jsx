@@ -1,4 +1,4 @@
-import { ForthFoodExpence ,ForthHousingExpence ,ForthSavingExpence ,ForthPersonalExpence ,ForthTransportExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence, ForthHousingExpence, ForthSavingExpence, ForthPersonalExpence, ForthTransportExpence } from "../../data/CalForthMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -14,7 +14,8 @@ export default function ForthHistoryIndividual() {
     const [PersonalListing, setPersonalListing] = useState([]);
     const [SavingListing, setSavingListing] = useState([]);
     const [HousingListing, setHousingListing] = useState([]);
-
+    const [Delete, setDelete] = useState(false)
+    const [error, setError] = useState(false);
     const [refreshKey, setRefreshKey] = useState(0); // Trigger re-render on deletion
 
     // Fetch current month’s data on mount or when refreshKey changes
@@ -59,11 +60,17 @@ export default function ForthHistoryIndividual() {
             );
 
             if (response.data?.message) {
-                alert("Item deleted successfully");
+                setDelete(true)
+                setTimeout(() => {
+                    setDelete(false)
+                }, 5000);
                 setRefreshKey((prev) => prev + 1); // Trigger re-fetch
             }
         } catch (error) {
-            console.error("Error deleting item:", error);
+            setError(error);
+            setTimeout(() => {
+                setError(false);// Hide Error message after 5 seconds
+            }, 5000);
         }
     };
 
@@ -74,6 +81,13 @@ export default function ForthHistoryIndividual() {
             navigate(basePath);
         }
     };
+
+    const handleError = () => {
+        setError(false);
+    }
+    const handleDeleteMsg = () => {
+        setDelete(false);
+    }
 
     // Helper to render list section
     const renderListSection = (list) =>
@@ -131,6 +145,33 @@ export default function ForthHistoryIndividual() {
                     <div className="font-medium text-[25px]">
                         <h1>{name}</h1>
                     </div>
+
+                    {/* Delete Message */}
+                    {Delete && <div className="flex flex-row mb-1 w-1/2 justify-between" style={{
+                        backgroundColor: "#d4edda",
+                        border: "1px solid #c3e6cb",
+                        color: "#155724",
+                        padding: "5px",
+                        borderRadius: "5px",
+                        marginTop: "10px"
+                    }}>
+                        <div> Deletion SuccessFully ! </div>
+                        <button onClick={handleDeleteMsg}><i className="fa-solid fa-xmark"></i></button>
+                    </div>}
+
+                    {/* Error Message */}
+                    {error && <div className="flex flex-row m-auto justify-between w-full" style={{
+                        backgroundColor: "#efb0abff",
+                        border: "1px solid #d48377ff",
+                        color: "#c10000ff",
+                        padding: "10px",
+                        borderRadius: "5px",
+                        marginTop: "10px"
+                    }}>
+                        <div> Failed to delete . Please try again</div>
+
+                        <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
+                    </div>}
 
                     {/* Render dynamic list based on route */}
                     {getListByPath()}

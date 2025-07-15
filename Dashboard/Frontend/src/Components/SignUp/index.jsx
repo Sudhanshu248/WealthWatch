@@ -1,4 +1,3 @@
-// Import required modules and styles
 import "./style.css";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
@@ -52,7 +51,6 @@ export default function Signup() {
             }
 
         } catch (error) {
-            console.error("Signup error:", error); // Log error
             setError("Please fill all the details correctly."); // Show user-friendly error message
         } finally {
             setLoading(false); // Stop loading

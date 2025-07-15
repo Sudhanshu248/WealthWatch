@@ -35,7 +35,7 @@ export default function ProfilePage() {
         if (token) {
             fetchProfileFromBackend();
         } else {
-            console.error("No user token found.");
+            alert("Please first Login .");
         }
     }, []);
 
@@ -97,7 +97,6 @@ export default function ProfilePage() {
         } catch (error) {
             setFileError(true);
             setTimeout(() => setFileError(false), 5000);
-            console.error("Error updating profile picture:", error.message);
         }
     };
 
@@ -106,7 +105,7 @@ export default function ProfilePage() {
         const userToken = localStorage.getItem("token");
 
         if (!userToken) {
-            console.error("User not authenticated.");
+           alert("Firstly Please Login. ")
             return;
         }
 

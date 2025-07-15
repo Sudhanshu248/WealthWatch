@@ -94,7 +94,6 @@ export default function GoalsPage() {
   const handleSave = async (name) => {
     const value = parseFloat(GoalValue[name]);
     if (isNaN(value)) {
-      console.error("Invalid input for", name);
       return;
     }
 
@@ -143,15 +142,7 @@ export default function GoalsPage() {
 
   // Delete a goal from local state
   const handleDelete = (name) => {
-    const updatedValues = { ...GoalValue };
-    const updatedSaved = { ...savedGoals };
-    delete updatedValues[name];
-    delete updatedSaved[name];
-
-    setGoalValue(updatedValues);
-    setSavedGoals(updatedSaved);
-    setError(true);
-    setTimeout(() => setError(false), 5000);
+  
   };
 
   // Close success and error alerts
