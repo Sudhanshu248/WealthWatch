@@ -32,8 +32,8 @@ const signup = async (req, res) => {
             password: hashedPassword
         });
 
-        // Generate JWT token and assign to user
-        const token = jwt.sign({ id: newUser._id }, JWT_SECRET);
+        const token = jwt.sign({ id: newUser._id }, JWT_SECRET, { expiresIn: '7d' });  // Token will expire in 7 days //
+
         newUser.token = token;
 
         // Save user to database
@@ -69,14 +69,12 @@ const login = async (req, res) => {
 
         
         if (passwordmatch) {
-            // Generate new token if password is correct
-            const token = jwt.sign({ id: response._id }, JWT_SECRET);
+            const token = jwt.sign({ id: response._id }, JWT_SECRET, { expiresIn: '7d' });  // Token will expire in 7 days //
             response.token = token;
 
             await response.save();
-
-            return res.json({ token });
-        } else {
+            res.json({ token })
+        }else {
             return res.status(401).send({
                 Message: "Incorrect Password"
             });

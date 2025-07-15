@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter, Routes, Route, useLocation, matchPath } from "react-router-dom"
 import BlogPage from './Components/blogs/index.jsx'
 import Dashboard from './Components/dashboard/index.jsx'
 import Navbar from './Components/navbar/navbar.jsx'
@@ -15,21 +15,33 @@ import CashflowIndividual from './Components/cashflow/IndividualCashflow/Cashflo
 import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 import PhoneBar from './Components/sidebar/phonebar.jsx'
+import NotFound from './Components/NotFound.jsx'
 import CashflowIndividualData from './Components/cashflow/IndividualCashflowData/CashflowIndividualData.jsx'
 
 
 function AppRoutes() {
   const location = useLocation();
   const hideLayout = ['/login', '/signup', '/form'];
+  const isNotFound = ![
+    '/', '/dashboard', '/budgetRecommendation/ai', '/blogs',
+    '/profile', '/goals', '/historys', '/historys/:month',
+    '/historys/:month/:urlId', '/cashflow', '/cashflow/:urlId',
+    '/cashflow/SixMonth/:month', '/cashflow/SixMonth/:month/:urlId'
+  ].some((path) =>
+    matchPath({ path, end: true }, location.pathname)
+  );
   const shouldHideLayout = hideLayout.includes(location.pathname.toLowerCase());
+
 
   return (
     <>
       {!shouldHideLayout && <Navbar />}
 
-      {!shouldHideLayout && <div className='sidebar fixed  left-0 h-[100%] pl-4 pr-16 bg-[#B8D7DE8C] rounded-md mt-4 w-fit '>
-        <Sidebar />
-      </div>}
+      {(!shouldHideLayout && !isNotFound) && (
+        <div className='sidebar fixed left-0 h-[100%] w-[14.5vw] bg-[#B8D7DE8C] rounded-md mt-4'>
+          <Sidebar />
+        </div>
+      )}
 
 
       <Routes>
@@ -42,21 +54,19 @@ function AppRoutes() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/form' element={<Form />} />
         <Route path='/goals' element={<GoalsPage />} />
-
         <Route path="/historys" element={<HistoryPage />} />
         <Route path="/historys/:month" element={<HistoryPage />} />
         <Route path='/historys/:month/:urlId' element={<HistoryIndividualRouter />} />
-
-
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
         <Route path='/cashflow/SixMonth/:month' element={<CashflowIndividual />} />
         <Route path='/cashflow/SixMonth/:month/:urlId' element={<CashflowIndividualData />} />
+        <Route path='*' element={<NotFound />} />
 
 
 
       </Routes>
-      <div className="z-20 phone-bar fixed bottom-0  left-0 w-full h-[40px] bg-[#2D5359] ">
+      <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">
         <PhoneBar />
       </div>
     </>

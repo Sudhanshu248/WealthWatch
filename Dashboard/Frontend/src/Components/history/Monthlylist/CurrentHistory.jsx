@@ -63,8 +63,8 @@ export default function CurrentHistory() {
 
     return (
         <>
-            {/* History Data Container */}
-            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4">
+            {/* History Data */}
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 px-8 py-4 max-[1030px]:mb-[200px]">
 
                 {/* Month Heading */}
                 <div className="monthlist-head font-medium text-xl">

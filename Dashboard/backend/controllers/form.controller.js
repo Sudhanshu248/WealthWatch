@@ -5,6 +5,8 @@ export const forms = async (req, res) => {
     const { name, profession, income, email } = req.body;
 
     try {
+        const token = req.headers.authorization;
+        if (!token) return res.status(401).json({ error: 'No token provided' });
 
         const user = await User.findOne({ email });
         // If user is not found

@@ -46,8 +46,8 @@ export default function FifthMonth() {
         loadData();
     }); 
 
-    // Show loading message until all expenses are fetched
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) return <p className="text-center mt-20">Loading...</p>;
+
+  
 
     // Labels and data for bar chart visualization
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];

@@ -41,7 +41,9 @@ export default function CurrentMonth() {
         }
 
         loadData();
-    }); //  NOTE: This effect runs on every render — consider adding `[]` to run only once
+    });
+
+   
 
     // Bar graph data configuration
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];

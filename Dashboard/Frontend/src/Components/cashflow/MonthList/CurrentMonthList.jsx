@@ -59,6 +59,7 @@ export default function CurrentMonthList() {
     const handleclick = (e) => {
         const value = e.target.value;
         const path = location.pathname;
+
         if (path === "/cashflow/thisMonth" || path === "/cashflow") {
             return;
         } else {
@@ -67,17 +68,17 @@ export default function CurrentMonthList() {
     };
 
 
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) return <p className="text-center mt-20">Loading...</p>;
+  
 
     return (
         <>
 
             {/* History Data */}
-            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 mb-[200px] px-8 py-4">
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 mb-24 px-8 py-4 max-[1030px]:mb-[200px]">
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                    {MonthName[5].toUpperCase()}
+                    {MonthName[5]}
                 </div>
 
 

@@ -192,7 +192,7 @@ export default function GoalsPage() {
 
   return (
     <div className="flex">
-      <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[83vw] md:w-[300px] pt-6 px-5 dashboard"
+      <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-5 dashboard"
     style={{ position: "fixed", right: 0, overflowY: "auto" }}>
       <div className="flex flex-col ">
           <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2" style={{marginBottom: "0.5rem"}}>Goals</h1>

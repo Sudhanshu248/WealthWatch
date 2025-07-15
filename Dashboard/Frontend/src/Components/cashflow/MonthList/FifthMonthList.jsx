@@ -65,16 +65,16 @@ export default function FifthMonthList() {
         navigate(`/cashflow/SixMonth/${MonthName[1]}/${value}`)
     }
 
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) return <p className="text-center mt-20">Loading...</p>;
+  
 
     return (
         <>
             {/* History Data */}
-            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 mb-[200px] px-8 py-4">
+            <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 mb-24  px-8 py-4">
 
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
-                    {MonthName[1].toUpperCase()}
+                    {MonthName[1]}
                 </div>
 
 

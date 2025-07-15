@@ -57,7 +57,7 @@ const Testimonials = () => {
         {testimonialsData.map((testimonial, index) => (
           <SwiperSlide key={index}>
             <div className="testimonials-box flex items-center mx-20 my-12">
-              <img src={testimonial.image} alt="Testimonial" className="w-80 h-90 rounded-xl" />
+              <img src={testimonial.image} alt="Testimonial Image" className="w-80 h-90 rounded-xl" />
               <div className="testimonials-text pl-30">
                 <p className="font-bold">{testimonial.author}</p>
                 <p className="">{testimonial.text}</p>

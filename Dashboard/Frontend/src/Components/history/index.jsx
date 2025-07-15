@@ -44,8 +44,9 @@ export default function HistoryPage() {
     const Monthnames = currentMonth.toUpperCase();
     return (
         <div className="flex flex-row">
-            <div className="history bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.9vh] w-[60vw] grow px-8 py-4">
-                <h1 className="text-3xl text-emerald-900 font-bold text-start">History</h1>
+            <div className="history bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-5 dashboard"
+                style={{ position: "fixed", right: 0, overflowY: "auto" }}>
+                <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2" style={{marginBottom: "0.3rem"}}>History</h1>
 
                 <select
                     id="category"

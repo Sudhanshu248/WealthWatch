@@ -29,13 +29,12 @@ export const getGoals = async (req, res) => {
 export const goals = async (req, res) => {
   try {
     const { name, value } = req.body;
+
     const token = req.headers.authorization;
+    if (!token) return res.status(401).json({ message: "No token provided" });
 
-    if (!token) return res.status(401).json({ message: "No token provided" });// if token is missing 
-
-    const user = await User.findOne({ token });
-
-    if (!user) return res.status(401).json({ message: "Unauthorized user" });// Token does not match any user in the database
+    const user = await User.findOne({ token }); 
+    if (!user) return res.status(401).json({ message: "Unauthorized user" });
 
     const update = { $set: { [name]: value } };
 

@@ -54,6 +54,7 @@ export default function Form() {
             }
         } catch (error) {
             setError("Please fill all the details correctly.");
+            return res.status(500).json({ message: error.message });
         }
     };
 

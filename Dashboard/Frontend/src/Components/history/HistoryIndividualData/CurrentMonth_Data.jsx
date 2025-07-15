@@ -129,24 +129,27 @@ export default function CurrentHistoryIndividual() {
     };
 
     return (
-        <div className="flex flex-row">
-            {/* Main Panel */}
-            <div className="history-individual bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[100vh] w-[60vw] grow px-12 py-8">
-                {/* Back Button */}
-                <div className="mb-8">
-                    <button
-                        className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1"
-                        onClick={handleBack}
-                    >
-                        <i className="fa-solid fa-arrow-left"></i> &nbsp;Back
-                    </button>
-                </div>
+<>
+            {/* Main Container */}
+            <div className='flex flex-row '>
 
-                {/* Expense Section */}
-                <div className="history-individual-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
-                    <div className="font-medium text-[25px]">
-                        <h1>{name}</h1>
+                {/* History Data Container */}
+                <div className="history-individual bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+                    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
+
+                    {/* Back Btn */}
+                    <div className=" mb-8">
+                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1" onClick={handleBack} ><i className="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
                     </div>
+
+                    {/* History data list*/}
+                    <div className="history-individual-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
+
+                        <div className="font-medium text-[25px]">
+                            <h1>{name}</h1>
+                        </div>
+
+                    
 
                     {/* Delete Message */}
                     {Delete && <div className="flex flex-row mb-1 w-1/2 justify-between" style={{
@@ -180,5 +183,6 @@ export default function CurrentHistoryIndividual() {
                 </div>
             </div>
         </div>
+    </>
     );
 }

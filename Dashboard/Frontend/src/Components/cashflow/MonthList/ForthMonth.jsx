@@ -42,8 +42,8 @@ export default function ForthMonth() {
         loadData(); // Calling the data loading function
     }); 
 
-    // Display loading text until all required expenses are loaded
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) return <p className="text-center mt-20">Loading...</p>;
+    
+  
 
     // Labels and data structure for bar chart
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
