@@ -21,7 +21,7 @@ import SixthIndividualData from './Components/cashflow/IndividualCashflowData/Si
 import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 import PhoneBar from './Components/sidebar/phonebar.jsx'
-
+import NotFound from './Components/NotFound.jsx'
 
 function AppRoutes() {
   const location = useLocation();
@@ -59,7 +59,7 @@ function AppRoutes() {
         <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData />} />
         <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData />} />
         <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData />} />
-
+        <Route path='*' element={<NotFound />}/>
 
       </Routes>
       <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">

@@ -80,7 +80,7 @@ export default function Navbar() {
                             <img
                                 src={`${BASE_URL}/uploads/${profileImage}`}
                                 alt="ProfileImage"
-
+                                // onError={(e) => { e.target.src = '/uploads/profile.png'; }}
                                 style={{ borderRadius: "50%", width: "35px", height: "30px" }}
                             />
                         </div>
