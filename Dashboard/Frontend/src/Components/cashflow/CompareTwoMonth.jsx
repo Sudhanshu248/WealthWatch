@@ -1,9 +1,11 @@
 import { useState, useEffect, useMemo } from "react";
 import BarGraph from "./pie/barGraph.jsx";
 import PieChart from "./pie/pieChart.jsx";
-import { TotalExpence,CurrentFoodExpence,CurrentTransportExpence,CurrentPersonalExpence,CurrentHousingExpence,CurrentSavingExpence,
+import {
+  TotalExpence, CurrentFoodExpence, CurrentTransportExpence, CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence,
 } from "../data/CalCurrentMonthExpence.js";
-import {SecTotalExpence,SecondFoodExpence,SecondTransportExpence,SecondPersonalExpence,SecondHousingExpence,SecondSavingExpence,
+import {
+  SecTotalExpence, SecondFoodExpence, SecondTransportExpence, SecondPersonalExpence, SecondHousingExpence, SecondSavingExpence,
 } from "../data/CalSecondMonthExpence.js";
 import { fetchMonthlyData } from "../data/InputData.js";
 import CurrentMonthList from "./MonthList/CurrentMonthList.jsx";
@@ -128,16 +130,16 @@ export default function CompareTwoMonth() {
   }, [currentData, secondData, monthNames]);
 
   const renderPieCard = (title, pieData, percentages, total, balance) => (
-    <div className="bg-white w-full h-[380px] rounded-2xl p-5">
+    <div className="compare-two-month-pieBox bg-white w-full h-fit  rounded-2xl p-5">
       <div className="font-medium text-xl mb-2">{title}</div>
-      <div className="flex justify-between">
-        <div className="w-[40%]">
+      <div className="compare-two-month-pieCard flex justify-between">
+        <div className="compare-two-month-pie w-[40%]">
           <PieChart key={JSON.stringify(pieData)} data={pieData} />
         </div>
-        <div className="w-[45%] flex items-center pr-2 mb-5">
+        <div className="compare-two-month-pielist w-fit flex items-center  mb-4">
           <ul className="w-full">
             {labels.map((label, idx) => (
-              <li key={label} className="flex justify-between">
+              <li key={label} className="flex items-center gap-3 justify-between">
                 <div className="flex flex-row items-center gap-3">
                   <div className="rounded-full h-[12px] w-[12px]" style={{ backgroundColor: labelColors[idx] }}></div>
                   <h1>{label}</h1>
@@ -149,13 +151,13 @@ export default function CompareTwoMonth() {
         </div>
       </div>
 
-      <div className="flex flex-row mt-5 gap-7 justify-center">
-        <div className="w-full py-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
+      <div className="compare-two-month-expBox flex flex-row mt-5 gap-7 justify-center">
+        <div className="compare-two-month-expBox-1 w-full py-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
           <p className="text-xl">Expenses</p>
           <p className="text-lg font-semibold text-red-600">&#8377;{total}</p>
         </div>
 
-        <div className="w-full py-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
+        <div className="compare-two-month-expBox-1 w-full py-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
           <p className="text-xl">Balance</p>
           <p className="text-lg font-semibold text-green-600">&#8377;{balance}</p>
         </div>
@@ -193,17 +195,18 @@ export default function CompareTwoMonth() {
     <div className="mt-6">
       <div className="bg-white w-full h-[61%] mt-4 rounded-2xl p-5">
         <div className="font-medium text-xl mb-7">Monthly Expenses</div>
-        <div className="w-[60%] h-full">
+        <div className="compare-two-month-bargraph w-[60%] h-full">
           <BarGraph data={barData} />
         </div>
+
       </div>
 
-      <div className="flex flex-row gap-4 mt-6">
-        {renderPieCard(monthNames[5], currPieData, currentData.percentages, currentData.total, currentData.balance)}
-        {renderPieCard(monthNames[4], secondPieData, secondData.percentages, secondData.total, secondData.balance)}
+      <div className="compare-two-month-piecontainer flex flex-row gap-4 mt-6">
+        {renderPieCard(monthNames[5].toUpperCase(), currPieData, currentData.percentages, currentData.total, currentData.balance)}
+        {renderPieCard(monthNames[4].toUpperCase(), secondPieData, secondData.percentages, secondData.total, secondData.balance)}
       </div>
 
-      <div className="flex flex-row gap-4 mt-6">
+      <div className="compare-two-month-list flex flex-row gap-4 mt-6">
         <CurrentMonthList />
         <SecondMonthList />
       </div>

@@ -139,10 +139,6 @@ export default function ProfilePage() {
         setFileError(false)
     }
 
-
-
-
-
     return (
         <>
             {/* Main Container */}
