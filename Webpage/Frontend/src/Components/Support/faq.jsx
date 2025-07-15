@@ -31,14 +31,7 @@ const faqs = [
 
 export default function Faq() {
 
-    const [hovered1, setHovered1] = useState(false);
-    const [hovered2, setHovered2] = useState(false);
-    const [hovered3, setHovered3] = useState(false);
-    const [hovered4, setHovered4] = useState(false);
-    const [hovered5, setHovered5] = useState(false);
-    const [hovered6, setHovered6] = useState(false);
-
-      const [openIndex, setOpenIndex] = useState(null);
+  const [openIndex, setOpenIndex] = useState(null);
 
   const toggleIndex = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -58,7 +51,7 @@ export default function Faq() {
       {faqs.map((faq, index) => (
         <div
           key={index}
-          className=" bg-[#023e8a] border border-gray-700 rounded-lg transition-all"
+          className=" border border-gray-700 rounded-lg transition-all" style={{backgroundColor: "rgba(10, 67, 140, 0.9)"}}
         >
           <button
             className="w-full flex justify-between items-center px-6 py-4 text-left text-white  rounded-lg font-medium  transition-colors"

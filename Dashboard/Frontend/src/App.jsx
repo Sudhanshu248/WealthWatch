@@ -21,6 +21,7 @@ import SixthIndividualData from './Components/cashflow/IndividualCashflowData/Si
 import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 import PhoneBar from './Components/sidebar/phonebar.jsx'
+import NotFound from './Components/NotFound.jsx'
 import CurrentHistory from './Components/history/Monthlylist/CurrentHistory.jsx'
 import CashflowIndividualData from './Components/cashflow/IndividualCashflowData/CashflowIndividualData.jsx'
 
@@ -34,7 +35,7 @@ function AppRoutes() {
     <>
       {!shouldHideLayout && <Navbar />}
 
-      {!shouldHideLayout && <div className='sidebar fixed  left-0 h-[100%] pl-4 pr-16 bg-[#B8D7DE8C] rounded-md mt-4 w-fit '>
+      {!shouldHideLayout && <div className='sidebar fixed  left-0 h-[100%] w-[14.5vw]  bg-[#B8D7DE8C] rounded-md mt-4'>
         <Sidebar />
       </div>}
 
@@ -57,13 +58,21 @@ function AppRoutes() {
 
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
+        <Route path='/cashflow/SixMonth/:urlId' element={<CashflowIndividual />} />
+        <Route path='/cashflow/SixMonth/1/:id' element={<CurrentIndividualData />} />
+        <Route path='/cashflow/SixMonth/2/:id' element={<SecondIndividualData />} />
+        <Route path='/cashflow/SixMonth/3/:id' element={<ThirdIndividualData />} />
+        <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData />} />
+        <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData />} />
+        <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData />} />
+        <Route path='*' element={<NotFound />}/>
         <Route path='/cashflow/SixMonth/:month' element={<CashflowIndividual />} />
         <Route path='/cashflow/SixMonth/:month/:urlId' element={<CashflowIndividualData />} />
 
 
 
       </Routes>
-      <div className="z-20 phone-bar fixed bottom-0  left-0 w-full h-[40px] bg-[#2D5359] ">
+      <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">
         <PhoneBar />
       </div>
     </>

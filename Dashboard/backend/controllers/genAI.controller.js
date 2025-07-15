@@ -1,5 +1,4 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import User from "../models/user.models.js";
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -59,6 +58,6 @@ export const askGeminiAI = async (req, res) => {
     res.status(200).json({ result: responseText });
 
   } catch (error) {
-    res.status(500).json({ error: "Gemini API request failed", details: error.message });
+    return res.status(500).json({ error: "Gemini API request failed", details: error.message });
   }
 };

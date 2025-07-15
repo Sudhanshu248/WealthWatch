@@ -11,6 +11,13 @@
     flex-direction: column;
 }
 
+input:hover,
+input:focus {
+  border: none; /* or any color you want */
+  outline: none;
+  box-shadow: none;
+}
+
 .box input{
     width: 100%;
     padding: 0;

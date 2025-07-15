@@ -22,11 +22,14 @@ export default function CashflowPage() {
             <div className='flex flex-row '>
 
                 {/* Cashflow Container */}
-                <div className="bg-[#B8D7DE8C] rounded-md mt-4 ml-64 px-8 py-4  h-fit w-[60vw]  grow cashflow">
+                <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 pl-4 dashboard"
+    style={{ position: "fixed", right: 0, overflowY: "auto" }} >
 
                     {/* Heading */}
                     <div>
-                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2  mt-6 mb-2.5">Cashflow</h1>
+
+                        <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2" style={{marginBottom: "1.5rem"}}>Cashflow</h1>
+
                     </div>
 
                     {/* Button for changing data list */}
@@ -37,7 +40,7 @@ export default function CashflowPage() {
                                 key={item.name}
                                 to={item.href}
                                 onClick={handleClick}
-                                className={`cashflow-head-1 rounded-full sm:px-5 sm:py-1 sm:border ${location.pathname === item.href ? "bg-gray-300" : ""}`}
+                                className={`cashflow-head-1 rounded-full px-5 py-1 border ${location.pathname === item.href ? "bg-gray-300" : ""}`}
                             >
                                 {item.name}
                             </Link>

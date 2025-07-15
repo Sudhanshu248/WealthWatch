@@ -1,11 +1,11 @@
   export  const MonthData = [
         {
-            name: "this Month",
+            name: "This Month",
             href: "/cashflow/thisMonth" 
         },
       
         {
-            name: "last Six Month",
+            name: "Last Six Month",
             href: "/cashflow/SixMonth"
         },
           {

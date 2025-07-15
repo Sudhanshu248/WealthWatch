@@ -131,7 +131,11 @@
 
 @media screen and (max-width:690px) {
     .cashflow-head {
-        padding: 10px 10px;
+                /* padding: 10px 10px; */
+        display: flex
+;
+        flex-wrap: wrap;
+        gap: 1rem;
     }
 }
 
@@ -139,6 +143,9 @@
     .sixmonth {
         display: grid;
         grid-template-columns: 1fr;
+    }
+    .bar-graph-1{
+        width: 100%;
     }
 }
 
@@ -154,8 +161,8 @@
 
 
 @media screen and (max-width: 590px) {
-    .monthlist {
-        padding: 15px 14px 10px 14px;
+    .history-individual-1 {
+        padding: 30px 25px;
     }
 
     .monthlist-1 {
@@ -163,17 +170,15 @@
     }
 
     .cashflow-head {
-        padding: 10px 10px;
+                /* padding: 10px 10px; */
+        display: flex
+;
+        flex-wrap: wrap;
         gap: 10px;
-        align-items: center;
-        justify-content: space-around;
     }
 }
 
 @media screen and (max-width: 550px) {
-    .monthlist {
-        padding: 5px 12px;
-    }
 
     .monthlist-1 {
         padding: 0px;
@@ -213,7 +218,9 @@
     .c-individual-data-1 {
         padding: 10px 14px;
     }
-
+    .monthlist {
+        padding: 18px;
+    }
 }
 
 @media screen and (max-width: 420px) {

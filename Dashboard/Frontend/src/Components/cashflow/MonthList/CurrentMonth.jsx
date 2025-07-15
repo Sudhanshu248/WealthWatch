@@ -42,7 +42,10 @@ export default function CurrentMonth() {
         }
 
         loadData();
-    }); //  NOTE: This effect runs on every render — consider adding `[]` to run only once
+    });
+
+    // if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences ) return <p className="text-center mt-20">Loading...</p>;
+    //  NOTE: This effect runs on every render — consider adding `[]` to run only once
 
     // Bar graph data configuration
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
