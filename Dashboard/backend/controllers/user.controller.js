@@ -29,7 +29,8 @@ const signup = async (req, res) => {
             password: hashedPassword
         });
 
-        const token = jwt.sign({ id: newUser._id }, JWT_SECRET);
+        const token = jwt.sign({ id: newUser._id }, JWT_SECRET, { expiresIn: '7d' });  // Token will expire in 7 days //
+
         newUser.token = token;
 
         // Save with timeout
@@ -62,13 +63,10 @@ const login = async (req, res) => {
         const passwordmatch = await bcrypt.compare(password, response.password);
 
         if (passwordmatch) {
-            const token = jwt.sign({ id: response._id }, JWT_SECRET);
-            console.log(token);
+            const token = jwt.sign({ id: response._id }, JWT_SECRET, { expiresIn: '7d' });  // Token will expire in 7 days //
             response.token = token;
             await response.save();
-            res.json({
-                token
-            })
+            res.json({ token })
         }
         else {
 
