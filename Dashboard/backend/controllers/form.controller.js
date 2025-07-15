@@ -5,9 +5,9 @@ export const forms = async (req, res) => {
     const { name, profession, income, email } = req.body;
 
     try {
-        const user = await User.findOne({ email });
-        console.log("Received:", { name, profession, income });
 
+        const user = await User.findOne({ email });
+        // If user is not found
         if (!user) {
             return res.status(404).json({ message: "User not found" });
         }
@@ -17,6 +17,7 @@ export const forms = async (req, res) => {
         }
         console.log(`Name: ${name}, Profession: ${profession}, Income: ${income}`);
 
+        // If user exists, update the form
         const newForm = new Form({
             userId: user._id,
             name,

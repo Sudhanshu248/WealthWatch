@@ -21,6 +21,8 @@ import SixthIndividualData from './Components/cashflow/IndividualCashflowData/Si
 import BudgetRecommendation from "./Components/dashboard/budgetRecommendations.jsx"
 import HistoryIndividualRouter from './Components/history/HistoryIndividualData/HistoryIndividual.jsx'
 import PhoneBar from './Components/sidebar/phonebar.jsx'
+import CurrentHistory from './Components/history/Monthlylist/CurrentHistory.jsx'
+import CashflowIndividualData from './Components/cashflow/IndividualCashflowData/CashflowIndividualData.jsx'
 
 
 function AppRoutes() {
@@ -46,19 +48,18 @@ function AppRoutes() {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/form' element={<Form />} />
+        <Route path='/goals' element={<GoalsPage />} />
+        
         <Route path="/historys" element={<HistoryPage />} />
         <Route path="/historys/:month" element={<HistoryPage />} />
         <Route path='/historys/:month/:urlId' element={<HistoryIndividualRouter />} />
-        <Route path='/goals' element={<GoalsPage />} />
+
+
         <Route path='/cashflow' element={<CashflowPage />} />
         <Route path='/cashflow/:urlId' element={<CashflowPage />} />
-        <Route path='/cashflow/SixMonth/:urlId' element={<CashflowIndividual />} />
-        <Route path='/cashflow/SixMonth/1/:id' element={<CurrentIndividualData />} />
-        <Route path='/cashflow/SixMonth/2/:id' element={<SecondIndividualData />} />
-        <Route path='/cashflow/SixMonth/3/:id' element={<ThirdIndividualData />} />
-        <Route path='/cashflow/SixMonth/4/:id' element={<ForthIndividualData />} />
-        <Route path='/cashflow/SixMonth/5/:id' element={<FifthIndividualData />} />
-        <Route path='/cashflow/SixMonth/6/:id' element={<SixthIndividualData />} />
+        <Route path='/cashflow/SixMonth/:month' element={<CashflowIndividual />} />
+        <Route path='/cashflow/SixMonth/:month/:urlId' element={<CashflowIndividualData />} />
+
 
 
       </Routes>

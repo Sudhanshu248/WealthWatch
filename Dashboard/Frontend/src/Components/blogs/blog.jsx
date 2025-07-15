@@ -4,7 +4,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { tips, articles, ytData } from "./blogData.js"
-import { useEffect } from "react";
 
 export default function Blogs() {
 
@@ -19,7 +18,7 @@ export default function Blogs() {
           <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-16 my-6">Blogs</h1>
 
 
-          {/*  Article Section */}
+          {/*  Money Guides Section */}
           <div className=" bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
 
             <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Money guides</h1>
@@ -59,14 +58,14 @@ export default function Blogs() {
                 ))}
 
               </Swiper>
-              {/* Whole articles section */}
+
             </div>
 
           </div>
 
 
 
-          {/*  video Section */}
+          {/*  Finance clips Section */}
           <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
             <h1 className="text-2xl font-medium text-start px-8 mb-4 ">Finance clips</h1>
 
@@ -128,7 +127,7 @@ export default function Blogs() {
           </div>
 
 
-          {/* Tips Section */}
+          {/* Financial Freedom Section */}
           <div className="bg-white w-[90%] mx-auto  py-5 px-2 my-8 rounded-2xl">
 
             <h1 className="text-2xl font-medium sm:text-start  px-8 mb-4 ">Ways to Achieve Financial Freedom </h1>
@@ -173,8 +172,6 @@ export default function Blogs() {
 
         </div>
       </div>
-
-
     </>
   )
 }

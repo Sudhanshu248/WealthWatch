@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
+import { CurrentTotalExpence } from "../data/CalCurrentMonthExpence.js";
 import AddDailyRecord from "./AddDailyRecord.jsx";
 import MonthlyChart from "./MonthlyChart.jsx";
 import { useNavigate } from "react-router-dom";
-import { fetchGoalsFromBackend } from "../data/InputData.js";
+import { fetchProfileFromBackend } from "../data/InputData.js";
 import './style.css'
 
 export default function Dashboard() {
@@ -12,17 +12,15 @@ export default function Dashboard() {
     const [isDismissed, setIsDismissed] = useState(false);
     const [Balance, setBalance] = useState(0);
     const [Spended, setSpended] = useState(0);
-    const [totalExpence, setTotalExpence] = useState(0);
     const [Totalincome, setTotalincome] = useState(0);
     const [percentage, setPercentage] = useState(0);
 
     useEffect(() => {
         const loadData = async () => {
-            const budget = await TotalExpence();
-            const TotalBudget = await fetchGoalsFromBackend();
+            const budget = await CurrentTotalExpence();
+            const TotalBudget = await fetchProfileFromBackend();
 
             setTotalincome(TotalBudget);
-            setTotalExpence(budget.TotalBudget);
             setSpended(budget.Spended);
             setPercentage(budget.TotalExpence_percentage);
             setBalance(budget.TotalBudget - budget.Spended);
@@ -161,9 +159,6 @@ export default function Dashboard() {
                             </button>
                         </div>
                     </div>
-
-                   
-
                 </div>
             </div>
         </>

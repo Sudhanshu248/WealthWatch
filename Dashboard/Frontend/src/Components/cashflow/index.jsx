@@ -26,11 +26,8 @@ export default function CashflowPage() {
 
                     {/* Heading */}
                     <div>
-
                         <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2  mt-6 mb-2.5">Cashflow</h1>
-
                     </div>
-
 
                     {/* Button for changing data list */}
                     <div className="cashflow-head text-center flex flex-row  gap-4 bg-white w-full h-fit  rounded-2xl px-8 py-4">
@@ -47,15 +44,11 @@ export default function CashflowPage() {
                         ))}
                     </div>
 
-
-
                     {location.pathname === "/cashflow/thisMonth" || location.pathname === "/cashflow" ? (
                         <>
                             <CurrentMonth />
                         </>
                     ) : ""}
-
-
 
                     {location.pathname === "/cashflow/SixMonth" && (
                         <>
@@ -68,10 +61,6 @@ export default function CashflowPage() {
                             <CompareTwoMonth />
                         </>
                     )}
-
-
-
-                    {/*  */}
                 </div>
             </div>
         </>

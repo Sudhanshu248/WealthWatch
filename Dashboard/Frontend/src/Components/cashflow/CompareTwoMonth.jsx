@@ -2,15 +2,18 @@ import { useState, useEffect, useMemo } from "react";
 import BarGraph from "./pie/barGraph.jsx";
 import PieChart from "./pie/pieChart.jsx";
 import {
-  TotalExpence, CurrentFoodExpence, CurrentTransportExpence, CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence,
+  CurrentTotalExpence, CurrentFoodExpence, CurrentTransportExpence,
+  CurrentPersonalExpence, CurrentHousingExpence, CurrentSavingExpence,
 } from "../data/CalCurrentMonthExpence.js";
 import {
-  SecTotalExpence, SecondFoodExpence, SecondTransportExpence, SecondPersonalExpence, SecondHousingExpence, SecondSavingExpence,
+  SecTotalExpence, SecondFoodExpence, SecondTransportExpence,
+  SecondPersonalExpence, SecondHousingExpence, SecondSavingExpence,
 } from "../data/CalSecondMonthExpence.js";
 import { fetchMonthlyData } from "../data/InputData.js";
 import CurrentMonthList from "./MonthList/CurrentMonthList.jsx";
 import SecondMonthList from "./MonthList/SecondMonthList.jsx";
 
+// Define color schemes for pie chart slices
 const pieColors = {
   food: "rgb(59, 192, 95)",
   housing: "rgb(66, 133, 244)",
@@ -23,48 +26,34 @@ const labelColors = [pieColors.food, pieColors.housing, pieColors.personal, pieC
 const labels = ["Food", "Housing", "Personal expenses", "Transport", "Saving"];
 
 export default function CompareTwoMonth() {
+  // State for month labels and expense data
   const [monthNames, setMonthNames] = useState([]);
   const [currentData, setCurrentData] = useState(null);
   const [secondData, setSecondData] = useState(null);
 
+  // Load available month names on initial render
   useEffect(() => {
     const loadMonthNames = async () => {
       const results = await Promise.all(Array.from({ length: 6 }, (_, i) => fetchMonthlyData(i)));
-      setMonthNames(results.map((r) => r.monthName));
+      setMonthNames(results.map((r) => r.monthName.toUpperCase()));
     };
     loadMonthNames();
   }, []);
 
+  // Load current and second month expense data
   useEffect(() => {
     const fetchData = async () => {
       const [
-        currFood,
-        currTransport,
-        currPersonal,
-        currSaving,
-        currHousing,
-        currTotal,
-        secFood,
-        secTransport,
-        secPersonal,
-        secSaving,
-        secHousing,
-        secTotal,
+        currFood, currTransport, currPersonal, currSaving, currHousing, currTotal,
+        secFood, secTransport, secPersonal, secSaving, secHousing, secTotal,
       ] = await Promise.all([
-        CurrentFoodExpence(),
-        CurrentTransportExpence(),
-        CurrentPersonalExpence(),
-        CurrentSavingExpence(),
-        CurrentHousingExpence(),
-        TotalExpence(),
-        SecondFoodExpence(),
-        SecondTransportExpence(),
-        SecondPersonalExpence(),
-        SecondSavingExpence(),
-        SecondHousingExpence(),
-        SecTotalExpence(),
+        CurrentFoodExpence(), CurrentTransportExpence(), CurrentPersonalExpence(),
+        CurrentSavingExpence(), CurrentHousingExpence(), CurrentTotalExpence(),
+        SecondFoodExpence(), SecondTransportExpence(), SecondPersonalExpence(),
+        SecondSavingExpence(), SecondHousingExpence(), SecTotalExpence(),
       ]);
 
+      // Set current month data
       setCurrentData({
         percentages: [
           currFood?.Foodpercentage ?? 0,
@@ -80,10 +69,11 @@ export default function CompareTwoMonth() {
           currTransport?.transportExpence ?? 0,
           currSaving?.savingExpence ?? 0,
         ],
-        total: currTotal?.TotalBudget ?? 0,
+        spended: currTotal.Spended ?? 0,
         balance: (currTotal?.TotalBudget ?? 0) - (currTotal?.Spended ?? 0),
       });
 
+      // Set second month data
       setSecondData({
         percentages: [
           secFood?.Foodpercentage ?? 0,
@@ -99,14 +89,15 @@ export default function CompareTwoMonth() {
           secTransport?.transportExpence ?? 0,
           secSaving?.savingExpence ?? 0,
         ],
-        total: secTotal?.TotalBudget ?? 0,
+        spended: secTotal?.Spended ?? 0,
         balance: (secTotal?.TotalBudget ?? 0) - (secTotal?.Spended ?? 0),
       });
     };
 
-    fetchData();
+    fetchData(); // Fetch all necessary data
   }, []);
 
+  // Prepare data for bar graph using useMemo for performance
   const barData = useMemo(() => {
     if (!currentData || !secondData) return null;
 
@@ -115,28 +106,32 @@ export default function CompareTwoMonth() {
       datasets: [
         {
           type: "bar",
-          label: monthNames[5],
+          label: monthNames[5], // Current month name
           data: currentData.expenses,
-          backgroundColor: "rgb(130, 231, 130)",
+          backgroundColor: "rgb(130, 231, 130)", // Green
         },
         {
           type: "bar",
-          label: monthNames[4],
+          label: monthNames[4], // Second month name
           data: secondData.expenses,
-          backgroundColor: "rgb(126, 209, 254)",
+          backgroundColor: "rgb(126, 209, 254)", // Blue
         },
       ],
     };
   }, [currentData, secondData, monthNames]);
 
-  const renderPieCard = (title, pieData, percentages, total, balance) => (
-    <div className="compare-two-month-pieBox bg-white w-full h-fit  rounded-2xl p-5">
+  // Reusable function to render each pie chart card
+  const renderPieCard = (title, pieData, percentages, spended, balance) => (
+    <div className="compare-two-month-pieBox bg-white w-full h-fit rounded-2xl p-5">
       <div className="font-medium text-xl mb-2">{title}</div>
       <div className="compare-two-month-pieCard flex justify-between">
+        {/* Pie chart visual */}
         <div className="compare-two-month-pie w-[40%]">
           <PieChart key={JSON.stringify(pieData)} data={pieData} />
         </div>
-        <div className="compare-two-month-pielist w-fit flex items-center  mb-4">
+
+        {/* Pie legend with percentages */}
+        <div className="compare-two-month-pielist w-fit flex items-center mb-4">
           <ul className="w-full">
             {labels.map((label, idx) => (
               <li key={label} className="flex items-center gap-3 justify-between">
@@ -151,10 +146,11 @@ export default function CompareTwoMonth() {
         </div>
       </div>
 
+      {/* Expense summary boxes below pie */}
       <div className="compare-two-month-expBox flex flex-row mt-5 gap-7 justify-center">
         <div className="compare-two-month-expBox-1 w-full py-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
           <p className="text-xl">Expenses</p>
-          <p className="text-lg font-semibold text-red-600">&#8377;{total}</p>
+          <p className="text-lg font-semibold text-red-600">&#8377;{spended}</p>
         </div>
 
         <div className="compare-two-month-expBox-1 w-full py-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200">
@@ -165,8 +161,10 @@ export default function CompareTwoMonth() {
     </div>
   );
 
+  // Show loading state if data hasn't loaded yet
   if (!currentData || !secondData || !barData) return <p className="text-center mt-20">Loading...</p>;
 
+  // Pie chart configurations
   const currPieData = {
     labels,
     datasets: [
@@ -193,19 +191,21 @@ export default function CompareTwoMonth() {
 
   return (
     <div className="mt-6">
-      <div className="bg-white w-full h-[61%] mt-4 rounded-2xl p-5">
+      {/*  Bar Chart for Comparing Two Months  */}
+      <div className="compare-two-month-bar bg-white w-full h-[61%] mt-4 rounded-2xl p-5">
         <div className="font-medium text-xl mb-7">Monthly Expenses</div>
         <div className="compare-two-month-bargraph w-[60%] h-full">
           <BarGraph data={barData} />
         </div>
-
       </div>
 
+      {/*  Two Pie Charts for Visualizing Each Month  */}
       <div className="compare-two-month-piecontainer flex flex-row gap-4 mt-6">
-        {renderPieCard(monthNames[5].toUpperCase(), currPieData, currentData.percentages, currentData.total, currentData.balance)}
-        {renderPieCard(monthNames[4].toUpperCase(), secondPieData, secondData.percentages, secondData.total, secondData.balance)}
+        {renderPieCard(monthNames[5], currPieData, currentData.percentages, currentData.spended, currentData.balance)}
+        {renderPieCard(monthNames[4], secondPieData, secondData.percentages, secondData.spended, secondData.balance)}
       </div>
 
+      {/*  Expense Lists for Each Month  */}
       <div className="compare-two-month-list flex flex-row gap-4 mt-6">
         <CurrentMonthList />
         <SecondMonthList />

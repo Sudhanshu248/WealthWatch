@@ -1,4 +1,4 @@
-import { ForthFoodExpence, ForthTransportExpence, ForthHousingExpence, ForthSavingExpence, ForthPersonalExpence } from "../../data/CalForthMonthExpence.js";
+import { ForthFoodExpence ,ForthHousingExpence ,ForthSavingExpence ,ForthPersonalExpence ,ForthTransportExpence } from "../../data/CalForthMonthExpence.js";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -8,16 +8,16 @@ export default function ForthHistoryIndividual() {
     const navigate = useNavigate();
     const location = useLocation();
 
-
-
+    // State for each expense category
     const [Foodlist, setFoodlist] = useState([]);
     const [TransportListing, setTransportListing] = useState([]);
     const [PersonalListing, setPersonalListing] = useState([]);
     const [SavingListing, setSavingListing] = useState([]);
     const [HousingListing, setHousingListing] = useState([]);
-    const [refreshKey, setRefreshKey] = useState(0);
 
+    const [refreshKey, setRefreshKey] = useState(0); // Trigger re-render on deletion
 
+    // Fetch current month’s data on mount or when refreshKey changes
     useEffect(() => {
         const loadData = async () => {
             const food = await ForthFoodExpence();
@@ -36,191 +36,106 @@ export default function ForthHistoryIndividual() {
         loadData();
     }, [refreshKey]);
 
+    // Extract category from the pathname
+    const pathParts = location.pathname.split("/");
+    const basePath = `/${pathParts[1]}/${pathParts[2]}`;
+    const name = location.pathname.replace(`${basePath}/`, "");
+    const category = name.charAt(0).toLowerCase() + name.slice(1);
 
-
-
-    const value = location.pathname.replace("/history/:month", "");
-    const category = value.charAt(0).toLowerCase() + value.slice(1);
-
-
-    const handleDelete = async (name) => {
+    // Delete handler
+    const handleDelete = async (itemName) => {
         const token = localStorage.getItem("token");
         try {
             const response = await axios.post(
                 `${BASE_URL}/deleteData`,
-                { category, name },
+                { category, name: itemName },
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": token,
+                        Authorization: token,
                     },
                     timeout: 5000,
                 }
             );
 
-            if (response.data && response.data.message) {
+            if (response.data?.message) {
                 alert("Item deleted successfully");
+                setRefreshKey((prev) => prev + 1); // Trigger re-fetch
             }
         } catch (error) {
             console.error("Error deleting item:", error);
         }
     };
 
-
-    const parts = location.pathname.split("/");
-    const basePath = `/${parts[1]}/${parts[2]}`;
-    const name = location.pathname.replace(`${basePath}/`, "");
+    // Navigate back to the monthly history overview
     const handleBack = () => {
-        const parts = location.pathname.split("/");
-        // ["", "historys", "June", "Food"]
-        if (parts.length >= 4) {
-            const basePath = `/${parts[1]}/${parts[2]}`; // "/historys/June"
+        if (pathParts.length >= 4) {
+            const basePath = `/${pathParts[1]}/${pathParts[2]}`;
             navigate(basePath);
         }
     };
 
-    return (
-        <>
-            {/* Main Container */}
-            <div className='flex flex-row '>
-
-                {/* History Data Container */}
-                <div className="history-individual bg-[#B8D7DE8C] rounded-md mt-4 ml-64  h-[100vh] w-[60vw]  grow px-12 py-8">
-
-                    {/* Back Btn */}
-                    <div className=" mb-8">
-                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1" onClick={handleBack} ><i className="fa-solid fa-arrow-left"></i> &nbsp;Back</button>
-                    </div>
-
-                    {/* History data list*/}
-                    <div className="history-individual-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
-
-                        <div className="font-medium text-[25px]">
-                            <h1>{name}</h1>
-                        </div>
-
-
-
-
-                        {
-                            location.pathname == `${basePath}/Food` && (Foodlist || []).map((item, index) => (
-                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
-                                    <div className="flex flex-row gap-2">
-
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
-                                    </div>
-                                    <div className="flex flex-row gap-2">
-
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                        {item.name && (
-                                            <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                                <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-
-                            ))
-                        }
-                        {
-                            location.pathname == `${basePath}/Transport` && (TransportListing || []).map((item, index) => (
-                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
-                                    <div className="flex flex-row gap-2">
-
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
-                                    </div>
-                                    <div className="flex flex-row gap-2">
-
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                        {item.name && (
-                                            <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                                <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-
-                            ))
-                        }
-                        {
-                            location.pathname == `${basePath}/Housing` && (HousingListing || []).map((item, index) => (
-                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
-                                    <div className="flex flex-row gap-2">
-
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
-                                    </div>
-                                    <div className="flex flex-row gap-2">
-
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-
-                                        {item.name && (
-                                            <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                                <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-
-                            ))
-                        }
-                        {
-                            location.pathname == `${basePath}/Saving` && (SavingListing || []).map((item, index) => (
-                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
-                                    <div className="flex flex-row gap-2">
-
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
-                                    </div>
-
-                                    <div className="flex flex-row gap-2">
-
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-
-                                        {item.name && (
-                                            <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                                <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-
-                            ))
-                        }
-                        {
-                            location.pathname == `${basePath}/PersonalExpence` && (PersonalListing || []).map((item, index) => (
-                                <div key={index} className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2 ">
-                                    <div className="flex flex-row gap-2">
-
-                                        <button className="text-xl font-medium " value=''>{item.name}</button>
-                                        <p className="text-[12px] mt-2 font-medium text-gray-800">{item.percentage.toFixed(1)}%</p>
-                                    </div>
-
-                                    <div className="flex flex-row gap-2">
-
-                                        <p className="text-[15px] mt-1">- &nbsp; &#8377;{item.value}</p>
-                                        {item.name && (
-                                            <button className="ml-3 cursor-pointer" onClick={() => handleDelete(item.name)}>
-                                                <i className="fa-solid fa-trash text-[#2D5359]"></i>
-                                            </button>
-                                        )}
-                                    </div>
-                                </div>
-
-                            ))
-                        }
-
-
-
-
-                    </div>
-
-
-
+    // Helper to render list section
+    const renderListSection = (list) =>
+        list.map((item, index) => (
+            <div
+                key={index}
+                className="flex flex-row justify-between mt-4 border-b pt-4 pb-2 pl-2"
+            >
+                <div className="flex flex-row gap-2">
+                    <button className="text-xl font-medium">{item.name}</button>
+                    <p className="text-[12px] mt-2 font-medium text-gray-800">
+                        {item.percentage.toFixed(1)}%
+                    </p>
+                </div>
+                <div className="flex flex-row gap-2">
+                    <p className="text-[15px] mt-1">- &nbsp; ₹{item.value}</p>
+                    {item.name && (
+                        <button
+                            className="ml-3 cursor-pointer"
+                            onClick={() => handleDelete(item.name)}
+                        >
+                            <i className="fa-solid fa-trash text-[#2D5359]"></i>
+                        </button>
+                    )}
                 </div>
             </div>
-        </>
-    )
+        ));
+
+    // Determine which category list to render
+    const getListByPath = () => {
+        if (location.pathname === `${basePath}/Food`) return renderListSection(Foodlist);
+        if (location.pathname === `${basePath}/Transport`) return renderListSection(TransportListing);
+        if (location.pathname === `${basePath}/Housing`) return renderListSection(HousingListing);
+        if (location.pathname === `${basePath}/Saving`) return renderListSection(SavingListing);
+        if (location.pathname === `${basePath}/PersonalExpence`) return renderListSection(PersonalListing);
+        return <p className="mt-4 text-gray-600">No data found.</p>;
+    };
+
+    return (
+        <div className="flex flex-row">
+            {/* Main Panel */}
+            <div className="history-individual bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[100vh] w-[60vw] grow px-12 py-8">
+                {/* Back Button */}
+                <div className="mb-8">
+                    <button
+                        className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1"
+                        onClick={handleBack}
+                    >
+                        <i className="fa-solid fa-arrow-left"></i> &nbsp;Back
+                    </button>
+                </div>
+
+                {/* Expense Section */}
+                <div className="history-individual-1 bg-white w-full h-fit rounded-2xl mt-2 px-12 py-8">
+                    <div className="font-medium text-[25px]">
+                        <h1>{name}</h1>
+                    </div>
+
+                    {/* Render dynamic list based on route */}
+                    {getListByPath()}
+                </div>
+            </div>
+        </div>
+    );
 }

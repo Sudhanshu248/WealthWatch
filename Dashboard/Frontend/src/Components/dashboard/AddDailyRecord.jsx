@@ -12,13 +12,17 @@ export default function AddDailyRecord() {
 
     const handleSave = async () => {
         try {
+            // Retrieve the JWT token from local storage for authentication
             const token = localStorage.getItem("token");
             console.log("Token:", token);
+
+            // If no token is found, notify the user and exit the function
             if (!token) {
                 console.log("Token is not found need Login first")
                 return;
             }
 
+            // Send a POST request to save the daily record
             const response = await axios.post(`${BASE_URL}/dashboard`,
                 {
                     category,
@@ -30,28 +34,34 @@ export default function AddDailyRecord() {
                 {
                     headers: {
                         "Content-Type": "application/json",
-                        "Authorization": token,
+                        "Authorization": token, // Attach the token to the Authorization header
                     },
-                    timeout: 5000,
+                    timeout: 5000, // Set request timeout
                 });
 
+            // If the response is successful, reset input fields and show success message
             if (response.data) {
                 console.log("Daily Record Saved Successfully", response.data);
+
+                // Clear all input fields
                 setCategory("");
                 setPaymentMethod("");
                 setDate("");
                 setName("");
                 setPrice("");
-                setSuccess(true);
+
+                setSuccess(true);            // Show success message
                 setTimeout(() => {
-                    setSuccess(false);
+                    setSuccess(false);// Hide success message after 5 seconds
                 }, 5000);
             }
         } catch (error) {
+            // Log and alert error if request fails
             console.error("Error saving daily record:", error);
             alert("Failed to save daily record. Please try again.");
         }
     }
+
 
     const handlealert = () => {
         setSuccess(false)
@@ -121,10 +131,10 @@ export default function AddDailyRecord() {
                         <option value="Card">CARD</option>
                     </select>
                 </div>
-                    {/* Saved Button */}
-                    <div className=" my-2 ">
-                        <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer" onClick={handleSave} >&nbsp;Save</button>
-                    </div>
+                {/* Saved Button */}
+                <div className=" my-2 ">
+                    <button className="bg-[#2D5359] text-white text-[20px] font-medium rounded-lg px-5 py-1 cursor-pointer" onClick={handleSave} >&nbsp;Save</button>
+                </div>
 
             </div>
 

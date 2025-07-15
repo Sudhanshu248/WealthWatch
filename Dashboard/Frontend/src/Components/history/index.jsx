@@ -41,35 +41,35 @@ export default function HistoryPage() {
 
     // Get the selected month from the URL path
     const currentMonth = decodeURIComponent(location.pathname.replace("/historys/", ""));
-   const Monthname = currentMonth.toUpperCase();
+    const Monthnames = currentMonth.toUpperCase();
     return (
         <div className="flex flex-row">
             <div className="history bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.9vh] w-[60vw] grow px-8 py-4">
                 <h1 className="text-3xl text-emerald-900 font-bold text-start">History</h1>
 
-                {/* Dropdown */}
                 <select
                     id="category"
                     name="category"
-                    value={currentMonth}
+                    value={Monthnames}
                     onChange={handleChange}
                     className="bg-gray-300 text-gray-500 rounded-md w-[8rem] h-[40px] p-2 my-4"
                     style={{ border: "none", outline: "none" }}
                 >
-                    {MonthName.map((name, index) => (
+                    {[...MonthName].reverse().map((name, index) => (
                         <option key={index} value={name}>
                             {name}
                         </option>
                     ))}
                 </select>
 
+
                 {/* Conditional Component Rendering */}
-                {Monthname === MonthName[0] && <CurrentHistory />}
-                {Monthname === MonthName[1] && <SecondHistory />}
-                {Monthname === MonthName[2] && <ThirdHistory />}
-                {Monthname === MonthName[3] && <ForthHistory />}
-                {Monthname === MonthName[4] && <FifthHistory />}
-                {Monthname === MonthName[5] && <SixthHistory />}
+                {Monthnames === MonthName[0] && <SixthHistory />}
+                {Monthnames === MonthName[1] && <FifthHistory />}
+                {Monthnames === MonthName[2] && <ForthHistory />}
+                {Monthnames === MonthName[3] && <ThirdHistory />}
+                {Monthnames === MonthName[4] && <SecondHistory />}
+                {Monthnames === MonthName[5] && <CurrentHistory />}
             </div>
         </div>
     );

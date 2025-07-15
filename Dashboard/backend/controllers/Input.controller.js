@@ -2,32 +2,37 @@ import InputData from '../models/inputData.models.js';
 import User from '../models/user.models.js';
 import Form from '../models/form.models.js';
 
+// POST: Save expense input data (grouped by month & category)
 export const SavedinputData = async (req, res) => {
   const { category, paymentMethod, date, name, price } = req.body;
 
   try {
+    // Token validation
     const token = req.headers.authorization;
     if (!token) return res.status(401).json({ error: 'No token provided' });
 
     const user = await User.findOne({ token });
     if (!user) return res.status(401).json({ error: 'Unauthorized user' });
+    
 
+    // Retrieve income from the associated form
     const form = await Form.findOne({ userId: user._id });
     if (!form) return res.status(404).json({ error: 'Form data not found' });
 
     const income = form.income;
-    const currentDate = new Date(date);
-    const currentMonth = currentDate.toLocaleString('default', { month: 'long' }).toLowerCase();
+    const currentDate = new Date(date); // Input date
+    const currentMonth = currentDate.toLocaleString('default', { month: 'long' }).toLowerCase(); // E.g. "july"
     const sixMonthsAgo = new Date(currentDate);
     sixMonthsAgo.setMonth(currentDate.getMonth() - 6);
 
+    // Fetch existing input data for this user
     let inputData = await InputData.findOne({ userId: user._id });
 
-    // If first time, create new inputData with previous 5 months + current
+    //  If user is adding data for the first time 
     if (!inputData) {
       inputData = new InputData({ userId: user._id, Monthly: [] });
 
-      // Add 5 previous empty months
+      // Pre-fill last 5 months (empty) + current month (with data)
       const filledMonths = [];
       for (let i = 5; i >= 1; i--) {
         const prevDate = new Date(currentDate);
@@ -42,7 +47,7 @@ export const SavedinputData = async (req, res) => {
         });
       }
 
-      // Add current month with data
+      // Add the current month with the provided expense data
       const currentMonthEntry = {
         month: currentMonth,
         totalBudget: income,
@@ -54,20 +59,23 @@ export const SavedinputData = async (req, res) => {
       };
 
       inputData.Monthly = [...filledMonths, currentMonthEntry];
+
     } else {
-      // Filter out entries older than 6 months
+      /* ----If inputData already exists---  */
+
+      // Keep only the last 6 months
       inputData.Monthly = inputData.Monthly.filter(entry => {
         const entryDate = new Date(entry.createdAt);
         return entryDate >= sixMonthsAgo;
       });
 
-      // Check if current month exists
+      // Check if current month entry already exists
       let monthEntryIndex = inputData.Monthly.findIndex(
         m => m.month.toLowerCase() === currentMonth
       );
 
       if (monthEntryIndex === -1) {
-        // Add new month at end
+        // If current month doesn't exist, add it
         const newMonthEntry = {
           month: currentMonth,
           totalBudget: income,
@@ -80,29 +88,32 @@ export const SavedinputData = async (req, res) => {
 
         inputData.Monthly.push(newMonthEntry);
       } else {
-        // Update existing month
+        // If current month exists, update it
         const monthEntry = inputData.Monthly[monthEntryIndex];
         let categoryEntry = monthEntry.expence.find(e => e.category === category);
 
         if (!categoryEntry) {
+          // If category doesn't exist, add it
           monthEntry.expence.push({
             category,
             items: [{ name, price, date, paymentMethod }]
           });
         } else {
+          // If category exists, append to items
           categoryEntry.items.push({ name, price, date, paymentMethod });
         }
 
-        // Move updated month to end (to ensure it stays at index 5)
+        // Move updated month to the end (to maintain recent order)
         const updatedMonth = inputData.Monthly.splice(monthEntryIndex, 1)[0];
         inputData.Monthly.push(updatedMonth);
       }
 
-      // Sort and keep latest 6 months
+      // Sort months by date and keep only latest 6
       inputData.Monthly.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
       inputData.Monthly = inputData.Monthly.slice(-6);
     }
 
+    // Inform Mongoose that Monthly array has been modified
     inputData.markModified('Monthly');
     await inputData.save();
 
@@ -114,37 +125,32 @@ export const SavedinputData = async (req, res) => {
   }
 };
 
-
-
-
-
-// GET: Fetch all input data
+// GET: Fetch all input data for authenticated user
 export const getInputData = async (req, res) => {
   try {
+    const token = req.headers.authorization;
+    if (!token) {
+      return res.status(401).json({ error: 'No token provided' });
+    }
 
-    // const  token = req.headers.authorization;
-    // if (!token) {
-    //   return res.status(401).json({ error: 'No token provided' });
-    // }
+    const user = await User.findOne({ token });
+    if (!user) {
+      return res.status(401).json({ error: 'Unauthorized user' });
+    }
 
-    // const user = await User.findOne({ token });
-    // if (!user) {
-    //   return res.status(401).json({ error: 'Unauthorized user' });
-    // }
-
-    const data = await InputData.find({ userId: "686e27f6b63247fd0291eed1" });
+    const data = await InputData.find({ userId: user._id });
     res.json(data);
   } catch (err) {
     res.status(500).json({ error: 'Server error' });
   }
 };
 
-
-
+// DELETE: Remove a specific item from a category in the current user's input data
 export const deleteInputData = async (req, res) => {
   const { category, name } = req.body;
 
   try {
+    // Validate inputs
     if (!category || !name) {
       return res.status(400).json({ error: 'Category and name are required.' });
     }
@@ -159,8 +165,9 @@ export const deleteInputData = async (req, res) => {
       return res.status(401).json({ error: 'Unauthorized user' });
     }
 
+    // Find and update the item by category and name
     const result = await InputData.findOneAndUpdate(
-      { userId: "686e27f6b63247fd0291eed1", "expence.category": category },
+      { userId: user._id, "expence.category": category },
       {
         $pull: {
           "expence.$.items": { name }
@@ -180,4 +187,3 @@ export const deleteInputData = async (req, res) => {
     return res.status(500).json({ error: 'Server error', details: error.message });
   }
 };
-

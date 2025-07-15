@@ -2,32 +2,32 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { BASE_URL } from "../../../../backend/axiosConfig.js";
-import { TotalExpence } from "../data/CalCurrentMonthExpence.js";
+import { CurrentTotalExpence } from "../data/CalCurrentMonthExpence.js";
 import './style.css'
 
 export default function GoalsPage() {
+  // State definitions
   const [GoalValue, setGoalValue] = useState({});
   const [savedGoals, setSavedGoals] = useState({});
   const [initialGoals, setInitialGoals] = useState([]);
   const [backendGoalsData, setBackendGoalsData] = useState({});
-  const [TotalExpences, setTotalExpences] = useState(0)
+  const [TotalExpences, setTotalExpences] = useState(0);
   const [userId, setUserId] = useState(null);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
 
+  // Load total budget from current month data
   useEffect(() => {
     const loadData = async () => {
-      const budget = await TotalExpence();
+      const budget = await CurrentTotalExpence();
       setTotalExpences(budget?.TotalBudget);
     };
-
     loadData();
   }, []);
 
-  // Extract userId from token
+  // Decode token and extract user ID
   useEffect(() => {
     const token = localStorage.getItem("token");
-
     if (token) {
       try {
         const decoded = jwtDecode(token);
@@ -39,18 +39,9 @@ export default function GoalsPage() {
     }
   }, []);
 
-  // Load goals when userId is ready
+  // Load goals from local file and backend once userId is available
   useEffect(() => {
     if (!userId) return;
-
-    const goalsKey = `goalValues_${userId}`;
-    const savedKey = `savedGoals_${userId}`;
-
-    const storedGoals = localStorage.getItem(savedKey);
-    const storedValues = localStorage.getItem(goalsKey);
-
-    if (storedValues) setGoalValue(JSON.parse(storedValues));
-    if (storedGoals) setSavedGoals(JSON.parse(storedGoals));
 
     import("./goals.js")
       .then((module) => setInitialGoals(module.goals))
@@ -59,6 +50,7 @@ export default function GoalsPage() {
     fetchGoalsFromBackend(userId);
   }, [userId]);
 
+  // Fetch existing goal values from backend
   const fetchGoalsFromBackend = async (userId) => {
     const userToken = localStorage.getItem("token");
     if (!userToken) {
@@ -81,29 +73,24 @@ export default function GoalsPage() {
 
         const updatedSaved = {};
         for (const key in fetched) {
-          if (!["_id", "token", "__v"].includes(key)) {
+          if (!["id", "token", "_v"].includes(key)) {
             updatedSaved[key.charAt(0).toUpperCase() + key.slice(1)] = true;
           }
         }
 
         setSavedGoals((prev) => ({ ...prev, ...updatedSaved }));
-
-        // Scoped localStorage
-        const goalsKey = `goalValues_${userId}`;
-        const savedKey = `savedGoals_${userId}`;
-
-        localStorage.setItem(goalsKey, JSON.stringify({ ...GoalValue, ...fetched }));
-        localStorage.setItem(savedKey, JSON.stringify({ ...savedGoals, ...updatedSaved }));
       }
     } catch (error) {
       console.error("Error while fetching goals:", error.message);
     }
   };
 
+  // Handle input field changes
   const handleInput = (name, value) => {
     setGoalValue((prev) => ({ ...prev, [name]: value }));
   };
 
+  // Save individual goal to backend
   const handleSave = async (name) => {
     const value = parseFloat(GoalValue[name]);
     if (isNaN(value)) {
@@ -111,6 +98,7 @@ export default function GoalsPage() {
       return;
     }
 
+    // Validate total value does not exceed budget
     const totalValue = Object.values(GoalValue).reduce((sum, val) => {
       const parsed = parseFloat(val);
       return sum + (isNaN(parsed) ? 0 : parsed);
@@ -127,6 +115,7 @@ export default function GoalsPage() {
       return;
     }
 
+    // Post goal data to backend
     try {
       const res = await axios.post(
         `${BASE_URL}/goals`,
@@ -142,24 +131,17 @@ export default function GoalsPage() {
       if (res.data) {
         setBackendGoalsData(res.data);
         setSuccess(true);
-        setTimeout(() => {
-          setSuccess(false);
-        }, 10000);
+        setTimeout(() => setSuccess(false), 10000);
       }
 
       const updatedSaved = { ...savedGoals, [name]: true };
       setSavedGoals(updatedSaved);
-
-      const goalsKey = `goalValues_${userId}`;
-      const savedKey = `savedGoals_${userId}`;
-
-      localStorage.setItem(goalsKey, JSON.stringify(GoalValue));
-      localStorage.setItem(savedKey, JSON.stringify(updatedSaved));
     } catch (error) {
       console.error("Error while saving goal:", error.message);
     }
   };
 
+  // Delete a goal from local state
   const handleDelete = (name) => {
     const updatedValues = { ...GoalValue };
     const updatedSaved = { ...savedGoals };
@@ -168,66 +150,59 @@ export default function GoalsPage() {
 
     setGoalValue(updatedValues);
     setSavedGoals(updatedSaved);
-
-    const goalsKey = `goalValues_${userId}`;
-    const savedKey = `savedGoals_${userId}`;
-
-    localStorage.setItem(goalsKey, JSON.stringify(updatedValues));
-    localStorage.setItem(savedKey, JSON.stringify(updatedSaved));
-    localStorage.removeItem(goalsKey);
-    localStorage.removeItem(savedKey);
     setError(true);
-    setTimeout(() => {
-      setError(false);
-    }, 5000);
+    setTimeout(() => setError(false), 5000);
   };
 
-  const handleSuccess = () => {
-    setSuccess(false)
-  }
-  const handleError = () => {
-    setError(false)
-  }
+  // Close success and error alerts
+  const handleSuccess = () => setSuccess(false);
+  const handleError = () => setError(false);
 
   return (
     <div className="flex">
-      <div className="goals bg-[#B8D7DE8C] rounded-md mt-4 ml-64 h-[86.5vh]  w-[60vw] grow px-16 py-8">
-      <div className="flex flex-col ">
-          <h1 className="text-3xl text-emerald-900 font-bold text-start ">Goals</h1>
-        <p className="">Set your goals for different categories.</p>
-      </div>
+      <div className="bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-5 dashboard"
+        style={{ position: "fixed", right: 0, overflowY: "auto" }}>
+        <div className="flex flex-col">
+          <h1 className="text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2 mb-2">Goals</h1>
+          <p className="ml-2 mb-2">Set your goals for different categories.</p>
+        </div>
 
-        {success && <div className="flex flex-row m-auto justify-between w-full" style={{
-          backgroundColor: "#d4edda",
-          border: "1px solid #c3e6cb",
-          color: "#155724",
-          padding: "10px",
-          borderRadius: "5px",
-        
-          marginTop: "10px"
-        }}>
-          <div> Goal Successfully Recorded !</div>
-          <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
-        </div>}
-        {error && <div className="flex flex-row m-auto justify-between w-full" style={{
-          backgroundColor: "#efb0abff",
-          border: "1px solid #d48377ff",
-          color: "#c10000ff",
-          padding: "10px",
-          borderRadius: "5px",
-         
-          marginTop: "10px"
-        }}>
-          <div> Set Goal Deleted!</div>
-          <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
-        </div>}
+        {/* Success alert */}
+        {success && (
+          <div className="flex flex-row m-auto justify-between w-full" style={{
+            backgroundColor: "#d4edda",
+            border: "1px solid #c3e6cb",
+            color: "#155724",
+            padding: "10px",
+            borderRadius: "5px",
+            marginTop: "10px"
+          }}>
+            <div> Goal Successfully Recorded!</div>
+            <button onClick={handleSuccess}><i className="fa-solid fa-xmark"></i></button>
+          </div>
+        )}
 
-        <section className="mt-6 flex flex-col items-center justify-center gap-6 w-full">
+        {/* Error alert */}
+        {error && (
+          <div className="flex flex-row m-auto justify-between w-full" style={{
+            backgroundColor: "#efb0abff",
+            border: "1px solid #d48377ff",
+            color: "#c10000ff",
+            padding: "10px",
+            borderRadius: "5px",
+            marginTop: "10px"
+          }}>
+            <div>Set Goal Deleted!</div>
+            <button onClick={handleError}><i className="fa-solid fa-xmark"></i></button>
+          </div>
+        )}
+
+        {/* Render all goal cards */}
+        <section className="mt-6 flex flex-col items-center justify-center gap-6 w-full max-[460px]:mb-[200px]">
           {initialGoals.map((item) => (
             <div
               key={item.name}
               className="goal-1 flex flex-row justify-between items-center bg-white p-4 px-8 rounded-2xl w-full"
-       
             >
               <p className="goal-text text-2xl pt-1 font-medium">{item.name}</p>
               <div className="flex items-center mt-2">
@@ -240,7 +215,7 @@ export default function GoalsPage() {
                   <input
                     type="number"
                     placeholder="Enter Amount"
-                    className="pl-2 sm:pl-5 py-2 w-35 rounded-2xl ml-2"
+                    className="pl-2 sm:pl-5 py-2 w-40 max rounded-2xl ml-2 max-[460px]:w-[10rem]"
                     style={{ backgroundColor: "rgba(0, 0, 0, 0.1)" }}
                     value={GoalValue[item.name] ?? ""}
                     onChange={(e) => handleInput(item.name, e.target.value)}
