@@ -134,8 +134,11 @@ export default function ProfilePage() {
     return (
         <div className='flex flex-row'>
             {/* Profile Container */}
-            <div className="profile bg-[#B8D7DE8C] rounded-md mt-4 ml-64 w-[60vw] grow">
-                <h1 className="profile-text text-3xl text-emerald-900 font-bold ml-16 my-4">My Profile</h1>
+            
+
+                <div className="profile bg-[#B8D7DE8C] dashboaard-right mb-[80px] rounded-md mt-4 h-full w-[85vw] md:w-[300px] pt-6 px-4 dashboard"
+    style={{ position: "fixed", right: 0, overflowY: "auto" }}>
+                    <h1 className="profile-text text-3xl text-emerald-900 text-shadow-md font-bold text-start ml-2" style={{marginBottom: "1.3rem"}}>My Profile</h1>
 
                 {/* Success Alert */}
                 {success && (
@@ -162,7 +165,7 @@ export default function ProfilePage() {
                 )}
 
                 {/* Profile Image + Info */}
-                <div className="flex flex-col items-center justify-center bg-white h-[37vh] w-[90%] mx-auto rounded-2xl">
+                <div className="flex flex-col items-center justify-center bg-white h-[37vh] rounded-2xl">
                     <span className="flex flex-col items-center gap-2">
                         {profileImage && (
                             <img
@@ -172,7 +175,7 @@ export default function ProfilePage() {
                                 style={{ width: "170px", height: "170px" }}
                             />
                         )}
-                        <label className="cursor-pointer">
+                        <label className="cursor-pointer" style={{position: "relative", top: "-40px", left: "62px"}}>
                             <i className="fa-solid fa-circle-plus fa-2xl" style={{ color: "#2D5359" }}></i>
                             <input
                                 type="file"
@@ -190,14 +193,16 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Profession Field */}
-                <div className="bg-white p-4 px-10 mx-auto my-5 rounded-2xl flex justify-between w-[90%]">
-                    <p className="text-2xl font-medium">Profession</p>
+                <div className="goal-1 bg-white p-4 px-10 mb-3 rounded-2xl flex items-center justify-between my-5"
+                        >
+                        <p className="text-2xl pt-1 max-[460px]:text-[20px] font-medium">Profession</p>
                     {isModelOpen ? (
                         <input
                             type="text"
                             value={profession}
                             onChange={(e) => setProfession(e.target.value)}
-                            className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4"
+                            className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4 max-[450px]:w-[50%]"
+                            
                         />
                     ) : (
                         <p style={{ color: "rgb(50, 47, 47)" }}>{profession}</p>
@@ -205,14 +210,16 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Income Field */}
-                <div className="bg-white p-4 px-10 mx-auto my-5 rounded-2xl flex justify-between w-[90%]">
-                    <p className="text-2xl font-medium">Income</p>
+            
+                    <div className="goal-1 bg-white p-4 px-8 mb-3 rounded-2xl flex items-center align-middle justify-between my-5">
+                        <p className="text-2xl max-[460px]:text-[20px] pt-1 font-medium">Income</p>
                     {isModelOpen ? (
                         <input
                             type="number"
                             value={income}
                             onChange={(e) => setIncome(e.target.value)}
-                            className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4"
+
+                                className="w-[30%] h-[30px] bg-gray-200 rounded-md p-4 max-[450px]:w-[50%]"
                         />
                     ) : (
                         <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {income}</p>
@@ -220,15 +227,15 @@ export default function ProfilePage() {
                 </div>
 
                 {/* Average Expenses */}
-                <div className="bg-white p-4 px-10 mx-auto mb-7 rounded-2xl flex justify-between w-[90%]">
-                    <p className="text-2xl font-medium">Average Expenses</p>
+                <div className="goal-1 bg-white p-4 px-2 sm:px-8 mx-auto mb-7 rounded-2xl flex items-center justify-between my-5">
+                        <p className="text-2xl max-[460px]:text-[20px] pt-1 font-medium">Average Expenses</p>
                     <p style={{ color: "rgb(50, 47, 47)" }}>&#8377; {AverageExpences}</p>
                 </div>
 
                 {/* Action Buttons */}
                 <div className="flex gap-4 ml-16 mb-10">
                     <button
-                        className="bg-[#2D5359] text-white text-lg font-medium rounded-lg px-5 py-1"
+                        className="bg-[#2D5359] text-white text-lg font-medium rounded-lg px-5 py-1 mb-[200px]"
                         onClick={() => SetIsModelOpen(true)}
                     >
                         Edit
@@ -236,7 +243,7 @@ export default function ProfilePage() {
 
                     {isModelOpen && (
                         <button
-                            className="bg-[#2D5359] text-white text-lg font-medium rounded-lg px-5 py-1"
+                            className="bg-[#2D5359] text-white text-lg font-medium rounded-lg px-5 py-1 mb-[200px]"
                             onClick={handleSave}
                         >
                             Save

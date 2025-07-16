@@ -56,23 +56,19 @@ export default function Navbar() {
     return (
         <>
             {/* Main navigation bar container */}
-            <nav
-                id="navbar"
-                className="sticky top-0 h-[80px] max-w-full shadow-md z-50 align-middle"
-                style={{ backgroundColor: "rgb(184, 215, 222)" }}
-            >
+            <nav id="navbar" className="sticky top-0 px-4 max-[450px]:px-0 py-2 shadow-md z-50 align-middle" style={{ backgroundColor: "rgb(184, 215, 222)" }}>
                 {/* Inner content container */}
-                <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between h-full">
+                <div className="max-w-7xl mx-auto px-2 flex items-center align-middle justify-between">
 
                     {/* Left: Logo */}
-                    <div className="w-1/4">
-                        <img src="/image/logo.png" alt="logo_image" />
+                     <div id="logo">
+                        <img src="/image/logo.png" alt="logo_image" className="h-10 w-auto"/>
                     </div>
 
                     {/* Calendar popup */}
                     {show &&
                         <div
-                            className="bg-white p-5 rounded-2xl"
+                            className="calendar bg-white p-5 rounded-2xl"
                             style={{
                                 position: "fixed",
                                 top: "100px",
@@ -83,7 +79,7 @@ export default function Navbar() {
                         >
                             {/* Close button for calendar */}
                             <i
-                                className="fa-solid fa-xmark fa-xl mb-4 cursor-pointer"
+                                className=" fa-solid fa-xmark fa-xl mb-4 cursor-pointer"
                                 onClick={handleCross}
                                 style={{ color: "#2D5359" }}
                             ></i>
@@ -97,7 +93,7 @@ export default function Navbar() {
                     <div className="flex flex-row align-middle items-center justify-center gap-4">
 
                         {/* Calendar toggle icon */}
-                        <div className="block px-4 h-fit rounded-full m-auto cursor-pointer" onClick={handleClick}>
+                        <div className="block px-4 h-fit rounded-full m-auto cursor-pointer max-[500px]:px-0 max-[450px]:mr-2" onClick={handleClick}>
                             <i className="fa-solid fa-calendar-days"></i>
                         </div>
 
@@ -113,7 +109,7 @@ export default function Navbar() {
                                 style={{
                                     borderRadius: "50%",
                                     width: "35px",
-                                    height: "35px"
+                                    height: "30px"
                                 }}
                                 onError={(e) => {
                                     e.target.onerror = null;
