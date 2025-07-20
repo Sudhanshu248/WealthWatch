@@ -1,5 +1,4 @@
-import {  CurrentFoodExpence,  CurrentTransportExpence,  CurrentPersonalExpence,  CurrentHousingExpence,  CurrentSavingExpence 
-} from "../../data/CalCurrentMonthExpence";
+import {  CurrentFoodExpence,  CurrentTransportExpence,  CurrentPersonalExpence,  CurrentHousingExpence,  CurrentSavingExpence } from "../../data/CalCurrentMonthExpence";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
