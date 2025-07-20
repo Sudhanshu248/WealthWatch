@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
 
 // Health check route
 app.get("/", (req, res) => {
-    res.send("Backend Server is properly working on 8080.");
+    res.send("Backend Server is properly working.");
 });
 
 // Start server and connect to database
