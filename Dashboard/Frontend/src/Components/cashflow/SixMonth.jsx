@@ -3,7 +3,7 @@ import SecondPie from "./pie/SecondMonthpie"
 import ThirdPie from "./pie/thirdMonthpie"
 import ForthPie from "./pie/forthMonthpie"
 import FifthPie from "./pie/fifthMonthpie"
-import SixthPie from "./pie/SixthMonthpie"
+import SixthPie from "./pie/sixthMonthpie"
 
 export default function SixMonth() {
 
