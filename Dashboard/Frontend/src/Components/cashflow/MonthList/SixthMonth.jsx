@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
 import { SixthTotalExpence, SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence } from "../../data/CalSixthMonthExpence.js";
 import SixthMonthList from "./SixthMonthList.jsx";
-import SixthPie from "../pie/SixthMonthpie.jsx";
+import SixthPie from "../pie/sixthMonthpie.jsx";
 
 export default function SixthMonth() {
 
