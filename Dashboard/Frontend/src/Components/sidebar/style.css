@@ -1,0 +1,5 @@
+@media screen and (min-width:1030px) {
+    .phone-bar{
+        display: none;
+    }
+}
