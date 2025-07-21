@@ -2,6 +2,7 @@
 
 WealthWatch is a personal finance management application built with the **MERN Stack (MongoDB, Express.js, React.js, Node.js)**. It helps users track their expenses, set financial goals, visualize spending, and manage cash flows efficiently.
 
+<img src="https://drive.google.com/file/d/1cLirzqBP5Kzdev34R2qrmR6c9I2IezzK/view?usp=sharing"   />
 
 # &nbsp;
 
