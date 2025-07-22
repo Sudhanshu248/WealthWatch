@@ -19,7 +19,6 @@ WealthWatch is a personal finance management application built with the **MERN S
 - Blogs and Resources
 - Responsive and User-Friendly Dashboard
 
-
 # &nbsp;
 
 
@@ -38,7 +37,6 @@ WealthWatch is a personal finance management application built with the **MERN S
 
 ### AI Integration
 - **Gemini AI API**: For AI-powered Budget Recommendations 
-
 
 # &nbsp;
 
@@ -69,13 +67,11 @@ WealthWatch is a personal finance management application built with the **MERN S
 8. **Educational Blogs**:
    - Access articles for better financial literacy.
 
-
 # &nbsp;
 
 
 # 🌐 Live Demo
 Check out the live application: [WealthWatch](https://wealth-watch-sandy.vercel.app/)
-
 
 # &nbsp;
 
