@@ -64,9 +64,9 @@ function AppRoutes() {
         <Route path='*' element={<NotFound />} />
       </Routes>
 
-      <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">
+      {!shouldHideLayout && <div className="phone-bar fixed bottom-0  left-0 w-full  bg-[#2D5359] ">
         <PhoneBar />
-      </div>
+      </div>}
     </>
   )
 }
