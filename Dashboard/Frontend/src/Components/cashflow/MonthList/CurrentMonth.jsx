@@ -39,7 +39,7 @@ export default function CurrentMonth() {
             setBalance((total?.TotalBudget || 0) - (total?.Spended || 0));
         }
         loadData();
-    });
+    });   
 
     // Bar graph data configuration
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
@@ -54,6 +54,23 @@ export default function CurrentMonth() {
             }
         ]
     };
+
+     const allZero =
+        FoodExpences == 0 &&
+        TransportExpences == 0 &&
+        SavingExpences == 0 &&
+        HousingExpences == 0 &&
+        PersonalExpences == 0;
+
+    if (allZero) {
+        return (
+            <div className="text-center mt-20">
+                <div className="monthlist w-full h-[100px] bg-white rounded-2xl mt-8 px-8 py-4 flex items-center justify-center max-[1030px]:mb-[200px]">
+                    <p className="text-gray-600 text-lg">No expense data available for the current month.</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -97,7 +114,7 @@ export default function CurrentMonth() {
             </div>
 
             {/*  Monthly Pie Chart Section  */}
-            <div className="c-monthlychart bg-white w-full mt-4 rounded-2xl p-5">
+            <div className="c-monthlychart  w-full mt-4 rounded-2xl p-5">
                 <CurrPie />
             </div>
 

@@ -1,4 +1,3 @@
-// Import necessary hooks and components
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
 import { ThirdTotalExpence, ThirdFoodExpence, ThirdTransportExpence, ThirdPersonalExpence, ThirdHousingExpence, ThirdSavingExpence } from "../../data/CalThirdMonthExpence.js";
@@ -41,11 +40,6 @@ export default function ThirdMonth() {
         loadData(); // Trigger data loading
     });
 
-    // Display loading message if any category is not loaded yet
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) {
-        return <p className="text-center mt-20">Loading...</p>;
-    }
-
     // Bar chart configuration
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const datas = {
@@ -59,6 +53,23 @@ export default function ThirdMonth() {
             }
         ]
     };
+
+    const allZero =
+        FoodExpences == 0 &&
+        TransportExpences == 0 &&
+        SavingExpences == 0 &&
+        HousingExpences == 0 &&
+        PersonalExpences == 0;
+
+    if (allZero) {
+        return (
+            <div className="text-center mt-20">
+                <div className="monthlist w-full h-[100px] bg-white rounded-2xl mt-8 px-8 py-4 flex items-center justify-center max-[1030px]:mb-[200px]">
+                    <p className="text-gray-600 text-lg">No expense data available for the current month.</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>
@@ -78,6 +89,7 @@ export default function ThirdMonth() {
 
                     {/* Right: Summary info for Income, Expenses, Balance */}
                     <div className="bar-graph-2 text-center flex flex-col mb-12 mr-10 w-[24%]" style={{ justifyContent: "center" }}>
+
                         {/* Income box */}
                         <div className="bar-graph-2-1 w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
                             <p className="text-xl">Income</p>

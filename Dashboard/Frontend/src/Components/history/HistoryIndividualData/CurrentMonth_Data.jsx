@@ -55,13 +55,6 @@ export default function CurrentHistoryIndividual() {
     const name = location.pathname.replace(`${basePath}/`, "");
     const category = name.charAt(0).toLowerCase() + name.slice(1);
 
-    useEffect(() => {
-        console.log(pathParts)
-        console.log(basePath)
-        console.log(name)
-        console.log(category)
-    }, [])
-
     // Delete handler
     const handleDelete = async (itemName) => {
         const token = localStorage.getItem("token");

@@ -25,7 +25,6 @@ export default function ThirdMonthList() {
             const personal = await ThirdPersonalExpence();
             const saving = await ThirdSavingExpence();
             const housing = await ThirdHousingExpence();
-
             setFoodpercentage(food?.Foodpercentage.toFixed(1) || 0);
             setTransportPercentage(transport?.TransportPercentage.toFixed(1) || 0);
             setPersonal_percentage(personal?.Personal_percentage.toFixed(1) || 0);
@@ -52,6 +51,7 @@ export default function ThirdMonthList() {
             const name = results.map(data => data.monthName.toUpperCase());
             setMonthName(name);
         };
+
         loadAllData();
     }, []);
 
@@ -74,6 +74,7 @@ export default function ThirdMonthList() {
 
                 {/* Data */}
                 <div className="monthlist-1 w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
+
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >

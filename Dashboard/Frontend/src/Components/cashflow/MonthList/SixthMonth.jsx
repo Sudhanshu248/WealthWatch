@@ -1,9 +1,8 @@
-// Import necessary hooks and components
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
 import { SixthTotalExpence, SixthFoodExpence, SixthTransportExpence, SixthPersonalExpence, SixthSavingExpence, SixthHousingExpence } from "../../data/CalSixthMonthExpence.js";
 import SixthMonthList from "./SixthMonthList.jsx";
-import SixthPie from "../pie/sixthMonthpie.jsx";
+import SixthPie from "../pie/SixthMonthpie.jsx";
 
 export default function SixthMonth() {
 
@@ -41,11 +40,6 @@ export default function SixthMonth() {
         loadData(); // Call the function to load data
     });
 
-    // Display loading message if any category data is not yet available
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) {
-        return <p className="text-center mt-20">Loading...</p>;
-    }
-
     // Bar chart labels and data
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
     const datas = {
@@ -59,6 +53,23 @@ export default function SixthMonth() {
             }
         ]
     };
+
+    const allZero =
+        FoodExpences == 0 &&
+        TransportExpences == 0 &&
+        SavingExpences == 0 &&
+        HousingExpences == 0 &&
+        PersonalExpences == 0;
+
+    if (allZero) {
+        return (
+            <div className="text-center mt-20">
+                <div className="monthlist w-full h-[100px] bg-white rounded-2xl mt-8 px-8 py-4 flex items-center justify-center max-[1030px]:mb-[200px]">
+                    <p className="text-gray-600 text-lg">No expense data available for the current month.</p>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <>

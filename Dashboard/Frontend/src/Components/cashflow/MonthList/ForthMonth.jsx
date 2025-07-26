@@ -1,9 +1,8 @@
-// Importing required hooks and components
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
 import { ForthTotalExpence, ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence.js";
 import ForthMonthList from "./ForthMonthList.jsx";
-import ForthPie from "../pie/forthMonthpie.jsx";
+import ForthPie from "../pie/ForthMonthpie.jsx";
 
 export default function ForthMonth() {
 
@@ -39,7 +38,7 @@ export default function ForthMonth() {
             setBalance((total?.TotalBudget || 0) - (total?.Spended || 0)); // Calculating remaining balance
         }
         loadData(); // Calling the data loading function
-    }); 
+    });
 
     // Labels and data structure for bar chart
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
@@ -55,6 +54,23 @@ export default function ForthMonth() {
         ]
     };
 
+    const allZero =
+        FoodExpences == 0 &&
+        TransportExpences == 0 &&
+        SavingExpences == 0 &&
+        HousingExpences == 0 &&
+        PersonalExpences == 0;
+
+    if (allZero) {
+        return (
+            <div className="text-center mt-20">
+                <div className="monthlist w-full h-[100px] bg-white rounded-2xl mt-8 px-8 py-4 flex items-center justify-center max-[1030px]:mb-[200px]">
+                    <p className="text-gray-600 text-lg">No expense data available for the current month.</p>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <>
             {/*  Bar Chart and Summary Section  */}
@@ -65,7 +81,6 @@ export default function ForthMonth() {
 
                 {/* Layout container for bar chart and summary cards */}
                 <div className="bar-graph flex justify-between">
-
                     {/* Bar chart visualizing categorized expenses */}
                     <div className="bar-graph-1 w-[60%] h-full">
                         <BarGraph data={datas} />
@@ -73,6 +88,7 @@ export default function ForthMonth() {
 
                     {/* Summary panel showing Income, Expenses, and Balance */}
                     <div className="bar-graph-2 text-center flex flex-col mb-12 mr-10 w-[24%]" style={{ justifyContent: "center" }}>
+
                         {/* Income display */}
                         <div className="bar-graph-2-1 w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
                             <p className="text-xl">Income</p>

@@ -55,7 +55,6 @@ export default function SixthMonthList() {
     }, []);
 
     const navigate = useNavigate();
-
     const handleclick = (e) => {
         const value = e.target.value;
         const path = location.pathname
@@ -75,6 +74,7 @@ export default function SixthMonthList() {
 
                 {/* Data */}
                 <div className="monthlist-1 w-full h-fit  rounded-2xl mt-2 px-8 py-4 ">
+
                     {/* Food */}
                     <div className="flex flex-row justify-between mt-4 border-b  pt-4 pb-2 pl-2">
                         <div className="flex flex-row gap-2 hover:cursor-pointer" >

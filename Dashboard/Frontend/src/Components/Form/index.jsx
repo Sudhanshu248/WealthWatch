@@ -24,8 +24,8 @@ export default function Form() {
     const handleDashboard = async () => {
         try {
             setSuccess("");
-            const email = localStorage.getItem("userEmail"); // Get email from local storage
 
+            const email = localStorage.getItem("userEmail"); // Get email from local storage
             if (!email) {
                 setError("User not found. Please sign up again.");
                 return;
@@ -42,6 +42,7 @@ export default function Form() {
                 {
                     headers: {
                         "Content-Type": "application/json",
+                        "Authorization": localStorage.getItem("token"),
                     },
                     timeout: 5000,
                 }
@@ -52,6 +53,7 @@ export default function Form() {
                 setSuccess("SuccessFully Signed Up");
                 navigate(`/dashboard`);
             }
+            
         } catch (error) {
             setError("Please fill all the details correctly.");
             return res.status(500).json({ message: error.message });

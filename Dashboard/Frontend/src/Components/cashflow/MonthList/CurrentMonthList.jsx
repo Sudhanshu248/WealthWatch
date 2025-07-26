@@ -71,7 +71,6 @@ export default function CurrentMonthList() {
         <>
             {/* History Data */}
             <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 mb-24 px-8 py-4 max-[1030px]:mb-[200px]">
-
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
                     {MonthName[5]}

@@ -1,4 +1,3 @@
-// Importing necessary hooks and components
 import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
 import { SecTotalExpence, SecondFoodExpence, SecondTransportExpence, SecondPersonalExpence, SecondHousingExpence, SecondSavingExpence } from "../../data/CalSecondMonthExpence.js";
@@ -6,6 +5,7 @@ import SecondMonthList from "./SecondMonthList.jsx";
 import SecondPie from "../pie/SecondMonthpie.jsx";
 
 export default function SecondMonth() {
+
     // State variables for expense categories and overall totals
     const [FoodExpences, setFoodExpences] = useState(0);
     const [TransportExpences, setTransportExpences] = useState(0);
@@ -39,11 +39,7 @@ export default function SecondMonth() {
         }
         loadData(); // Trigger data load
     }); 
-
-    // Show loading message if any critical value is still 0
-    if (!FoodExpences || !HousingExpences || !PersonalExpences || !SavingExpences || !TransportExpences) {
-        return <p className="text-center mt-20">Loading...</p>;
-    }
+  
 
     // Labels and dataset for bar chart visualization
     const labels = ['Food', 'Housing', 'Personal expenses', 'Transport', 'Saving'];
@@ -59,6 +55,23 @@ export default function SecondMonth() {
         ]
     };
 
+     const allZero =
+        FoodExpences == 0 &&
+        TransportExpences == 0 &&
+        SavingExpences == 0 &&
+        HousingExpences == 0 &&
+        PersonalExpences == 0;
+
+    if (allZero) {
+        return (
+            <div className="text-center mt-20">
+                <div className="monthlist w-full h-[100px] bg-white rounded-2xl mt-8 px-8 py-4 flex items-center justify-center max-[1030px]:mb-[200px]">
+                    <p className="text-gray-600 text-lg">No expense data available for the current month.</p>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <>
             {/*  Bar Graph and Summary Info  */}
@@ -69,6 +82,7 @@ export default function SecondMonth() {
 
                 {/* Container for bar chart and summary cards */}
                 <div className="bar-graph flex justify-between">
+
                     {/* Bar chart section */}
                     <div className="bar-graph-1 w-[60%] h-full">
                         <BarGraph data={datas} />
@@ -76,6 +90,7 @@ export default function SecondMonth() {
 
                     {/* Summary section (Income, Expenses, Balance) */}
                     <div className="bar-graph-2 text-center flex flex-col mb-12 mr-10 w-[24%]" style={{ justifyContent: "center" }}>
+
                         {/* Income Card */}
                         <div className="bar-graph-2-1  w-full p-3 rounded-xl border-1 flex px-4 justify-between bg-gray-200 mb-5">
                             <p className="text-xl">Income</p>

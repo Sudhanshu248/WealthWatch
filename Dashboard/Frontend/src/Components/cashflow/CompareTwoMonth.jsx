@@ -50,43 +50,44 @@ export default function CompareTwoMonth() {
       // Set current month data
       setCurrentData({
         percentages: [
-          currFood?.Foodpercentage ?? 0,
-          currHousing?.Housing_percentage ?? 0,
-          currPersonal?.Personal_percentage ?? 0,
-          currTransport?.TransportPercentage ?? 0,
-          currSaving?.Saving_percentage ?? 0,
+          currFood?.Foodpercentage || 0,
+          currHousing?.Housing_percentage || 0,
+          currPersonal?.Personal_percentage || 0,
+          currTransport?.TransportPercentage || 0,
+          currSaving?.Saving_percentage || 0,
         ],
         expenses: [
-          currFood?.foodExpence ?? 0,
-          currHousing?.housingExpence ?? 0,
-          currPersonal?.personalExpence ?? 0,
-          currTransport?.transportExpence ?? 0,
-          currSaving?.savingExpence ?? 0,
+          currFood?.foodExpence || 0,
+          currHousing?.housingExpence || 0,
+          currPersonal?.personalExpence || 0,
+          currTransport?.transportExpence || 0,
+          currSaving?.savingExpence || 0,
         ],
-        spended: currTotal.Spended ?? 0,
-        balance: (currTotal?.TotalBudget ?? 0) - (currTotal?.Spended ?? 0),
+        spended: currTotal.Spended || 0,
+        balance: (currTotal?.TotalBudget || 0) - (currTotal?.Spended || 0),
       });
 
       // Set second month data
       setSecondData({
         percentages: [
-          secFood?.Foodpercentage ?? 0,
-          secHousing?.Housing_percentage ?? 0,
-          secPersonal?.Personal_percentage ?? 0,
-          secTransport?.TransportPercentage ?? 0,
-          secSaving?.Saving_percentage ?? 0,
+          secFood?.Foodpercentage || 0,
+          secHousing?.Housing_percentage || 0,
+          secPersonal?.Personal_percentage || 0,
+          secTransport?.TransportPercentage || 0,
+          secSaving?.Saving_percentage || 0,
         ],
         expenses: [
-          secFood?.foodExpence ?? 0,
-          secHousing?.housingExpence ?? 0,
-          secPersonal?.personalExpence ?? 0,
-          secTransport?.transportExpence ?? 0,
-          secSaving?.savingExpence ?? 0,
+          secFood?.foodExpence || 0,
+          secHousing?.housingExpence || 0,
+          secPersonal?.personalExpence || 0,
+          secTransport?.transportExpence || 0,
+          secSaving?.savingExpence || 0,
         ],
-        spended: secTotal?.Spended ?? 0,
-        balance: (secTotal?.TotalBudget ?? 0) - (secTotal?.Spended ?? 0),
+        spended: secTotal?.Spended || 0,
+        balance: (secTotal?.TotalBudget || 0) - (secTotal?.Spended || 0),
       });
     };
+
     fetchData(); // Fetch all necessary data
   }, []);
 
@@ -153,8 +154,22 @@ export default function CompareTwoMonth() {
     </div>
   );
 
+  
   // Show loading state if data hasn't loaded yet
-  if (!currentData || !secondData || !barData) return <p className="text-center mt-20">Loading...</p>;
+  if (!currentData || !secondData || !barData) {
+    return <p className="text-center mt-20">Loading...</p>;
+  }
+
+  const isCurrentEmpty = currentData.expenses.every((val) => val === 0);
+  const isSecondEmpty = secondData.expenses.every((val) => val === 0);
+
+  if (isCurrentEmpty && isSecondEmpty) {
+    return (
+      <div className="bg-white w-full h-fit rounded-2xl p-10 text-center mt-20 text-gray-600 text-xl">
+        No expense data available for the selected months.
+      </div>
+    );
+  }
 
   // Pie chart configurations
   const currPieData = {
@@ -192,14 +207,30 @@ export default function CompareTwoMonth() {
       </div>
 
       {/*  Two Pie Charts for Visualizing Each Month  */}
-      <div className="compare-two-month-piecontainer flex flex-row gap-4 mt-6">
+      <div className="compare-two-month-piecontainer flex flex-row gap-4 mt-6 mb-6">
         {renderPieCard(monthNames[5], currPieData, currentData.percentages, currentData.spended, currentData.balance)}
-        {renderPieCard(monthNames[4], secondPieData, secondData.percentages, secondData.spended, secondData.balance)}
+        {
+          secondData.expenses.every((val) => val === 0) ? (
+            <div className="compare-two-month-pieBox bg-white w-full h-[470px] rounded-2xl p-5 flex items-center justify-center text-gray-600 text-lg">
+              No expense data available for last month.
+            </div>
+          ) : (
+            renderPieCard(monthNames[4], secondPieData, secondData.percentages, secondData.spended, secondData.balance)
+          )
+        }
       </div>
 
       <div className="compare-two-month-list flex flex-row gap-4 mt-6 mb-[200px]">
         <CurrentMonthList />
-        <SecondMonthList />
+        {
+          secondData.expenses.every((val) => val === 0) ? (
+            <div className="bg-white w-full  h-[470px] rounded-2xl p-5 flex items-center justify-center text-gray-600 text-lg">
+              No detailed expense data available for last month.
+            </div>
+          ) : (
+            <SecondMonthList />
+          )
+        }
       </div>
     </div>
   );

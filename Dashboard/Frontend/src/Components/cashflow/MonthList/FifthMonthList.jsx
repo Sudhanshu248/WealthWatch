@@ -62,13 +62,12 @@ export default function FifthMonthList() {
         const path = location.pathname
 
         navigate(`/cashflow/SixMonth/${MonthName[1]}/${value}`)
-    }
+    }  
 
     return (
         <>
             {/* History Data */}
             <div className="monthlist w-full h-[460px] bg-white rounded-2xl mt-8 mb-24  px-8 py-4">
-
                 {/* Heading */}
                 <div className="font-medium text-xl monthlist-head">
                     {MonthName[1]}

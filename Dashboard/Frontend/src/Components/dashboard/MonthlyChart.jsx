@@ -19,6 +19,7 @@ export default function MonthlyChart() {
     useEffect(() => {
         const loadData = async () => {
             setLoading(true);
+
             try {
                 // Fetch individual category expenses asynchronously
                 const food = await CurrentFoodExpence();
@@ -68,38 +69,34 @@ export default function MonthlyChart() {
             <h1 className="text-[1.5rem] font-semibold mb-2 p-2">Monthly Expense</h1>
 
             <div className="monthchart-2 ">
-                <div className="piechart-1 w-[75%] h-[40vh] max-[1450px]:w-[100%]  max-[1215px]:w-[110%] max-[1108px]:h-[35vh]  justify-center  flex items-center m-auto">
-                    <PieChart key={JSON.stringify(data)} data={data} />
-                </div>
                 {/* Show loading text while fetching data */}
-                {loading ? 
-                    (
-                        <p className="text-center mt-20">Loading...</p>
-                    ) : 
-                    (
+                {loading ? (
+                    <p className="text-center mt-20">Loading...</p>
+                ) : monthData.every(item => !item.value || item.value === 0) ? (
+                    <div className="text-gray-600 text-center mt-10 text-lg">No expense data available for this month.</div>
+                ) : (
+                    <>
+                        <div className="piechart-1 w-[75%] h-[40vh] max-[1450px]:w-[100%]  max-[1215px]:w-[110%] max-[1108px]:h-[35vh]  justify-center flex items-center m-auto">
+                            <PieChart key={JSON.stringify(data)} data={data} />
+                        </div>
                         <div className="text-start font-medium mt-5">
                             <ul>
                                 {monthData.map((item, index) => (
-                                    <li
-                                        key={index}
-                                        className="flex flex-row items-center gap-3 justify-between"
-                                    >
+                                    <li key={index} className="flex flex-row items-center gap-3 justify-between">
                                         <div className="flex flex-row items-center gap-3">
-                                            {/* Color dot for each category */}
                                             <div
                                                 className="rounded-full h-[12px] w-[12px]"
                                                 style={{ backgroundColor: backgroundColors[index] }}
                                             ></div>
                                             <h1>{item.name}</h1>
                                         </div>
-                                        {/* Display percentage value with 1 decimal place */}
                                         <div>{item.percentage.toFixed(1)}%</div>
                                     </li>
                                 ))}
                             </ul>
                         </div>
-                    )
-                }
+                    </>
+                )}
             </div>
         </div>
     );

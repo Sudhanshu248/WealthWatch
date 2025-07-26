@@ -18,6 +18,7 @@ export default function ForthMonthList() {
     const [HousingExpences, setHousingExpences] = useState(0);
     const [SavingExpences, setSavingExpences] = useState(0);
 
+
     useEffect(() => {
         const loadData = async () => {
             const food = await ForthFoodExpence();
@@ -56,7 +57,6 @@ export default function ForthMonthList() {
     }, []);
 
     const navigate = useNavigate();
-
     const handleclick = (e) => {
         const value = e.target.value;
         const path = location.pathname

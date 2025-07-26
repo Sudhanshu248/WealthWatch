@@ -40,9 +40,11 @@ export default function BudgetRecommendation() {
       // Send POST request to backend with prompt and token
       const res = await fetch(`${BASE_URL}/ask/ai`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": localStorage.getItem("token"),
+        },
         body: JSON.stringify({ prompt }),
-        Authorization: localStorage.getItem("token"), //  Note: This should be inside `headers` for proper auth
       });
 
       const data = await res.json();
