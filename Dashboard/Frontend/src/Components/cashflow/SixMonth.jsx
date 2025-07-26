@@ -1,7 +1,7 @@
 import CurrPie from "./pie/CurrentMonthpie"
 import SecondPie from "./pie/SecondMonthpie"
 import ThirdPie from "./pie/thirdMonthpie"
-import ForthPie from "./pie/ForthMonthpie.jsx"
+import ForthPie from "./pie/ForthMonthpie"
 import FifthPie from "./pie/FifthMonthpie"
 import SixthPie from "./pie/SixthMonthpie"
 
