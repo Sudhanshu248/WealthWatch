@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import BarGraph from "../pie/barGraph.jsx";
 import { ForthTotalExpence, ForthFoodExpence, ForthTransportExpence, ForthPersonalExpence, ForthHousingExpence, ForthSavingExpence } from "../../data/CalForthMonthExpence.js";
 import ForthMonthList from "./ForthMonthList.jsx";
-import ForthPie from "../pie/ForthMonthpie.jsx";
+import ForthPie from "../pie/forthMonthpie.jsx";
 
 export default function ForthMonth() {
 
